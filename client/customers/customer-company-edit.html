@@ -1,0 +1,31 @@
+<template name="customer_company_edit">
+
+        <h1>Customer Company Edit</h1>
+        <div class="container">
+            <div class="row">
+                <label for="name">Recipient email</label>
+                <input type="text" name="name" placeholder="Customer name" value={{customerCompany.name}}>
+                {{#each error in errors "email"}}
+                    <div class="form-error">{{error}}</div>
+                {{/each}}
+            </div>
+            <div class="row">
+                <label for="email">Company email</label>
+                <input type="email" name="email" value={{customerCompany.email}}>
+                {{#each error in errors "email"}}
+                    <div class="form-error">{{error}}</div>
+                {{/each}}
+            </div>
+            <div class="row">
+                <label for="postcode">Postcode</label>
+                <input type="text" name="postcode" value={{customerCompany.postcode}}>
+                {{#each error in errors "postcode"}}
+                    <div class="form-error">{{error}}</div>
+                {{/each}}
+            </div>
+
+            <button id="saveButton">Save</button>
+        </div>
+
+
+</template>

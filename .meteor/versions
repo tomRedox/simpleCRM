@@ -1,4 +1,9 @@
 accounts-base@1.2.3-modules.4
+aldeed:autoform@5.8.1
+aldeed:collection2@2.8.0
+aldeed:collection2-core@1.0.0
+aldeed:schema-deny@1.0.1
+aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
 allow-deny@1.0.1-modules.4
 arillo:flow-router-helpers@0.5.0
@@ -31,6 +36,7 @@ ejson@1.0.8-modules.4
 email@1.0.9-modules.4
 es5-shim@4.3.2-modules.4
 fastclick@1.0.8-modules.4
+fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.5-modules.4
 gwendall:body-events@0.1.6
 hot-code-push@1.0.1-modules.4
@@ -73,6 +79,7 @@ minimongo@1.0.11-modules.4
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 modules@0.4.1-modules.4
+momentjs:moment@2.10.6
 mongo@1.1.4-modules.4
 mongo-id@1.0.1
 msavin:jetsetter@1.5.2
@@ -81,6 +88,7 @@ npm-mongo@1.4.40-modules.4
 observe-sequence@1.0.8-modules.4
 ordered-dict@1.0.4
 promise@0.5.2-modules.4
+raix:eventemitter@0.1.3
 random@1.0.6-modules.4
 rate-limit@1.0.1-modules.4
 reactive-dict@1.1.4-modules.4
@@ -98,6 +106,7 @@ standard-minifiers-js@1.0.3-modules.4
 templating@1.1.6-modules.4
 templating-tools@1.0.1-modules.4
 tracker@1.0.10-modules.4
+twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.5-modules.4
 url@1.0.6-modules.4

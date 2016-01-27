@@ -22,3 +22,18 @@ FlowRouter.route('/:postId', {
         BlazeLayout.render("AppBody", {content: "blogPost"});
     }
 });
+
+
+FlowRouter.route('/customers/:_id', {
+    name: 'CustomerCompany.edit',
+    action() {
+        BlazeLayout.render('AppBody', {content: 'customer_company_edit'});
+    }
+});
+
+FlowRouter.route('/customersAuto/:_id', {
+    name: 'CustomerCompany.editAuto',
+    action() {
+        BlazeLayout.render('AppBody', {content: 'updateCustomerEdit'});
+    }
+});
