@@ -3,7 +3,6 @@ import { CustomerCompanies } from './customer-company'
 //import { ValidatedMethod } from 'validated-method';
 
 
-Meteor.
 
 
 // The upsert method
