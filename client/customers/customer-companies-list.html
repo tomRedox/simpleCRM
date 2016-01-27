@@ -1,10 +1,19 @@
 <template name="customer_companies_list">
-    {{#each customer in customerCompanies}}
-        {{ customer.name }}
-    {{else}}
-        <div class="wrapper-message">
-            <div class="title-message">No tasks here</div>
-            <div class="subtitle-message">Add new tasks using the field above</div>
-        </div>
-    {{/each}}
+
+        <table>
+            <tr>
+                <th>Customer name</th>
+            </tr>
+            {{#each customer in customerCompanies}}
+                <tr>
+                    <td>{{customer.name}}</td>
+                </tr>
+            {{else}}
+                <div class="wrapper-message">
+                    <div class="title-message">No tasks here</div>
+                    <div class="subtitle-message">Add new tasks using the field above</div>
+                </div>
+            {{/each}}
+        </table>
+
 </template>
