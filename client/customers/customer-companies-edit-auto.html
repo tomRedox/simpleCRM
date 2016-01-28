@@ -1,3 +1,18 @@
 <template name="updateCustomerEdit">
-    {{> quickForm collection="CustomerCompanies" doc=this id="updateCustomerEdit" type="update"}}
+    {{> quickForm
+        collection="CustomerCompaniesGlobal"
+        doc=someDoc
+        id="updateCustomerEdit"
+        type="update"
+    }}
 </template>
+
+
+
+
+    <!--collection="CustomerCompaniesGlobal"-->
+    <!--doc=someDoc-->
+    <!--id="updateCustomerEdit"-->
+    <!--type="method-update"-->
+    <!--singleMethodArgument=true-->
+    <!--meteormethod="CustomerCompanies.methods.update"-->

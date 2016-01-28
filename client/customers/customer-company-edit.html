@@ -1,11 +1,12 @@
 <template name="customer_company_edit">
 
+    <form class="customer_company_edit">
         <h1>Customer Company Edit</h1>
         <div class="container">
             <div class="row">
                 <label for="name">Recipient email</label>
                 <input type="text" name="name" placeholder="Customer name" value={{customerCompany.name}}>
-                {{#each error in errors "email"}}
+                {{#each error in errors "name"}}
                     <div class="form-error">{{error}}</div>
                 {{/each}}
             </div>
@@ -24,8 +25,7 @@
                 {{/each}}
             </div>
 
-            <button id="saveButton">Save</button>
+            <button class="saveButton">Save</button>
         </div>
-
-
+    </form>
 </template>
