@@ -1,1 +1,63 @@
 /* CSS declarations go here */
+
+.headshot {
+    max-width: 50px;
+    border: 1px solid #222;
+    padding: 3px;
+}
+
+.menu {
+    font-size: 12px;
+}
+
+.menu li {
+    list-style-type: none;
+}
+
+.menu li.active {
+    font-weight: bold;
+}
+
+#sidebar {
+    background: #2a2c36;
+    color: #eee;
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    overflow: hidden;
+    left: 0;
+    margin: 0;
+    -moz-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+#sidebar.hide-sidebar {
+    left: -250px; /* Move it off the left side of the page so it's invisible'*/
+    -moz-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+#wrapper {
+    margin: 0 0 0 250px;
+    -moz-transition: margin-left .25s;
+    -o-transition: margin-left .25s;
+    -webkit-transition: margin-left .25s;
+    transition: margin-left .25s;
+}
+
+#wrapper.hide-sidebar {
+    margin-left: 0;
+    -moz-transition: margin-left .25s;
+    -o-transition: margin-left .25s;
+    -webkit-transition: margin-left .25s;
+    transition: margin-left .25s;
+}
+
+#map {
+    width: 100%;
+    height: 600px;
+}

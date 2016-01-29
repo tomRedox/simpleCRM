@@ -14,4 +14,3 @@ Template.dashboard.events({
     Session.set('counter', Session.get('counter') + 1);
   }
 });
-

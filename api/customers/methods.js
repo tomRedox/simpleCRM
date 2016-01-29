@@ -2,55 +2,38 @@
 //import { CustomerCompanies } from './customer-company'
 
 
-// The update method
+// Autoform specific update method that knows how to unpack the single
+// object we get from autoform.
 update = new ValidatedMethod({
 
     // register the name
-    name: 'CustomerCompanies.methods.update',
+    name: 'CustomerCompanies.methods.updateAutoForm',
 
-    // register a method for validation, what's going on here?
-    validate(myArgs) {
-        console.log("myArgs  ", myArgs );
-        Schemas.CustomerCompaniesSchema.validate(myArgs.modifier , {modifier: true});
-        console.log("CustomerCompanies.methods.update - validation succeeded");
+    // register a method for validation.
+    validate(autoformArgs) {
+        console.log(autoformArgs);
+        // Need to tell the schema that we  are passing in a mongo modifier rather than just the data.
+        Schemas.CustomerCompaniesSchema.validate(autoformArgs.modifier , {modifier: true});
     },
 
     // the actual database updating part
     // validate has already been run at this point
-    run(myArgs)
+    run(autoformArgs)
     {
-        console.log("CustomerCompanies.methods.update - run");
-        console.log("myArgs ", myArgs);
-
-        return CustomerCompanies.update(myArgs._id, myArgs.modifier);
-
-        console.log("CustomerCompanies.methods.update - update succeeded");
+        return CustomerCompanies.update(autoformArgs._id, autoformArgs.modifier);
     }
 });
 
-
+// update method that doesn't use the recommended ValidatedMethod approach.
+// The params are in a specific order to match those sent by autoform.
+// To use this need to remove "singleMethodArgument=true" from form definition.
 Meteor.methods({
-    'CustomerCompanies.methods.update2'( customerModifier, customerId ) {
-
-        console.log("CustomerCompanies.methods.update2");
-        console.log("customerModifier ", customerModifier);
-        console.log("customerId ", customerId);
-
-        // autoForm sends us the mongo update query (i.e. a modifier), rather than
-        // just the data to be updated, so to get at the actual customer data
-        // we need to look in the $set property.
-        const thisCust = customerModifier.$set;
-        console.log("customer.name ", thisCust.name);
+    'CustomerCompanies.methods.updateAutoFormLongHand'( customerModifier, customerId ) {
 
         // Simple-schema needs us to tell it that we are sending a mongo modifier rather
         // than just the object: https://github.com/aldeed/meteor-simple-schema#validation-options
         Schemas.CustomerCompaniesSchema.validate(customerModifier, {modifier: true});
 
-        console.log("CustomerCompanies.methods.update2 - validation succeeded");
-
         CustomerCompanies.update(customerId, customerModifier);
-
-        console.log("CustomerCompanies.methods.update2 - update succeeded");
-
     }
 });

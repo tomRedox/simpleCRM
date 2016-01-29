@@ -1,19 +1,24 @@
 <template name="customer_companies_list">
 
-        <table>
+    <div class="col-md-6">
+        <table class="table table-responsive table-striped">
             <tr>
                 <th>Customer name</th>
+                <th>Postcode</th>
             </tr>
             {{#each customer in customerCompanies}}
                 <tr>
                     <td>{{customer.name}}</td>
+                    <td>{{customer.postcode}}</td>
+                    <td><a class="btn btn-default btn-sm" href="/customersAuto/{{customer._id}}">Edit</a></td>
                 </tr>
             {{else}}
                 <div class="wrapper-message">
-                    <div class="title-message">No tasks here</div>
-                    <div class="subtitle-message">Add new tasks using the field above</div>
+                    <div class="title-message">No companies yet</div>
+                    <div class="subtitle-message">Add new companies with the add company button</div>
                 </div>
             {{/each}}
         </table>
+    </div>
 
 </template>

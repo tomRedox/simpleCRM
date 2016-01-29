@@ -7,3 +7,12 @@ if (Meteor.isClient) {
         console.log("AppBody.onCreated");
     });
 }
+
+
+
+Template.AppBody.events({
+    'click button': function () {
+        // increment the counter when button is clicked
+        console.log("button .sidebarToggle");
+    }
+});
