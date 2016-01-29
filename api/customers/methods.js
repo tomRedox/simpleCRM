@@ -9,50 +9,46 @@ update = new ValidatedMethod({
     name: 'CustomerCompanies.methods.update',
 
     // register a method for validation, what's going on here?
-    validate: new SimpleSchema({
-        customerId: {type: String}
-
-    }).validator(),
+    validate(myArgs) {
+        console.log("myArgs  ", myArgs );
+        Schemas.CustomerCompaniesSchema.validate(myArgs.modifier , {modifier: true});
+        console.log("CustomerCompanies.methods.update - validation succeeded");
+    },
 
     // the actual database updating part
     // validate has already been run at this point
-    run(customerId, customer) {
-        console.log("method: update");
-        return CustomerCompanies.update(customerId, {
-            $set: {
-                name: customer.name,
-                email: customer.email,
-                postcode: customer.postcode
-            }
-        });
+    run(myArgs)
+    {
+        console.log("CustomerCompanies.methods.update - run");
+        console.log("myArgs ", myArgs);
+
+        return CustomerCompanies.update(myArgs._id, myArgs.modifier);
+
+        console.log("CustomerCompanies.methods.update - update succeeded");
     }
 });
 
 
 Meteor.methods({
-    'CustomerCompanies.methods.update2'( customer, customerId ) {
+    'CustomerCompanies.methods.update2'( customerModifier, customerId ) {
 
         console.log("CustomerCompanies.methods.update2");
-        console.log("param1", customer);
-        console.log("param2", customerId);
+        console.log("customerModifier ", customerModifier);
+        console.log("customerId ", customerId);
 
-        const thisCust = customer.$set;
+        // autoForm sends us the mongo update query (i.e. a modifier), rather than
+        // just the data to be updated, so to get at the actual customer data
+        // we need to look in the $set property.
+        const thisCust = customerModifier.$set;
+        console.log("customer.name ", thisCust.name);
 
-        Schemas.CustomerCompaniesSchema.validate(thisCust);
+        // Simple-schema needs us to tell it that we are sending a mongo modifier rather
+        // than just the object: https://github.com/aldeed/meteor-simple-schema#validation-options
+        Schemas.CustomerCompaniesSchema.validate(customerModifier, {modifier: true});
 
         console.log("CustomerCompanies.methods.update2 - validation succeeded");
 
-        //const todo = CustomerCompanies.findOne(customerId);
-
-        //if (!todo.editableBy(this.userId)) {
-        //    throw new Meteor.Error('Todos.methods.updateText.unauthorized',
-        //        'Cannot edit todos in a private list that is not yours');
-        //}
-
-        console.log("customer._id ", thisCust._id);
-        console.log("customer.name ", thisCust.name);
-
-        CustomerCompanies.update(customerId, { $set: {name: thisCust.name, email: thisCust.email, postcode: thisCust.postcode } });
+        CustomerCompanies.update(customerId, customerModifier);
 
         console.log("CustomerCompanies.methods.update2 - update succeeded");
 
