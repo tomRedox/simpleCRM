@@ -1,7 +1,7 @@
-import './customer-company-edit.html';
+//import './customer-company-edit.html';
 
-import { CustomerCompanies } from '../../api/customers/customer-company.js';
-import { update } from '../../api/customers/methods'
+//import { CustomerCompanies } from '../../api/customers/customer-company.js';
+//import { update } from '../../api/customers/methods'
 
 Template.customer_company_edit.onCreated(function() {
 

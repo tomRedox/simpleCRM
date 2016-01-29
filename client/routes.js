@@ -1,8 +1,8 @@
 // Import to load these templates
-import './app-body.html';
-import './dashboard/dashboard.html';
-import './blogpost/blog-post.html';
-import './customers/customer-companies-list.html';
+//import './app-body.html';
+//import './dashboard/dashboard.html';
+//import './blogpost/blog-post.html';
+//import './customers/customer-companies-list.html';
 
 /*
 * General note on passing data to templates:  Do not subscribe to

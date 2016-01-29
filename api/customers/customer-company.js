@@ -12,7 +12,7 @@ allow writing straight to the table in accordance with best practices.
 class customerCompanyCollection extends Mongo.Collection {};
 
 // Make it available to the rest of the app
-export const CustomerCompanies = new customerCompanyCollection("Companies");
+CustomerCompanies = new customerCompanyCollection("Companies");
 CustomerCompaniesGlobal = CustomerCompanies;
 
 // Deny all client-side updates since we will be using methods to manage this collection

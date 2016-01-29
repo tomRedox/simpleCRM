@@ -1,6 +1,6 @@
-import './customer-companies-edit-auto.html';
+//import './customer-companies-edit-auto.html';
 
-import { CustomerCompanies } from '../../api/customers/customer-company.js';
+//import { CustomerCompanies } from '../../api/customers/customer-company.js';
 
 Template.updateCustomerEdit.helpers({
 

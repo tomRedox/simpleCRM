@@ -1,4 +1,4 @@
-import './blog-post.html';
+//import './blog-post.html';
 
 
 Template.blogPost.onCreated(function() {

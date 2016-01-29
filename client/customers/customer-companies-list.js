@@ -1,6 +1,6 @@
-import './customer-companies-list.html';
+//import './customer-companies-list.html';
 
-import { CustomerCompanies } from '../../api/customers/customer-company.js';
+//import { CustomerCompanies } from '../../api/customers/customer-company.js';
 
 
 Template.customer_companies_list.onCreated(function() {
