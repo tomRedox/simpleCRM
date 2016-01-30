@@ -11,7 +11,8 @@ Template.customer_company_edit.onCreated(function() {
 
     const customerId = () => FlowRouter.getParam('_id');
 
-    console.log("customerId", customerId)
+    console.log("customerId", customerId);
+
     this.autorun(() => {
         console.log("this0 ", this);
         this.subscribe('CustomerCompany.get', customerId());
@@ -25,6 +26,7 @@ Template.customer_company_edit.onCreated(function() {
 });
 
 Template.customer_company_edit.helpers({
+
 
     // expose a single customer record to the template
     customerCompany() {
@@ -42,7 +44,36 @@ Template.customer_company_edit.helpers({
         console.log("this2 ", this);
         console.log("errors2 ", instance.errorsReact);
         return instance.errorsReact.get(fieldName);
+    },
+
+    options: function () {
+        //return SalesRegions.find();
+        //return [
+        //    {label: "2013", value: 2013},
+        //    {label: "2014", value: 2014},
+        //    {label: "2015", value: 2015}
+        //];
     }
+});
+
+Template.registerHelper("options", function() {
+
+    const result = [];
+
+    SalesRegions.find().map(function (obj) {
+        result.push({
+            label: obj.name,
+            value: obj._id
+        });
+    });
+
+    console.log("result", result);
+      return result;
+    //return [
+    //    {label: "2013", value: 2013},
+    //    {label: "2014", value: 2014},
+    //    {label: "2015", value: 2015}
+    //];
 });
 
 Template.customer_company_edit.events({
@@ -64,7 +95,7 @@ Template.customer_company_edit.events({
 
         // call the method for upserting the data
         up.call(dataFromForm, (err, res) => {
-            console.log ("CustomerCompanies.methods.insert.call")
+            console.log ("CustomerCompanies.methods.insert.call");
             if (err) {
                 if (err.error === 'validation-error') {
                     // Initialize error object

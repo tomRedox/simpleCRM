@@ -10,6 +10,11 @@
 * https://kadira.io/academy/meteor-routing-guide/content/subscriptions-and-data-management
 * */
 
+FlowRouter.notFound = {
+    action: function() {
+        BlazeLayout.render("AppBody", {content: "notFound"});
+    }
+};
 
 FlowRouter.route('/', {
     action: function() {
@@ -17,7 +22,7 @@ FlowRouter.route('/', {
     }
 });
 
-FlowRouter.route('/:postId', {
+FlowRouter.route('/post/:postId', {
     action: function() {
         BlazeLayout.render("AppBody", {content: "blogPost"});
     }

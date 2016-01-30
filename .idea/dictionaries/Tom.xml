@@ -2,8 +2,10 @@
   <dictionary name="Tom">
     <words>
       <w>autoform</w>
+      <w>dropdown</w>
       <w>glyphicon</w>
       <w>mongo</w>
+      <w>navbar</w>
     </words>
   </dictionary>
 </component>

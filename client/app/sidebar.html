@@ -1,18 +1,36 @@
 <template name="sidebar">
 
 
-    <div>
-        <a class="navbar-brand" src="#">Simple CRM</a>
+    <!-- sidebar -->
+    <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+
+        <ul class="nav">
+            <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="fa fa-chevron-right"></i></a></li>
+        </ul>
+
+        <ul class="nav hidden-xs" id="lg-menu">
+            <li class="active"><a href="/"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fa fa-history"></i> Recent customers</a></li>
+            <li><a href="#"><i class="fa fa-group"></i> All customers</a></li>
+            <li><a href="#"><i class="fa fa-search"></i> Search</a></li>
+            <li><a href="#"><i class="fa fa-line-chart"></i> Reports</a></li>
+        </ul>
+        <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+            <li>
+                <a href="http://www.redox-software.co.uk"><h3>simple crm</h3> <i class="fa fa-cloud"></i> redox software ltd</a>
+            </li>
+        </ul>
+
+        <!-- tiny only nav-->
+        <ul class="nav visible-xs" id="xs-menu">
+            <li><a href="/" class="text-center"><i class="fa fa-tachometer"></i></a></li>
+            <li><a href="#" class="text-center"><i class="fa fa-history"></i></a></li>
+            <li><a href="#" class="text-center"><i class="fa fa-search"></i></a></li>
+            <li><a href="#" class="text-center"><i class="fa fa-line-chart"></i></a></li>
+        </ul>
+
     </div>
-    <div id="sidebar">
-        <div>
-            <ul class="nav">
-                <li class="active"><a src="#">Dashboard</a></li>
-                <li><a src="#">About</a></li>
-                <li><a src="#">Contact</a></li>
-            </ul>
-        </div>
-    </div>
+    <!-- /sidebar -->
 
 
 </template>

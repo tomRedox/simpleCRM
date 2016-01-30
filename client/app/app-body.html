@@ -1,18 +1,35 @@
+<!--Theme from here:-->
+<!--Site: http://www.bootstrapzero.com/bootstrap-template/facebook-->
+<!--Code: http://www.bootply.com/96266-->
+<!--Demp: http://www.bootply.com/render/96266#-->
+
 <template name="AppBody">
+    <div class="wrapper">
+        <div class="box">
+            <div class="row row-offcanvas row-offcanvas-left">
 
-    {{> sidebar }}
+                {{> sidebar }}
 
-    <div id="wrapper">
+                <div class="column col-sm-10 col-xs-11" id="main">
 
-        {{> topNav }}
+                    {{> topNav }}
 
+                    <div class="padding">
+                        <div class="full col-sm-9">
 
-        <div id="main" class="container-fluid">
-            <main>
-                {{>Template.dynamic template=content}}
-            </main>
+                            <!-- content -->
+                            <div class="row">
+
+                                <main>
+                                    {{>Template.dynamic template=content}}
+                                </main>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--{{> footer }}-->
+                </div>
+            </div>
         </div>
-
-        <!--{{> footer }}-->
     </div>
 </template>

@@ -2,6 +2,8 @@
 
 //import { FlowRouter } from 'kadira:flow-router';
 
+Meteor.subscribe("SalesRegions.All");
+
 if (Meteor.isClient) {
     Template.AppBody.onCreated(function () {
         console.log("AppBody.onCreated");

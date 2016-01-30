@@ -25,11 +25,54 @@ Meteor.startup(() => {
         let timestamp = (new Date()).getTime();
 
         data.forEach((customer) => {
-            const customerId = CustomerCompanies.insert({
+            CustomerCompanies.insert({
                 name: customer.name,
                 email: customer.email,
                 postcode: customer.postcode,
                 createdAt: new Date(timestamp)
+            });
+
+            //console.log("added customer: ", customer);
+        });
+    }
+
+
+    if (SalesRegions.find().count() === 0) {
+        const data = [
+            {
+                name: "North West"
+            },
+            {
+                name: "North East"
+            },
+            {
+                name: "Scotland"
+            },
+            {
+                name: "South East"
+            },
+            {
+                name: "Wales"
+            },
+            {
+                name: "Southern Ireland"
+            },
+            {
+                name: "Nothern Ireland"
+            },
+            {
+                name: "South West"
+            },
+            {
+                name: 'London'
+            }
+        ];
+
+        let timestamp = (new Date()).getTime();
+
+        data.forEach((item) => {
+            SalesRegions.insert({
+                name: item.name
             });
 
             //console.log("added customer: ", customer);

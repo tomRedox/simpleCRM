@@ -1,13 +1,16 @@
 
 <template name="dashboard">
 
-    <h2>Dashboard</h2>
+    <div class="panel panel-default">
+        <!--<div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>-->
+        <div class="panel-body">
+            <p class="lead"><h3>Dashboard <i class="fa fa-dashboard"></i></h3></p>
+        </div>
+    </div>
 
-    <h3>Counter</h3>
-    <button>Click Me</button>
 
-    <p>You've pressed the button {{counter}} times.</p>
+    {{> counter}}
 
-    <h3>Customer List</h3>
     {{> customer_companies_list}}
+
 </template>

@@ -10,4 +10,9 @@ Meteor.publish('CustomerCompany.get', function (custId) {
     //console.log("publication match ", CustomerCompanies.find({_id: custId}).fetch());
 
     return CustomerCompanies.find({_id: custId});
-})
+});
+
+Meteor.publish('SalesRegions.All', function() {
+    return SalesRegions.find();
+});
+
