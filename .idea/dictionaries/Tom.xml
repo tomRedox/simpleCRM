@@ -2,6 +2,7 @@
   <dictionary name="Tom">
     <words>
       <w>autoform</w>
+      <w>glyphicon</w>
       <w>mongo</w>
     </words>
   </dictionary>

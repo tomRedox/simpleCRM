@@ -23,7 +23,7 @@
     color: #eee;
     position: fixed;
     height: 100%;
-    width: 250px;
+    width: 175px;
     overflow: hidden;
     left: 0;
     margin: 0;
@@ -34,7 +34,7 @@
 }
 
 #sidebar.hide-sidebar {
-    left: -250px; /* Move it off the left side of the page so it's invisible'*/
+    left: -175px; /* Move it off the left side of the page so it's invisible'*/
     -moz-transition: left ease .25s;
     -o-transition: left ease .25s;
     -webkit-transition: left ease .25s;
@@ -42,7 +42,7 @@
 }
 
 #wrapper {
-    margin: 0 0 0 250px;
+    margin: 0 0 0 175px;
     -moz-transition: margin-left .25s;
     -o-transition: margin-left .25s;
     -webkit-transition: margin-left .25s;
