@@ -1,13 +1,13 @@
 /* custom template */
 html, body {
     height: 100%;
-    font-family:verdana,arial,sans-serif;
+    /*font-family:verdana,arial,sans-serif;*/
     color:#555555;
 }
 
 .nav {
-    font-family:Arial,sans-serif;
-    font-size:13px;
+    /*font-family:Arial,sans-serif;*/
+    /*font-size:13px;*/
 }
 
 a {
@@ -62,9 +62,11 @@ hr {
     background-color:#444444;
     /*
       background-image:url('/assets/example/bg_suburb.jpg');
-      background-size:cover;
-      background-attachment:fixed;
+
     */
+    background-size:cover;
+    background-attachment:fixed;
+
 }
 
 .divider {
@@ -75,7 +77,7 @@ hr {
     border-width:0;
     background-color:#3B5999;
     color:#ffffff;
-    font-family:arial,sans-serif;
+    /*font-family:arial,sans-serif;*/
     top:0;
     position:fixed;
     width:inherit;

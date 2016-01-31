@@ -22,23 +22,22 @@
             </form>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="\"><i class="fa fa-home"></i> Home</a>
+                    <a href="/"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li>
-                    <a href="#postModal" role="button" data-toggle="modal"><i class="fa fa-plus"></i> Post</a>
+                    <a href="/orders/newOrder" role="button" data-toggle="modal"><i class="fa fa-plus"></i> Post</a>
                 </li>
                 <li>
                     <a href="#"><span class="badge">badge</span></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="">Sign in</a></li>
-                    </ul>
+                 <li>
+                    {{#if isInRole 'Administrator'}}
+                        <a href="#">Admin</a>
+                    {{/if}}
                 </li>
-            </ul>
+                {{> loginButtons}} <!-- here -->           </ul>
         </nav>
     </div>
     <!-- /top nav -->

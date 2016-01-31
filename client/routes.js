@@ -42,3 +42,11 @@ FlowRouter.route('/customersAuto/:_id', {
         BlazeLayout.render('AppBody', {content: 'updateCustomerEdit'});
     }
 });
+
+
+FlowRouter.route('/orders/newOrder', {
+    name: 'newOrder',
+    action: function() {
+        BlazeLayout.render("AppBody", {content: "orderEditAuto"});
+    }
+});
