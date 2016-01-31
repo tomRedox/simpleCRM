@@ -67,7 +67,7 @@ Template.registerHelper("options", function() {
         });
     });
 
-    console.log("result", result);
+    console.log("sales region results ", result);
       return result;
     //return [
     //    {label: "2013", value: 2013},

@@ -72,7 +72,8 @@ Meteor.startup(() => {
 
         data.forEach((item) => {
             SalesRegions.insert({
-                name: item.name
+                name: item.name,
+                createdAt: new Date(timestamp)
             });
 
             //console.log("added customer: ", customer);
