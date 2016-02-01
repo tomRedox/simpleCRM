@@ -39,39 +39,11 @@ Template.customer_company_edit.helpers({
     isSelected: function (region, customer) {
         if (!customer) return false;
 
-        //console.log("isSelected region: ", region);
-        //console.log("isSelected customer: ", customer);
-        let result = customer.salesRegionId === region._id;
-        //console.log("result", result);
-        return result;
+        return customer.salesRegionId === region._id;
     },
 
     salesRegionsOptions1: function () {
         return SalesRegions.find();
-        //return [
-        //    {label: "2013", value: 2013},
-        //    {label: "2014", value: 2014},
-        //    {label: "2015", value: 2015}
-        //];
-
-        //const result = [];
-        //
-        //SalesRegions.find().map(function (obj) {
-        //    result.push({
-        //        label: obj.name,
-        //        value: obj._id ,
-        //        isSelected: () => {
-        //            if(obj._id === Template.instance().helpers.customerCompany().salesRegionId){
-        //                return true;
-        //            }else {
-        //                return false;
-        //            }
-        //        }
-        //    });
-        //});
-        //
-        //console.log("sales region results ", result);
-        //return result;
     }
 });
 
@@ -86,13 +58,8 @@ Template.registerHelper("salesRegionsOptions", function() {
         });
     });
 
-    console.log("sales region results ", result);
-      return result;
-    //return [
-    //    {label: "2013", value: 2013},
-    //    {label: "2014", value: 2014},
-    //    {label: "2015", value: 2015}
-    //];
+    //console.log("sales region results ", result);
+    return result;
 });
 
 Template.customer_company_edit.events({
