@@ -8,43 +8,50 @@
 
                 <h3>{{customerCompany.name}}</h3>
 
-                    <div class="form-group">
-                        <label for="name">Company name</label>
-                        <input type="text" id="name" placeholder="Customer name" class="form-control" value={{customerCompany.name}}>
-                        {{#each error in errors "name"}}
-                            <div class="form-error">{{error}}</div>
-                        {{/each}}
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" value={{customerCompany.email}}>
-                        {{#each error in errors "email"}}
-                            <div class="form-error">{{error}}</div>
-                        {{/each}}
-                    </div>
-                    <div class="form-group">
-                        <label for="postcode">Postcode</label>
-                        <input type="text" id="postcode" class="form-control" value={{customerCompany.postcode}}>
-                        {{#each error in errors "postcode"}}
-                            <div class="form-error">{{error}}</div>
-                        {{/each}}
-                    </div>
+                <div class="form-group">
+                    <label for="name">Company name</label>
+                    <input type="text" id="name" placeholder="Customer name" class="form-control"
+                           value={{customerCompany.name}}>
+                    {{#each error in errors "name"}}
+                        <div class="form-error">{{error}}</div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" value={{customerCompany.email}}>
+                    {{#each error in errors "email"}}
+                        <div class="form-error">{{error}}</div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <label for="postcode">Postcode</label>
+                    <input type="text" id="postcode" class="form-control" value={{customerCompany.postcode}}>
+                    {{#each error in errors "postcode"}}
+                        <div class="form-error">{{error}}</div>
+                    {{/each}}
+                </div>
 
-                    <div class="form-group">
-                        <label for="nextContactDate">Next contact date</label>
-                        <input type="datetime" id="nextContactDate" class="form-control" value={{customerCompany.nextContactDate}}>
-                        {{#each error in errors "nextContactDate"}}
-                            <div class="form-error">{{error}}</div>
-                        {{/each}}
-                    </div>
+                <div class="form-group">
+                    <label for="nextContactDate">Next contact date</label>
+                    <input type="text" id="nextContactDate" class="form-control"
+                           value={{customerCompany.nextContactDate}}>
+                    {{#each error in errors "nextContactDate"}}
+                        <div class="form-error">{{error}}</div>
+                    {{/each}}
+                </div>
 
-                    <div class="form-group">
-                        <label for="salesRegionId">Sales region id</label>
-                        <input type="text" id="salesRegionId" class="form-control" value={{customerCompany.salesRegionId}}>
-                        {{#each error in errors "salesRegionId"}}
-                            <div class="form-error">{{error}}</div>
+                <div class="form-group">
+                    <label for="salesRegionId">Sales region id</label>
+                    <select id="salesRegionId" class="form-control">
+                        {{#each region in salesRegionsOptions1}}
+                            {{#if isSelected region customerCompany}}
+                                <option value={{region._id}} selected>{{region.name}}</option>
+                            {{else}}
+                                <option value={{region._id}}>{{region.name}}</option>
+                            {{/if}}
                         {{/each}}
-                    </div>
+                    </select>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

@@ -379,6 +379,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/client/main.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/config/config.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/config/config.css" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.0/web.browser/lib/css/bootstrap-datepicker3.css" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.0/web.browser/lib/js/bootstrap-datepicker.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -759,6 +761,8 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/client/main.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/config/config.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_shell/2.1.0/web.browser/config/config.css" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.0/web.browser/lib/css/bootstrap-datepicker3.css" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.0/web.browser/lib/js/bootstrap-datepicker.js" />
     </CLASSES>
     <SOURCES />
   </library>
