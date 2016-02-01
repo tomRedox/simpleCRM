@@ -7,22 +7,13 @@ Template.customer_company_edit.onCreated(function() {
 
     console.log("Template.customer_company_edit.onCreated");
 
-    // create a reactive dictionary to hold any errors
-
-    const customerId = () => FlowRouter.getParam('_id');
-
-    console.log("customerId", customerId);
+    this.errors = new ReactiveDict();
 
     this.autorun(() => {
-        console.log("this0 ", this);
-        this.subscribe('CustomerCompany.get', customerId());
+        this.subscribe('CustomerCompany.get', FlowRouter.getParam('_id'));
     });
 
-    console.log("this1 ", this);
-    this.errorsReact = new ReactiveDict();
-    console.log("errors1 ", this.errorsReact);
-    console.log("CustomerCompanies1 ", CustomerCompanies);
-
+    Template.instance().errorsReact = new ReactiveDict();
 });
 
 Template.customer_company_edit.helpers({
@@ -31,7 +22,7 @@ Template.customer_company_edit.helpers({
     // expose a single customer record to the template
     customerCompany() {
         const company = CustomerCompanies.findOne({_id: FlowRouter.getParam('_id')});
-        console.log("CustomerCompanies2 ", CustomerCompanies);
+        //console.log("CustomerCompanies2 ", CustomerCompanies);
         //console.log("company ", company);
         return company;
     },
@@ -39,11 +30,7 @@ Template.customer_company_edit.helpers({
     // expose the errors dictionary to the template
     errors(fieldName) {
 
-        const instance = Template.instance();
-
-        console.log("this2 ", this);
-        console.log("errors2 ", instance.errorsReact);
-        return instance.errorsReact.get(fieldName);
+        return Template.instance().errors.get(fieldName);
     },
 
     options: function () {
@@ -56,7 +43,7 @@ Template.customer_company_edit.helpers({
     }
 });
 
-Template.registerHelper("options", function() {
+Template.registerHelper("salesRegionsOptions", function() {
 
     const result = [];
 
@@ -78,28 +65,35 @@ Template.registerHelper("options", function() {
 
 Template.customer_company_edit.events({
 
-    'submit .customer_company_edit'(event) {
-        console.log("CustomerCompanies3 ", CustomerCompanies);
+    'submit'(event) {
+        event.preventDefault();
 
-        const up = update;
-
-        // get a ref to the template
-        const instance = Template.instance();
+        //console.log("Submit customer_company_edit ");
 
         // get the data out of the template (yuk)
         const dataFromForm = {
             name: event.target.name.value,
-            email: event.target.email,
+            email: event.target.email.value,
             postcode: event.target.postcode.value
         };
 
+        //console.log("dataFromForm", dataFromForm);
+
+        const custId = FlowRouter.getParam('_id')
+
         // call the method for upserting the data
-        up.call(dataFromForm, (err, res) => {
-            console.log ("CustomerCompanies.methods.insert.call");
+        CustomerCompanies.methods.updateManualForm.call({
+            customerId: custId,
+            data: dataFromForm
+        }, (err, res) => {
+            //console.log ("CustomerCompanies.methods.updateManualForm.call was called");
             if (err) {
                 if (err.error === 'validation-error') {
+
                     // Initialize error object
                     const errors = {
+                        data: [],
+                        customerId: [],
                         name: [],
                         email: [],
                         postcode: []
@@ -108,14 +102,20 @@ Template.customer_company_edit.events({
                     // Go through validation errors returned from Method
                     err.details.forEach((fieldError) => {
                         // XXX i18n
-                        errors[fieldError.name].push(fieldError.type);
+                        if (errors[fieldError.name]) {
+                            errors[fieldError.name].push(fieldError.type);
+                        }
                     });
 
                     // Update ReactiveDict, errors will show up in the UI
 
-                    instance.errorsReact.set(errors);
-                    console.log("errors3 ", instance.errorsReact);
+                    Template.instance().errors.set(errors);
+                    //console.log("errors3 ", Template.instance().errors);
                 }
+                sAlert.error(err.message);
+                console.log("Save error ", err);
+            } else {
+                sAlert.success("Save successful")
             }
         });
     }

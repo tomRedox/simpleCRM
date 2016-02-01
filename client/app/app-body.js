@@ -6,7 +6,7 @@ Meteor.subscribe("SalesRegions.All");
 
 if (Meteor.isClient) {
     Template.AppBody.onCreated(function () {
-        console.log("AppBody.onCreated");
+        //console.log("AppBody.onCreated");
     });
 }
 

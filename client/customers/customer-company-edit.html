@@ -30,7 +30,23 @@
                         {{/each}}
                     </div>
 
-                    <button class="btn btn-success" id="saveButton">Save</button>
+                    <div class="form-group">
+                        <label for="nextContactDate">Next contact date</label>
+                        <input type="datetime" id="nextContactDate" class="form-control" value={{customerCompany.nextContactDate}}>
+                        {{#each error in errors "nextContactDate"}}
+                            <div class="form-error">{{error}}</div>
+                        {{/each}}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salesRegionId">Sales region id</label>
+                        <input type="text" id="salesRegionId" class="form-control" value={{customerCompany.salesRegionId}}>
+                        {{#each error in errors "salesRegionId"}}
+                            <div class="form-error">{{error}}</div>
+                        {{/each}}
+                    </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
