@@ -1,29 +1,34 @@
 <template name="updateCustomerEdit">
     {{#autoForm
         collection="CustomerCompanies"
-        doc=someDoc
+        doc=customerDoc
         id="updateCustomerEdit"
         type="method-update"
         meteormethod="CustomerCompanies.methods.updateAutoForm"
         singleMethodArgument=true
     }}
-        <fieldset>
-            {{> afQuickField name="name"}}
-            {{> afQuickField name="email"}}
-            {{> afQuickField name="postcode"}}
-            {{> afFormGroup  name="salesRegionId" options=options}}
-            {{> afQuickField name="nextContactDate"}}
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="panel panel-default">
+            <!--<div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>-->
+            <div class="panel-body">
+                <h3>{{customerDoc.name}}</h3>
+                <fieldset>
+                    {{> afQuickField name="name"}}
+                    {{> afQuickField name="email"}}
+                    {{> afQuickField name="postcode"}}
+                    {{> afFormGroup  name="salesRegionId" options=options}}
+                    {{> afQuickField name="nextContactDate"}}
+                </fieldset>
+                <a class="btn btn-warning" id="cancelButton" href="#">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
     {{/autoForm}}
 </template>
 
 
-
-
-    <!--collection="CustomerCompaniesGlobal"-->
-    <!--doc=someDoc-->
-    <!--id="updateCustomerEdit"-->
-    <!--type="method-update"-->
-    <!--singleMethodArgument=true-->
+<!--collection="CustomerCompaniesGlobal"-->
+<!--doc=someDoc-->
+<!--id="updateCustomerEdit"-->
+<!--type="method-update"-->
+<!--singleMethodArgument=true-->
 

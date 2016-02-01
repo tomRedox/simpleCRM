@@ -1,31 +1,37 @@
 <template name="customer_company_edit">
 
     <form class="customer_company_edit">
-        <h1>Customer Company Edit</h1>
-        <div class="container">
-            <div class="row">
-                <label for="name">Recipient email</label>
-                <input type="text" name="name" placeholder="Customer name" value={{customerCompany.name}}>
-                {{#each error in errors "name"}}
-                    <div class="form-error">{{error}}</div>
-                {{/each}}
-            </div>
-            <div class="row">
-                <label for="email">Company email</label>
-                <input type="email" name="email" value={{customerCompany.email}}>
-                {{#each error in errors "email"}}
-                    <div class="form-error">{{error}}</div>
-                {{/each}}
-            </div>
-            <div class="row">
-                <label for="postcode">Postcode</label>
-                <input type="text" name="postcode" value={{customerCompany.postcode}}>
-                {{#each error in errors "postcode"}}
-                    <div class="form-error">{{error}}</div>
-                {{/each}}
-            </div>
 
-            <button class="saveButton">Save</button>
+        <div class="panel panel-default col-md-6">
+            <!--<div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>-->
+            <div class="panel-body">
+
+                <h3>{{customerCompany.name}}</h3>
+
+                    <div class="form-group">
+                        <label for="name">Company name</label>
+                        <input type="text" id="name" placeholder="Customer name" class="form-control" value={{customerCompany.name}}>
+                        {{#each error in errors "name"}}
+                            <div class="form-error">{{error}}</div>
+                        {{/each}}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" value={{customerCompany.email}}>
+                        {{#each error in errors "email"}}
+                            <div class="form-error">{{error}}</div>
+                        {{/each}}
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode">Postcode</label>
+                        <input type="text" id="postcode" class="form-control" value={{customerCompany.postcode}}>
+                        {{#each error in errors "postcode"}}
+                            <div class="form-error">{{error}}</div>
+                        {{/each}}
+                    </div>
+
+                    <button class="btn btn-success" id="saveButton">Save</button>
+            </div>
         </div>
     </form>
 </template>

@@ -50,7 +50,9 @@ hr {
 }
 
 .full{
-    padding-top:70px;
+    padding-top:66px;
+    width: 50%;
+    overflow: auto;
 }
 
 .box {

@@ -4,7 +4,7 @@
 
 Template.updateCustomerEdit.helpers({
 
-    someDoc() {
+    customerDoc() {
         const customerId = () => FlowRouter.getParam('_id');
         const instance = Template.instance();
 
@@ -14,8 +14,15 @@ Template.updateCustomerEdit.helpers({
     }
 });
 
-console.log("when do I run?");
+Template.updateCustomerEdit.events({
 
+    'click #cancelButton': function () {
+        sAlert.success("Changes cancelled");
+        FlowRouter.go('home');
+    }
+});
+
+//noinspection JSUnusedLocalSymbols
 AutoForm.hooks({
     updateCustomerEdit: {
         onSuccess: function(formType, result) {
@@ -27,4 +34,4 @@ AutoForm.hooks({
         }
 
     }
-})
+});

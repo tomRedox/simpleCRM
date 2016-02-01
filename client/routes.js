@@ -17,6 +17,7 @@ FlowRouter.notFound = {
 };
 
 FlowRouter.route('/', {
+    name: "home",
     action: function() {
         BlazeLayout.render("AppBody", {content: "dashboard"});
     }
