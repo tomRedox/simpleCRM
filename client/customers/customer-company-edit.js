@@ -12,8 +12,6 @@ Template.customer_company_edit.onCreated(function() {
     this.autorun(() => {
         this.subscribe('CustomerCompany.get', FlowRouter.getParam('_id'));
     });
-
-    Template.instance().errorsReact = new ReactiveDict();
 });
 
 Template.customer_company_edit.helpers({
@@ -29,7 +27,8 @@ Template.customer_company_edit.helpers({
 
     // expose the errors dictionary to the template
     errors(fieldName) {
-
+        console.log("Template.instance().errors", Template.instance().errors);
+        console.log("field error ", Template.instance().errors.get(fieldName));
         return Template.instance().errors.get(fieldName);
     },
 

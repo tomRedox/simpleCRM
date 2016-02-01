@@ -48,7 +48,7 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
 
             postcode: {
                 type: String,
-                max: 100,
+                max: 10,
                 optional: true
             },
 
