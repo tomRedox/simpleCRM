@@ -30,7 +30,7 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
     validate(args) {
         console.log("validating");
 
-        new SimpleSchema({
+        var schema = new SimpleSchema({
 
             name: {
                 type: String,
@@ -64,7 +64,20 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
                 type: Date,
                 optional: true
             }
-        }).validate(args.data);
+        });
+
+        Schemas.CustomerCompaniesSchema.validate(this.data);
+
+        //const context = schema.namedContext();
+        //context.validate(args.data);
+        //console.log( "context.invalidKeys", context.invalidKeys());
+        //
+        //context.invalidKeys().forEach(invalidKey => {
+        //    console.log("keyErrorMessage: ", context.keyErrorMessage(invalidKey.name));
+        //});
+
+        //console.log("schema", schema)
+        //schema.validate(args.data);
 
         console.log("validation succeeded");
     },

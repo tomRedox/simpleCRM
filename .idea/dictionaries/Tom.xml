@@ -4,6 +4,7 @@
       <w>autoform</w>
       <w>dropdown</w>
       <w>glyphicon</w>
+      <w>mixins</w>
       <w>mongo</w>
       <w>navbar</w>
     </words>

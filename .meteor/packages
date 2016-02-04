@@ -19,8 +19,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 mdg:validated-method
 aldeed:simple-schema
 meteortoys:allthings
-kadira:flow-router
-kadira:blaze-layout
 arillo:flow-router-helpers
 aldeed:collection2
 reactive-dict
@@ -35,3 +33,6 @@ ian:accounts-ui-bootstrap-3
 accounts-password
 alanning:roles
 rajit:bootstrap3-datepicker
+react
+kadira:flow-router
+kadira:react-layout
