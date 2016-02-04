@@ -10,7 +10,7 @@ Input = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
-        defaultValue: React.PropTypes.string,
+        //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string
     },
 
@@ -21,6 +21,7 @@ Input = React.createClass({
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         var wrapperClass = 'form-group';
         if (this.props.error && this.props.error.length > 0) {
+            console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
         }
 
@@ -35,7 +36,7 @@ Input = React.createClass({
                            ref={this.props.name}
                            id={this.props.name}
                            value={this.props.value}
-                           defaultValue={this.props.defaultValue}
+                           //defaultValue={this.props.defaultValue}
                            onChange={this.props.onChange} />
                     <div className="input">{this.props.error}</div>
                 </div>

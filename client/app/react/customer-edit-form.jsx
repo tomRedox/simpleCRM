@@ -2,7 +2,7 @@
 //var Input = require('./textInput');
 
 // App component - represents the whole app
-CustomerEditComponent = React.createClass({
+CustomerEditForm = React.createClass({
     // Declare our expectations for using this class (not mandatory, just good practice)
     propTypes: {
         customer: React.PropTypes.object.isRequired,
@@ -15,7 +15,7 @@ CustomerEditComponent = React.createClass({
         console.log("CustomerEditComponent customer: ", this.props.customer);
 
         return (
-            <form className="customer_edit_react" onSubmit={this.handleSubmit}>
+            <form className="customer_edit_react" onSubmit={this.props.onSave}>
                 <div className="panel panel-default col-md-6">
                     <div className="panel-body">
 
@@ -26,7 +26,7 @@ CustomerEditComponent = React.createClass({
                             label="Name"
                             onChange = {this.props.onChange}
                             placeholder="Name"
-                            defaultValue={this.props.customer.name}
+                            value={this.props.customer.name}
                             error={this.props.errors.name}
                         />
 
@@ -35,7 +35,7 @@ CustomerEditComponent = React.createClass({
                             label="Email"
                             onChange = {this.props.onChange}
                             placeholder="Email"
-                            defaultValue={this.props.customer.email}
+                            value={this.props.customer.email}
                             error={this.props.errors.email}
                         />
 
@@ -44,7 +44,7 @@ CustomerEditComponent = React.createClass({
                             label="Postcode"
                             onChange = {this.props.onChange}
                             placeholder="Postcode"
-                            defaultValue={this.props.customer.postcode}
+                            value={this.props.customer.postcode}
                             error={this.props.errors.postcode}
                         />
 
