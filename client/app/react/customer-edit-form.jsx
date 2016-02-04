@@ -48,7 +48,6 @@ CustomerEditForm = React.createClass({
                             error={this.props.errors.postcode}
                         />
 
-
                         <input
                             type="submit"
                             value="Save"

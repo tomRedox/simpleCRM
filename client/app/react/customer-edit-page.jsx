@@ -59,6 +59,12 @@ CustomerEditPage = React.createClass({
         return this.setState({customer: this.state.customer});
     },
 
+    saveCustomer(event) {
+        event.preventDefault();
+
+        this.props.onSave(this.state.customer);
+    },
+
     render() {
         console.log("render state ", this.state);
 
@@ -66,7 +72,7 @@ CustomerEditPage = React.createClass({
             <CustomerEditForm
                 customer={this.state.customer}
                 onChange={this.onChangeHandler}
-                onSave={this.props.onSave}
+                onSave={this.saveCustomer}
                 errors={this.state.errors}
             />
         );

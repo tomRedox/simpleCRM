@@ -21,17 +21,16 @@ CustomerEditPageWrapper = React.createClass({
         };
     },
 
-    saveCustomer(event) {
-        event.preventDefault();
+    saveCustomer(customer) {
 
-        //console.log("submitted event: ", event);
+        console.log("submitted customer: ", customer);
         //console.log("this: ", this);
 
         // get the data out of the template (yuk)
         const dataFromForm = {
-            name: event.target.name.value,
-            email: event.target.email.value,
-            postcode: event.target.postcode.value
+            name: customer.name,
+            email: customer.email,
+            postcode: customer.postcode
         };
 
         //console.log("dataFromForm", dataFromForm);

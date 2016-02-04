@@ -66,10 +66,10 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
             }
         });
 
-        Schemas.CustomerCompaniesSchema.validate(this.data);
+        //Schemas.CustomerCompaniesSchema.validate(this.data);
 
-        //const context = schema.namedContext();
-        //context.validate(args.data);
+        const context = schema.namedContext();
+        context.validate(args.data);
         //console.log( "context.invalidKeys", context.invalidKeys());
         //
         //context.invalidKeys().forEach(invalidKey => {
