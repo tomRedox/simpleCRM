@@ -2,14 +2,14 @@
 //
 //var React = require('react');
 
-TextInput = React.createClass({
+DateInput = React.createClass({
     // list out our required and optional properties for this class
     propTypes: {
         name: React.PropTypes.string.isRequired,
         label: React.PropTypes.string.isRequired,
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
-        value: React.PropTypes.string,
+        value: React.PropTypes.instanceOf(Date),
         //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string
     },
@@ -29,7 +29,7 @@ TextInput = React.createClass({
             <div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
-                    <input type="text"
+                    <input type="date"
                            name={this.props.name}
                            className="form-control"
                            placeholder={this.props.placeholder}
@@ -46,4 +46,4 @@ TextInput = React.createClass({
     }
 });
 
-//module.exports = TextInput;
+//module.exports = DateInput;

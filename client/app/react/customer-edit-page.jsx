@@ -1,7 +1,7 @@
 
-//var Input = require('./textInput');
+//var TextInput = require('./textInput');
 
-// App component - represents the whole app
+// this page is wrapped by the wrapper
 CustomerEditPage = React.createClass({
     propTypes: {
         customer: React.PropTypes.object.isRequired,
@@ -13,7 +13,8 @@ CustomerEditPage = React.createClass({
         return {
             errorsList: new ReactiveDict(),
             customer: this.props.customer,
-            errors: {}
+            errors: {},
+            isValid: false
         };
     },
 
@@ -32,11 +33,19 @@ CustomerEditPage = React.createClass({
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
-            this.state.errors[invalidKey.name] = errMessage;
+            if (invalidKey.name != "_id") {
+                this.state.errors[invalidKey.name] = errMessage;
+            }
         });
+
+        this.setFormIsValid();
 
         // Update the state, this will then cause the re-render
         return this.setState({customer: this.state.customer});
+    },
+
+    setFormIsValid: function() {
+        this.state.isValid = (Object.keys(this.state.errors).length === 0);
     },
 
     saveCustomer(event) {
@@ -46,6 +55,8 @@ CustomerEditPage = React.createClass({
     },
 
     render() {
+        this.setFormIsValid();
+
         //console.log("render state ", this.state);
         return (
             <CustomerEditForm
@@ -53,6 +64,7 @@ CustomerEditPage = React.createClass({
                 onChange={this.onChangeHandler}
                 onSave={this.saveCustomer}
                 errors={this.state.errors}
+                isValid={this.state.isValid}
             />
         );
     }

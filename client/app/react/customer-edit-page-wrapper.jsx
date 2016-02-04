@@ -1,7 +1,7 @@
 
-//var Input = require('./textInput');
+//var TextInput = require('./textInput');
 
-// App component - represents the whole app
+// Top of the stack, represents the whole page
 CustomerEditPageWrapper = React.createClass({
     // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
@@ -21,6 +21,9 @@ CustomerEditPageWrapper = React.createClass({
         };
     },
 
+    // this code could be moved down to the CustomerEditPage, but it seems cleaner
+    // to keep all the db access in one place.  This also effectively separates the child
+    // component from the data access which may be good for disconnected data scenarios
     saveCustomer(customer) {
         //console.log("submitted customer: ", customer);
 
