@@ -22,56 +22,18 @@ CustomerEditPageWrapper = React.createClass({
     },
 
     saveCustomer(customer) {
-
-        console.log("submitted customer: ", customer);
-        //console.log("this: ", this);
-
-        // get the data out of the template (yuk)
-        const dataFromForm = {
-            name: customer.name,
-            email: customer.email,
-            postcode: customer.postcode
-        };
-
-        //console.log("dataFromForm", dataFromForm);
+        //console.log("submitted customer: ", customer);
 
         const custId = FlowRouter.getParam('_id');
 
         // call the method for upserting the data
         CustomerCompanies.methods.updateManualForm.call({
             customerId: custId,
-            data: dataFromForm
+            data: customer
         }, (err, res) => {
             //console.log ("CustomerCompanies.methods.updateManualForm.call was called");
             if (err) {
-                if (err.error === 'validation-error') {
-
-                    console.log(err);
-
-                    // Initialize error object
-                    const errors = {
-                        data: [],
-                        customerId: [],
-                        name: [],
-                        email: [],
-                        postcode: []
-                    };
-
-                    // Go through validation errors returned from Method
-                    err.details.forEach((fieldError) => {
-                        // XXX i18n
-                        if (errors[fieldError.name]) {
-                            errors[fieldError.name].push(fieldError.type);
-                        }
-                    });
-
-                    // Update ReactiveDict, errors will show up in the UI
-
-                    this.data.errorsList.set(errors);
-                    //console.log("errors3 ", Template.instance().errors);
-                }
                 sAlert.error(err.message);
-                console.log("Save error ", err);
             } else {
                 sAlert.success("Save successful")
             }
@@ -80,7 +42,6 @@ CustomerEditPageWrapper = React.createClass({
     },
 
     render() {
-
         //console.log("render started")
         if (this.data.customerLoading) {
             return ( <h3>Loading</h3> );
@@ -93,8 +54,4 @@ CustomerEditPageWrapper = React.createClass({
         );
     }
 });
-//<div className="form-group">
-//    <label for="nextContactDate">Next contact date</label>
-//    <input type="text" id="nextContactDate" className="form-control"
-//           defaultValue={this.data.customer.nextContactDate}/>
-//</div>
+
