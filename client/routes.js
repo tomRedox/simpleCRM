@@ -61,6 +61,6 @@ FlowRouter.route('/', {
 FlowRouter.route('/customersReact/:_id', {
     name: 'CustomerCompany.editReact',
     action() {
-        ReactLayout.render(CustomerEditReact);
+        ReactLayout.render(CustomerEditForm);
     }
 });

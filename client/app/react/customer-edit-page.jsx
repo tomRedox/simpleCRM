@@ -2,7 +2,7 @@
 //var Input = require('./textInput');
 
 // App component - represents the whole app
-CustomerEditReact = React.createClass({
+CustomerEditForm = React.createClass({
     // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
 
@@ -13,14 +13,10 @@ CustomerEditReact = React.createClass({
 
         var handle = Meteor.subscribe('CustomerCompany.get', customerId());
 
-        // this should give us a reactive data schema
-       // var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
-
-
-
         return {
             customerLoading: !handle.ready(),
-            customer: CustomerCompanies.findOne({_id: customerId()})
+            customer: CustomerCompanies.findOne({_id: customerId()}),
+            errors: {}
         };
 
         // is there already a schema context attached to this record?
@@ -33,7 +29,7 @@ CustomerEditReact = React.createClass({
         };
     },
 
-    handleSubmit(event) {
+    saveCustomer(event) {
         event.preventDefault();
 
         //console.log("submitted event: ", event);
@@ -92,7 +88,7 @@ CustomerEditReact = React.createClass({
 
     },
 
-    onChange: function (event) {
+    onChangeHandler: function (event) {
 
         console.log("this.customer", this.data.customer);
 
@@ -124,43 +120,12 @@ CustomerEditReact = React.createClass({
             return ( <h1>Loading</h1> );
         }
         return (
-            <form className="customer_edit_react" onSubmit={this.handleSubmit}>
-                <div className="panel panel-default col-md-6">
-                    <div className="panel-body">
-                        <h3>{this.data.customer.name}</h3>
-
-
-                        <Input
-                            name="name"
-                            label="Name"
-                            onChange = {this.onChange}
-                            placeholder="Name"
-                            defaultValue={this.data.customer.name}
-                            error = "hi there"
-                        />
-
-                        <Input
-                            name="email"
-                            label="Email"
-                            onChange = {this.onChange}
-                            placeholder="Email"
-                            defaultValue={this.data.customer.email}
-                        />
-
-                        <Input
-                            name="postcode"
-                            label="Postcode"
-                            onChange = {this.onChange}
-                            placeholder="Postcode"
-                            defaultValue={this.data.customer.postcode}
-                        />
-
-
-                        <button type="submit" className="btn btn-primary">Submit</button>
-
-                    </div>
-                </div>
-            </form>
+            <CustomerEditComponent
+                customer={this.data.customer}
+                onChange={this.onChangeHandler}
+                onSave={this.saveCustomer}
+                errors={this.data.errors}
+            />
         );
     }
 });
