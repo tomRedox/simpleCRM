@@ -47,7 +47,6 @@ DateInput = React.createClass({
 
         return (
             <div className={wrapperClass}>
-                <h1></h1>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
                     <DateTimeField
@@ -57,7 +56,6 @@ DateInput = React.createClass({
                         onChange={this.onChangeHandler}
                         viewMode={mode}
                     />
-
                     <div className="input">{this.props.error}</div>
                 </div>
             </div>

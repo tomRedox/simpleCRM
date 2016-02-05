@@ -9,12 +9,13 @@ CustomerEditForm = React.createClass({
         customer: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
+        salesRegionOptions: React.PropTypes.array.isRequired,
         errors: React.PropTypes.object,
         isValid: React.PropTypes.bool
     },
 
     render() {
-        //console.log("CustomerEditComponent customer: ", this.props.customer);
+        console.log("CustomerEditComponent props: ", this.props);
 
         return (
             <form className="customer_edit_react" onSubmit={this.props.onSave}>
@@ -57,6 +58,19 @@ CustomerEditForm = React.createClass({
                             placeholder="Next contact date"
                             value={this.props.customer.nextContactDate}
                             error={this.props.errors.nextContactDate}
+                        />
+
+                        <SelectInput
+                            name="salesRegionId"
+                            label="Next contact date"
+                            value={this.props.customer.salesRegionId}
+                            onChange = {this.props.onChange}
+                            //placeholder="Next contact date"
+                            error={this.props.errors.salesRegionId}
+                            options={this.props.salesRegionOptions}
+                            valueKey="_id"
+                            labelKey="name"
+
                         />
 
                         <input

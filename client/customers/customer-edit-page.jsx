@@ -68,6 +68,7 @@ CustomerEditPage = React.createClass({
                 onSave={this.saveCustomer}
                 errors={this.state.errors}
                 isValid={this.state.isValid}
+                salesRegionOptions={SalesRegions.find().fetch()}
             />
         );
     }
