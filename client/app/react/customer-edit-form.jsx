@@ -13,7 +13,7 @@ CustomerEditForm = React.createClass({
     },
 
     render() {
-        console.log("CustomerEditComponent customer: ", this.props.customer);
+        //console.log("CustomerEditComponent customer: ", this.props.customer);
 
         return (
             <form className="customer_edit_react" onSubmit={this.props.onSave}>
@@ -72,8 +72,3 @@ CustomerEditForm = React.createClass({
         );
     }
 });
-//<div className="form-group">
-//    <label for="nextContactDate">Next contact date</label>
-//    <input type="text" id="nextContactDate" className="form-control"
-//           defaultValue={this.props.customer.nextContactDate}/>
-//</div>
