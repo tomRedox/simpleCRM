@@ -66,18 +66,8 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
             }
         });
 
-        //Schemas.CustomerCompaniesSchema.validate(this.data);
-
         const context = schema.namedContext();
         context.validate(args.data);
-        //console.log( "context.invalidKeys", context.invalidKeys());
-        //
-        //context.invalidKeys().forEach(invalidKey => {
-        //    console.log("keyErrorMessage: ", context.keyErrorMessage(invalidKey.name));
-        //});
-
-        //console.log("schema", schema)
-        //schema.validate(args.data);
 
         console.log("validation succeeded");
     },

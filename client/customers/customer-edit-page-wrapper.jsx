@@ -12,14 +12,14 @@ CustomerEditPageWrapper = React.createClass({
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
-        console.log("CustomerEditForm.getMeteorData");
+        //console.log("CustomerEditForm.getMeteorData");
 
         const customerId = () => FlowRouter.getParam('_id');
         var handle = Meteor.subscribe('CustomerCompany.get', customerId());
 
         cust = CustomerCompanies.findOne({_id: customerId()});
 
-        console.log("CustomerEditForm.getMeteorData cust ", cust);
+        //console.log("CustomerEditForm.getMeteorData cust ", cust);
 
         return {
             customerLoading: !handle.ready(),

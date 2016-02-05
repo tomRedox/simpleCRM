@@ -2,6 +2,8 @@
 //
 var React = require('react');
 
+import DateTimeField from 'react-bootstrap-datetimepicker';
+
 DateInput = React.createClass({
     // list out our required and optional properties for this class
     propTypes: {
@@ -25,19 +27,28 @@ DateInput = React.createClass({
             wrapperClass += " " + 'has-error';
         }
 
+        const format = "YYYY-MM-DD";
+        const inputFormat = "YYYY-MM-DD";
+        const mode = "date";
+
         return (
-            <div className={wrapperClass}>
+             <div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
-                    <input type="date"
+                    <DateTimeField
                            name={this.props.name}
                            className="form-control"
-                           placeholder={this.props.placeholder}
+                           //placeholder={this.props.placeholder}
                            ref={this.props.name}
                            id={this.props.name}
-                           value={this.props.value}
+                           dateTime={this.props.value.toUTCString()}
                            //defaultValue={this.props.defaultValue}
                            onChange={this.props.onChange} />
+
+                            format={format}
+                            viewMode={mode}
+                            inputFormat={inputFormat}
+
                     <div className="input">{this.props.error}</div>
                 </div>
             </div>
