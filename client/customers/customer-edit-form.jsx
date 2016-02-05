@@ -1,4 +1,3 @@
-
 //var TextInput = require('./textInput');
 var React = require('react');
 
@@ -18,8 +17,8 @@ CustomerEditForm = React.createClass({
         console.log("CustomerEditComponent props: ", this.props);
 
         return (
-            <form className="customer_edit_react" onSubmit={this.props.onSave}>
-                <div className="panel panel-default col-md-6">
+            <div className="panel panel-default col-md-6">
+                <form className="customer_edit_react" onSubmit={this.props.onSave}>
                     <div className="panel-body">
 
                         <h3>{this.props.customer.name}</h3>
@@ -27,7 +26,7 @@ CustomerEditForm = React.createClass({
                         <TextInput
                             name="name"
                             label="Name"
-                            onChange = {this.props.onChange}
+                            onChange={this.props.onChange}
                             placeholder="Name"
                             value={this.props.customer.name}
                             error={this.props.errors.name}
@@ -36,7 +35,7 @@ CustomerEditForm = React.createClass({
                         <TextInput
                             name="email"
                             label="Email"
-                            onChange = {this.props.onChange}
+                            onChange={this.props.onChange}
                             placeholder="Email"
                             value={this.props.customer.email}
                             error={this.props.errors.email}
@@ -45,7 +44,7 @@ CustomerEditForm = React.createClass({
                         <TextInput
                             name="postcode"
                             label="Postcode"
-                            onChange = {this.props.onChange}
+                            onChange={this.props.onChange}
                             placeholder="Postcode"
                             value={this.props.customer.postcode}
                             error={this.props.errors.postcode}
@@ -54,7 +53,7 @@ CustomerEditForm = React.createClass({
                         <DateInput
                             name="nextContactDate"
                             label="Next contact date"
-                            onChange = {this.props.onChange}
+                            onChange={this.props.onChange}
                             placeholder="Next contact date"
                             value={this.props.customer.nextContactDate}
                             error={this.props.errors.nextContactDate}
@@ -62,9 +61,9 @@ CustomerEditForm = React.createClass({
 
                         <SelectInput
                             name="salesRegionId"
-                            label="Next contact date"
+                            label="Sales region"
                             value={this.props.customer.salesRegionId}
-                            onChange = {this.props.onChange}
+                            onChange={this.props.onChange}
                             //placeholder="Next contact date"
                             error={this.props.errors.salesRegionId}
                             options={this.props.salesRegionOptions}
@@ -82,8 +81,8 @@ CustomerEditForm = React.createClass({
                         />
 
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         );
     }
 });
