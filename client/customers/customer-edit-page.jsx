@@ -21,11 +21,13 @@ CustomerEditPage = React.createClass({
 
     onChangeHandler: function (event) {
 
+        console.log("event:", event);
         // update our customer state to reflect the new value in the UI
         var field = event.target.name;
         var value = event.target.value;
         this.state.customer[field] = value;
 
+        console.log("test",this.state.customer[field])
         this.state.errors = {};
 
         // validate the customer against the table schema

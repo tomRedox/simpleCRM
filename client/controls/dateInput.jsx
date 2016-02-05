@@ -3,6 +3,7 @@
 var React = require('react');
 
 import DateTimeField from 'react-bootstrap-datetimepicker';
+import moment from 'moment';
 
 DateInput = React.createClass({
     // list out our required and optional properties for this class
@@ -14,6 +15,17 @@ DateInput = React.createClass({
         value: React.PropTypes.instanceOf(Date),
         //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string
+    },
+
+    onChangeHandler: function(event) {
+        //event.target.name = this.props.name;
+
+        this.props.onChange({
+            target: {
+                name: this.props.name,
+                value: moment(event, "YYYY-MM-DD").toDate()
+            }
+        });
     },
 
     render: function () {
@@ -28,26 +40,23 @@ DateInput = React.createClass({
         }
 
         const format = "YYYY-MM-DD";
-        const inputFormat = "YYYY-MM-DD";
+        const inputFormat = "DD/MM/YYYY";
         const mode = "date";
+        const convertedDate = moment(this.props.value).format("YYYY-MM-DD");
+        //console.log("convertedDate ", convertedDate );
 
         return (
-             <div className={wrapperClass}>
+            <div className={wrapperClass}>
+                <h1></h1>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
                     <DateTimeField
-                           name={this.props.name}
-                           className="form-control"
-                           //placeholder={this.props.placeholder}
-                           ref={this.props.name}
-                           id={this.props.name}
-                           dateTime={this.props.value.toUTCString()}
-                           //defaultValue={this.props.defaultValue}
-                           onChange={this.props.onChange} />
-
-                            format={format}
-                            viewMode={mode}
-                            inputFormat={inputFormat}
+                        dateTime={convertedDate}
+                        format={format}
+                        inputFormat={inputFormat}
+                        onChange={this.onChangeHandler}
+                        viewMode={mode}
+                    />
 
                     <div className="input">{this.props.error}</div>
                 </div>
@@ -60,3 +69,9 @@ DateInput = React.createClass({
 });
 
 module.exports = DateInput;
+                           //name={this.props.name}
+                           //className="form-control"
+                           ////placeholder={this.props.placeholder}
+                           //ref={this.props.name}
+                           //id={this.props.name}
+                           ////defaultValue={this.props.defaultValue}
