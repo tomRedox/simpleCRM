@@ -1,5 +1,8 @@
 // App component - represents the whole app
-AppReact = React.createClass({
+
+import React from 'react';
+
+CustomersList = React.createClass({
     // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
 
@@ -30,11 +33,6 @@ AppReact = React.createClass({
 
     render() {
         return (
-            <div className="container">
-                <header>
-                    <h2>Customer List</h2>
-                </header>
-
                 <div className="panel panel-default">
                     <div className="panel-heading"><a href="#" className="pull-right">View all</a>
                         <h4>Top customers</h4>
@@ -51,7 +49,10 @@ AppReact = React.createClass({
                         </div>
                     </div>
                 </div>
-            </div>
+
         );
     }
 });
+
+
+module.exports = CustomersList;

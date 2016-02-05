@@ -1,6 +1,6 @@
 //"use strict";
 //
-//var React = require('react');
+var React = require('react');
 
 DateInput = React.createClass({
     // list out our required and optional properties for this class
@@ -48,4 +48,4 @@ DateInput = React.createClass({
     }
 });
 
-//module.exports = DateInput;
+module.exports = DateInput;

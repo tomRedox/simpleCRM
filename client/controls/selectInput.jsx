@@ -1,6 +1,6 @@
 //"use strict";
 
-//var React = require('react');
+var React = require('react');
 //var Select = require('react-select');
 
 SelectInput = React.createClass({
@@ -41,4 +41,4 @@ SelectInput = React.createClass({
     }
 });
 
-//module.exports = SelectInput;
+module.exports = SelectInput;

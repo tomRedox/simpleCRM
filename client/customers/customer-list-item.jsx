@@ -1,3 +1,5 @@
+var React = require('react');
+
 // Task component - represents a single todo item
 CustomerListItem = React.createClass({
     propTypes: {
@@ -11,3 +13,5 @@ CustomerListItem = React.createClass({
         );
     }
 });
+
+module.exports = CustomerListItem;

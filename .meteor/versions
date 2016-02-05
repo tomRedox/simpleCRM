@@ -54,7 +54,6 @@ juliancwirko:s-alert@3.1.4
 juliancwirko:s-alert-flip@3.1.3
 juliancwirko:s-alert-slide@3.1.3
 kadira:flow-router@2.10.1
-kadira:react-layout@1.5.3
 lai:collection-extensions@0.1.4
 launch-screen@1.0.5-modules.6
 livedata@1.0.15
@@ -102,11 +101,7 @@ raix:eventemitter@0.1.3
 rajit:bootstrap3-datepicker@1.5.0
 random@1.0.6-modules.6
 rate-limit@1.0.1-modules.6
-react@0.14.3
-react-meteor-data@0.2.4
-react-runtime@0.14.4
-react-runtime-dev@0.14.4
-react-runtime-prod@0.14.4
+react-meteor-data@0.2.5
 reactive-dict@1.1.4-modules.6
 reactive-var@1.0.6
 reload@1.1.5-modules.6

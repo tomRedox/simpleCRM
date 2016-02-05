@@ -1,5 +1,6 @@
 
 //var TextInput = require('./textInput');
+var React = require('react');
 
 // App component - represents the whole app
 CustomerEditForm = React.createClass({
@@ -72,3 +73,5 @@ CustomerEditForm = React.createClass({
         );
     }
 });
+
+module.exports = CustomerEditForm;

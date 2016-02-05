@@ -1,6 +1,10 @@
 
 //var TextInput = require('./textInput');
 
+var React = require('react');
+
+import CustomerEditPage from './customer-edit-page.jsx';
+
 // Top of the stack, represents the whole page
 CustomerEditPageWrapper = React.createClass({
     // This mixin makes the getMeteorData method work
@@ -14,6 +18,8 @@ CustomerEditPageWrapper = React.createClass({
         var handle = Meteor.subscribe('CustomerCompany.get', customerId());
 
         cust = CustomerCompanies.findOne({_id: customerId()});
+
+        console.log("CustomerEditForm.getMeteorData cust ", cust);
 
         return {
             customerLoading: !handle.ready(),
@@ -58,3 +64,4 @@ CustomerEditPageWrapper = React.createClass({
     }
 });
 
+module.exports = CustomerEditPageWrapper;

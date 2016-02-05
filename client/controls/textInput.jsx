@@ -1,6 +1,7 @@
 //"use strict";
 //
-//var React = require('react');
+var React = require('react');
+
 
 TextInput = React.createClass({
     // list out our required and optional properties for this class
@@ -46,4 +47,4 @@ TextInput = React.createClass({
     }
 });
 
-//module.exports = TextInput;
+module.exports = TextInput;

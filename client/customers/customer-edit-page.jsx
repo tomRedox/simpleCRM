@@ -1,5 +1,6 @@
 
 //var TextInput = require('./textInput');
+var React = require('react');
 
 // this page is wrapped by the wrapper
 CustomerEditPage = React.createClass({
@@ -69,3 +70,5 @@ CustomerEditPage = React.createClass({
         );
     }
 });
+
+module.exports = CustomerEditPage;

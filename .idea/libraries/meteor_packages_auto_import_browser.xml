@@ -2,7 +2,6 @@
   <library name="meteor-packages-auto-import-browser" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/kadira_react-layout/1.5.3/web.browser/lib/react_layout.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/random_stream.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/method_invocation.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
@@ -213,6 +212,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/materializer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/view.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/exceptions.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-meteor-data/0.2.5/web.browser/meteor-data-mixin.jsx" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/template.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/msavin_mongol/1.6.2/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/binary-heap/1.0.5-modules.6/web.browser/max-heap.js" />
@@ -490,30 +490,17 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3/inputTypes/select-radio-inline/select-radio-inline.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/quickForm/quickForm.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3/inputTypes/select-checkbox-inline/select-checkbox-inline.css" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/react.browserify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afArrayField/afArrayField.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/attach-require.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afFormGroup/afFormGroup.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/shams.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/inputTypes/boolean-checkbox/boolean-checkbox.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afObjectField/afObjectField.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/react.browserify.options.json" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/detect-shims.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/attach-require.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/shams.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/react.browserify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.10.6/web.browser/packages/momentjs_moment.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/react.browserify.options.json" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime/0.14.4/web.browser/react-runtime.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-meteor-data/0.2.4/web.browser/meteor-data-mixin.jsx" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.5.0/web.browser/upstream/css/font-awesome.css" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/react/0.14.3/web.browser/react.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/twbs_bootstrap/3.3.6/web.browser/dist/css/bootstrap.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/twbs_bootstrap/3.3.6/web.browser/dist/js/bootstrap.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/kadira_react-layout/1.5.3/web.browser/lib/react_layout.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/random_stream.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/method_invocation.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
@@ -724,6 +711,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/materializer.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/view.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/exceptions.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-meteor-data/0.2.5/web.browser/meteor-data-mixin.jsx" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.4-modules.6/web.browser/template.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/msavin_mongol/1.6.2/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/binary-heap/1.0.5-modules.6/web.browser/max-heap.js" />
@@ -1001,24 +989,12 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3/inputTypes/select-radio-inline/select-radio-inline.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/quickForm/quickForm.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3/inputTypes/select-checkbox-inline/select-checkbox-inline.css" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/react.browserify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afArrayField/afArrayField.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/attach-require.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afFormGroup/afFormGroup.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/shams.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/inputTypes/boolean-checkbox/boolean-checkbox.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/templates/bootstrap3-horizontal/components/afObjectField/afObjectField.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-prod/0.14.4/web.browser/react.browserify.options.json" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/detect-shims.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/attach-require.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/shams.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/react.browserify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.10.6/web.browser/packages/momentjs_moment.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime-dev/0.14.4/web.browser/react.browserify.options.json" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-runtime/0.14.4/web.browser/react-runtime.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react-meteor-data/0.2.4/web.browser/meteor-data-mixin.jsx" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.5.0/web.browser/upstream/css/font-awesome.css" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/react/0.14.3/web.browser/react.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/twbs_bootstrap/3.3.6/web.browser/dist/css/bootstrap.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/twbs_bootstrap/3.3.6/web.browser/dist/js/bootstrap.js" />
     </CLASSES>
