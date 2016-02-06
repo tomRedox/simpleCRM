@@ -1,6 +1,7 @@
 
 //var TextInput = require('./textInput');
 var React = require('react');
+import { Link } from 'react-router';
 
 // this page is wrapped by the wrapper
 TopNav = React.createClass({
@@ -33,11 +34,10 @@ TopNav = React.createClass({
                     </form>
                     <ul className="nav navbar-nav">
                         <li>
-                            <a href="/"><i className="fa fa-home"></i> Home</a>
+                            <Link to={`/`}><i className="fa fa-home"></i> Home</Link>
                         </li>
                         <li>
-                            <a href="/orders/newOrder" role="button" data-toggle="modal">
-                                <i className="fa fa-plus"></i> Post </a>
+                            <a href="/orders/newOrder" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Post </a>
                         </li>
                         <li>
                             <a href="#"><span className="badge">badge</span></a>

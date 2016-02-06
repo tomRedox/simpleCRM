@@ -14,16 +14,17 @@ CustomerEditPageWrapper = React.createClass({
     getMeteorData() {
         //console.log("CustomerEditForm.getMeteorData");
 
-        const customerId = () => FlowRouter.getParam('_id');
-        var handle = Meteor.subscribe('CustomerCompany.get', customerId());
+        const customerId = this.props.params.id;
+        var handle = Meteor.subscribe('CustomerCompany.get', customerId);
 
-        cust = CustomerCompanies.findOne({_id: customerId()});
+        cust = CustomerCompanies.findOne({_id: customerId});
 
         //console.log("CustomerEditForm.getMeteorData cust ", cust);
 
         return {
             customerLoading: !handle.ready(),
-            customer: cust
+            customer: cust,
+            customerId: customerId
         };
     },
 
@@ -33,7 +34,7 @@ CustomerEditPageWrapper = React.createClass({
     saveCustomer(customer) {
         //console.log("submitted customer: ", customer);
 
-        const custId = FlowRouter.getParam('_id');
+        const custId = this.props.params.id;
 
         // call the method for upserting the data
         CustomerCompanies.methods.updateManualForm.call({

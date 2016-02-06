@@ -5,42 +5,50 @@
 
 
 import React from 'react';
+var RouteHandler = require('react-router').RouteHandler;
 
 // define and export our Layout component
-export const Layout = ({content}) => (
-    <body>
-    <div>
-       <div className="wrapper">
-            <div className="box">
-                <div className="row row-offcanvas row-offcanvas-left">
+const Layout = React.createClass ({
 
-                    <Sidebar/>
+    render() {
 
-                    <div className="column col-sm-10 col-xs-11" id="main">
+        return (
 
-                        <TopNav/>
+            <div>
+                <div className="wrapper">
+                    <div className="box">
+                        <div className="row row-offcanvas row-offcanvas-left">
 
-                        <div className="padding">
-                            <div className="full col-sm-9">
+                            <Sidebar/>
 
-                                <div className="row">
+                            <div className="column col-sm-10 col-xs-11" id="main">
 
-                                    <main>
-                                        <div>{content}</div>
-                                    </main>
+                                <TopNav/>
+
+                                <div className="padding">
+                                    <div className="full col-sm-9">
+
+                                        <div className="row">
+
+                                            <main>
+                                                {this.props.children}
+                                            </main>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
-    </div >
-    </body>
+            </div >
+        );
+    }
 
-);
+
+});
 //<TopNav/>
 //<hr />
 //<div>{content}</div>
 
+export default Layout;
