@@ -54,17 +54,16 @@
 
 import React from 'react';
 import {mount} from 'react-mounter';
-// load Layout and Welcome React components
-import {Layout, Welcome} from './app/app.jsx';
+import {Layout} from './app/app.jsx';
 import CustomersList from './customers/customers-list.jsx';
 import CustomerEditPageWrapper from './customers/customer-edit-page-wrapper.jsx';
-
+import Dashboard from './dashboard/dashboard.jsx';
 
 FlowRouter.route("/", {
     action() {
         mount(Layout, {
             //content: (<Welcome name="arunoda"/>)
-            content: <CustomersList />
+            content: <Dashboard />
         });
     }
 });

@@ -1,11 +1,16 @@
+//Theme from here:
+//Site: http://www.bootstrapzero.com/bootstrap-template/facebook
+//Code: http://www.bootply.com/96266
+//Demo: http://www.bootply.com/render/96266#
+
+
 import React from 'react';
 
 // define and export our Layout component
 export const Layout = ({content}) => (
+    <body>
     <div>
-
-
-        <div className="wrapper">
+       <div className="wrapper">
             <div className="box">
                 <div className="row row-offcanvas row-offcanvas-left">
 
@@ -31,9 +36,8 @@ export const Layout = ({content}) => (
                 </div>
             </div>
         </div>
-
     </div >
-
+    </body>
 
 );
 //<TopNav/>
