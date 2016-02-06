@@ -5,7 +5,7 @@
 
 
 import React from 'react';
-var RouteHandler = require('react-router').RouteHandler;
+//var RouteHandler = require('react-router').RouteHandler;
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
@@ -13,11 +13,7 @@ Meteor.subscribe("SalesRegions.All");
 
 
 // define and export our Layout component
-const Layout = React.createClass ({
-
-    render() {
-
-        return (
+export const Layout= ({content}) => (
 
             <div>
                 <div className="wrapper">
@@ -36,7 +32,7 @@ const Layout = React.createClass ({
                                         <div className="row">
 
                                             <main>
-                                                {this.props.children}
+                                                <div>{content}</div>
                                             </main>
                                         </div>
                                     </div>
@@ -47,11 +43,8 @@ const Layout = React.createClass ({
                     </div>
                 </div>
             </div >
-        );
-    }
 
-
-});
+);
 //<TopNav/>
 //<hr />
 //<div>{content}</div>
@@ -68,4 +61,4 @@ const Layout = React.createClass ({
 //</ReactCSSTransitionGroup>
 
 
-export default Layout;
+//export default Layout;

@@ -19,8 +19,8 @@ CustomerEditPageWrapper = React.createClass({
     getMeteorData() {
         //console.log("CustomerEditForm.getMeteorData");
 
-        const customerId = this.props.params.id;
-        console.log("params", this.props.params)
+        const customerId = FlowRouter.getParam('_id');
+        console.log("Customerid", customerId)
         var cust;
         var handle;
 
@@ -47,7 +47,7 @@ CustomerEditPageWrapper = React.createClass({
     saveCustomer(customer) {
         //console.log("submitted customer: ", customer);
 
-        const custId = this.props.params.id;
+        const custId = () => FlowRouter.getParam('_id');
 
         // call the method for upserting the data
         CustomerCompanies.methods.updateManualForm.call({

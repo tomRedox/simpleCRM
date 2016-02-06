@@ -1,7 +1,7 @@
 
 //var TextInput = require('./textInput');
 var React = require('react');
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 
 // App component - represents the whole app
 Sidebar = React.createClass({
@@ -17,7 +17,7 @@ Sidebar = React.createClass({
                 </ul>
 
                 <ul className="nav hidden-xs" id="lg-menu">
-                    <li className="active"><Link to={`/`}><i className="fa fa-tachometer"></i> Dashboard</Link></li>
+                    <li className="active"><a href="/"><i className="fa fa-tachometer"></i> Dashboard</a></li>
                     <li><a href="#"><i className="fa fa-history"></i> Recent customers</a></li>
                     <li><a href="#"><i className="fa fa-group"></i> All customers</a></li>
                     <li><a href="#"><i className="fa fa-search"></i> Search</a></li>

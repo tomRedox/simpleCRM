@@ -1,7 +1,7 @@
 // App component - represents the whole app
 
 import React from 'react';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 
 CustomersList = React.createClass({
     // This mixin makes the getMeteorData method work
@@ -54,7 +54,7 @@ CustomersList = React.createClass({
                 <tr key={customer._id}>
                     <td>{customer.name}</td>
                     <td>{customer.postcode}</td>
-                    <td><Link className="btn btn-default btn-sm" to={`/customers/${customer._id}`}>Edit</Link></td>
+                    <td><a className="btn btn-default btn-sm" href={"/customers/" + customer._id}>Edit</a></td>
                 </tr>
 
             );

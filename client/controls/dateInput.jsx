@@ -29,13 +29,13 @@ DateInput = React.createClass({
     },
 
     render: function () {
-        console.log("props: ", this.props);
+       // console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         var wrapperClass = 'form-group';
         if (this.props.error && this.props.error.length > 0) {
-            console.log("has error ", this.props.error);
+            //console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
         }
 
