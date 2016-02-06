@@ -28,46 +28,11 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
     // here though, when we validate against the existing schema it fails, which means we
     // have to create another schema here - definitely not ideal.
     validate(args) {
-        console.log("validating");
+        console.log("validating2");
 
-        var schema = new SimpleSchema({
+        var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
 
-            name: {
-                type: String,
-                max: 100,
-                optional: false,
-                label: "Customer name"
-            },
-
-            email: {
-                type: String,
-                max: 100,
-                regEx: SimpleSchema.RegEx.Email,
-                optional: true
-            },
-
-            postcode: {
-                type: String,
-                max: 10,
-                optional: true
-            },
-
-            salesRegionId: {
-                type: String,
-                max: 100,
-                optional: true,
-                regEx: SimpleSchema.RegEx.Id,
-                label: "Sales region"
-            },
-
-            nextContactDate: {
-                type: Date,
-                optional: true
-            }
-        });
-
-        const context = schema.namedContext();
-        context.validate(args.data);
+        schemaContext.validate(args.data);
 
         console.log("validation succeeded");
     },
