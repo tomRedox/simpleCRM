@@ -105,6 +105,7 @@ var Routes = (
     <Route path="/" component={Layout}>
         <IndexRoute component={Dashboard} />
         <Route name="customerEdit" path="customers/:id" component={CustomerEditPageWrapper} />
+        <Route name="customerNew" path="addCustomer" component={CustomerEditPageWrapper} />
         <Route path="*" component={AppNotFound}/>
     </Route>
 )

@@ -4,6 +4,11 @@
 var React = require('react');
 
 import CustomerEditPage from './customer-edit-page.jsx';
+import { createHistory, useBasename } from 'history'
+
+const history = useBasename(createHistory)({
+    basename: '/'
+});
 
 // Top of the stack, represents the whole page
 CustomerEditPageWrapper = React.createClass({
@@ -15,16 +20,24 @@ CustomerEditPageWrapper = React.createClass({
         //console.log("CustomerEditForm.getMeteorData");
 
         const customerId = this.props.params.id;
-        var handle = Meteor.subscribe('CustomerCompany.get', customerId);
+        console.log("params", this.props.params)
+        var cust;
+        var handle;
 
-        cust = CustomerCompanies.findOne({_id: customerId});
+        const newCustomer = !customerId;
+
+        if (!newCustomer) {
+            handle = Meteor.subscribe('CustomerCompany.get', customerId);
+            cust = CustomerCompanies.findOne({_id: customerId});
+        }
 
         //console.log("CustomerEditForm.getMeteorData cust ", cust);
 
         return {
-            customerLoading: !handle.ready(),
+            customerLoading: handle ? !handle.ready() : {},
             customer: cust,
-            customerId: customerId
+            customerId: customerId,
+            newCustomer: newCustomer
         };
     },
 
@@ -45,7 +58,9 @@ CustomerEditPageWrapper = React.createClass({
             if (err) {
                 sAlert.error(err.message);
             } else {
-                sAlert.success("Save successful")
+                sAlert.success("Save successful");
+
+                history.push('/');
             }
         });
 
@@ -53,7 +68,7 @@ CustomerEditPageWrapper = React.createClass({
 
     render() {
         //console.log("render started")
-        if (this.data.customerLoading) {
+        if (!this.data.newCustomer && this.data.customerLoading) {
             return ( <h3>Loading Customer</h3> );
         }
         return (

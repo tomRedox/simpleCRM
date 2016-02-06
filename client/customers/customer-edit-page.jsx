@@ -5,15 +5,19 @@ var React = require('react');
 // this page is wrapped by the wrapper
 CustomerEditPage = React.createClass({
     propTypes: {
-        customer: React.PropTypes.object.isRequired,
+        customer: React.PropTypes.object,
         onSave: React.PropTypes.func.isRequired
     },
 
+
+
     getInitialState() {
-        //console.log("CustomerEditPage.getInitialState");
+        const defaultCustomer = { createdAt: new Date() };
+
+        console.log("CustomerEditPage.getInitialState", this.props);
         return {
             errorsList: new ReactiveDict(),
-            customer: this.props.customer,
+            customer:  (this.props.customer ? this.props.customer : defaultCustomer),
             errors: {},
             isValid: false
         };
@@ -38,6 +42,7 @@ CustomerEditPage = React.createClass({
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
             if (invalidKey.name != "_id") {
                 this.state.errors[invalidKey.name] = errMessage;
+                console.log(errMessage);
             }
         });
 

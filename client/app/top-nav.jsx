@@ -37,7 +37,7 @@ TopNav = React.createClass({
                             <Link to={`/`}><i className="fa fa-home"></i> Home</Link>
                         </li>
                         <li>
-                            <a href="/orders/newOrder" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Post </a>
+                            <Link to={`/addCustomer`} role="button" data-toggle="modal"><i className="fa fa-plus"></i> Post </Link>
                         </li>
                         <li>
                             <a href="#"><span className="badge">badge</span></a>
