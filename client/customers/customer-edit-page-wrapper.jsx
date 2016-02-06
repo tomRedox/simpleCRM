@@ -53,7 +53,7 @@ CustomerEditPageWrapper = React.createClass({
     render() {
         //console.log("render started")
         if (this.data.customerLoading) {
-            return ( <h3>Loading</h3> );
+            return ( <h3>Loading Customer</h3> );
         }
         return (
             <CustomerEditPage

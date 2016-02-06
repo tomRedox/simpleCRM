@@ -1,6 +1,6 @@
 import React from 'react';
 
-Dashboard = React.createClass({
+const Dashboard = React.createClass({
 
     render() {
 
@@ -8,7 +8,7 @@ Dashboard = React.createClass({
             <div>
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        <p className="lead"><h3>Dashboard <i className="fa fa-dashboard"></i></h3></p>
+                        <h3>Dashboard <i className="fa fa-dashboard"></i></h3>
                     </div>
                 </div>
                 <CustomersList/>
@@ -18,4 +18,4 @@ Dashboard = React.createClass({
 
 })
 
-module.exports = Dashboard;
+export default Dashboard;

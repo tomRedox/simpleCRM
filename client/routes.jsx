@@ -60,9 +60,10 @@ import CustomerEditPageWrapper from './customers/customer-edit-page-wrapper.jsx'
 import Dashboard from './dashboard/dashboard.jsx';
 
 FlowRouter.route("/", {
+    name: "Home",
     action() {
+        console.log("route ", this.name);
         mount(Layout, {
-            //content: (<Welcome name="arunoda"/>)
             content: <Dashboard />
         });
     }
@@ -71,8 +72,8 @@ FlowRouter.route("/", {
 FlowRouter.route('/customers/:_id', {
     name: 'CustomerCompany.edit',
     action() {
+        console.log("route ", this.name);
         mount(Layout, {
-            //content: (<Welcome name="arunoda"/>)
             content: <CustomerEditPageWrapper />
         });
     }
