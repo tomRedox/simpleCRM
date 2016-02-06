@@ -8,6 +8,10 @@ import React from 'react';
 var RouteHandler = require('react-router').RouteHandler;
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
+
+Meteor.subscribe("SalesRegions.All");
+
+
 // define and export our Layout component
 const Layout = React.createClass ({
 

@@ -2,7 +2,7 @@
 
 //import { FlowRouter } from 'kadira:flow-router';
 
-Meteor.subscribe("SalesRegions.All");
+//Meteor.subscribe("SalesRegions.All");
 
 
 // Blaze version
