@@ -4,11 +4,11 @@
 var React = require('react');
 
 import CustomerEditPage from './customer-edit-page.jsx';
-import { createHistory, useBasename } from 'history'
+//import { createHistory, useBasename } from 'history'
 
-const history = useBasename(createHistory)({
-    basename: '/'
-});
+//const history = useBasename(createHistory)({
+//    basename: '/'
+//});
 
 // Top of the stack, represents the whole page
 CustomerEditPageWrapper = React.createClass({
@@ -45,9 +45,9 @@ CustomerEditPageWrapper = React.createClass({
     // to keep all the db access in one place.  This also effectively separates the child
     // component from the data access which may be good for disconnected data scenarios
     saveCustomer(customer) {
-        //console.log("submitted customer: ", customer);
+        console.log("submitted customer: ", customer);
 
-        const custId = () => FlowRouter.getParam('_id');
+        const custId = FlowRouter.getParam('_id');
 
         // call the method for upserting the data
         CustomerCompanies.methods.updateManualForm.call({

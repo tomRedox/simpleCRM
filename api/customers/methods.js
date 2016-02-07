@@ -12,26 +12,10 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
     // register the name
     name: 'CustomerCompanies.methods.updateManualForm',
 
-    // register a method for validation.
-    validate1(args) {
-        console.log("validating");
-        console.log(args);
-        // Need to tell the schema that we  are passing in a mongo modifier rather than just the data.
-
-        Schemas.CustomerCompaniesSchema.validate(args.data);
-        console.log("validation succeeded");
-    },
-
-
-    // This is nasty - for autoForms we managed to use the existing schema when updating,
-    // even though the mandatory createdAt field is not on our autoform.  That doesn't work
-    // here though, when we validate against the existing schema it fails, which means we
-    // have to create another schema here - definitely not ideal.
     validate(args) {
         console.log("validating2");
 
         var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
-
         schemaContext.validate(args.data);
 
         console.log("validation succeeded");
