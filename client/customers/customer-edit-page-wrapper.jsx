@@ -59,8 +59,7 @@ CustomerEditPageWrapper = React.createClass({
                 sAlert.error(err.message);
             } else {
                 sAlert.success("Save successful");
-
-                history.push('/');
+                FlowRouter.go("/");
             }
         });
 

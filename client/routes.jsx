@@ -104,7 +104,7 @@ FlowRouter.route('/customers/:_id', {
 });
 
 FlowRouter.route("/addCustomer", {
-    name: "addCustome",
+    name: "addCustomer",
     action() {
         console.log("route ", this.name);
         mount(Layout, {
