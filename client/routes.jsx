@@ -103,6 +103,19 @@ FlowRouter.route('/customers/:_id', {
     }
 });
 
+FlowRouter.route("/addCustomer", {
+    name: "addCustome",
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<CustomerEditPageWrapper />)
+        });
+    }
+});
+
+
+
+
 //
 //import React from 'react';
 //import { render } from 'react-dom'

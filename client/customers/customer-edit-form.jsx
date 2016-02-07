@@ -72,6 +72,8 @@ CustomerEditForm = React.createClass({
 
                         />
 
+                        <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
+
                         <input
                             type="submit"
                             value="Save"
