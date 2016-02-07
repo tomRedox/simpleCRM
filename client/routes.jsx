@@ -61,7 +61,7 @@ import {Layout} from './app/app.jsx';
 import CustomersList from './customers/customers-list.jsx';
 import CustomerEditPageWrapper from './customers/customer-edit-page-wrapper.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
-
+import AppNotFound from './app/app-not-found.jsx';
 
 
 // define and export our Layout component
@@ -113,7 +113,15 @@ FlowRouter.route("/addCustomer", {
     }
 });
 
-
+FlowRouter.notFound = {
+    name: "notFoundRoute",
+    action: function() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<AppNotFound />)
+        });
+    }
+};
 
 
 //
