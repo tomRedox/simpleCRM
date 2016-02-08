@@ -9,7 +9,7 @@ CustomerListItem = React.createClass({
     },
     render() {
         return (
-            <li>{this.props.customer.name}</li>
+            <li key={this.customer._id}>{this.props.customer.name}</li>
         );
     }
 });

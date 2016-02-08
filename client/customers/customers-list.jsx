@@ -66,14 +66,17 @@ CustomersList = React.createClass({
     render() {
         return (
             <div className="panel panel-default">
-                <div className="panel-heading"><a href="#" className="pull-right">View all</a>
+                <div className="panel-heading">
+                    <div className="pull-right text-right">
+                        <p><a href="/addCustomer" className="pull-right">New Customer </a></p>
+                        <p><a href="#"> View all</a></p>
+                    </div>
                     <h4>Top Customers</h4>
                 </div>
                 <div className="panel-body">
-
-                        { this.data.customers ?
-                                this.renderCustomerTable() :
-                                <p>Loading</p> }
+                    { this.data.customers ?
+                        this.renderCustomerTable() :
+                        <p>Loading</p> }
                 </div>
             </div>
         );
