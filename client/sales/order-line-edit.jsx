@@ -42,12 +42,13 @@ const OrderLineEdit = React.createClass({
                 <NumberInput
                     name="unitPrice"
                     label="UnitPrice"
-                    onChange={this.props.onChange}
-                    value={this.props.orderLine.quantity}
-                    error={this.props.errors.quantity}
+                    onChange={this.handleChange}
+                    value={this.props.orderLine.unitPrice}
+                    error={this.props.errors.unitPrice}
                 />
 
-                <label value={this.props.orderLine.lineValue} />
+                <label>Line Value:</label>
+                <label>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</label>
 
             </div>
         );

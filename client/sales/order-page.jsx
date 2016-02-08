@@ -33,6 +33,7 @@ const OrderPage = React.createClass({
             description: "",
             quantity: 0,
             unitPrice: 0,
+            lineValue: 0,
             isNewLine: true,
             _id: this.state.nextOrderLineId ++
         }
