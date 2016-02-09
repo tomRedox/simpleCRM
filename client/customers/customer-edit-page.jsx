@@ -9,15 +9,13 @@ CustomerEditPage = React.createClass({
         onSave: React.PropTypes.func.isRequired
     },
 
-
-
     getInitialState() {
         const defaultCustomer = { createdAt: new Date() };
 
         console.log("CustomerEditPage.getInitialState", this.props);
         return {
             errorsList: new ReactiveDict(),
-            customer:  (this.props.customer ? this.props.customer : defaultCustomer),
+            //customer:  (this.props.customer ? this.props.customer : defaultCustomer),
             errors: {},
             isValid: false
         };
@@ -29,14 +27,14 @@ CustomerEditPage = React.createClass({
         // update our customer state to reflect the new value in the UI
         var field = event.target.name;
         var value = event.target.value;
-        this.state.customer[field] = value;
+        this.props.customer[field] = value;
 
-        console.log("test",this.state.customer[field])
+        console.log("test",this.props.customer[field])
         this.state.errors = {};
 
         // validate the customer against the table schema
         var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
-        schemaContext.validate(this.state.customer);
+        schemaContext.validate(this.props.customer);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
@@ -49,7 +47,7 @@ CustomerEditPage = React.createClass({
         this.setFormIsValid();
 
         // Update the state, this will then cause the re-render
-        return this.setState({customer: this.state.customer});
+        return this.setState({customer: this.props.customer});
     },
 
     setFormIsValid: function() {
@@ -59,16 +57,17 @@ CustomerEditPage = React.createClass({
     saveCustomer(event) {
         event.preventDefault();
 
-        this.props.onSave(this.state.customer);
+        this.props.onSave(this.props.customer);
     },
 
     render() {
         this.setFormIsValid();
 
-        //console.log("render state ", this.state);
+        //console.log("CustomerEditPage render state ", this.props.customer);
+
         return (
             <CustomerEditForm
-                customer={this.state.customer}
+                customer={this.props.customer}
                 onChange={this.onChangeHandler}
                 onSave={this.saveCustomer}
                 errors={this.state.errors}
