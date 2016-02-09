@@ -29,6 +29,16 @@ CustomerEditPageWrapper = React.createClass({
         if (!newCustomer) {
             handle = Meteor.subscribe('CustomerCompany.get', customerId);
             cust = CustomerCompanies.findOne({_id: customerId});
+        } else {
+            // Create an empty new record
+            cust = {
+                name: "",
+                email: "",
+                postcode: "",
+                salesRegionId: "",
+                nextContactDate: new Date(),
+                createdAt: new Date()
+            }
         }
 
         //console.log("CustomerEditForm.getMeteorData cust ", cust);

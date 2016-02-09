@@ -7,20 +7,15 @@ import OrderLineEdit from './order-line-edit.jsx';
 const OrderPage = React.createClass({
     propTypes: {
         order: React.PropTypes.object,
-        //onSave: React.PropTypes.func.isRequired
+        onSave: React.PropTypes.func.isRequired
     },
 
 
     getInitialState() {
-        const defaultOrder = {
-            createdAt: new Date(),
-            orderLines: []
-        };
 
         console.log("OrderPage.getInitialState", this.props);
 
         return {
-            order:  (this.props.order ? this.props.order : defaultOrder),
             errors: {},
             isValid: false,
             newLine: {},
@@ -50,14 +45,14 @@ const OrderPage = React.createClass({
         // update our order state to reflect the new value in the UI
         var field = event.target.name;
         var value = event.target.value;
-        this.state.order[field] = value;
-        console.log("New value ",this.state.order[field])
+        this.props.order[field] = value;
+        console.log("New value ",this.props.order[field])
 
 
         // validate the order against the table schema
         this.state.errors = {};
         var schemaContext = Schemas.OrderSchema.namedContext("orderHeaderEdit");
-        schemaContext.validate(this.state.order);
+        schemaContext.validate(this.props.order);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
@@ -70,7 +65,7 @@ const OrderPage = React.createClass({
         this.setFormIsValid();
 
         // Update the state, this will then cause the re-render
-        return this.setState({order: this.state.order});
+        return this.setState({order: this.props.order});
 
     },
 
@@ -82,13 +77,13 @@ const OrderPage = React.createClass({
         console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
 
-        const line = _.find(this.state.order.orderLines, function (line) {
+        const line = _.find(this.props.order.orderLines, function (line) {
             return line._id == orderLineId
         });
 
         console.log("matching line ", line)
         line[field] = value;
-        return this.setState({order: this.state.order});
+        return this.setState({order: this.props.order});
     },
 
     newOrderLineChanged: function (orderLineId, field, value) {
@@ -103,19 +98,19 @@ const OrderPage = React.createClass({
         console.log("saveNewOrderLine", event);
         event.preventDefault();
 
-        this.state.order.orderLines.push(this.state.newLine);
-        console.log("saveNewOrderLine",  this.state.order)
+        this.props.order.orderLines.push(this.state.newLine);
+        console.log("saveNewOrderLine",  this.props.order)
         this.state.newLine = this.getEmptyOrderLine();
-        console.log("saveNewOrderLine",  this.state.order)
+        console.log("saveNewOrderLine",  this.props.order)
 
         // update the UI
-        return this.setState({order: this.state.order});
+        return this.setState({order: this.props.order});
     },
 
     saveOrder: function (event) {
         console.log("saveOrder", event);
         event.preventDefault();
-
+        this.props.onSave(this.props.order);
     },
 
     render () {
@@ -130,14 +125,14 @@ const OrderPage = React.createClass({
                         <h3>Sales Order</h3>
 
                         <OrderHeaderEdit
-                            order = {this.state.order}
+                            order = {this.props.order}
                             onChange = {this.onOrderHeaderChanged}
                             onSave = {this.saveOrder}
                             errors = {this.state.errors}
                         />
 
                         <OrderLinesList
-                            order = {this.state.order}
+                            order = {this.props.order}
                             onChildChange = {this.onOrderLineChanged}
                             errors = {this.state.errors}
                         />

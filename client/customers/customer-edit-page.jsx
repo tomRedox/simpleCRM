@@ -5,7 +5,7 @@ var React = require('react');
 // this page is wrapped by the wrapper
 CustomerEditPage = React.createClass({
     propTypes: {
-        customer: React.PropTypes.object,
+        customer: React.PropTypes.object.isRequired,
         onSave: React.PropTypes.func.isRequired
     },
 
