@@ -1,9 +1,7 @@
-// App component - represents the whole app
-
 import React from 'react';
 import Orders from '../../api/orders/order';
+import OrdersListItem from './orders-list-item.jsx';
 
-//import { Link } from 'react-router';
 
 const OrdersList = React.createClass({
     // This mixin makes the getMeteorData method work
@@ -24,8 +22,6 @@ const OrdersList = React.createClass({
         return data;
     },
 
-
-
     renderOrderTable() {
         //console.log("orders2", this.data.orders)
 
@@ -36,6 +32,7 @@ const OrdersList = React.createClass({
                 <tr>
                     <th>Delivery Add 1</th>
                     <th>Notes</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 {this.renderOrderListItems()}
@@ -51,18 +48,10 @@ const OrdersList = React.createClass({
         return this.data.orders.map((order) => {
 
             return (
-
-                <tr key={order._id}>
-                    <td>{order.deliveryAddress1}</td>
-                    <td>{order.notes}</td>
-                    <td><a className="btn btn-default btn-sm" href={"/orders/" + order._id}>Edit</a></td>
-                </tr>
-
+                <OrdersListItem order = {order} />
             );
         });
     },
-
-
 
     render() {
         return (

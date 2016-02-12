@@ -34,3 +34,11 @@ Orders.methods.upsert = new ValidatedMethod({
     }
 });
 
+
+Meteor.methods({
+    'Orders.methods.remove'({ orderId }) {
+        console.log("Orders.methods.remove", orderId);
+        Orders.remove( { _id: orderId } );
+    }
+});
+
