@@ -3,9 +3,9 @@
 import React from 'react';
 //import { Link } from 'react-router';
 
-CustomersList = React.createClass({
+const CustomersList = React.createClass({
     // This mixin makes the getMeteorData method work
-    mixins: [ReactMeteorData],
+    mixins: [ ReactMeteorData ],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
@@ -39,8 +39,7 @@ CustomersList = React.createClass({
                 {this.renderCustomerListItems()}
                 </tbody>
             </table>
-
-        )
+        );
     },
 
     renderCustomerListItems() {
@@ -61,8 +60,6 @@ CustomersList = React.createClass({
         });
     },
 
-
-
     render() {
         return (
             <div className="panel panel-default">
@@ -82,6 +79,5 @@ CustomersList = React.createClass({
         );
     }
 });
-
 
 module.exports = CustomersList;

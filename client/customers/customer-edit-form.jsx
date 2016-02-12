@@ -2,7 +2,7 @@
 var React = require('react');
 
 // App component - represents the whole app
-CustomerEditForm = React.createClass({
+const CustomerEditForm = React.createClass({
     // Declare our expectations for using this class (not mandatory, just good practice)
     propTypes: {
         customer: React.PropTypes.object.isRequired,

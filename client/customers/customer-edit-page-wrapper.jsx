@@ -1,53 +1,46 @@
 
-//var TextInput = require('./textInput');
-
 var React = require('react');
 
 import CustomerEditPage from './customer-edit-page.jsx';
-//import { createHistory, useBasename } from 'history'
-
-//const history = useBasename(createHistory)({
-//    basename: '/'
-//});
 
 // Top of the stack, represents the whole page
-CustomerEditPageWrapper = React.createClass({
+const CustomerEditPageWrapper = React.createClass({
     // This mixin makes the getMeteorData method work
-    mixins: [ReactMeteorData],
+    mixins: [ ReactMeteorData ],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
         //console.log("CustomerEditForm.getMeteorData");
 
         const customerId = FlowRouter.getParam('_id');
-        console.log("Customerid", customerId)
-        var cust;
+        console.log("CustomerId", customerId);
+        var customer;
         var handle;
 
         const newCustomer = !customerId;
 
         if (!newCustomer) {
             handle = Meteor.subscribe('CustomerCompany.get', customerId);
-            cust = CustomerCompanies.findOne({_id: customerId});
+            customer = CustomerCompanies.findOne({_id: customerId});
         } else {
             // Create an empty new record
-            cust = {
+            customer = {
                 name: "",
                 email: "",
                 postcode: "",
                 salesRegionId: "",
                 nextContactDate: new Date(),
                 createdAt: new Date()
-            }
+            };
         }
 
         //console.log("CustomerEditForm.getMeteorData cust ", cust);
 
         return {
             customerLoading: handle ? !handle.ready() : {},
-            customer: cust,
-            customerId: customerId,
-            newCustomer: newCustomer
+            customer,
+            customerId,
+            newCustomer
         };
     },
 

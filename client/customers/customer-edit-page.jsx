@@ -1,17 +1,16 @@
 
 //var TextInput = require('./textInput');
 var React = require('react');
+import CustomerEditForm from './customer-edit-form.jsx';
 
 // this page is wrapped by the wrapper
-CustomerEditPage = React.createClass({
+const CustomerEditPage = React.createClass({
     propTypes: {
         customer: React.PropTypes.object.isRequired,
         onSave: React.PropTypes.func.isRequired
     },
 
     getInitialState() {
-        const defaultCustomer = { createdAt: new Date() };
-
         console.log("CustomerEditPage.getInitialState", this.props);
         return {
             //customer:  (this.props.customer ? this.props.customer : defaultCustomer),
@@ -21,7 +20,7 @@ CustomerEditPage = React.createClass({
         };
     },
 
-    onChangeHandler: function (event) {
+    onChangeHandler(event) {
 
         console.log("event:", event);
         // update our customer state to reflect the new value in the UI
@@ -29,7 +28,7 @@ CustomerEditPage = React.createClass({
         var value = event.target.value;
         this.state.customer[field] = value;
 
-        console.log("test",this.state.customer[field])
+        console.log("test",this.state.customer[field]);
         this.state.errors = {};
 
         // validate the customer against the table schema
@@ -38,7 +37,7 @@ CustomerEditPage = React.createClass({
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
-            if (invalidKey.name != "_id") {
+            if (invalidKey.name !== "_id") {
                 this.state.errors[invalidKey.name] = errMessage;
                 console.log(errMessage);
             }
@@ -50,7 +49,7 @@ CustomerEditPage = React.createClass({
         return this.setState({customer: this.state.customer});
     },
 
-    setFormIsValid: function() {
+    setFormIsValid() {
         this.state.isValid = (Object.keys(this.state.errors).length === 0);
     },
 

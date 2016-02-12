@@ -1,5 +1,6 @@
 import React from 'react';
 import OrdersList from '../sales/orders-list.jsx';
+import CustomersList from '../customers/customers-list.jsx';
 
 const Dashboard = React.createClass({
 
