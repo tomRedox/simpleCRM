@@ -62,7 +62,7 @@ import CustomersList from './customers/customers-list.jsx';
 import CustomerEditPageWrapper from './customers/customer-edit-page-wrapper.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import AppNotFound from './app/app-not-found.jsx';
-import OrderPage from './sales/order-page.jsx'
+import OrderPageWrapper from './sales/order-page-wrapper.jsx'
 
 // define and export our Layout component
 export const Layout1 = ({content}) => (
@@ -129,7 +129,7 @@ FlowRouter.route("/addOrder", {
     action() {
         console.log("route ", this.name);
         mount(Layout, {
-            content: (<OrderPage />)
+            content: (<OrderPageWrapper />)
         });
     }
 });

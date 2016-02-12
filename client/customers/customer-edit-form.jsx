@@ -22,7 +22,6 @@ CustomerEditForm = React.createClass({
                     <div className="panel-body">
 
                         <h3>{this.props.customer.name}</h3>
-
                         <TextInput
                             name="name"
                             label="Name"

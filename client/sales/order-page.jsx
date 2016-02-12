@@ -16,6 +16,7 @@ const OrderPage = React.createClass({
         console.log("OrderPage.getInitialState", this.props);
 
         return {
+            order: this.props.order,
             errors: {},
             isValid: false,
             newLine: {},
@@ -30,6 +31,7 @@ const OrderPage = React.createClass({
             unitPrice: 0,
             lineValue: 0,
             isNewLine: true,
+            createdAt: new Date(),
             _id: this.state.nextOrderLineId ++
         }
     },
@@ -45,14 +47,14 @@ const OrderPage = React.createClass({
         // update our order state to reflect the new value in the UI
         var field = event.target.name;
         var value = event.target.value;
-        this.props.order[field] = value;
-        console.log("New value ",this.props.order[field])
+        this.state.order[field] = value;
+        console.log("New value ",this.state.order[field])
 
 
         // validate the order against the table schema
         this.state.errors = {};
         var schemaContext = Schemas.OrderSchema.namedContext("orderHeaderEdit");
-        schemaContext.validate(this.props.order);
+        schemaContext.validate(this.state.order);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
@@ -65,11 +67,12 @@ const OrderPage = React.createClass({
         this.setFormIsValid();
 
         // Update the state, this will then cause the re-render
-        return this.setState({order: this.props.order});
+        return this.setState({order: this.state.order});
 
     },
 
     setFormIsValid: function() {
+        console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
         this.state.isValid = (Object.keys(this.state.errors).length === 0);
     },
 
@@ -77,13 +80,13 @@ const OrderPage = React.createClass({
         console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
 
-        const line = _.find(this.props.order.orderLines, function (line) {
+        const line = _.find(this.state.order.orderLines, function (line) {
             return line._id == orderLineId
         });
 
         console.log("matching line ", line)
         line[field] = value;
-        return this.setState({order: this.props.order});
+        return this.setState({order: this.state.order});
     },
 
     newOrderLineChanged: function (orderLineId, field, value) {
@@ -98,19 +101,19 @@ const OrderPage = React.createClass({
         console.log("saveNewOrderLine", event);
         event.preventDefault();
 
-        this.props.order.orderLines.push(this.state.newLine);
-        console.log("saveNewOrderLine",  this.props.order)
+        this.state.order.orderLines.push(this.state.newLine);
+        console.log("saveNewOrderLine",  this.state.order)
         this.state.newLine = this.getEmptyOrderLine();
-        console.log("saveNewOrderLine",  this.props.order)
+        console.log("saveNewOrderLine",  this.state.order)
 
         // update the UI
-        return this.setState({order: this.props.order});
+        return this.setState({order: this.state.order});
     },
 
     saveOrder: function (event) {
         console.log("saveOrder", event);
         event.preventDefault();
-        this.props.onSave(this.props.order);
+        this.props.onSave(this.state.order);
     },
 
     render () {
@@ -125,14 +128,15 @@ const OrderPage = React.createClass({
                         <h3>Sales Order</h3>
 
                         <OrderHeaderEdit
-                            order = {this.props.order}
+                            order = {this.state.order}
                             onChange = {this.onOrderHeaderChanged}
                             onSave = {this.saveOrder}
                             errors = {this.state.errors}
+                            isValid={this.state.isValid}
                         />
 
                         <OrderLinesList
-                            order = {this.props.order}
+                            order = {this.state.order}
                             onChildChange = {this.onOrderLineChanged}
                             errors = {this.state.errors}
                         />

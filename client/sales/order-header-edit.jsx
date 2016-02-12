@@ -5,7 +5,8 @@ const OrderHeaderEdit = React.createClass({
         order: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
-        errors: React.PropTypes.object.isRequired
+        errors: React.PropTypes.object.isRequired,
+        isValid: React.PropTypes.bool
     },
 
     render () {

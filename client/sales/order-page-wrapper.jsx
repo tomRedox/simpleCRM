@@ -33,7 +33,7 @@ const OrderPageWrapper = React.createClass({
             // Create an empty new record
             order = {
                 orderLines: [],
-                createdAt: Date()
+                createdAt: new Date()
             }
         }
 
@@ -56,18 +56,18 @@ const OrderPageWrapper = React.createClass({
         const orderId = FlowRouter.getParam('_id');
 
         // call the method for upserting the data
-        //Orders.methods.updateManualForm.call({
-        //    orderId: orderId,
-        //    data: order
-        //}, (err, res) => {
-        //    //console.log ("OrderCompanies.methods.updateManualForm.call was called");
-        //    if (err) {
-        //        sAlert.error(err.message);
-        //    } else {
-        //        sAlert.success("Save successful");
-        //        FlowRouter.go("/");
-        //    }
-        //});
+        Orders.methods.upsert.call({
+            orderId: orderId,
+            data: order
+        }, (err, res) => {
+            //console.log ("OrderCompanies.methods.updateManualForm.call was called");
+            if (err) {
+                sAlert.error(err.message);
+            } else {
+                sAlert.success("Save successful");
+                FlowRouter.go("/");
+            }
+        });
 
     },
 
@@ -77,7 +77,7 @@ const OrderPageWrapper = React.createClass({
             return ( <h3>Loading Order</h3> );
         }
         return (
-            <OrderEditPage
+            <OrderPage
                 order={this.data.order}
                 onSave={this.saveOrder}
             />

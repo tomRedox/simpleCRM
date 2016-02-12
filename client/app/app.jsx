@@ -10,7 +10,7 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
 Meteor.subscribe("SalesRegions.All");
-
+Meteor.subscribe("Orders.All");
 
 // define and export our Layout component
 export const Layout= ({content}) => (

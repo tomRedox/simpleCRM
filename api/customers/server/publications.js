@@ -11,8 +11,3 @@ Meteor.publish('CustomerCompany.get', function (custId) {
 
     return CustomerCompanies.find({_id: custId});
 });
-
-Meteor.publish('SalesRegions.All', function() {
-    return SalesRegions.find();
-});
-
