@@ -4,6 +4,7 @@
 var React = require('react');
 
 import OrderPage from './order-page.jsx';
+import Orders from '../../api/orders/order';
 //import { createHistory, useBasename } from 'history'
 
 //const history = useBasename(createHistory)({
@@ -20,15 +21,16 @@ const OrderPageWrapper = React.createClass({
         //console.log("OrderEditForm.getMeteorData");
 
         const orderId = FlowRouter.getParam('_id');
-        //console.log("orderId", orderId)
+        console.log("orderId", orderId)
         var order;
         var handle;
 
         const newOrder = !orderId;
 
         if (!newOrder) {
-            handle = Meteor.subscribe('OrderCompany.get', orderId);
+            handle = Meteor.subscribe('Order.get', orderId);
             order = Orders.findOne({_id: orderId});
+            console.log("found order: ", order)
         } else {
             // Create an empty new record
             order = {
@@ -55,6 +57,9 @@ const OrderPageWrapper = React.createClass({
 
         const orderId = FlowRouter.getParam('_id');
 
+        console.log("route id: ", orderId);
+
+
         // call the method for upserting the data
         Orders.methods.upsert.call({
             orderId: orderId,
@@ -68,11 +73,10 @@ const OrderPageWrapper = React.createClass({
                 FlowRouter.go("/");
             }
         });
-
     },
 
     render() {
-        //console.log("render started", this.data.order)
+        console.log("OrderPage render started", this.data.order)
         if (!this.data.newOrder && this.data.orderLoading) {
             return ( <h3>Loading Order</h3> );
         }

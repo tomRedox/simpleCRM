@@ -27,7 +27,7 @@ Orders.methods.upsert = new ValidatedMethod({
     {
         console.log("run");
         console.log("args", args);
-        return Orders.upsert(args.customerId, {$set: args.data});
+        return Orders.upsert(args.orderId, {$set: args.data});
     }
 });
 
