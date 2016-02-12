@@ -11,9 +11,3 @@ Meteor.publish('Order.get', function (id) {
 
     return Orders.find({_id: id});
 });
-
-
-Meteor.publish('Orders.All', function() {
-    return Orders.find();
-});
-

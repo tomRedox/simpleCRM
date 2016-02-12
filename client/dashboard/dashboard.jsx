@@ -11,6 +11,7 @@ const Dashboard = React.createClass({
                         <h3>Dashboard <i className="fa fa-dashboard"></i></h3>
                     </div>
                 </div>
+                <OrdersList/>
                 <CustomersList/>
             </div>
         );

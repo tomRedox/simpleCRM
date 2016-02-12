@@ -124,6 +124,16 @@ FlowRouter.notFound = {
 };
 
 
+FlowRouter.route('/orders/:_id', {
+    name: 'Order.edit',
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<OrderPageWrapper />)
+        });
+    }
+});
+
 FlowRouter.route("/addOrder", {
     name: "addOrder",
     action() {
