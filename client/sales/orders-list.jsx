@@ -5,9 +5,9 @@ import Orders from '../../api/orders/order';
 
 //import { Link } from 'react-router';
 
-OrdersList = React.createClass({
+const OrdersList = React.createClass({
     // This mixin makes the getMeteorData method work
-    mixins: [ReactMeteorData],
+    mixins: [ ReactMeteorData ],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
@@ -41,8 +41,7 @@ OrdersList = React.createClass({
                 {this.renderOrderListItems()}
                 </tbody>
             </table>
-
-        )
+        );
     },
 
     renderOrderListItems() {
@@ -84,6 +83,5 @@ OrdersList = React.createClass({
         );
     }
 });
-
 
 module.exports = OrdersList;

@@ -33,14 +33,14 @@ const OrderPage = React.createClass({
             isNewLine: true,
             createdAt: new Date()//,
             //_id: this.state.nextOrderLineId ++
-        }
+        };
     },
 
     componentWillMount() {
         this.state.newLine = this.getEmptyOrderLine();
     },
 
-    onOrderHeaderChanged: function (event) {
+    onOrderHeaderChanged(event) {
 
         //console.log("event:", event.target);
 
@@ -58,7 +58,7 @@ const OrderPage = React.createClass({
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
-            if (invalidKey.name != "_id") {
+            if (invalidKey.name !== "_id") {
                 this.state.errors[invalidKey.name] = errMessage;
                 console.log("errMessage", errMessage);
             }
@@ -71,25 +71,25 @@ const OrderPage = React.createClass({
 
     },
 
-    setFormIsValid: function() {
+    setFormIsValid() {
         //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
         this.state.isValid = (Object.keys(this.state.errors).length === 0);
     },
 
-    onOrderLineChanged: function (orderLineId, field, value) {
+    onOrderLineChanged(orderLineId, field, value) {
         //console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
 
-        const line = _.find(this.state.order.orderLines, function (line) {
-            return line._id == orderLineId
+        const line = _.find(this.state.order.orderLines, function (thisLine) {
+            return thisLine._id === orderLineId;
         });
 
-        console.log("matching line ", line)
+        console.log("matching line ", line);
         line[field] = value;
         return this.setState({order: this.state.order});
     },
 
-    newOrderLineChanged: function (orderLineId, field, value) {
+    newOrderLineChanged(orderLineId, field, value) {
         //console.log("newOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
         this.state.newLine[field] = value;
@@ -97,7 +97,7 @@ const OrderPage = React.createClass({
 
     },
 
-    saveNewOrderLine (event) {
+    saveNewOrderLine(event) {
         //console.log("saveNewOrderLine", event);
         event.preventDefault();
 
@@ -110,13 +110,13 @@ const OrderPage = React.createClass({
         return this.setState({order: this.state.order});
     },
 
-    saveOrder: function (event) {
+    saveOrder(event) {
         console.log("saveOrder", event);
         event.preventDefault();
         this.props.onSave(this.state.order);
     },
 
-    render () {
+    render() {
         //console.log("OrderPage props: ", this.props);
         this.setFormIsValid();
 
@@ -163,6 +163,5 @@ const OrderPage = React.createClass({
         );
     }
 });
-
 
 export default OrderPage;

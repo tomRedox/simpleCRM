@@ -23,8 +23,7 @@ Orders.methods.upsert = new ValidatedMethod({
 
     // the actual database updating part
     // validate has already been run at this point
-    run(args)
-    {
+    run(args) {
         console.log("run");
         console.log("args", args);
         console.log("lines", args.data.orderLines);

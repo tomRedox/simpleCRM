@@ -9,7 +9,7 @@ const OrderHeaderEdit = React.createClass({
         isValid: React.PropTypes.bool
     },
 
-    render () {
+    render() {
         //console.log("OrderHeaderEdit props: ", this.props);
 
         return (
@@ -50,6 +50,5 @@ const OrderHeaderEdit = React.createClass({
         );
     }
 });
-
 
 export default OrderHeaderEdit;

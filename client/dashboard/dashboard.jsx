@@ -1,4 +1,5 @@
 import React from 'react';
+import OrdersList from '../sales/orders-list.jsx';
 
 const Dashboard = React.createClass({
 
@@ -17,6 +18,6 @@ const Dashboard = React.createClass({
         );
     }
 
-})
+});
 
 export default Dashboard;

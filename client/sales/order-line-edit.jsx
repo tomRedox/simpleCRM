@@ -7,15 +7,14 @@ const OrderLineEdit = React.createClass({
         errors: React.PropTypes.object
     },
 
-    handleChange (event)
-    {
+    handleChange(event) {
         var field = event.target.name;
         var value = event.target.value;
 
-        this.props.onChange(this.props.orderLine._id, event.target.name, event.target.value)
+        this.props.onChange(this.props.orderLine._id, field, value);
     },
 
-    render () {
+    render() {
         //console.log("OrderLineEdit props: ", this.props);
 
         return (
@@ -54,6 +53,5 @@ const OrderLineEdit = React.createClass({
         );
     }
 });
-
 
 export default OrderLineEdit;

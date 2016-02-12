@@ -14,7 +14,7 @@ import Orders from '../../api/orders/order';
 // Top of the stack, represents the whole page
 const OrderPageWrapper = React.createClass({
     // This mixin makes the getMeteorData method work
-    mixins: [ReactMeteorData],
+    mixins: [ ReactMeteorData ],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
@@ -30,22 +30,22 @@ const OrderPageWrapper = React.createClass({
         if (!newOrder) {
             handle = Meteor.subscribe('Order.get', orderId);
             order = Orders.findOne({_id: orderId});
-            console.log("found order: ", order)
+            console.log("found order: ", order);
         } else {
             // Create an empty new record
             order = {
                 orderLines: [],
                 createdAt: new Date()
-            }
+            };
         }
 
         //console.log("OrderEditForm.getMeteorData cust ", cust);
 
         return {
             orderLoading: handle ? !handle.ready() : {},
-            order: order,
-            orderId: orderId,
-            newOrder: newOrder
+            order,
+            orderId,
+            newOrder
         };
     },
 
@@ -62,7 +62,7 @@ const OrderPageWrapper = React.createClass({
 
         // call the method for upserting the data
         Orders.methods.upsert.call({
-            orderId: orderId,
+            orderId,
             data: order
         }, (err, res) => {
             //console.log ("OrderCompanies.methods.updateManualForm.call was called");
@@ -76,7 +76,8 @@ const OrderPageWrapper = React.createClass({
     },
 
     render() {
-        console.log("OrderPage render started", this.data.order)
+        console.log("OrderPage render started", this.data.order);
+
         if (!this.data.newOrder && this.data.orderLoading) {
             return ( <h3>Loading Order</h3> );
         }
