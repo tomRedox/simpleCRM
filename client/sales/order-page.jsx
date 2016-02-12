@@ -31,8 +31,8 @@ const OrderPage = React.createClass({
             unitPrice: 0,
             lineValue: 0,
             isNewLine: true,
-            createdAt: new Date(),
-            _id: this.state.nextOrderLineId ++
+            createdAt: new Date()//,
+            //_id: this.state.nextOrderLineId ++
         }
     },
 
@@ -42,13 +42,13 @@ const OrderPage = React.createClass({
 
     onOrderHeaderChanged: function (event) {
 
-        console.log("event:", event.target);
+        //console.log("event:", event.target);
 
         // update our order state to reflect the new value in the UI
         var field = event.target.name;
         var value = event.target.value;
         this.state.order[field] = value;
-        console.log("New value ",this.state.order[field])
+        //console.log("New value ",this.state.order[field])
 
 
         // validate the order against the table schema
@@ -72,12 +72,12 @@ const OrderPage = React.createClass({
     },
 
     setFormIsValid: function() {
-        console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
+        //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
         this.state.isValid = (Object.keys(this.state.errors).length === 0);
     },
 
     onOrderLineChanged: function (orderLineId, field, value) {
-        console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
+        //console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
 
         const line = _.find(this.state.order.orderLines, function (line) {
@@ -90,7 +90,7 @@ const OrderPage = React.createClass({
     },
 
     newOrderLineChanged: function (orderLineId, field, value) {
-        console.log("newOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
+        //console.log("newOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
         this.state.newLine[field] = value;
         return this.setState({newLine: this.state.newLine});
@@ -98,13 +98,13 @@ const OrderPage = React.createClass({
     },
 
     saveNewOrderLine (event) {
-        console.log("saveNewOrderLine", event);
+        //console.log("saveNewOrderLine", event);
         event.preventDefault();
 
         this.state.order.orderLines.push(this.state.newLine);
-        console.log("saveNewOrderLine",  this.state.order)
+        //console.log("saveNewOrderLine",  this.state.order)
         this.state.newLine = this.getEmptyOrderLine();
-        console.log("saveNewOrderLine",  this.state.order)
+        //console.log("saveNewOrderLine",  this.state.order)
 
         // update the UI
         return this.setState({order: this.state.order});
@@ -117,7 +117,7 @@ const OrderPage = React.createClass({
     },
 
     render () {
-        console.log("OrderPage props: ", this.props);
+        //console.log("OrderPage props: ", this.props);
         this.setFormIsValid();
 
         return (

@@ -27,6 +27,10 @@ Orders.methods.upsert = new ValidatedMethod({
     {
         console.log("run");
         console.log("args", args);
+        console.log("lines", args.data.orderLines);
+        console.log("lines[0]", args.data.orderLines[0]);
+        console.log("order", JSON.stringify(args.data));
+
         return Orders.upsert(args.orderId, {$set: args.data});
     }
 });

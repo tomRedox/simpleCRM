@@ -7,6 +7,7 @@
       <w>mixins</w>
       <w>mongo</w>
       <w>navbar</w>
+      <w>upsert</w>
       <w>upserting</w>
     </words>
   </dictionary>

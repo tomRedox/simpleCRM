@@ -10,7 +10,7 @@ const OrderHeaderEdit = React.createClass({
     },
 
     render () {
-        console.log("OrderHeaderEdit props: ", this.props);
+        //console.log("OrderHeaderEdit props: ", this.props);
 
         return (
 

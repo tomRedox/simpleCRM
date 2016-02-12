@@ -16,7 +16,7 @@ const OrderLineEdit = React.createClass({
     },
 
     render () {
-        console.log("OrderLineEdit props: ", this.props);
+        //console.log("OrderLineEdit props: ", this.props);
 
         return (
             <div >
