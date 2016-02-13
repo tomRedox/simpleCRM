@@ -26,6 +26,7 @@ const OrderPage = React.createClass({
 
     getEmptyOrderLine() {
         return {
+            _id: Meteor.uuid(),
             description: "",
             quantity: 0,
             unitPrice: 0,
@@ -80,9 +81,7 @@ const OrderPage = React.createClass({
         //console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
 
-        const line = _.find(this.state.order.orderLines, function (thisLine) {
-            return thisLine._id === orderLineId;
-        });
+        const line = this.state.order.orderLines.find(x => x._id === orderLineId);
 
         console.log("matching line ", line);
         line[field] = value;
