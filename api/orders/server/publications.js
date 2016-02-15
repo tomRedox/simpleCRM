@@ -1,5 +1,5 @@
 
-//import { Orders } from '../customer-company.js';
+import Orders from '../order';
 
 Meteor.publish('Orders.public', function() {
     return Orders.find();

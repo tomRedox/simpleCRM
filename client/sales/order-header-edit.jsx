@@ -10,42 +10,46 @@ const OrderHeaderEdit = React.createClass({
     },
 
     render() {
-        //console.log("OrderHeaderEdit props: ", this.props);
+        console.log("OrderHeaderEdit props: ", this.props);
 
         return (
 
             <div>
-                        <TextInput
-                            name="deliveryAddress1"
-                            label="Delivery Address 1"
-                            onChange={this.props.onChange}
-                            placeholder="Delivery Address 1"
-                            value={this.props.order.deliveryAddress1}
-                            error={this.props.errors.deliveryAddress1}
-                        />
+                <TextInput
+                    name="deliveryAddress1"
+                    label="Delivery Address 1"
+                    onChange={this.props.onChange}
+                    placeholder="Delivery Address 1"
+                    value={this.props.order.deliveryAddress1}
+                    error={this.props.errors.deliveryAddress1}
+                />
 
 
-                        <TextInput
-                            name="notes"
-                            label="Notes"
-                            onChange={this.props.onChange}
-                            placeholder="Notes"
-                            value={this.props.order.notes}
-                            error={this.props.errors.notes}
-                        />
+                <TextInput
+                    name="notes"
+                    label="Notes"
+                    onChange={this.props.onChange}
+                    placeholder="Notes"
+                    value={this.props.order.notes}
+                    error={this.props.errors.notes}
+                />
 
-                        <label name="orderTotal" value={this.props.order.totalValue} />
+                <div className="form-group">
+                <label>Total Value: </label>
+                <label name="orderTotal">{this.props.order.totalValue}</label>
+                </div>
 
-                        <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
+                <div className="form-group">
+                <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
 
-                        <input
-                            type="submit"
-                            value="Save"
-                            className="btn btn-primary"
-                            onClick={this.props.onSave}
-                            disabled={!this.props.isValid}
-                        />
-
+                <input
+                    type="submit"
+                    value="Save"
+                    className="btn btn-primary"
+                    onClick={this.props.onSave}
+                    disabled={!this.props.isValid}
+                />
+                </div>
             </div>
         );
     }

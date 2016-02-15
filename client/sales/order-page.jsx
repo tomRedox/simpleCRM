@@ -2,7 +2,7 @@ import React from 'react';
 import OrderHeaderEdit from './order-header-edit.jsx';
 import OrderLinesList from './order-lines-list.jsx';
 import OrderLineEdit from './order-line-edit.jsx';
-//import _ from 'underscore';
+import { recalculateOrderTotals } from '../../lib/order-logic';
 
 const OrderPage = React.createClass({
     propTypes: {
@@ -80,11 +80,14 @@ const OrderPage = React.createClass({
     onOrderLineChanged(orderLineId, field, value) {
         //console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
 
-
         const line = this.state.order.orderLines.find(x => x._id === orderLineId);
 
-        console.log("matching line ", line);
+        //console.log("matching line ", line);
         line[field] = value;
+
+        // update the calculated totals
+        recalculateOrderTotals(this.state.order);
+
         return this.setState({order: this.state.order});
     },
 
@@ -93,7 +96,6 @@ const OrderPage = React.createClass({
 
         this.state.newLine[field] = value;
         return this.setState({newLine: this.state.newLine});
-
     },
 
     saveNewOrderLine(event) {

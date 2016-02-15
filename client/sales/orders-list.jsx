@@ -48,7 +48,7 @@ const OrdersList = React.createClass({
         return this.data.orders.map((order) => {
 
             return (
-                <OrdersListItem order = {order} />
+                <OrdersListItem order = {order} key={order._id}/>
             );
         });
     },
