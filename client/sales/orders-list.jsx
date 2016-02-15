@@ -22,6 +22,18 @@ const OrdersList = React.createClass({
         return data;
     },
 
+    renderOrderListItems() {
+        //console.log("orders2", this.data.orders)
+
+        // Get tasks from this.data.tasks
+        return this.data.orders.map((order) => {
+
+            return (
+                <OrdersListItem order = {order} key={order._id}/>
+            );
+        });
+    },
+
     renderOrderTable() {
         //console.log("orders2", this.data.orders)
 
@@ -39,18 +51,6 @@ const OrdersList = React.createClass({
                 </tbody>
             </table>
         );
-    },
-
-    renderOrderListItems() {
-        //console.log("orders2", this.data.orders)
-
-        // Get tasks from this.data.tasks
-        return this.data.orders.map((order) => {
-
-            return (
-                <OrdersListItem order = {order} key={order._id}/>
-            );
-        });
     },
 
     render() {

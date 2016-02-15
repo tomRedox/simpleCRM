@@ -4,6 +4,7 @@ const OrderLineEdit = React.createClass({
     propTypes: {
         orderLine: React.PropTypes.object,
         onChange: React.PropTypes.func.isRequired,
+        deleteOrderLine: React.PropTypes.func,
         errors: React.PropTypes.object
     },
 
@@ -14,8 +15,27 @@ const OrderLineEdit = React.createClass({
         this.props.onChange(this.props.orderLine._id, field, value);
     },
 
+    deleteLine() {
+        this.props.deleteOrderLine(this.props.orderLine._id);
+    },
+
     render() {
         //console.log("OrderLineEdit props: ", this.props);
+        let deleteButton;
+
+        // only show the delete button if we are passed in a delete method
+        if (this.props.deleteOrderLine) {
+            deleteButton =
+                <div className="form-group">
+                    <input
+                        type="button"
+                        className="btn btn-warning"
+                        id="deleteOrderLineButton"
+                        onClick={this.deleteLine}
+                        value="Delete line"
+                    />
+                </div>;
+        }
 
         return (
             <div >
@@ -46,9 +66,12 @@ const OrderLineEdit = React.createClass({
                     error={this.props.errors.unitPrice}
                 />
 
-                <label>Line Value:</label>
-                <label>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</label>
+                <div className="form-group">
+                    <label>Line Value:</label>
+                    <label>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</label>
+                </div>
 
+                {deleteButton}
             </div>
         );
     }

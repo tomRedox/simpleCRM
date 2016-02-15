@@ -19,8 +19,7 @@ const OrderPage = React.createClass({
             order: this.props.order,
             errors: {},
             isValid: false,
-            newLine: {},
-            nextOrderLineId: 1000
+            newLine: {}
         };
     },
 
@@ -33,7 +32,6 @@ const OrderPage = React.createClass({
             lineValue: 0,
             isNewLine: true,
             createdAt: new Date()//,
-            //_id: this.state.nextOrderLineId ++
         };
     },
 
@@ -111,6 +109,22 @@ const OrderPage = React.createClass({
         return this.setState({order: this.state.order});
     },
 
+    deleteOrderLine(id) {
+        console.log("deleteOrderLine", id);
+
+        const line = this.state.order.orderLines.find(x => x._id === id);
+        var pos = this.state.order.orderLines.indexOf(line);
+        console.log("index ", pos);
+
+        this.state.order.orderLines.splice(pos, 1);
+
+        // update the calculated totals
+        recalculateOrderTotals(this.state.order);
+
+        // update the UI
+        return this.setState({order: this.state.order});
+    },
+
     saveOrder(event) {
         console.log("saveOrder", event);
         event.preventDefault();
@@ -139,6 +153,7 @@ const OrderPage = React.createClass({
                         <OrderLinesList
                             order = {this.state.order}
                             onChildChange = {this.onOrderLineChanged}
+                            deleteOrderLine = {this.deleteOrderLine}
                             errors = {this.state.errors}
                         />
 
@@ -156,8 +171,8 @@ const OrderPage = React.createClass({
                             id="saveNewOrderLineButton"
                             onClick={this.saveNewOrderLine}
                             value="Add line"
-
                         />
+
                     </div>
                 </form>
             </div>
