@@ -18,7 +18,7 @@ SelectInput = React.createClass({
     },
 
 
-    onChangeHandler: function(event) {
+    onChangeHandler(event) {
         //console.log("selectInput event ", event)
         this.props.onChange({
             target: {
@@ -28,7 +28,7 @@ SelectInput = React.createClass({
         });
     },
 
-    render: function () {
+    render() {
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         var wrapperClass = 'form-group';

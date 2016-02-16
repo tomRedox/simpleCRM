@@ -1,7 +1,7 @@
 
 import Orders from '../order';
 
-Meteor.publish('Orders.public', function() {
+Meteor.publish('Orders.public', function () {
     return Orders.find();
 });
 

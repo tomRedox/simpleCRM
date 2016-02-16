@@ -6,7 +6,7 @@ var React = require('react');
 // this page is wrapped by the wrapper
 TopNav = React.createClass({
 
-    render () {
+    render() {
 
 
         return (
@@ -23,7 +23,7 @@ TopNav = React.createClass({
                 </div>
                 <nav className="collapse navbar-collapse" role="navigation">
                     <form className="navbar-form navbar-left">
-                        <div className="input-group input-group-sm" style={{"maxWidth":"360px"}}>
+                        <div className="input-group input-group-sm" style={{maxWidth: "360px"}}>
                             <input type="text" className="form-control" placeholder="Search" name="srch-term"
                                    id="srch-term"/>
                             <div className="input-group-btn">

@@ -9,9 +9,23 @@ const OrderLinesList = React.createClass({
         order: React.PropTypes.object.isRequired,
         onChildChange: React.PropTypes.func.isRequired,
         deleteOrderLine: React.PropTypes.func,
-        errors: React.PropTypes.object.isRequired
+        lineErrorSets: React.PropTypes.array.isRequired
     },
 
+    getErrorsForLine(orderLine) {
+
+        let errorSet;
+        let errors = {};
+
+        if (this.props.lineErrorSets) {
+            errorSet = this.props.lineErrorSets.find(x => x._id === orderLine._id);
+            if (errorSet && errorSet.errors) {
+                errors = errorSet.errors;
+            }
+        }
+        console.log(errors);
+        return errors;
+    },
 
     renderOrderLines() {
         //console.log("customers2", this.data.customers)
@@ -22,12 +36,13 @@ const OrderLinesList = React.createClass({
         return this.props.order.orderLines.map((orderLine) => {
 
             return (
+
                 <div key={orderLine._id}>
                     <OrderLineEdit
                         orderLine={orderLine}
                         onChange={this.props.onChildChange}
                         deleteOrderLine={this.props.deleteOrderLine}
-                        errors={this.props.errors}
+                        errors={this.getErrorsForLine(orderLine)}
                     />
 
                 </div>

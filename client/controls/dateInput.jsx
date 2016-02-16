@@ -17,7 +17,7 @@ DateInput = React.createClass({
         error: React.PropTypes.string
     },
 
-    onChangeHandler: function(event) {
+    onChangeHandler(event) {
         //event.target.name = this.props.name;
 
         this.props.onChange({
@@ -28,7 +28,7 @@ DateInput = React.createClass({
         });
     },
 
-    render: function () {
+    render() {
        // console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'

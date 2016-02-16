@@ -1,4 +1,4 @@
-class productsCollection extends Mongo.Collection {};
+class productsCollection extends Mongo.Collection {}
 
 // Make it available to the rest of the app
 Products = new productsCollection("Products");

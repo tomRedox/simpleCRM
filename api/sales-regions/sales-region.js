@@ -1,4 +1,4 @@
-class salesRegionsCollection extends Mongo.Collection {};
+class salesRegionsCollection extends Mongo.Collection {}
 
 // Make it available to the rest of the app
 SalesRegions = new salesRegionsCollection("SalesRegions");

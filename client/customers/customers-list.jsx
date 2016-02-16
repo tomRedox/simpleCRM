@@ -14,9 +14,9 @@ const CustomersList = React.createClass({
 
         var handle = Meteor.subscribe('CustomerCompanies.public');
         if (handle.ready()) {
-            const customers = CustomerCompanies.find().fetch();
+            //const customers = CustomerCompanies.find().fetch();
             //console.log("customers", customers);
-            data.customers = customers;
+            data.customers = CustomerCompanies.find().fetch();
         }
 
         return data;

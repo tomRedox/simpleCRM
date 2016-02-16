@@ -6,7 +6,7 @@ const OrdersListItem = React.createClass({
     },
 
     deleteOrder() {
-        console.log("Deleting order ", this.props.order._id)
+        console.log("Deleting order ", this.props.order._id);
         Meteor.call('Orders.methods.remove', {
             orderId: this.props.order._id
         }, (err, res) => {

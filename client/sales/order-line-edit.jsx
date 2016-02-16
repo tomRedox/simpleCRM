@@ -5,8 +5,20 @@ const OrderLineEdit = React.createClass({
         orderLine: React.PropTypes.object,
         onChange: React.PropTypes.func.isRequired,
         deleteOrderLine: React.PropTypes.func,
-        errors: React.PropTypes.object
+        errors: React.PropTypes.object.isRequired
     },
+
+
+    getInitialState() {
+
+        console.log("OrderPage.getInitialState", this.props);
+
+        return {
+            errors: {},
+            isValid: false
+        };
+    },
+
 
     handleChange(event) {
         var field = event.target.name;
@@ -18,6 +30,7 @@ const OrderLineEdit = React.createClass({
     deleteLine() {
         this.props.deleteOrderLine(this.props.orderLine._id);
     },
+
 
     render() {
         //console.log("OrderLineEdit props: ", this.props);

@@ -18,6 +18,7 @@ const OrderPage = React.createClass({
         return {
             order: this.props.order,
             errors: {},
+            lineErrorSets: [],
             isValid: false,
             newLine: {}
         };
@@ -39,40 +40,46 @@ const OrderPage = React.createClass({
         this.state.newLine = this.getEmptyOrderLine();
     },
 
-    onOrderHeaderChanged(event) {
-
-        //console.log("event:", event.target);
-
-        // update our order state to reflect the new value in the UI
-        var field = event.target.name;
-        var value = event.target.value;
-        this.state.order[field] = value;
-        //console.log("New value ",this.state.order[field])
-
-
-        // validate the order against the table schema
-        this.state.errors = {};
-        var schemaContext = Schemas.OrderSchema.namedContext("orderHeaderEdit");
-        schemaContext.validate(this.state.order);
+    validateItemAgainstSchema(item, schemaContext) {
+        const errors = {};
+        console.log("validateItemAgainstSchema:", item);
+        schemaContext.validate(item);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
             var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
             if (invalidKey.name !== "_id") {
-                this.state.errors[invalidKey.name] = errMessage;
+                errors[invalidKey.name] = errMessage;
                 console.log("errMessage", errMessage);
             }
         });
 
-        this.setFormIsValid();
+        return errors;
+    },
 
-        // Update the state, this will then cause the re-render
-        return this.setState({order: this.state.order});
+    onOrderHeaderChanged(event) {
+
+        console.log("onOrderHeaderChanged:", event.target);
+
+        // update our order state to reflect the new value in the UI
+         this.state.order[event.target.name] = event.target.value;
+        //console.log("New value ",this.state.order[event.target.name])
+
+
+        // validate the order against the table schema
+        this.state.errors = this.validateItemAgainstSchema(
+            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
+
+        this.setFormIsValid();
+        //
+        //// Update the state, this will then cause the re-render
+        this.setState({order: this.state.order});
 
     },
 
     setFormIsValid() {
         //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
-        this.state.isValid = (Object.keys(this.state.errors).length === 0);
+        this.state.isValid =
+            (Object.keys(this.state.errors).length === 0 && this.state.lineErrorSets.length === 0);
     },
 
     onOrderLineChanged(orderLineId, field, value) {
@@ -86,7 +93,32 @@ const OrderPage = React.createClass({
         // update the calculated totals
         recalculateOrderTotals(this.state.order);
 
+        this.validateOrderLine(line);
+
         return this.setState({order: this.state.order});
+    },
+
+    validateOrderLine(orderLine) {
+
+        const errors = this.validateItemAgainstSchema(
+            orderLine, Schemas.OrderLineSchema.namedContext("orderLineEdit")
+        );
+
+        let errorSet = this.getErrorSetForOrderLine(orderLine);
+
+        if (errorSet) {
+            errorSet.errors = errors;
+        } else {
+            errorSet = {};
+            errorSet._id = orderLine._id;
+            errorSet.errors = errors;
+            this.state.lineErrorSets.push(errorSet);
+        }
+
+    },
+
+    getErrorSetForOrderLine(orderLine) {
+        return this.state.lineErrorSets.find(x => x._id === orderLine._id);
     },
 
     newOrderLineChanged(orderLineId, field, value) {
@@ -154,7 +186,7 @@ const OrderPage = React.createClass({
                             order = {this.state.order}
                             onChildChange = {this.onOrderLineChanged}
                             deleteOrderLine = {this.deleteOrderLine}
-                            errors = {this.state.errors}
+                            lineErrorSets = {this.state.lineErrorSets}
                         />
 
                         <h4>Add new line</h4>

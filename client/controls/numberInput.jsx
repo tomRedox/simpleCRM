@@ -15,7 +15,7 @@ NumberInput = React.createClass({
         error: React.PropTypes.string
     },
 
-    render: function () {
+    render() {
         //console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
@@ -24,7 +24,7 @@ NumberInput = React.createClass({
         if (this.props.error && this.props.error.length > 0) {
             console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
-        };
+        }
 
         const placeholder = (this.props.placeholder ? this.props.placeholder : this.props.label);
 

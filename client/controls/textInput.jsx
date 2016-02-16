@@ -15,7 +15,7 @@ TextInput = React.createClass({
         error: React.PropTypes.string
     },
 
-    render: function () {
+    render() {
         //console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
@@ -39,7 +39,7 @@ TextInput = React.createClass({
                            value={this.props.value}
                            //defaultValue={this.props.defaultValue}
                            onChange={this.props.onChange} />
-                    <div className="input">{this.props.error}</div>
+                    <div className="input text-muted">{this.props.error}</div>
                 </div>
             </div>
 

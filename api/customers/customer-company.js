@@ -9,7 +9,7 @@ collection via the Methods as we have explicitly denied permissions to
 allow writing straight to the table in accordance with best practices.
  */
 
-class customerCompanyCollection extends Mongo.Collection {};
+class customerCompanyCollection extends Mongo.Collection {}
 
 // Make it available to the rest of the app
 CustomerCompanies = new customerCompanyCollection("Companies");

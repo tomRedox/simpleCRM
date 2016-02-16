@@ -6,14 +6,14 @@
 
 import React from 'react';
 //var RouteHandler = require('react-router').RouteHandler;
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+//var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
 
 // define and export our Layout component
-export const Layout= ({content}) => (
+export const Layout = ({content}) => (
 
             <div>
                 <div className="wrapper">

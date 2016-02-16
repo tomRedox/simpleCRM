@@ -22,13 +22,13 @@ Orders.deny({
 Orders.attachSchema(Schemas.OrderSchema);
 
 Orders.before.insert(function (userId, doc) {
-    console.log("Orders.before.insert", doc)
+    console.log("Orders.before.insert", doc);
     // Ensure all the line totals acrea correctly set, even if the UI already did this.
     recalculateOrderTotals(doc);
 });
 
 Orders.before.update(function (userId, doc, fieldNames, modifier, options) {
-    console.log("Orders.before.update", doc)
+    console.log("Orders.before.update", doc);
     // Ensure all the line totals acrea correctly set, even if the UI already did this.
     recalculateOrderTotals(doc);
 });

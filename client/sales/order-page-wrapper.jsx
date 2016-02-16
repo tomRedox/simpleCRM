@@ -21,7 +21,7 @@ const OrderPageWrapper = React.createClass({
         //console.log("OrderEditForm.getMeteorData");
 
         const orderId = FlowRouter.getParam('_id');
-        console.log("orderId", orderId)
+        console.log("orderId", orderId);
         var order;
         var handle;
 
