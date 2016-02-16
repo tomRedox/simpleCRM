@@ -2,6 +2,7 @@
   <dictionary name="Tom">
     <words>
       <w>autoform</w>
+      <w>autosuggest</w>
       <w>dropdown</w>
       <w>glyphicon</w>
       <w>mixins</w>

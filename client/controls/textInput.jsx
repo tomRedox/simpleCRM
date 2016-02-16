@@ -15,7 +15,7 @@ TextInput = React.createClass({
         error: React.PropTypes.string
     },
 
-    render() {
+    render: function () {
         //console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
