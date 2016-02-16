@@ -78,8 +78,10 @@ const OrderPage = React.createClass({
 
     setFormIsValid() {
         //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
+        const lineErrors = this.state.lineErrorSets.find(x => Object.keys(x.errors).length > 0);
+
         this.state.isValid =
-            (Object.keys(this.state.errors).length === 0 && this.state.lineErrorSets.length === 0);
+            (Object.keys(this.state.errors).length === 0 && !lineErrors);
     },
 
     onOrderLineChanged(orderLineId, field, value) {
