@@ -1,6 +1,6 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
-
+import AsyncSelectInput from '../controls/asyncSelectInput.jsx';
 
 
 
@@ -10,100 +10,66 @@ const OrderHeaderEdit = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
         errors: React.PropTypes.object.isRequired,
-        isValid: React.PropTypes.bool
+        isValid: React.PropTypes.bool,
+        customerOptions: React.PropTypes.array.isRequired
     },
 
-    getInitialState() {
+    mixins: [ ReactMeteorData ],
+
+    // Loads items from the Tasks collection and puts them on this.data.tasks
+    getMeteorData() {
+        //console.log("OrderEditForm.getMeteorData");
+
+        // for the companies list on the Order Header
+        var customerHandle = Meteor.subscribe('CustomerCompanies.public');
+        var customers = CustomerCompanies.find().fetch();
 
         return {
-            value: '',
-            suggestions: this.getSuggestions('')
+            customersLoading: customerHandle ? !customerHandle.ready() : {},
+            customers
         };
     },
 
-    languages: [
-        {
-            name: 'C',
-            year: 1972
-        },
-        {
-            name: 'Cobol',
-            year: 1980
-        },
-        {
-            name: 'C++',
-            year: 2001
-        },
-        {
-            name: 'Elm',
-            year: 2012
-        }
-
-    ],
-
-    getSuggestions(value) {
-        const inputValue = value.trim().toLowerCase();
-        const inputLength = inputValue.length;
-
-        return inputLength === 0 ? [] : this.languages.filter(lang =>
-            lang.name.toLowerCase().slice(0, inputLength) === inputValue
-        );
-    },
-
-    getSuggestionValue(suggestion) { // when suggestion selected, this function tells
-        return suggestion.name;                 // what should be the value of the input
-    },
-
-    renderSuggestion(suggestion) {
-        return (
-            <span>{suggestion.name}</span>
-        );
-    },
-
-
-    onListChange(event, { newValue }) {
-        this.setState({
-            value: newValue
-        });
-    },
-
-    onSuggestionsUpdateRequested({ value }) {
-        this.setState({
-            suggestions: this.getSuggestions(value)
-        });
-    },
-
-    shouldRenderSuggestions(value) {
-        return value.trim().length > 1;
+    getOptions(input, callback) {
+        setTimeout(function () {
+            callback(null, {
+                options: [
+                    { value: 'one', label: 'One' },
+                    { value: 'two', label: 'Two' }
+                ],
+                // CAREFUL! Only set this to true when there are no more options,
+                // or more specific queries will not be sent to the server.
+                complete: true
+            });
+        }, 500);
     },
 
     render() {
         console.log("OrderHeaderEdit props: ", this.props);
 
-        const inputProps = {
-            placeholder: 'Type a programming language',
-            value: this.state.value,
-            onChange: this.onListChange
-        };
-
+        if (this.data.customersLoading) {
+            console.log("loading");
+            return ( <h3>Loading Order</h3> );
+        }
 
         return (
 
 
             <div>
-                <div className='form-group'>
 
-                    <div className="field">
-                <Autosuggest
-                    suggestions={this.state.suggestions}
-                    onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-                    getSuggestionValue={this.getSuggestionValue}
-                    renderSuggestion={this.renderSuggestion}
-                    shouldRenderSuggestions={this.shouldRenderSuggestions}
-                    inputProps={inputProps}
+
+                <SelectInput
+                    name="customerId"
+                    label="Customer"
+                    value={this.props.order.customerId ? this.props.order.customerId : ''}
+                    onChange={this.props.onChange}
+                    //placeholder="Next contact date"
+                    error={this.props.errors.customerId}
+                    options={this.data.customers}
+                    valueKey="_id"
+                    labelKey="name"
+
                 />
-                    </div>
-                </div>
 
                 <TextInput
                     name="deliveryAddress1"
@@ -146,3 +112,16 @@ const OrderHeaderEdit = React.createClass({
 });
 
 export default OrderHeaderEdit;
+
+//<AsyncSelectInput
+//    name="customerId"
+//    label="Customer"
+//    value={this.props.order.customerId ? this.props.order.customerId : ''}
+//    onChange={this.props.onChange}
+//    //placeholder="Next contact date"
+//    error={this.props.errors.customerId}
+//    getOptions={this.getOptions}
+//    valueKey="_id"
+//    labelKey="name"
+//
+///>

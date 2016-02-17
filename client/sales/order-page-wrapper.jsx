@@ -20,17 +20,21 @@ const OrderPageWrapper = React.createClass({
     getMeteorData() {
         //console.log("OrderEditForm.getMeteorData");
 
+        // for the companies list on the Order Header
+        var customerHandle = Meteor.subscribe('CustomerCompany.public');
+        var customers = CustomerCompanies.find().fetch();
+
         const orderId = FlowRouter.getParam('_id');
-        console.log("orderId", orderId);
+        //console.log("orderId", orderId);
         var order;
-        var handle;
+        var orderHandle;
 
         const newOrder = !orderId;
 
         if (!newOrder) {
-            handle = Meteor.subscribe('Order.get', orderId);
+            orderHandle = Meteor.subscribe('Order.get', orderId);
             order = Orders.findOne({_id: orderId});
-            console.log("found order: ", order);
+            //console.log("found order: ", order);
         } else {
             // Create an empty new record
             order = {
@@ -42,7 +46,9 @@ const OrderPageWrapper = React.createClass({
         //console.log("OrderEditForm.getMeteorData cust ", cust);
 
         return {
-            orderLoading: handle ? !handle.ready() : {},
+            orderLoading: orderHandle ? !orderHandle.ready() : {},
+            customersLoading: customerHandle ? !customerHandle.ready() : {},
+            customers,
             order,
             orderId,
             newOrder
@@ -57,7 +63,7 @@ const OrderPageWrapper = React.createClass({
 
         const orderId = FlowRouter.getParam('_id');
 
-        console.log("route id: ", orderId);
+        //console.log("route id: ", orderId);
 
 
         // call the method for upserting the data
@@ -78,13 +84,15 @@ const OrderPageWrapper = React.createClass({
     render() {
         console.log("OrderPage render started", this.data.order);
 
-        if (!this.data.newOrder && this.data.orderLoading) {
+        if (!this.data.newOrder && (this.data.orderLoading)) {
+            console.log("rendered");
             return ( <h3>Loading Order</h3> );
         }
         return (
             <OrderPage
                 order={this.data.order}
                 onSave={this.saveOrder}
+                customerOptions={this.data.customers}
             />
         );
     }

@@ -4,12 +4,13 @@ import OrderLinesList from './order-lines-list.jsx';
 import OrderLineEdit from './order-line-edit.jsx';
 import { recalculateOrderTotals } from '../../lib/order-logic';
 
+
 const OrderPage = React.createClass({
     propTypes: {
         order: React.PropTypes.object,
-        onSave: React.PropTypes.func.isRequired
+        onSave: React.PropTypes.func.isRequired,
+        customerOptions: React.PropTypes.array.isRequired
     },
-
 
     getInitialState() {
 
@@ -182,6 +183,7 @@ const OrderPage = React.createClass({
                             onSave = {this.saveOrder}
                             errors = {this.state.errors}
                             isValid={this.state.isValid}
+                            customerOptions={this.props.customerOptions}
                         />
 
                         <OrderLinesList
