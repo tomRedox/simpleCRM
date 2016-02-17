@@ -19,11 +19,11 @@ const AsyncSelectInput = React.createClass({
 
 
     onChangeHandler(selectedOption) {
-        console.log("selectInput selectedOption ", selectedOption[this.props.valueKey])
+        //console.log("selectInput selectedOption ", selectedOption[this.props.valueKey])
         this.props.onChange({
             target: {
                 name: this.props.name,
-                value: selectedOption[this.props.valueKey]
+                value: selectedOption //1.0.0 [this.props.valueKey]
             }
         });
     },
@@ -68,14 +68,14 @@ const AsyncSelectInput = React.createClass({
             <div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
-                    <Select.Async
+                    <Select
                         name={this.props.name}
                         value={this.props.value}
-                        loadOptions={this.props.loadOptions}
+                        asyncOptions={this.props.loadOptions}//.getOptions}
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
-                        cache={false} // stop the control caching the results - if true only searches the list retrieved on first load
+                        cacheAsyncResults ={false} // 1.0.0 change this to cache stop the control caching the results - if true only searches the list retrieved on first load
                         minimumInput={3} // number of letters needed before a search starts
                     />
                     <div className="input">

@@ -23,7 +23,7 @@ SelectInput = React.createClass({
         this.props.onChange({
             target: {
                 name: this.props.name,
-                value: selectedOption[this.props.valueKey]
+                value: selectedOption //1.0.0 [this.props.valueKey]
             }
         });
     },
