@@ -166,7 +166,7 @@ const OrderPage = React.createClass({
     },
 
     render() {
-        //console.log("OrderPage props: ", this.props);
+        console.log("OrderPage render props: ", this.props);
         this.setFormIsValid();
 
         return (

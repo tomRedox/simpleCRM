@@ -77,7 +77,7 @@ const OrderPageWrapper = React.createClass({
     },
 
     render() {
-        console.log("OrderPage render started", this.data.order);
+        console.log("OrderPageWrapper render - order: ", this.data.order);
 
         if (!this.data.newOrder && (this.data.orderLoading)) {
             console.log("rendered");

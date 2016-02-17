@@ -19,7 +19,7 @@ const AsyncSelectInput = React.createClass({
 
 
     onChangeHandler(selectedOption) {
-        //console.log("selectInput event ", event)
+        console.log("selectInput selectedOption ", selectedOption[this.props.valueKey])
         this.props.onChange({
             target: {
                 name: this.props.name,
@@ -56,7 +56,7 @@ const AsyncSelectInput = React.createClass({
 
 
     render() {
-        console.log("render", this.props)
+        console.log("render value ", this.props.value)
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         var wrapperClass = 'form-group';
@@ -75,7 +75,7 @@ const AsyncSelectInput = React.createClass({
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
-                        //cache={false} // stop the control caching the results - if true only searches the list retrieved on first load
+                        cache={false} // stop the control caching the results - if true only searches the list retrieved on first load
                         minimumInput={3} // number of letters needed before a search starts
                     />
                     <div className="input">
