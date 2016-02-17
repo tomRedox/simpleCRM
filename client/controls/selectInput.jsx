@@ -18,12 +18,12 @@ SelectInput = React.createClass({
     },
 
 
-    onChangeHandler(event) {
+    onChangeHandler(selectedOption) {
         //console.log("selectInput event ", event)
         this.props.onChange({
             target: {
                 name: this.props.name,
-                value: event
+                value: selectedOption[this.props.valueKey]
             }
         });
     },
