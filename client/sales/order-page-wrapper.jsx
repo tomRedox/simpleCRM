@@ -20,9 +20,6 @@ const OrderPageWrapper = React.createClass({
     getMeteorData() {
         //console.log("OrderEditForm.getMeteorData");
 
-        // for the companies list on the Order Header
-        var customerHandle = Meteor.subscribe('CustomerCompany.public');
-        var customers = CustomerCompanies.find().fetch();
 
         const orderId = FlowRouter.getParam('_id');
         //console.log("orderId", orderId);
@@ -47,8 +44,6 @@ const OrderPageWrapper = React.createClass({
 
         return {
             orderLoading: orderHandle ? !orderHandle.ready() : {},
-            customersLoading: customerHandle ? !customerHandle.ready() : {},
-            customers,
             order,
             orderId,
             newOrder
@@ -92,7 +87,6 @@ const OrderPageWrapper = React.createClass({
             <OrderPage
                 order={this.data.order}
                 onSave={this.saveOrder}
-                customerOptions={this.data.customers}
             />
         );
     }

@@ -18,51 +18,34 @@ const AsyncSelectInput = React.createClass({
     },
 
 
-    onChangeHandler(event) {
-        console.log("onChangeHandler event ", event);
+    onChangeHandler(selectedOption) {
+        //console.log("selectInput event ", event)
         this.props.onChange({
             target: {
                 name: this.props.name,
-                value: event
+                value: selectedOption[this.props.valueKey]
             }
         });
     },
 
-    getOptions1(input, callback) {
-        setTimeout(function () {
-            callback(null, {
-                options: [
-                    { _id: '1', name: 'One' },
-                    { _id: '2', name: 'Two' }
-                ],
-                // CAREFUL! Only set this to true when there are no more options,
-                // or more specific queries will not be sent to the server.
-                complete: true
-            });
-        }, 500);
-    },
-
-    getOptions(input, callback) {
-        input = input.toLowerCase();
-
-        var options = CONTRIBUTORS.filter(i => {
-            return i.github.substr(0, input.length) === input;
-        });
-
-        var data = {
-            options: [
-                { _id: '1', name: 'One' },
-                { _id: '2', name: 'Two' }
-            ],
-            // CAREFUL! Only set this to true when there are no more options,
-            // or more specific queries will not be sent to the server.
-            complete: true
-        };
-
-        setTimeout(function () {
-            callback(null, data);
-        }, 500);
-    },
+    //
+    //getOptions(input, callback) {
+    //    input = input.toLowerCase();
+    //
+    //    var data = {
+    //        options: [
+    //            { _id: '1', name: 'One' },
+    //            { _id: '2', name: 'Two' }
+    //        ],
+    //        // CAREFUL! Only set this to true when there are no more options,
+    //        // or more specific queries will not be sent to the server.
+    //        complete: true
+    //    };
+    //
+    //    setTimeout(function () {
+    //        callback(null, data);
+    //    }, 500);
+    //},
 
 
     render() {
@@ -81,7 +64,7 @@ const AsyncSelectInput = React.createClass({
                     <Select.Async
                         name={this.props.name}
                         value={this.props.value}
-                        loadOptions={this.getOptions}
+                        loadOptions={this.props.getOptions}
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}

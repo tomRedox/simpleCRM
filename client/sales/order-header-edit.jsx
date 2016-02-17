@@ -11,7 +11,6 @@ const OrderHeaderEdit = React.createClass({
         onSave: React.PropTypes.func.isRequired,
         errors: React.PropTypes.object.isRequired,
         isValid: React.PropTypes.bool,
-        customerOptions: React.PropTypes.array.isRequired
     },
 
     mixins: [ ReactMeteorData ],
@@ -30,17 +29,23 @@ const OrderHeaderEdit = React.createClass({
         };
     },
 
+    getCustomers: function getCustomers(input) {
+        var customerHandle = Meteor.subscribe('CustomerCompanies.public');
+        return this.props.getCustomerOptions(input);
+    },
+
     getOptions(input, callback) {
+
+        console.log("getOptions", input);
+        input = input.toLowerCase();
+
+        var data = {
+            options: this.data.customers,
+            complete: true
+        };
+
         setTimeout(function () {
-            callback(null, {
-                options: [
-                    { value: 'one', label: 'One' },
-                    { value: 'two', label: 'Two' }
-                ],
-                // CAREFUL! Only set this to true when there are no more options,
-                // or more specific queries will not be sent to the server.
-                complete: true
-            });
+            callback(null, data);
         }, 500);
     },
 
@@ -52,20 +57,22 @@ const OrderHeaderEdit = React.createClass({
             return ( <h3>Loading Order</h3> );
         }
 
+
+
         return (
 
 
             <div>
 
 
-                <SelectInput
+                <AsyncSelectInput
                     name="customerId"
                     label="Customer"
                     value={this.props.order.customerId ? this.props.order.customerId : ''}
                     onChange={this.props.onChange}
                     //placeholder="Next contact date"
                     error={this.props.errors.customerId}
-                    options={this.data.customers}
+                    getOptions={this.getOptions}
                     valueKey="_id"
                     labelKey="name"
 
@@ -124,4 +131,16 @@ export default OrderHeaderEdit;
 //    valueKey="_id"
 //    labelKey="name"
 //
+///>
+
+//<SelectInput
+//    name="customerId"
+//    label="Customer"
+//    value={this.props.order.customerId ? this.props.order.customerId : ''}
+//    onChange={this.props.onChange}
+//    //placeholder="Next contact date"
+//    error={this.props.errors.customerId}
+//    options={this.data.customers}
+//    valueKey="_id"
+//    labelKey="name"
 ///>

@@ -12,7 +12,7 @@ Meteor.publish('CustomerCompany.get', function (_id) {
     return CustomerCompanies.find({_id});
 });
 
-Meteor.publish('CustomerCompany.searchByName', function (searchTerm) {
+Meteor.publish('CustomerCompanies.searchByName', function (searchTerm) {
 
     //console.log("publication match ", CustomerCompanies.find({_id: custId}).fetch());
 
