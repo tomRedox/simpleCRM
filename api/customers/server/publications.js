@@ -14,7 +14,7 @@ Meteor.publish('CustomerCompany.get', function (_id) {
 
 Meteor.publish('CustomerCompanies.searchByName', function (searchTerm) {
 
-    //console.log("publication match ", CustomerCompanies.find({_id: custId}).fetch());
+    //console.log("CustomerCompanies.searchByName " + searchTerm, CustomerCompanies.find({name: new RegExp(searchTerm)}).fetch());
 
-    return CustomerCompanies.find({name: new RegExp(searchTerm)});
-});
+    return CustomerCompanies.find({name: new RegExp(searchTerm, 'i')});
+})

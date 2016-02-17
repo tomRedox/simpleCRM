@@ -13,50 +13,46 @@ const OrderHeaderEdit = React.createClass({
         isValid: React.PropTypes.bool,
     },
 
-    mixins: [ ReactMeteorData ],
+    //mixins: [ ReactMeteorData ],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
-    getMeteorData() {
+    //getMeteorData() {
         //console.log("OrderEditForm.getMeteorData");
 
         // for the companies list on the Order Header
-        var customerHandle = Meteor.subscribe('CustomerCompanies.public');
-        var customers = CustomerCompanies.find().fetch();
-
-        return {
-            customersLoading: customerHandle ? !customerHandle.ready() : {},
-            customers
-        };
-    },
+        //var customerHandle = Meteor.subscribe('CustomerCompanies.public');
+        //var customers = CustomerCompanies.find().fetch();
+        //
+        //return {
+        //    customersLoading: customerHandle ? !customerHandle.ready() : {},
+        //    customers
+        //};
+    //},
 
     getCustomers: function getCustomers(input) {
-        var customerHandle = Meteor.subscribe('CustomerCompanies.public');
-        return this.props.getCustomerOptions(input);
+        //console.log("getCustomers", input);
+        var customerHandle = Meteor.subscribe('CustomerCompanies.searchByName', input);
+        return CustomerCompanies.find().fetch();
     },
 
-    getOptions(input, callback) {
+    loadOptions(input, callback) {
 
         console.log("getOptions", input);
-        input = input.toLowerCase();
+        //input = input.toLowerCase();
 
         var data = {
-            options: this.data.customers,
+            options: this.getCustomers(input), //this.data.customers,
             complete: true
         };
 
         setTimeout(function () {
+            console.log("setTimeout", input);
             callback(null, data);
         }, 500);
     },
 
     render() {
         console.log("OrderHeaderEdit props: ", this.props);
-
-        if (this.data.customersLoading) {
-            console.log("loading");
-            return ( <h3>Loading Order</h3> );
-        }
-
 
 
         return (
@@ -72,7 +68,7 @@ const OrderHeaderEdit = React.createClass({
                     onChange={this.props.onChange}
                     //placeholder="Next contact date"
                     error={this.props.errors.customerId}
-                    getOptions={this.getOptions}
+                    loadOptions={this.loadOptions}
                     valueKey="_id"
                     labelKey="name"
 
@@ -144,3 +140,10 @@ export default OrderHeaderEdit;
 //    valueKey="_id"
 //    labelKey="name"
 ///>
+
+//
+//if (this.data.customersLoading) {
+//    console.log("loading");
+//    return ( <h3>Loading Order</h3> );
+//}
+

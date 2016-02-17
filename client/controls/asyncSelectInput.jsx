@@ -10,7 +10,7 @@ const AsyncSelectInput = React.createClass({
         label: React.PropTypes.string.isRequired,
         value: React.PropTypes.string.isRequired,
         //defaultOption: React.PropTypes.string.isRequired,
-        getOptions: React.PropTypes.func.isRequired,
+        loadOptions: React.PropTypes.func.isRequired,
         onChange: React.PropTypes.func.isRequired,
         valueKey: React.PropTypes.string.isRequired,
         labelKey: React.PropTypes.string.isRequired,
@@ -28,24 +28,31 @@ const AsyncSelectInput = React.createClass({
         });
     },
 
-    //
-    //getOptions(input, callback) {
-    //    input = input.toLowerCase();
-    //
-    //    var data = {
-    //        options: [
-    //            { _id: '1', name: 'One' },
-    //            { _id: '2', name: 'Two' }
-    //        ],
-    //        // CAREFUL! Only set this to true when there are no more options,
-    //        // or more specific queries will not be sent to the server.
-    //        complete: true
-    //    };
-    //
-    //    setTimeout(function () {
-    //        callback(null, data);
-    //    }, 500);
-    //},
+
+    getOptions(input, callback) {
+        console.log("getOptions", input);
+        input = input.toLowerCase();
+
+        var data = {
+            options: [
+                { _id: '1', name: 'Hard' },
+                { _id: '2', name: 'Hord' },
+                { _id: '3', name: 'Harris' },
+                { _id: '4', name: 'Ham' },
+                { _id: '5', name: 'Hockney' },
+                { _id: '6', name: 'Horris' },
+                { _id: '7', name: 'Hamilton' },
+                { _id: '8', name: 'Honest' }
+            ],
+            // CAREFUL! Only set this to true when there are no more options,
+            // or more specific queries will not be sent to the server.
+            complete: true
+        };
+
+        setTimeout(function () {
+            callback(null, data);
+        }, 500);
+    },
 
 
     render() {
@@ -64,10 +71,12 @@ const AsyncSelectInput = React.createClass({
                     <Select.Async
                         name={this.props.name}
                         value={this.props.value}
-                        loadOptions={this.props.getOptions}
+                        loadOptions={this.props.loadOptions}
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
+                        //cache={false} // stop the control caching the results - if true only searches the list retrieved on first load
+                        minimumInput={3} // number of letters needed before a search starts
                     />
                     <div className="input">
                         {this.props.error}
