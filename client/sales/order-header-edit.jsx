@@ -69,7 +69,6 @@ const OrderHeaderEdit = React.createClass({
 
                     <DateInput name="deliveryDate" onChange={this.props.onChange} value={this.props.order.deliveryDate}
                                error={this.props.errors.deliveryDate} hideLabel={true}/>
-
                 </div>
 
                 <div className="form-group">

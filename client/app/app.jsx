@@ -5,6 +5,8 @@
 
 
 import React from 'react';
+import MessageEditor from '../controls/message-editor.jsx';
+
 //var RouteHandler = require('react-router').RouteHandler;
 //var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -15,38 +17,41 @@ Meteor.subscribe("Orders.All");
 // define and export our Layout component
 export const Layout = ({content}) => (
 
-            <div>
-                <div className="wrapper">
-                    <div className="box">
-                        <div className="row row-offcanvas row-offcanvas-left">
+    <div id="app">
+        <div className="wrapper">
+            <div className="box">
+                <div className="row row-offcanvas row-offcanvas-left">
 
-                            <Sidebar/>
+                    <Sidebar/>
 
-                            <div className="column col-sm-10 col-xs-11" id="main">
+                    <div className="column col-sm-10 col-xs-11" id="main">
 
-                                <TopNav/>
+                        <TopNav/>
 
-                                <div className="padding">
-                                    <div className="full col-sm-9">
+                        <div className="padding">
+                            <div className="full col-sm-9">
 
-                                        <div className="row">
+                                <div className="row">
 
-                                            <main>
-                                                <div>{content}</div>
-                                            </main>
-                                        </div>
-                                    </div>
+                                    <main>
+                                        <div id="popup"></div>
+                                        <MessageEditor />
+                                        <div>{content}</div>
+
+                                    </main>
                                 </div>
-
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div >
+            </div>
+        </div>
+    </div >
 
 );
 //<TopNav/>
-//<hr />
+//<hr /><div id="popup-target"></div>
 //<div>{content}</div>
 
 //<ReactCSSTransitionGroup
