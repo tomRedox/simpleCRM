@@ -3,7 +3,6 @@ import Autosuggest from 'react-autosuggest';
 import AsyncSelectInput from '../controls/asyncSelectInput.jsx';
 
 
-
 const OrderHeaderEdit = React.createClass({
     propTypes: {
         order: React.PropTypes.object.isRequired,
@@ -14,53 +13,10 @@ const OrderHeaderEdit = React.createClass({
         isValid: React.PropTypes.bool,
     },
 
-    //mixins: [ ReactMeteorData ],
-
-    // Loads items from the Tasks collection and puts them on this.data.tasks
-    //getMeteorData() {
-        //console.log("OrderEditForm.getMeteorData");
-
-        // for the companies list on the Order Header
-        //var customerHandle = Meteor.subscribe('CustomerCompanies.public');
-        //var customers = CustomerCompanies.find().fetch();
-        //
-        //return {
-        //    customersLoading: customerHandle ? !customerHandle.ready() : {},
-        //    customers
-        //};
-    //},
-
     getCustomers: function getCustomers(input) {
         console.log("OrderHeaderEdit.getCustomers()", input);
         var customerHandle = Meteor.subscribe('CustomerCompanies.searchByName', input);
         return CustomerCompanies.find().fetch();
-    },
-
-    loadOptions(input, callback) {
-
-        console.log("OrderHeaderEdit.loadOptions() ", input);
-        //input = input.toLowerCase();
-
-        var options;
-
-        if (!input || input.length < 2) {
-            options = [ {
-                _id: this.props.order.customerId ? this.props.order.customerId : '',
-                name: "hi there"
-            } ];
-        } else {
-            options = this.getCustomers(input);
-        }
-
-        var data = {
-            options: options, //this.getCustomers(input), //this.data.customers,
-            complete: true
-        };
-
-        setTimeout(function () {
-            console.log("setTimeout", input);
-            callback(null, data);
-        }, 500);
     },
 
     render() {
@@ -69,25 +25,21 @@ const OrderHeaderEdit = React.createClass({
         const value = {
             _id: this.props.order.customerId ? this.props.order.customerId : '',
             name: this.props.order.customerName
-        }
+        };
 
         return (
 
-
             <div>
-
-
                 <AsyncSelectInput
                     name="customerId"
                     label="Customer"
-                    value= {value} //{this.props.order.customerId ? this.props.order.customerId : ''}
+                    value= {value}
                     onChange={this.props.onCustomerChange}
                     //placeholder="Next contact date"
                     error={this.props.errors.customerId}
-                    loadOptions={this.loadOptions}
+                    loadOptions={this.getCustomers}
                     valueKey="_id"
                     labelKey="name"
-
                 />
 
                 <TextInput
@@ -98,7 +50,6 @@ const OrderHeaderEdit = React.createClass({
                     value={this.props.order.deliveryAddress1}
                     error={this.props.errors.deliveryAddress1}
                 />
-
 
                 <TextInput
                     name="notes"
@@ -131,35 +82,4 @@ const OrderHeaderEdit = React.createClass({
 });
 
 export default OrderHeaderEdit;
-
-//<AsyncSelectInput
-//    name="customerId"
-//    label="Customer"
-//    value={this.props.order.customerId ? this.props.order.customerId : ''}
-//    onChange={this.props.onChange}
-//    //placeholder="Next contact date"
-//    error={this.props.errors.customerId}
-//    getOptions={this.getOptions}
-//    valueKey="_id"
-//    labelKey="name"
-//
-///>
-
-//<SelectInput
-//    name="customerId"
-//    label="Customer"
-//    value={this.props.order.customerId ? this.props.order.customerId : ''}
-//    onChange={this.props.onChange}
-//    //placeholder="Next contact date"
-//    error={this.props.errors.customerId}
-//    options={this.data.customers}
-//    valueKey="_id"
-//    labelKey="name"
-///>
-
-//
-//if (this.data.customersLoading) {
-//    console.log("loading");
-//    return ( <h3>Loading Order</h3> );
-//}
 

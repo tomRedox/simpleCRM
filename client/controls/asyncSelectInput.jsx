@@ -8,8 +8,8 @@ const AsyncSelectInput = React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
         label: React.PropTypes.string.isRequired,
+        // The value needs to be an object with two properties called the same as the valueKey and the labelKey
         value: React.PropTypes.object.isRequired,
-        //defaultOption: React.PropTypes.string.isRequired,
         loadOptions: React.PropTypes.func.isRequired,
         onChange: React.PropTypes.func.isRequired,
         valueKey: React.PropTypes.string.isRequired,
@@ -17,19 +17,16 @@ const AsyncSelectInput = React.createClass({
         error: React.PropTypes.string
     },
 
-
     onChangeHandler(selectedOption) {
-        console.log("AsyncSelectInput.onChangeHandler selectedOption ",
-            selectedOption[this.props.valueKey] + " " + selectedOption[this.props.labelKey])
+        //console.log("AsyncSelectInput.onChangeHandler selectedOption ",
+        //    selectedOption[this.props.valueKey] + " " + selectedOption[this.props.labelKey])
 
         this.props.onChange({
             name: this.props.name,
             value: selectedOption[this.props.valueKey],
-            label: selectedOption[this.props.labelKey]  //1.0.0
-            //value: selectedOption //0.9
+            label: selectedOption[this.props.labelKey]
         });
     },
-
 
     //getOptions(input, callback) {
     //    console.log("getOptions", input);
@@ -56,61 +53,36 @@ const AsyncSelectInput = React.createClass({
     //    }, 500);
     //},
 
-    getValue() {
-        console.log("AsyncSelectInput.getValue(): this.props.value = ", this.props.valueKey + " - " + this.props.labelKey);
-        console.log("AsyncSelectInput.getValue(): this.props.value = ", this.props.value[this.props.valueKey] + " - " + this.props.value[this.props.labelKey]);
+    loadOptions(input, callback) {
+        console.log("OrderHeaderEdit.loadOptions() ", input);
 
-
-        return {
-            _id: this.props.value._id,
-            name: this.props.value.name
+        var data = {
+            options: this.props.loadOptions(input),
+            complete: true
         };
 
-
-        return this.props.value;
-        // To work around react-select's weird input api
-        const {val} = this.props.value;
-
-        var result;
-
-        if (!val) {
-            result = {
-                _id:  '',
-                name: "forced value"
-            };
-        } else {
-            return this.props.value;
-        }
-
-        return result;
+        setTimeout(function () {
+            console.log("setTimeout", input);
+            callback(null, data);
+        }, 500);
     },
 
-    //getOptions(input, callback) {
-    //
-    //    console.log("getOptions start", this.props.value);
-    //    const results = this.props.loadOptions(input, callback);
-    //
-    //    if ( (!results || results.length === 0) && (this.props.value) ) {
-    //        console.log("getOptions no match", this.props.value);
-    //
-    //        var data = {
-    //            options: [ {
-    //                _id: this.props.value,
-    //                name: "hi there"
-    //            }
-    //            ],
-    //            complete: true
-    //        };
-    //
-    //        setTimeout(function () {
-    //            console.log("setTimeout", input);
-    //            callback(null, data);
-    //        }, 1);
-    //    }
-    //},
+    // The value needs to be an object with two properties called the same as the valueKey and the labelKey
+    getValue() {
+        //console.log("AsyncSelectInput.getValue(): this.props.value = ",
+        //    this.props.valueKey + " - " + this.props.labelKey);
+        //console.log("AsyncSelectInput.getValue(): this.props.value = ",
+        //    this.props.value[this.props.valueKey] + " - " + this.props.value[this.props.labelKey]);
+
+        return {
+            [this.props.valueKey]: this.props.value[this.props.valueKey],
+            [this.props.labelKey]: this.props.value[this.props.labelKey]
+        };
+    },
 
     render() {
-        console.log("AsyncSelectInput.render() - value=", this.props.value)
+        //console.log("AsyncSelectInput.render() - value=", this.props.value)
+
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         var wrapperClass = 'form-group';
@@ -124,14 +96,13 @@ const AsyncSelectInput = React.createClass({
                 <div className="field">
                     <Select.Async
                         name={this.props.name}
-                        value={ this.getValue() } //getValue() }
-                        //asyncOptions={this.props.loadOptions} // 0.9.x .loadOptions}
-                        loadOptions={this.props.loadOptions} // 1.0
+                        value={this.getValue()}
+                        loadOptions={this.loadOptions}
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
-                        //cacheAsyncResults={false} // 0.9.x syntax
-                        cache={false} // 1.0.0 change this to 'cache' stop the control caching the results - if true only searches the list retrieved on first load
+                        // stop the control caching the results - if true only searches the list retrieved on first load
+                        cache={false}
                         searchingText="Loading results..."
                         minimumInput={2} // number of letters needed before a search starts
                         autoload={false}

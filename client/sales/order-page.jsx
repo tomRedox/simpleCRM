@@ -56,47 +56,37 @@ const OrderPage = React.createClass({
         return errors;
     },
 
-    onOrderHeaderChanged(event) {
+    validateOrderHeaderAndUpdateState() {
+        // validate the order against the table schema
+        this.state.errors = this.validateItemAgainstSchema(
+            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
 
-        console.log("OrderPage.onOrderHeaderChanged:", event.target);
+        this.setFormIsValid();
+        //
+        //// Update the state, this will then cause the re-render
+        this.setState({order: this.state.order});
+    },
+
+    onOrderHeaderChanged(event) {
+        //console.log("OrderPage.onOrderHeaderChanged:", event.target);
 
         // update our order state to reflect the new value in the UI
          this.state.order[event.target.name] = event.target.value;
         //console.log("New value ",this.state.order[event.target.name])
 
-
-        // validate the order against the table schema
-        this.state.errors = this.validateItemAgainstSchema(
-            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
-
-        this.setFormIsValid();
-        //
-        //// Update the state, this will then cause the re-render
-        this.setState({order: this.state.order});
-
+        this.validateOrderHeaderAndUpdateState();
     },
 
     onOrderHeaderCustomerChanged(selectedItem) {
-
-        console.log("OrderPage.onOrderHeaderCustomerChanged() customer:", selectedItem.value + " - " + selectedItem.label);
+        //console.log("OrderPage.onOrderHeaderCustomerChanged() customer:", selectedItem.value + " - " + selectedItem.label);
 
         // update our order state to reflect the new value in the UI
         this.state.order.customerId = selectedItem.value;
         this.state.order.customerName = selectedItem.label;
 
-        //console.log("New value ",this.state.order[event.target.name])
-
-
-        // validate the order against the table schema
-        this.state.errors = this.validateItemAgainstSchema(
-            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
-
-        this.setFormIsValid();
-        //
-        //// Update the state, this will then cause the re-render
-        this.setState({order: this.state.order});
-
+        this.validateOrderHeaderAndUpdateState();
     },
+
     setFormIsValid() {
         //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
         const lineErrors = this.state.lineErrorSets.find(x => Object.keys(x.errors).length > 0);
@@ -137,7 +127,6 @@ const OrderPage = React.createClass({
             errorSet.errors = errors;
             this.state.lineErrorSets.push(errorSet);
         }
-
     },
 
     getErrorSetForOrderLine(orderLine) {
