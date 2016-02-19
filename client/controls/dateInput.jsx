@@ -1,6 +1,6 @@
-//"use strict";
-//
+
 var React = require('react');
+var humanize = require('string-humanize');
 
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
@@ -9,12 +9,13 @@ DateInput = React.createClass({
     // list out our required and optional properties for this class
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        label: React.PropTypes.string.isRequired,
+        label: React.PropTypes.string,
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.instanceOf(Date),
         //defaultValue: React.PropTypes.string,
-        error: React.PropTypes.string
+        error: React.PropTypes.string,
+        hideLabel: React.PropTypes.bool
     },
 
     onChangeHandler(event) {
@@ -26,6 +27,14 @@ DateInput = React.createClass({
                 value: moment(event, "YYYY-MM-DD").toDate()
             }
         });
+    },
+
+    renderLabel() {
+        if (!this.props.hideLabel) {
+            return (
+                <label htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
+            );
+        }
     },
 
     render() {
@@ -45,9 +54,11 @@ DateInput = React.createClass({
         const convertedDate = moment(this.props.value).format("YYYY-MM-DD");
         //console.log("convertedDate ", convertedDate );
 
+        const humanizedName = humanize(this.props.name);
+
         return (
             <div className={wrapperClass}>
-                <label htmlFor={this.props.name}>{this.props.label}</label>
+                {this.renderLabel()}
                 <div className="field">
                     <DateTimeField
                         dateTime={convertedDate}

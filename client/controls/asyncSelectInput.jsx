@@ -1,18 +1,20 @@
 import React from 'react';
 import Select from 'react-select';
+var humanize = require('string-humanize');
 
 const AsyncSelectInput = React.createClass({
     // list out our required and optional properties for this class
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        label: React.PropTypes.string.isRequired,
+        label: React.PropTypes.string,
         // The value needs to be an object with two properties called the same as the valueKey and the labelKey
         value: React.PropTypes.object.isRequired,
         loadOptions: React.PropTypes.func.isRequired,
         onChange: React.PropTypes.func.isRequired,
         valueKey: React.PropTypes.string.isRequired,
         labelKey: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string
+        error: React.PropTypes.string,
+        hideLabel: React.PropTypes.bool
     },
 
     onChangeHandler(selectedOption) {
@@ -57,6 +59,14 @@ const AsyncSelectInput = React.createClass({
         };
     },
 
+    renderLabel() {
+        if (!this.props.hideLabel) {
+            return (
+                <label htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
+            );
+        }
+    },
+
     render() {
         //console.log("AsyncSelectInput.render() - value=", this.props.value)
 
@@ -67,9 +77,11 @@ const AsyncSelectInput = React.createClass({
             wrapperClass += " " + 'has-error';
         }
 
+        const humanizedName = humanize(this.props.name);
+
         return (
             <div className={wrapperClass}>
-                <label htmlFor={this.props.name}>{this.props.label}</label>
+                {this.renderLabel()}
                 <div className="field">
                     <Select.Async
                         name={this.props.name}
@@ -78,6 +90,7 @@ const AsyncSelectInput = React.createClass({
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
+                        placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
                         // stop the control caching the results - if true only searches the list retrieved on first load
                         cache={true}
                         searchingText="Loading results..."

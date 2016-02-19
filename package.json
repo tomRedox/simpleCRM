@@ -27,7 +27,8 @@
     "react-mounter": "^1.0.0",
     "react-router": "^2.0.0-rc6",
     "react-select": "^1.0.0-beta9",
-    "react-transform-hmr": "^1.0.2"
+    "react-transform-hmr": "^1.0.2",
+    "string-humanize": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^1.10.3",
