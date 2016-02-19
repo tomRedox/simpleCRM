@@ -32,7 +32,10 @@ const AsyncSelectInput = React.createClass({
 
         var data = {
             options: this.props.loadOptions(input),
-            complete: true
+            // this tells the select control whether this is the complete dataset of all possible options,
+            // which in turn tells the control whether to bother re-querying the datasource or instead
+            // just to use it's cached dataset.
+            complete: false
         };
 
         setTimeout(function () {
@@ -76,10 +79,11 @@ const AsyncSelectInput = React.createClass({
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
                         // stop the control caching the results - if true only searches the list retrieved on first load
-                        cache={false}
+                        cache={true}
                         searchingText="Loading results..."
                         minimumInput={2} // number of letters needed before a search starts
                         autoload={false}
+                        matchProp="'label" // Typed input is only matched to the label, not to the id as well
                     />
                     <div className="input">
                         {this.props.error}
