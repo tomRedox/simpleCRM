@@ -14,7 +14,7 @@ Meteor.publish('CustomerCompany.get', function (_id) {
 
 Meteor.publish('CustomerCompanies.searchByName', function (searchTerm) {
 
-    //console.log("CustomerCompanies.searchByName " + searchTerm, CustomerCompanies.find({name: new RegExp(searchTerm)}).fetch());
+    console.log("CustomerCompanies.searchByName - " + searchTerm + " - ", CustomerCompanies.find({name: new RegExp(searchTerm)}).fetch());
 
     // the 'i' makes the search case insensitive
     return CustomerCompanies.find({name: new RegExp(searchTerm, 'i')});

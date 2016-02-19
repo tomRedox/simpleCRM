@@ -36,7 +36,7 @@ import OrderPageWrapper from './sales/order-page-wrapper.jsx';
 FlowRouter.route("/", {
     name: "Home",
     action() {
-        console.log("route ", this.name);
+        //console.log("route ", this.name);
         mount(Layout, {
             content: (<Dashboard />)
         });
@@ -47,7 +47,7 @@ FlowRouter.route("/", {
 FlowRouter.route('/customers/:_id', {
     name: 'CustomerCompany.edit',
     action() {
-        console.log("route ", this.name);
+        //console.log("route ", this.name);
         mount(Layout, {
             content: (<CustomerEditPageWrapper />)
         });
@@ -57,7 +57,7 @@ FlowRouter.route('/customers/:_id', {
 FlowRouter.route("/addCustomer", {
     name: "addCustomer",
     action() {
-        console.log("route ", this.name);
+        //console.log("route ", this.name);
         mount(Layout, {
             content: (<CustomerEditPageWrapper />)
         });
@@ -67,7 +67,7 @@ FlowRouter.route("/addCustomer", {
 FlowRouter.notFound = {
     name: "notFoundRoute",
     action() {
-        console.log("route ", this.name);
+        //console.log("route ", this.name);
         mount(Layout, {
             content: (<AppNotFound />)
         });
@@ -78,7 +78,7 @@ FlowRouter.notFound = {
 FlowRouter.route('/orders/:_id', {
     name: 'Order.edit',
     action() {
-        console.log("route ", this.name);
+        //console.log("route ", this.name);
         mount(Layout, {
             content: (<OrderPageWrapper />)
         });

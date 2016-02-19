@@ -54,7 +54,7 @@ const OrderPageWrapper = React.createClass({
     // to keep all the db access in one place.  This also effectively separates the child
     // component from the data access which may be good for disconnected data scenarios
     saveOrder(order) {
-        console.log("submitted order: ", order);
+        console.log("OrderPageWrapper.saveOrder(): submitted order: ", order);
 
         const orderId = FlowRouter.getParam('_id');
 
@@ -80,7 +80,6 @@ const OrderPageWrapper = React.createClass({
         console.log("OrderPageWrapper render - order: ", this.data.order);
 
         if (!this.data.newOrder && (this.data.orderLoading)) {
-            console.log("rendered");
             return ( <h3>Loading Order</h3> );
         }
         return (

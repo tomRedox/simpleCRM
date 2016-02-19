@@ -13,7 +13,7 @@ const OrderPage = React.createClass({
 
     getInitialState() {
 
-        console.log("OrderPage.getInitialState", this.props);
+        console.log("OrderPage.getInitialState(): props", this.props);
 
         return {
             order: this.props.order,
@@ -42,7 +42,7 @@ const OrderPage = React.createClass({
 
     validateItemAgainstSchema(item, schemaContext) {
         const errors = {};
-        console.log("validateItemAgainstSchema:", item);
+        console.log("OrderPage.validateItemAgainstSchema(): item ", item);
         schemaContext.validate(item);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
@@ -58,7 +58,7 @@ const OrderPage = React.createClass({
 
     onOrderHeaderChanged(event) {
 
-        console.log("onOrderHeaderChanged:", event.target);
+        console.log("OrderPage.onOrderHeaderChanged:", event.target);
 
         // update our order state to reflect the new value in the UI
          this.state.order[event.target.name] = event.target.value;
@@ -76,6 +76,27 @@ const OrderPage = React.createClass({
 
     },
 
+    onOrderHeaderCustomerChanged(selectedItem) {
+
+        console.log("OrderPage.onOrderHeaderCustomerChanged() customer:", selectedItem.value + " - " + selectedItem.label);
+
+        // update our order state to reflect the new value in the UI
+        this.state.order.customerId = selectedItem.value;
+        this.state.order.customerName = selectedItem.label;
+
+        //console.log("New value ",this.state.order[event.target.name])
+
+
+        // validate the order against the table schema
+        this.state.errors = this.validateItemAgainstSchema(
+            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
+
+        this.setFormIsValid();
+        //
+        //// Update the state, this will then cause the re-render
+        this.setState({order: this.state.order});
+
+    },
     setFormIsValid() {
         //console.log("Order: setFormIsValid", Object.keys(this.state.errors).length)
         const lineErrors = this.state.lineErrorSets.find(x => Object.keys(x.errors).length > 0);
@@ -144,11 +165,11 @@ const OrderPage = React.createClass({
     },
 
     deleteOrderLine(id) {
-        console.log("deleteOrderLine", id);
+        console.log("OrderPage.deleteOrderLine", id);
 
         const line = this.state.order.orderLines.find(x => x._id === id);
         var pos = this.state.order.orderLines.indexOf(line);
-        console.log("index ", pos);
+        console.log("pos index ", pos);
 
         this.state.order.orderLines.splice(pos, 1);
 
@@ -160,13 +181,13 @@ const OrderPage = React.createClass({
     },
 
     saveOrder(event) {
-        console.log("saveOrder", event);
+        console.log("OrderPage.saveOrder", event);
         event.preventDefault();
         this.props.onSave(this.state.order);
     },
 
     render() {
-        console.log("OrderPage render props: ", this.props);
+        console.log("OrderPage.render() props: ", this.props);
         this.setFormIsValid();
 
         return (
@@ -179,6 +200,7 @@ const OrderPage = React.createClass({
                         <OrderHeaderEdit
                             order = {this.state.order}
                             onChange = {this.onOrderHeaderChanged}
+                            onCustomerChange = {this.onOrderHeaderCustomerChanged}
                             onSave = {this.saveOrder}
                             errors = {this.state.errors}
                             isValid={this.state.isValid}

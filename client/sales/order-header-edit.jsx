@@ -8,6 +8,7 @@ const OrderHeaderEdit = React.createClass({
     propTypes: {
         order: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
+        onCustomerChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
         errors: React.PropTypes.object.isRequired,
         isValid: React.PropTypes.bool,
@@ -30,18 +31,29 @@ const OrderHeaderEdit = React.createClass({
     //},
 
     getCustomers: function getCustomers(input) {
-        //console.log("getCustomers", input);
+        console.log("OrderHeaderEdit.getCustomers()", input);
         var customerHandle = Meteor.subscribe('CustomerCompanies.searchByName', input);
         return CustomerCompanies.find().fetch();
     },
 
     loadOptions(input, callback) {
 
-        console.log("getOptions", input);
+        console.log("OrderHeaderEdit.loadOptions() ", input);
         //input = input.toLowerCase();
 
+        var options;
+
+        if (!input || input.length < 2) {
+            options = [ {
+                _id: this.props.order.customerId ? this.props.order.customerId : '',
+                name: "hi there"
+            } ];
+        } else {
+            options = this.getCustomers(input);
+        }
+
         var data = {
-            options: this.getCustomers(input), //this.data.customers,
+            options: options, //this.getCustomers(input), //this.data.customers,
             complete: true
         };
 
@@ -52,8 +64,12 @@ const OrderHeaderEdit = React.createClass({
     },
 
     render() {
-        console.log("OrderHeaderEdit render - props: ", this.props);
+        console.log("OrderHeaderEdit.render() - props: ", this.props);
 
+        const value = {
+            _id: this.props.order.customerId ? this.props.order.customerId : '',
+            name: this.props.order.customerName
+        }
 
         return (
 
@@ -64,8 +80,8 @@ const OrderHeaderEdit = React.createClass({
                 <AsyncSelectInput
                     name="customerId"
                     label="Customer"
-                    value={this.props.order.customerId ? this.props.order.customerId : ''}
-                    onChange={this.props.onChange}
+                    value= {value} //{this.props.order.customerId ? this.props.order.customerId : ''}
+                    onChange={this.props.onCustomerChange}
                     //placeholder="Next contact date"
                     error={this.props.errors.customerId}
                     loadOptions={this.loadOptions}
