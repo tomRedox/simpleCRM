@@ -1,6 +1,7 @@
 
 import Orders from './order.js';
 
+
 Orders.methods = {};
 
 
@@ -12,7 +13,7 @@ Orders.methods.upsert = new ValidatedMethod({
     name: 'Orders.methods.upsert',
 
     validate(args) {
-        console.log("validating order", args);
+        console.log("Orders.methods.upsert.validate(args) ");
 
         var schemaContext = Schemas.OrderSchema.namedContext("OrderForm");
         schemaContext.validate(args.data);
@@ -24,11 +25,11 @@ Orders.methods.upsert = new ValidatedMethod({
     // the actual database updating part
     // validate has already been run at this point
     run(args) {
-        console.log("run");
-        console.log("args", args);
-        console.log("lines", args.data.orderLines);
-        console.log("lines[0]", args.data.orderLines[0]);
-        console.log("order", JSON.stringify(args.data));
+        //console.log("run");
+        //console.log("args", args);
+        //console.log("lines", args.data.orderLines);
+        //console.log("lines[0]", args.data.orderLines[0]);
+        //console.log("order", JSON.stringify(args.data));
 
         return Orders.upsert(args.orderId, {$set: args.data});
     }
@@ -41,4 +42,3 @@ Meteor.methods({
         Orders.remove( { _id: orderId } );
     }
 });
-

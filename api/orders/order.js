@@ -23,19 +23,55 @@ Orders.attachSchema(Schemas.OrderSchema);
 
 Orders.before.insert(function (userId, doc) {
     console.log("Orders.before.insert", doc);
-    // Ensure all the line totals acrea correctly set, even if the UI already did this.
-    recalculateOrderTotals(doc);
+    customerCompanyDenormalizer.beforeInsert(userId, doc);
 });
 
 Orders.before.update(function (userId, doc, fieldNames, modifier, options) {
     console.log("Orders.before.update", doc);
-    // Ensure all the line totals acrea correctly set, even if the UI already did this.
-    recalculateOrderTotals(doc);
+    customerCompanyDenormalizer.beforeUpdate(userId, doc, fieldNames, modifier, options);
 });
 
 Orders.before.upsert(function (userId, selector, modifier, options) {
-    // Ensure all the line totals acrea correctly set, even if the UI already did this.
-    recalculateOrderTotals(modifier.$set);
+    console.log("Orders.before.upsert", modifier.$set);
+    customerCompanyDenormalizer.beforeUpsert(userId, selector, modifier, options);
 });
+
+
+const customerCompanyDenormalizer = {
+    _updateCompanyNameOnOrder(order) {
+        //console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
+        //    order.customerId + " - " + order.customerName);
+
+        // no action needed if the customerId is not set
+        if (!order.customerId || order.customerId === null) { return; }
+
+        const customer = CustomerCompanies.findOne({_id: order.customerId});
+
+        if (!customer) {
+            throw new Meteor.Error("The customer could not be found in the database");
+        }
+
+        order.customerName = customer.name;
+    },
+
+    beforeInsert(userId, doc) {
+        recalculateOrderTotals(doc);
+        this._updateCompanyNameOnOrder(doc);
+    },
+
+    beforeUpdate(userId, doc, fieldNames, modifier, options) {
+        recalculateOrderTotals(doc);
+        this._updateCompanyNameOnOrder(doc);
+    },
+
+    beforeUpsert(userId, selector, modifier, options) {
+
+        // Ensure all the line totals acrea correctly set, even if the UI already did this.
+        recalculateOrderTotals(modifier.$set);
+
+        // Ensure the company name is set correctly
+        this._updateCompanyNameOnOrder(modifier.$set);
+    }
+};
 
 export default Orders;

@@ -83,7 +83,7 @@ const AsyncSelectInput = React.createClass({
                         searchingText="Loading results..."
                         minimumInput={2} // number of letters needed before a search starts
                         autoload={false}
-                        matchProp="'label" // Typed input is only matched to the label, not to the id as well
+                        matchProp="label" // Typed input is only matched to the label, not to the id as well
                     />
                     <div className="input">
                         {this.props.error}
