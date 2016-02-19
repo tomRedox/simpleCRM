@@ -14,10 +14,11 @@ TextInput = React.createClass({
         value: React.PropTypes.string,
         //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string,
-        hideLabel: React.PropTypes.bool
+        hideLabel: React.PropTypes.bool,
+        textRows: React.PropTypes.number
     },
 
-    getDefaultProps: function() {
+    getDefaultProps() {
         return {
             hideLabel: false
         };
@@ -31,32 +32,52 @@ TextInput = React.createClass({
         }
     },
 
+    renderTextArea() {
+        const humanizedName = humanize(this.props.name);
+
+        if (this.props.textRows) {
+            return (
+                <textarea
+                       name={this.props.name}
+                       rows={this.props.textRows}
+                       className="form-control"
+                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
+                       ref={this.props.name}
+                       id={this.props.name}
+                       value={this.props.value}
+                       onChange={this.props.onChange} />
+            );
+        } else {
+            return (
+                <input type="text"
+                       name={this.props.name}
+                       className="form-control"
+                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
+                       ref={this.props.name}
+                       id={this.props.name}
+                       value={this.props.value}
+                       onChange={this.props.onChange} />
+            );
+        }
+    },
+
     render() {
         //console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
-        var wrapperClass = 'form-group';
+        let wrapperClass = 'form-group';
         if (this.props.error && this.props.error.length > 0) {
             //console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
         }
 
-        const humanizedName = humanize(this.props.name);
 
         return (
             <div className={wrapperClass}>
                 {this.renderLabel()}
                 <div className="field">
-                    <input type="text"
-                           name={this.props.name}
-                           className="form-control"
-                           placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
-                           ref={this.props.name}
-                           id={this.props.name}
-                           value={this.props.value}
-                           //defaultValue={this.props.defaultValue}
-                           onChange={this.props.onChange} />
+                    {this.renderTextArea()}
                     <div className="input text-muted">{this.props.error}</div>
                 </div>
             </div>

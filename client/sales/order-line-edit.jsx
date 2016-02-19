@@ -55,16 +55,13 @@ const OrderLineEdit = React.createClass({
 
                 <TextInput
                     name="description"
-                    label="Description"
                     onChange={this.handleChange}
-                    placeholder="Description"
                     value={this.props.orderLine.description}
                     error={this.props.errors.description}
                 />
 
                 <NumberInput
                     name="quantity"
-                    label="Quantity"
                     onChange={this.handleChange}
                     value={this.props.orderLine.quantity}
                     error={this.props.errors.quantity}
@@ -73,14 +70,13 @@ const OrderLineEdit = React.createClass({
 
                 <NumberInput
                     name="unitPrice"
-                    label="UnitPrice"
                     onChange={this.handleChange}
                     value={this.props.orderLine.unitPrice}
                     error={this.props.errors.unitPrice}
                 />
 
                 <div className="form-group">
-                    <label>Line Value:</label>
+                    <label>Line value:</label>
                     <label>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</label>
                 </div>
 

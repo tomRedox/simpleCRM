@@ -180,7 +180,7 @@ const OrderPage = React.createClass({
         this.setFormIsValid();
 
         return (
-            <div className="panel panel-default col-md-6">
+            <div className="panel panel-default">
                 <form className="order_page" onSubmit={this.props.onSave}>
                     <div className="panel-body">
 

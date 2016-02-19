@@ -90,7 +90,7 @@ const AsyncSelectInput = React.createClass({
                         onChange={this.onChangeHandler}
                         valueKey={this.props.valueKey}
                         labelKey={this.props.labelKey}
-                        placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
+                        placeholder= "yo" //{this.props.placeholder ? this.props.placeholder : humanizedName}
                         // stop the control caching the results - if true only searches the list retrieved on first load
                         cache={true}
                         searchingText="Loading results..."
