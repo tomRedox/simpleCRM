@@ -24,46 +24,36 @@ const CustomerEditForm = React.createClass({
                         <h3>{this.props.customer.name}</h3>
                         <TextInput
                             name="name"
-                            label="Name"
                             onChange={this.props.onChange}
-                            placeholder="Name"
                             value={this.props.customer.name}
                             error={this.props.errors.name}
                         />
 
                         <TextInput
                             name="email"
-                            label="Email"
                             onChange={this.props.onChange}
-                            placeholder="Email"
                             value={this.props.customer.email}
                             error={this.props.errors.email}
                         />
 
                         <TextInput
                             name="postcode"
-                            label="Postcode"
                             onChange={this.props.onChange}
-                            placeholder="Postcode"
                             value={this.props.customer.postcode}
                             error={this.props.errors.postcode}
                         />
 
                         <DateInput
                             name="nextContactDate"
-                            label="Next contact date"
                             onChange={this.props.onChange}
-                            placeholder="Next contact date"
                             value={this.props.customer.nextContactDate}
                             error={this.props.errors.nextContactDate}
                         />
 
                         <SelectInput
                             name="salesRegionId"
-                            label="Sales region"
                             value={this.props.customer.salesRegionId}
                             onChange={this.props.onChange}
-                            //placeholder="Next contact date"
                             error={this.props.errors.salesRegionId}
                             options={this.props.salesRegionOptions}
                             valueKey="_id"
