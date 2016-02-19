@@ -1,5 +1,3 @@
-//"use strict";
-
 import React from 'react';
 import Select from 'react-select';
 
@@ -23,35 +21,11 @@ const AsyncSelectInput = React.createClass({
 
         this.props.onChange({
             name: this.props.name,
-            value: selectedOption[this.props.valueKey],
-            label: selectedOption[this.props.labelKey]
+            // selectedOption is null when the user presses the 'x' button
+            value: (selectedOption) ? selectedOption[this.props.valueKey] : null,
+            label: (selectedOption) ? selectedOption[this.props.labelKey] : null
         });
     },
-
-    //getOptions(input, callback) {
-    //    console.log("getOptions", input);
-    //    input = input.toLowerCase();
-    //
-    //    var data = {
-    //        options: [
-    //            { _id: '1', name: 'Hard' },
-    //            { _id: '2', name: 'Hord' },
-    //            { _id: '3', name: 'Harris' },
-    //            { _id: '4', name: 'Ham' },
-    //            { _id: '5', name: 'Hockney' },
-    //            { _id: '6', name: 'Horris' },
-    //            { _id: '7', name: 'Hamilton' },
-    //            { _id: '8', name: 'Honest' }
-    //        ],
-    //        // CAREFUL! Only set this to true when there are no more options,
-    //        // or more specific queries will not be sent to the server.
-    //        complete: true
-    //    };
-    //
-    //    setTimeout(function () {
-    //        callback(null, data);
-    //    }, 500);
-    //},
 
     loadOptions(input, callback) {
         console.log("OrderHeaderEdit.loadOptions() ", input);
@@ -118,3 +92,29 @@ const AsyncSelectInput = React.createClass({
 });
 
 export default AsyncSelectInput;
+
+//getOptions(input, callback) {
+//    console.log("getOptions", input);
+//    input = input.toLowerCase();
+//
+//    var data = {
+//        options: [
+//            { _id: '1', name: 'Hard' },
+//            { _id: '2', name: 'Hord' },
+//            { _id: '3', name: 'Harris' },
+//            { _id: '4', name: 'Ham' },
+//            { _id: '5', name: 'Hockney' },
+//            { _id: '6', name: 'Horris' },
+//            { _id: '7', name: 'Hamilton' },
+//            { _id: '8', name: 'Honest' }
+//        ],
+//        // CAREFUL! Only set this to true when there are no more options,
+//        // or more specific queries will not be sent to the server.
+//        complete: true
+//    };
+//
+//    setTimeout(function () {
+//        callback(null, data);
+//    }, 500);
+//},
+
