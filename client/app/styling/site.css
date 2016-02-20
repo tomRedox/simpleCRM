@@ -372,6 +372,7 @@ small.text-muted {
 
 /*
 * Order lines table
+* http://bootsnipp.com/snippets/featured/responsive-shopping-cart
 */
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;

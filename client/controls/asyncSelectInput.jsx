@@ -93,7 +93,7 @@ const AsyncSelectInput = React.createClass({
                         // stop the control caching the results - if true only searches the list retrieved on first load
                         cache={true}
                         searchingText="Loading results..."
-                        minimumInput={2} // number of letters needed before a search starts
+                        minimumInput={1} // number of letters needed before a search starts
                         autoload={false}
                         matchProp="label" // Typed input is only matched to the label, not to the id as well
                     />

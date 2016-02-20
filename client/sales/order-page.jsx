@@ -19,8 +19,7 @@ const OrderPage = React.createClass({
             order: this.props.order,
             errors: {},
             lineErrorSets: [],
-            isValid: false,
-            newLine: {}
+            isValid: false
         };
     },
 
@@ -37,12 +36,16 @@ const OrderPage = React.createClass({
     },
 
     componentWillMount() {
-        this.state.newLine = this.getEmptyOrderLine();
+
     },
 
-    validateItemAgainstSchema(item, schemaContext) {
+    validateItemAgainstSchema(item, schema) {
         const errors = {};
         console.log("OrderPage.validateItemAgainstSchema(): item ", item);
+
+        schema.clean(item);
+
+        const schemaContext = schema.namedContext("validateItem");
         schemaContext.validate(item);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
@@ -59,7 +62,7 @@ const OrderPage = React.createClass({
     validateOrderHeaderAndUpdateState() {
         // validate the order against the table schema
         this.state.errors = this.validateItemAgainstSchema(
-            this.state.order, Schemas.OrderSchema.namedContext("orderHeaderEdit"));
+            this.state.order, Schemas.OrderSchema);
 
         this.setFormIsValid();
         //
@@ -97,38 +100,27 @@ const OrderPage = React.createClass({
 
     onOrderLineChanged(orderLineId, field, value) {
         //console.log("onOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
-
         const line = this.state.order.orderLines.find(x => x._id === orderLineId);
-
         //console.log("matching line ", line);
+
         line[field] = value;
 
-        // update the calculated totals
-        recalculateOrderTotals(this.state.order);
-
-        this.validateOrderLine(line);
-
-        return this.setState({order: this.state.order});
+        this.validateAndUpdateOrderLine(line);
     },
 
     onOrderLineProductChanged(orderLineId, newValue) {
         //console.log("OrderPage.onOrderLineProductChanged() customer:", selectedItem.value + " - " + selectedItem.label);
         const line = this.state.order.orderLines.find(x => x._id === orderLineId);
-        this.validateAndUpdateProductChangeOnOrderLine(line, newValue);
-    },
-
-    onNewOrderLineProductChanged(orderLineId, newValue) {
-        //console.log("OrderPage.onNewOrderLineProductChanged() customer:", selectedItem.value + " - " + selectedItem.label);
-        const line = this.state.newLine;
-        this.validateAndUpdateProductChangeOnOrderLine(line, newValue);
-    },
-
-    validateAndUpdateProductChangeOnOrderLine(line, newValue) {
 
         // update our order state to reflect the new value in the UI
         line.productId = newValue.selectedOption._id;
         line.description = newValue.selectedOption.name;
         line.unitPrice = newValue.selectedOption.price;
+
+        this.validateAndUpdateOrderLine(line);
+    },
+
+    validateAndUpdateOrderLine(line) {
 
         // update the calculated totals
         recalculateOrderTotals(this.state.order);
@@ -141,7 +133,7 @@ const OrderPage = React.createClass({
     validateOrderLine(orderLine) {
 
         const errors = this.validateItemAgainstSchema(
-            orderLine, Schemas.OrderLineSchema.namedContext("orderLineEdit")
+            orderLine, Schemas.OrderLineSchema
         );
 
         let errorSet = this.getErrorSetForOrderLine(orderLine);
@@ -160,21 +152,11 @@ const OrderPage = React.createClass({
         return this.state.lineErrorSets.find(x => x._id === orderLine._id);
     },
 
-    newOrderLineChanged(orderLineId, field, value) {
-        //console.log("newOrderLineChanged", {orderLineId: orderLineId, field: field, value: value});
-
-        this.state.newLine[field] = value;
-        return this.setState({newLine: this.state.newLine});
-    },
-
-    saveNewOrderLine(event) {
-        //console.log("saveNewOrderLine", event);
+    addNewOrderLine(event) {
+        //console.log("addNewOrderLine", event);
         event.preventDefault();
 
-        this.state.order.orderLines.push(this.state.newLine);
-        //console.log("saveNewOrderLine",  this.state.order)
-        this.state.newLine = this.getEmptyOrderLine();
-        //console.log("saveNewOrderLine",  this.state.order)
+        this.state.order.orderLines.push(this.getEmptyOrderLine());
 
         // update the UI
         return this.setState({order: this.state.order});
@@ -230,21 +212,12 @@ const OrderPage = React.createClass({
                             lineErrorSets = {this.state.lineErrorSets}
                         />
 
-                        <h4>Add new line</h4>
-
-                        <OrderLineEdit
-                            orderLine = {this.state.newLine}
-                            onChange = {this.newOrderLineChanged}
-                            onProductChange = {this.onNewOrderLineProductChanged}
-                            errors = {this.state.errors}
-                        />
-
                         <input
                             type="button"
                             className="btn btn-success"
-                            id="saveNewOrderLineButton"
-                            onClick={this.saveNewOrderLine}
-                            value="Add line"
+                            id="newOrderLineButton"
+                            onClick={this.addNewOrderLine}
+                            value="New line"
                         />
 
                     </div>

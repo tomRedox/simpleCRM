@@ -59,6 +59,7 @@ const OrderLinesList = React.createClass({
     },
 
     render() {
+        console.log("OrderLinesList.render()");
         return (
             <div>
                 <table id="cart" className="table  table-condensed" style={this.divStyle}>

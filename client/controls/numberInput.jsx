@@ -24,6 +24,10 @@ NumberInput = React.createClass({
         }
     },
 
+    onChange(event) {
+        this.props.onChange(event);
+    },
+
     render() {
         //console.log("props: ", this.props);
 
@@ -41,9 +45,7 @@ NumberInput = React.createClass({
             <div className={wrapperClass}>
                 {this.renderLabel()}
                 <div className="field">
-                    <input type="number"
-                           min={0.00}
-                           step={0.01}
+                    <input type="text"
                            name={this.props.name}
                            className="form-control"
                            placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
@@ -51,7 +53,7 @@ NumberInput = React.createClass({
                            id={this.props.name}
                            value={this.props.value}
                            //defaultValue={this.props.defaultValue}
-                           onChange={this.props.onChange} />
+                           onChange={this.onChange} />
                     <div className="input">{this.props.error}</div>
                 </div>
             </div>

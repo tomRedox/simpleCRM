@@ -41,12 +41,6 @@ const OrderLineEdit = React.createClass({
         return Products.find().fetch();
     },
 
-
-    divStyle: {
-        valign: "middle",
-        color: 'red'
-    },
-
     render() {
         //console.log("OrderLineEdit props: ", this.props);
 
@@ -72,22 +66,18 @@ const OrderLineEdit = React.createClass({
 
             <tr key={this.props.orderLine._id}>
 
-                <td data-th="Product">
-                    <div className="row">
-                        <div className="col-sm-10">
-                            <AsyncSelectInput
-                                name="productId"
-                                label="Product"
-                                value={value}
-                                onChange={this.handleProductChange}
-                                error={this.props.errors.productId}
-                                loadOptions={this.getProducts}
-                                valueKey="_id"
-                                labelKey="name"
-                                hideLabel={true}
-                            />
-                        </div>
-                    </div>
+                <td data-th="Product" className="row col-sm-10">
+                    <AsyncSelectInput
+                        name="productId"
+                        label="Product"
+                        value={value}
+                        onChange={this.handleProductChange}
+                        error={this.props.errors.productId}
+                        loadOptions={this.getProducts}
+                        valueKey="_id"
+                        labelKey="name"
+                        hideLabel={true}
+                    />
 
                 </td>
                 <td data-th="Quantity">
@@ -110,12 +100,11 @@ const OrderLineEdit = React.createClass({
                     />
                 </td>
 
-                <td data-th="Sub Total">
-                    <div className="form-group" style={this.divStyle}>
-                        <p>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</p>
-                    </div>
+                <td data-th="Sub Total" className="form-group">
+                    <p>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</p>
                 </td>
-                <td class="actions" data-th="">
+
+                <td className="actions" data-th="">
                     {deleteButton}
                 </td>
             </tr>
