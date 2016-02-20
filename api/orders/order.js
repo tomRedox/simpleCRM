@@ -45,13 +45,14 @@ const customerCompanyDenormalizer = {
         // no action needed if the customerId is not set
         if (!order.customerId || order.customerId === null) { return; }
 
-        const customer = CustomerCompanies.findOne({_id: order.customerId});
-
-        if (!customer) {
-            throw new Meteor.Error("The customer could not be found in the database");
-        }
-
-        order.customerName = customer.name;
+        //const handle = Meteor.subscribe('CustomerCompany.get', order.customerId);
+        //const customer = CustomerCompanies.findOne({_id: order.customerId});
+        //
+        //if (!customer) {
+        //    throw new Meteor.Error("The customer could not be found in the database");
+        //}
+        //
+        //order.customerName = customer.name;
     },
 
     beforeInsert(userId, doc) {
