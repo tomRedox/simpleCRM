@@ -8,6 +8,7 @@ const OrderLinesList = React.createClass({
     propTypes: {
         order: React.PropTypes.object.isRequired,
         onChildChange: React.PropTypes.func.isRequired,
+        onProductChange: React.PropTypes.func.isRequired,
         deleteOrderLine: React.PropTypes.func,
         lineErrorSets: React.PropTypes.array.isRequired
     },
@@ -41,6 +42,7 @@ const OrderLinesList = React.createClass({
                     <OrderLineEdit
                         orderLine={orderLine}
                         onChange={this.props.onChildChange}
+                        onProductChange={this.props.onProductChange}
                         deleteOrderLine={this.props.deleteOrderLine}
                         errors={this.getErrorsForLine(orderLine)}
                     />

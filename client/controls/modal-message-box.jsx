@@ -6,8 +6,8 @@ const ModalMessageBox = React.createClass({
     propTypes: {
         title: React.PropTypes.string.isRequired,
         message: React.PropTypes.string.isRequired,
-        onConfirmAction: React.PropTypes.func,
-        contextualClass: React.PropTypes.string
+        onConfirmAction: React.PropTypes.func, 
+        contextualClass: React.PropTypes.string // active/success/info/warning/danger
     },
 
     renderConfirmButton() {

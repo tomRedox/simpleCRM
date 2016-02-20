@@ -10,12 +10,13 @@ const OrderHeaderEdit = React.createClass({
         onCustomerChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
         errors: React.PropTypes.object.isRequired,
+        errors: React.PropTypes.object.isRequired,
         isValid: React.PropTypes.bool,
     },
 
     getCustomers: function getCustomers(input) {
         console.log("OrderHeaderEdit.getCustomers()", input);
-        var customerHandle = Meteor.subscribe('CustomerCompanies.searchByName', input);
+        const handle = Meteor.subscribe('CustomerCompanies.searchByName', input);
         return CustomerCompanies.find().fetch();
     },
 

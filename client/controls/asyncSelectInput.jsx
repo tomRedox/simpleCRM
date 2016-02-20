@@ -24,8 +24,7 @@ const AsyncSelectInput = React.createClass({
         this.props.onChange({
             name: this.props.name,
             // selectedOption is null when the user presses the 'x' button
-            value: (selectedOption) ? selectedOption[this.props.valueKey] : null,
-            label: (selectedOption) ? selectedOption[this.props.labelKey] : null
+            selectedOption
         });
     },
 

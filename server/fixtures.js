@@ -1,5 +1,5 @@
 //import { CustomerCompanies } from '../api/customers/customer-company.js';
-
+import Products from '../api/products/products';
 
 // if the database is empty on server start, create some sample data.
 Meteor.startup(() => {
@@ -73,6 +73,62 @@ Meteor.startup(() => {
         data.forEach((item) => {
             SalesRegions.insert({
                 name: item.name,
+                createdAt: new Date(timestamp)
+            });
+
+            //console.log("added customer: ", customer);
+        });
+    }
+
+
+
+
+    if (Products.find().count() === 0) {
+        const data = [
+            {
+                name: "Olive-spantles (jigged & onioned)",
+                price: 35
+            },
+            {
+                name: "Grommet",
+                price: 12.60
+            },
+            {
+                name: "Grollings",
+                price: 35
+            },
+            {
+                name: "Copper pipe",
+                price: 18.35
+            },
+            {
+                name: "Fleeling wire (coaxial)",
+                price: 4.30
+            },
+            {
+                name: "Gruddock paper",
+                price: 1.95
+            },
+            {
+                name: "Bevelled spill-trunion",
+                price: 18.40
+            },
+            {
+                name: "Satchel-arm",
+                price: 35
+            },
+            {
+                name: 'Clip-jawed double lock brace',
+                price: 3.99
+            }
+        ];
+
+        let timestamp = (new Date()).getTime();
+
+        data.forEach((item) => {
+            Products.insert({
+                name: item.name,
+                price: item.price,
                 createdAt: new Date(timestamp)
             });
 

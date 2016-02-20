@@ -29,7 +29,7 @@ NumberInput = React.createClass({
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
-        var wrapperClass = 'form-group';
+        let wrapperClass = 'form-group';
         if (this.props.error && this.props.error.length > 0) {
             console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
@@ -42,8 +42,8 @@ NumberInput = React.createClass({
                 {this.renderLabel()}
                 <div className="field">
                     <input type="number"
-                           min="0.00"
-                           step="0.01"
+                           min={0.00}
+                           step={0.01}
                            name={this.props.name}
                            className="form-control"
                            placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}

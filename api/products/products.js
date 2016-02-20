@@ -1,7 +1,7 @@
 class productsCollection extends Mongo.Collection {}
 
 // Make it available to the rest of the app
-Products = new productsCollection("Products");
+const Products = new productsCollection("Products");
 
 // Deny all client-side updates since we will be using methods to manage this collection
 Products.allow({
@@ -18,3 +18,5 @@ Products.allow({
 // calls are automatically checked against the schema.
 // Collection2 is what's allowing this to happen
 Products.attachSchema(Schemas.ProductSchema);
+
+export default Products;

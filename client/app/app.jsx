@@ -13,6 +13,7 @@ import MessageEditor from '../controls/modal-message-box.jsx';
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
+//Meteor.subscribe("Products.public");
 
 // define and export our Layout component
 export const Layout = ({content}) => (

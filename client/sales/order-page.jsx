@@ -27,11 +27,11 @@ const OrderPage = React.createClass({
     getEmptyOrderLine() {
         return {
             _id: Meteor.uuid(),
-            description: "",
+            productId: null,
+            description: null,
             quantity: 0,
             unitPrice: 0,
             lineValue: 0,
-            isNewLine: true,
             createdAt: new Date()//,
         };
     },
@@ -46,7 +46,7 @@ const OrderPage = React.createClass({
         schemaContext.validate(item);
 
         schemaContext.invalidKeys().forEach(invalidKey => {
-            var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
+            const errMessage = schemaContext.keyErrorMessage(invalidKey.name);
             if (invalidKey.name !== "_id") {
                 errors[invalidKey.name] = errMessage;
                 console.log("errMessage", errMessage);
@@ -77,12 +77,12 @@ const OrderPage = React.createClass({
         this.validateOrderHeaderAndUpdateState();
     },
 
-    onOrderHeaderCustomerChanged(selectedItem) {
+    onOrderHeaderCustomerChanged(newValue) {
         //console.log("OrderPage.onOrderHeaderCustomerChanged() customer:", selectedItem.value + " - " + selectedItem.label);
 
         // update our order state to reflect the new value in the UI
-        this.state.order.customerId = selectedItem.value;
-        this.state.order.customerName = selectedItem.label;
+        this.state.order.customerId = newValue.selectedOption._id;
+        this.state.order.customerName = newValue.selectedOption.name;
 
         this.validateOrderHeaderAndUpdateState();
     },
@@ -102,6 +102,33 @@ const OrderPage = React.createClass({
 
         //console.log("matching line ", line);
         line[field] = value;
+
+        // update the calculated totals
+        recalculateOrderTotals(this.state.order);
+
+        this.validateOrderLine(line);
+
+        return this.setState({order: this.state.order});
+    },
+
+    onOrderLineProductChanged(orderLineId, newValue) {
+        //console.log("OrderPage.onOrderLineProductChanged() customer:", selectedItem.value + " - " + selectedItem.label);
+        const line = this.state.order.orderLines.find(x => x._id === orderLineId);
+        this.validateAndUpdateProductChangeOnOrderLine(line, newValue);
+    },
+
+    onNewOrderLineProductChanged(orderLineId, newValue) {
+        //console.log("OrderPage.onNewOrderLineProductChanged() customer:", selectedItem.value + " - " + selectedItem.label);
+        const line = this.state.newLine;
+        this.validateAndUpdateProductChangeOnOrderLine(line, newValue);
+    },
+
+    validateAndUpdateProductChangeOnOrderLine(line, newValue) {
+
+        // update our order state to reflect the new value in the UI
+        line.productId = newValue.selectedOption._id;
+        line.description = newValue.selectedOption.name;
+        line.unitPrice = newValue.selectedOption.price;
 
         // update the calculated totals
         recalculateOrderTotals(this.state.order);
@@ -157,7 +184,7 @@ const OrderPage = React.createClass({
         console.log("OrderPage.deleteOrderLine", id);
 
         const line = this.state.order.orderLines.find(x => x._id === id);
-        var pos = this.state.order.orderLines.indexOf(line);
+        const pos = this.state.order.orderLines.indexOf(line);
         console.log("pos index ", pos);
 
         this.state.order.orderLines.splice(pos, 1);
@@ -198,6 +225,7 @@ const OrderPage = React.createClass({
                         <OrderLinesList
                             order = {this.state.order}
                             onChildChange = {this.onOrderLineChanged}
+                            onProductChange = {this.onOrderLineProductChanged}
                             deleteOrderLine = {this.deleteOrderLine}
                             lineErrorSets = {this.state.lineErrorSets}
                         />
@@ -207,6 +235,7 @@ const OrderPage = React.createClass({
                         <OrderLineEdit
                             orderLine = {this.state.newLine}
                             onChange = {this.newOrderLineChanged}
+                            onProductChange = {this.onNewOrderLineProductChanged}
                             errors = {this.state.errors}
                         />
 
