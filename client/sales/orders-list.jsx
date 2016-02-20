@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Orders from '../../api/orders/order';
 import OrdersListItem from './orders-list-item.jsx';
+import ModalMessageBox from '../controls/modal-message-box.jsx';
 
 
 const OrdersList = React.createClass({
@@ -53,19 +55,23 @@ const OrdersList = React.createClass({
     },
 
     render() {
+        console.log("OrdersList render");
+
         return (
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <div className="pull-right text-right">
-                        <p><a href="/addOrder" className="pull-right">New Order </a></p>
-                        <p><a href="#"> View all</a></p>
+            <div>
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <div className="pull-right text-right">
+                            <p><a href="/addOrder" className="pull-right">New Order </a></p>
+                            <p><a href="#"> View all</a></p>
+                        </div>
+                        <h4>Top Orders</h4>
                     </div>
-                    <h4>Top Orders</h4>
-                </div>
-                <div className="panel-body">
-                    { this.data.orders ?
-                        this.renderOrderTable() :
-                        <p>Loading</p> }
+                    <div className="panel-body">
+                        { this.data.orders ?
+                            this.renderOrderTable() :
+                            <p>Loading</p> }
+                    </div>
                 </div>
             </div>
         );

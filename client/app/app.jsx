@@ -5,7 +5,7 @@
 
 
 import React from 'react';
-import MessageEditor from '../controls/message-editor.jsx';
+import MessageEditor from '../controls/modal-message-box.jsx';
 
 //var RouteHandler = require('react-router').RouteHandler;
 //var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
@@ -35,7 +35,7 @@ export const Layout = ({content}) => (
 
                                     <main>
                                         <div id="popup"></div>
-                                        <MessageEditor />
+
                                         <div>{content}</div>
 
                                     </main>

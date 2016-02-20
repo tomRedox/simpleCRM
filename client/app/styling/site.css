@@ -214,27 +214,27 @@ h1,h2,h3 {
     width: 100%;
 }
 
-.modal-header, .modal-footer {
-    background-color:#f2f2f2;
-    font-weight:800;
-    font-size:12px;
-}
+/*.modal-header, .modal-footer {*/
+    /*background-color:#f2f2f2;*/
+    /*font-weight:800;*/
+    /*font-size:12px;*/
+/*}*/
 
-.modal-footer i, .well i {
-    font-size:20px;
-    color:#c0c0c0;
-}
+/*.modal-footer i, .well i {*/
+    /*font-size:20px;*/
+    /*color:#c0c0c0;*/
+/*}*/
 
-.modal-body {
-    padding:0;
-}
+/*.modal-body {*/
+    /*padding:0;*/
+/*}*/
 
-.modal-body textarea.form-control
-{
-    resize: none;
-    border:0;
-    box-shadow:0 0 0;
-}
+/*.modal-body textarea.form-control*/
+/*{*/
+    /*resize: none;*/
+    /*border:0;*/
+    /*box-shadow:0 0 0;*/
+/*}*/
 
 small.text-muted {
     font-family:courier,courier-new,monospace;
@@ -368,3 +368,5 @@ small.text-muted {
 .react-autosuggest__suggestion--focused {
     background-color: #ddd;
 }
+
+
