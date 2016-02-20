@@ -6,18 +6,41 @@ const ModalMessageBox = React.createClass({
     propTypes: {
         title: React.PropTypes.string.isRequired,
         message: React.PropTypes.string.isRequired,
-        onConfirmAction: React.PropTypes.func.isRequired
+        onConfirmAction: React.PropTypes.func,
+        contextualClass: React.PropTypes.string
     },
 
-    //getInitialState(){
-    //    return {messageText: ''};
-    //},
+    renderConfirmButton() {
 
-    //refillData(message){
-    //    this.setState({messageText: message.text})
-    //    ReactDOM.render(<ModalMessageBox message={message}/>, document.getElementById("popup-target"));
-    //    $("#primary").modal();
-    //},
+        let confirmButtonClassName = "btn pull-right";
+        if(this.props.onConfirmAction) {
+            confirmButtonClassName = confirmButtonClassName + " btn-" + this.props.contextualClass;
+        } else {
+            confirmButtonClassName = confirmButtonClassName + " btn-primary";
+        }
+
+        // Only show the confirm button if we were passed a confirm action
+        if(this.props.onConfirmAction) {
+            console.log(confirmButtonClassName);
+            return (
+                <button type="button" className={confirmButtonClassName}
+                        data-dismiss="modal" onClick={this.props.onConfirmAction}>Confirm
+                </button>
+            );
+        }
+    },
+
+    renderCloseButton() {
+        if(this.props.onConfirmAction) {
+             return (
+                 <button type="button" className="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+            );
+        } else {
+            return (
+                <button type="button" className="btn btn-primary pull-right" data-dismiss="modal">OK</button>
+            );
+        }
+    },
 
     render(){
         console.log("ModalMessageBox.render()");
@@ -40,12 +63,8 @@ const ModalMessageBox = React.createClass({
                             </div>
 
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-default pull-left"
-                                        data-dismiss="modal">Cancel
-                                </button>
-                                <button type="button" className="btn btn-primary pull-right"
-                                        data-dismiss="modal" onClick={this.props.onConfirmAction}>Confirm
-                                </button>
+                                {this.renderCloseButton()}
+                                {this.renderConfirmButton()}
                             </div>
 
                         </div>

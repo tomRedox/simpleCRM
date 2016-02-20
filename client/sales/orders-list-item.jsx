@@ -35,6 +35,7 @@ const OrdersListItem = React.createClass({
                         title="Delete order?"
                         message="This action cannot be undone."
                         onConfirmAction={this.deleteOrder}
+                        contextualClass = "danger"
                     />
                 </td>
                 <td><a className="btn btn-default btn-sm" href={"/orders/" + this.props.order._id}>Edit</a></td>
