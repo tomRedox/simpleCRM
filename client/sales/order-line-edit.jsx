@@ -41,6 +41,12 @@ const OrderLineEdit = React.createClass({
         return Products.find().fetch();
     },
 
+
+    divStyle: {
+        valign: "middle",
+        color: 'red'
+    },
+
     render() {
         //console.log("OrderLineEdit props: ", this.props);
 
@@ -53,53 +59,67 @@ const OrderLineEdit = React.createClass({
         let deleteButton;
         if (this.props.deleteOrderLine) {
             deleteButton =
-                <div className="form-group">
-                    <input
-                        type="button"
-                        className="btn btn-warning"
-                        id="deleteOrderLineButton"
-                        onClick={this.deleteLine}
-                        value="Delete line"
-                    />
-                </div>;
+                <input
+                    type="button"
+                    className="btn btn-warning"
+                    id="deleteOrderLineButton"
+                    onClick={this.deleteLine}
+                    value="Delete line"
+                />
         }
 
         return (
-            <div >
 
-                <AsyncSelectInput
-                    name="productId"
-                    label="Product"
-                    value={value}
-                    onChange={this.handleProductChange}
-                    error={this.props.errors.productId}
-                    loadOptions={this.getProducts}
-                    valueKey="_id"
-                    labelKey="name"
-                    hideLabel={true}
-                />
+            <tr key={this.props.orderLine._id}>
 
-                <NumberInput
-                    name="quantity"
-                    onChange={this.handleChange}
-                    value={this.props.orderLine.quantity}
-                    error={this.props.errors.quantity}
-                />
+                <td data-th="Product">
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <AsyncSelectInput
+                                name="productId"
+                                label="Product"
+                                value={value}
+                                onChange={this.handleProductChange}
+                                error={this.props.errors.productId}
+                                loadOptions={this.getProducts}
+                                valueKey="_id"
+                                labelKey="name"
+                                hideLabel={true}
+                            />
+                        </div>
+                    </div>
 
-                <NumberInput
-                    name="unitPrice"
-                    onChange={this.handleChange}
-                    value={this.props.orderLine.unitPrice}
-                    error={this.props.errors.unitPrice}
-                />
+                </td>
+                <td data-th="Quantity">
+                    <NumberInput
+                        name="quantity"
+                        onChange={this.handleChange}
+                        value={this.props.orderLine.quantity}
+                        error={this.props.errors.quantity}
+                        hideLabel={true}
+                    />
+                </td>
 
-                <div className="form-group">
-                    <label>Line value:</label>
-                    <label>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</label>
-                </div>
+                <td data-th="Unit Price">
+                    <NumberInput
+                        name="unitPrice"
+                        onChange={this.handleChange}
+                        value={this.props.orderLine.unitPrice}
+                        error={this.props.errors.unitPrice}
+                        hideLabel={true}
+                    />
+                </td>
 
-                {deleteButton}
-            </div>
+                <td data-th="Sub Total">
+                    <div className="form-group" style={this.divStyle}>
+                        <p>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</p>
+                    </div>
+                </td>
+                <td class="actions" data-th="">
+                    {deleteButton}
+                </td>
+            </tr>
+
         );
     }
 });

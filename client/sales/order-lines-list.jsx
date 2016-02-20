@@ -39,6 +39,7 @@ const OrderLinesList = React.createClass({
             return (
 
                 <div key={orderLine._id}>
+
                     <OrderLineEdit
                         orderLine={orderLine}
                         onChange={this.props.onChildChange}
@@ -52,11 +53,28 @@ const OrderLinesList = React.createClass({
         });
     },
 
+    divStyle: {
+        //'min-width': "320px",
+        //color: 'red'
+    },
 
     render() {
         return (
             <div>
-                {this.renderOrderLines()}
+                <table id="cart" className="table  table-condensed" style={this.divStyle}>
+                    <thead>
+                    <tr>
+                        <th >Product</th>
+                        <th style={ {"width" : "12%"} }>Quantity</th>
+                        <th style={ {"width" : "12%"} }>Unit price</th>
+                        <th style={ {"width" : "12%"} }>Line total</th>
+                        <th style={ {"width" : "12%"} }></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.renderOrderLines()}
+                    </tbody>
+                </table>
             </div>
         );
     }
