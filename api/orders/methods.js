@@ -15,6 +15,8 @@ Orders.methods.upsert = new ValidatedMethod({
     validate(args) {
         console.log("Orders.methods.upsert.validate(args) ");
 
+        Schemas.OrderSchema.clean(args.data);
+
         var schemaContext = Schemas.OrderSchema.namedContext("OrderForm");
         schemaContext.validate(args.data);
 

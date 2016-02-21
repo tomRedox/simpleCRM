@@ -15,6 +15,8 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
     validate(args) {
         console.log("validating2");
 
+        Schemas.CustomerCompaniesSchema.clean(args.data);
+
         var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
         schemaContext.validate(args.data);
 
