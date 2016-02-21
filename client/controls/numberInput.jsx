@@ -43,7 +43,7 @@ NumberInput = React.createClass({
         //}
 
         // don't trigger on change if they have typed "11." or "11,"
-        let lastChar =  event.target.value.toString().charAt(event.target.value.toString().length()-1)
+        let lastChar =  event.target.value.toString().charAt(event.target.value.toString().length-1);
         if (isNaN(parseFloat(lastChar))) { return ;}
 
         // don't trigger the change if they typed a non-number
@@ -54,14 +54,23 @@ NumberInput = React.createClass({
     },
 
     getValue() {
-        return this.props.value.toFixed(this.props.decimalPlaces);
-
         //if(this.props.isMoney) {
         //    return accounting.formatNumber(this.props.value, 2)
         //} else {
         //    return this.props.value;
         //}
-    },
+
+
+        // Check if the user entered a number
+        if (isNaN(parseFloat(this.props.value)))
+        {
+            // if not, just show whatever they typed
+            return this.props.value;
+        } else {
+            // if so, show the value formatted to a fixed number of DP.
+            return parseFloat(this.props.value).toFixed(this.props.decimalPlaces);
+        }
+     },
 
     render() {
         //console.log("props: ", this.props);
