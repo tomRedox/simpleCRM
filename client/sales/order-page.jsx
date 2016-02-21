@@ -3,6 +3,7 @@ import OrderHeaderEdit from './order-header-edit.jsx';
 import OrderLinesList from './order-lines-list.jsx';
 import OrderLineEdit from './order-line-edit.jsx';
 import { recalculateOrderTotals } from '../../lib/order-logic';
+import { validateItemAgainstSchema } from '../../lib/validation-helpers';
 
 
 const OrderPage = React.createClass({
@@ -39,30 +40,9 @@ const OrderPage = React.createClass({
 
     },
 
-    validateItemAgainstSchema(item, schema) {
-        const errors = {};
-        console.log("OrderPage.validateItemAgainstSchema(): item ", item);
-
-        schema.clean(item);
-
-        const schemaContext = schema.namedContext("validateItem");
-        schemaContext.validate(item);
-
-        schemaContext.invalidKeys().forEach(invalidKey => {
-            const errMessage = schemaContext.keyErrorMessage(invalidKey.name);
-            if (invalidKey.name !== "_id") {
-                errors[invalidKey.name] = errMessage;
-                console.log("errMessage", errMessage);
-            }
-        });
-
-        return errors;
-    },
-
     validateOrderHeaderAndUpdateState() {
         // validate the order against the table schema
-        this.state.errors = this.validateItemAgainstSchema(
-            this.state.order, Schemas.OrderSchema);
+        this.state.errors = validateItemAgainstSchema(this.state.order, Schemas.OrderSchema);
 
         this.setFormIsValid();
         //
@@ -132,7 +112,7 @@ const OrderPage = React.createClass({
 
     validateOrderLine(orderLine) {
 
-        const errors = this.validateItemAgainstSchema(
+        const errors = validateItemAgainstSchema(
             orderLine, Schemas.OrderLineSchema
         );
 

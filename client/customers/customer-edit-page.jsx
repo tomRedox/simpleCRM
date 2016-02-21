@@ -2,6 +2,7 @@
 //var TextInput = require('./textInput');
 var React = require('react');
 import CustomerEditForm from './customer-edit-form.jsx';
+import { validateItemAgainstSchema } from '../../lib/validation-helpers';
 
 // this page is wrapped by the wrapper
 const CustomerEditPage = React.createClass({
@@ -22,24 +23,11 @@ const CustomerEditPage = React.createClass({
 
     onChangeHandler(event) {
 
-        console.log("event:", event);
+        console.log("onChangeHandler() event:", event);
         // update our customer state to reflect the new value in the UI
-         this.state.customer[event.target.name] = event.target.value;
+        this.state.customer[event.target.name] = event.target.value;
 
-        //console.log("test",this.state.customer[field]);
-        this.state.errors = {};
-
-        // validate the customer against the table schema
-        var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
-        schemaContext.validate(this.state.customer);
-
-        schemaContext.invalidKeys().forEach(invalidKey => {
-            var errMessage = schemaContext.keyErrorMessage(invalidKey.name);
-            if (invalidKey.name !== "_id") {
-                this.state.errors[invalidKey.name] = errMessage;
-                console.log(errMessage);
-            }
-        });
+        this.state.errors = validateItemAgainstSchema(this.state.customer, Schemas.CustomerCompaniesSchema);
 
         this.setFormIsValid();
 
