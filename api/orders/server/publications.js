@@ -28,25 +28,3 @@ Meteor.publish('Order.customerTotals', function (customerId) {
 
     return result;
 });
-
-Meteor.methods({
-    'customerOrderTotals'({customerId}) {
-        console.log("Order.customerOrderTotals:", customerId);
-        var pipeline = [
-            {
-                $group: {
-                    _id: null,
-                    ordersTotalValue: {$sum: "$totalValue"},
-                    ordersCount: { $sum: 1 }
-                }
-            }
-        ];
-
-        var result = Orders.aggregate(pipeline, {customerId});
-        console.log("Order.customerTotals:", JSON.stringify(result[0]), null, 2);
-        console.log("Order.customerTotals:", result);
-
-        return result[0];
-    }
-
-})
