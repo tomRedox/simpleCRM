@@ -374,9 +374,22 @@ small.text-muted {
 * Order lines table
 * http://bootsnipp.com/snippets/featured/responsive-shopping-cart
 */
-.table>tbody>tr>td, .table>tfoot>tr>td{
+.table#cart>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
+
+.table#cart>thead>tr>th{
+    vertical-align: middle;
+}
+
+table#cart tbody td .form-control{
+    text-align: right;
+}
+
+table#cart tbody td .numeric{
+    text-align: right;
+}
+
 /* This is the behaviour for when the the table is less than the max-width wide.*/
 @media screen and (max-width: 600px) {
 

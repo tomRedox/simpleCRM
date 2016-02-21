@@ -1,6 +1,7 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import AsyncSelectInput from '../controls/asyncSelectInput.jsx';
+import accounting from 'accounting';
 
 
 const OrderHeaderEdit = React.createClass({
@@ -74,7 +75,7 @@ const OrderHeaderEdit = React.createClass({
 
                 <div className="form-group">
                     <label>Total value: </label>
-                    <label name="orderTotal">{this.props.order.totalValue}</label>
+                    <label name="orderTotal"> {accounting.formatMoney(this.props.order.totalValue, "£")}</label>
                 </div>
 
                 <div className="form-group">

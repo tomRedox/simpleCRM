@@ -1,6 +1,7 @@
 import React from 'react';
 import AsyncSelectInput from '../controls/asyncSelectInput.jsx';
 import Products from '../../api/products/products';
+import accounting from 'accounting';
 
 const OrderLineEdit = React.createClass({
     propTypes: {
@@ -66,7 +67,7 @@ const OrderLineEdit = React.createClass({
 
             <tr key={this.props.orderLine._id}>
 
-                <td data-th="Product" className="row col-sm-10">
+                <td data-th="Product" className="row col-sm-10 numeric">
                     <AsyncSelectInput
                         name="productId"
                         label="Product"
@@ -80,7 +81,7 @@ const OrderLineEdit = React.createClass({
                     />
 
                 </td>
-                <td data-th="Quantity">
+                <td data-th="Quantity" className="numeric">
                     <NumberInput
                         name="quantity"
                         onChange={this.handleChange}
@@ -90,18 +91,20 @@ const OrderLineEdit = React.createClass({
                     />
                 </td>
 
-                <td data-th="Unit Price">
+                <td data-th="Unit Price" className="numeric">
                     <NumberInput
                         name="unitPrice"
                         onChange={this.handleChange}
                         value={this.props.orderLine.unitPrice}
                         error={this.props.errors.unitPrice}
                         hideLabel={true}
+                        isMoney={true}
+                        decimalPlaces={2}
                     />
                 </td>
 
                 <td data-th="Sub Total" className="form-group">
-                    <p>{this.props.orderLine.unitPrice * this.props.orderLine.quantity}</p>
+                    <p className="numeric">{accounting.formatMoney(this.props.orderLine.unitPrice * this.props.orderLine.quantity, '£')}</p>
                 </td>
 
                 <td className="actions" data-th="">

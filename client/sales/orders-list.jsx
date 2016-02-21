@@ -43,8 +43,10 @@ const OrdersList = React.createClass({
             <table className="table table-responsive table-striped">
                 <tbody>
                 <tr>
-                    <th>Delivery Add 1</th>
+                    <th>Order Date</th>
+                    <th>Customer</th>
                     <th>Notes</th>
+                    <th>Total</th>
                     <th></th>
                     <th></th>
                 </tr>
