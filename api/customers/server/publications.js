@@ -5,6 +5,16 @@ Meteor.publish('CustomerCompanies.public', function () {
     return CustomerCompanies.find();
 });
 
+Meteor.publish('CustomerCompanies.topCustomerCompanies', function () {
+    return CustomerCompanies.find(
+        {},
+        {
+            sort: {ordersTotalValue: -1},
+            limit: 3
+        }
+    );
+});
+
 Meteor.publish('CustomerCompany.get', function (_id) {
     //console.log("publication match ", CustomerCompanies.find({_id: custId}).fetch());
 

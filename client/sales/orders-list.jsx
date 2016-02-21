@@ -14,7 +14,7 @@ const OrdersList = React.createClass({
 
         var data = {};
 
-        var handle = Meteor.subscribe('Orders.public');
+        var handle = Meteor.subscribe('Orders.topOrders');
         if (handle.ready()) {
             //console.log("orders", orders);
             data.orders = Orders.find().fetch();

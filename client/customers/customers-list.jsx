@@ -10,7 +10,7 @@ const CustomersList = React.createClass({
 
         var data = {};
 
-        var handle = Meteor.subscribe('CustomerCompanies.public');
+        var handle = Meteor.subscribe('CustomerCompanies.topCustomerCompanies');
         if (handle.ready()) {
             //const customers = CustomerCompanies.find().fetch();
             //console.log("customers", customers);
