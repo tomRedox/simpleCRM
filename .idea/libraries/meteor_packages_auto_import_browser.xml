@@ -18,6 +18,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/users-compat.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ordered-dict/1.0.4/web.browser/ordered_dict.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_collection-utils/1.2.0/web.browser/packages/meteorhacks_collection-utils.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_aggregate/1.3.0/web.browser/packages/meteorhacks_aggregate.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/reactive-var/1.0.6/web.browser/reactive-var.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.4/web.browser/retry.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validated-method/1.0.1/web.browser/validated-method.js" />
@@ -525,6 +527,8 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/users-compat.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ordered-dict/1.0.4/web.browser/ordered_dict.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_collection-utils/1.2.0/web.browser/packages/meteorhacks_collection-utils.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_aggregate/1.3.0/web.browser/packages/meteorhacks_aggregate.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/reactive-var/1.0.6/web.browser/reactive-var.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.4/web.browser/retry.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validated-method/1.0.1/web.browser/validated-method.js" />

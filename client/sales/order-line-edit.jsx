@@ -13,7 +13,7 @@ const OrderLineEdit = React.createClass({
     },
 
     getInitialState() {
-        console.log("OrderPage.getInitialState", this.props);
+        //console.log("OrderLineEdit.getInitialState", this.props);
 
         return {
             errors: {},
@@ -46,7 +46,7 @@ const OrderLineEdit = React.createClass({
         //console.log("OrderLineEdit props: ", this.props);
 
         const value = {
-            _id: this.props.orderLine.productId ? this.props.orderLine.productId : '',
+            _id: this.props.orderLine.productId ? this.props.orderLine.productId : null,
             name: this.props.orderLine.description
         };
 
@@ -103,8 +103,10 @@ const OrderLineEdit = React.createClass({
                     />
                 </td>
 
-                <td data-th="Sub Total" className="form-group">
-                    <p className="numeric">{accounting.formatMoney(this.props.orderLine.unitPrice * this.props.orderLine.quantity, '£')}</p>
+                <td data-th="Sub Total" className="form-group numeric">
+                    <p className="sub-total numeric">
+                        {accounting.formatMoney(this.props.orderLine.unitPrice * this.props.orderLine.quantity, '£')}
+                    </p>
                 </td>
 
                 <td className="actions" data-th="">

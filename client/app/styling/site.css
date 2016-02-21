@@ -382,6 +382,9 @@ small.text-muted {
     vertical-align: middle;
 }
 
+table#cart tbody td {
+    vertical-align: middle;
+}
 table#cart tbody td .form-control{
     text-align: right;
 }
@@ -394,7 +397,7 @@ table#cart tbody td .numeric{
 @media screen and (max-width: 600px) {
 
     /* these are the form control fields (qty, unit price etc.)*/
-    table#cart tbody td .form-control{
+    table#cart tbody td .form-control, table#cart tbody td .sub-total{
         width:25%;
         display: inline !important;
         text-align: right;

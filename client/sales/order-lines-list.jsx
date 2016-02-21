@@ -24,7 +24,7 @@ const OrderLinesList = React.createClass({
                 errors = errorSet.errors;
             }
         }
-        console.log(errors);
+        //console.log(errors);
         return errors;
     },
 
@@ -59,7 +59,7 @@ const OrderLinesList = React.createClass({
     },
 
     render() {
-        console.log("OrderLinesList.render()");
+        //console.log("OrderLinesList.render()");
         return (
             <div>
                 <table id="cart" className="table  table-condensed" style={this.divStyle}>
