@@ -127,7 +127,8 @@ const customerCompanyDenormalizer = {
     },
     
     _performCommonAfterModifyActions(orderDoc, previousDoc) {
-        this._updateCompanyOrderTotals(orderDoc.customerId, previousDoc.customerId);
+        // Previous doc will be null for new records.
+        this._updateCompanyOrderTotals(orderDoc.customerId, previousDoc ? previousDoc.customerId : null);
     },
     
     beforeInsert(userId, doc) {
