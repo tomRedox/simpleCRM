@@ -2,25 +2,9 @@ var React = require('react');
 import Select from 'react-select';
 import Products from '../../api/products/products';
 import Orders from '../../api/orders/order';
-
+import accounting from 'accounting';
 
 const GlobalSearch = React.createClass({
-    //propTypes: {
-    //    //order: React.PropTypes.object,
-    //    //onSave: React.PropTypes.func.isRequired
-    //},
-
-    //mixins: [ ReactMeteorData ],
-
-    getMeteorData() {
-        //console.log("Empty.getMeteorData");
-    },
-
-    //getDefaultProps() {
-    //    return {
-    //        order: {}
-    //    };
-    //},
 
     getInitialState() {
         //console.log("Empty.getInitialState(): props", this.props);
@@ -45,6 +29,9 @@ const GlobalSearch = React.createClass({
         let orders = [];
         let customerCompanies = [];
 
+        let results = [];
+
+        // Get the Products
         Meteor.call('Products.fullTextSearch.method', {
             searchValue: input
         }, (err, res) => {
@@ -55,8 +42,8 @@ const GlobalSearch = React.createClass({
                 //console.log("Products res", res);
                 products = res;
 
-
-               Meteor.call('Orders.fullTextSearch.method', {
+                // Get the Orders
+                Meteor.call('Orders.fullTextSearch.method', {
                     searchValue: input
                 }, (err1, res1) => {
                     if (err1) {
@@ -66,7 +53,15 @@ const GlobalSearch = React.createClass({
                         //console.log("Orders res", res1);
                         orders = res1;
 
+                        orders = res1.map(function (order) {
+                            return {
+                                _id: order._id,
+                                name: order.createdAt.toLocaleString() + " " +
+                                        order.customerName + " " + accounting.formatMoney(order.totalValue, "£")
+                            };
+                        })
 
+                        // Get the CustomerCompanies
                         Meteor.call('CustomerCompanies.fullTextSearch.method', {
                             searchValue: input
                         }, (err2, res2) => {
@@ -77,13 +72,15 @@ const GlobalSearch = React.createClass({
                                 //console.log("CustomerCompanies res", res2);
                                 customerCompanies = res2;
 
-                                // Concatenate the whole lot into a single list
+                                // Concatenate the whole lot into a single list with some headings
                                 let options = [].concat(
-                                    products.length > 0 ? [ {_id: '', name: "Products:" } ] : [],
+                                    products.length > 0 ? [ {_id: '', name: "Products:", heading: true, disabled: true} ] : [],
                                     products,
-                                    orders.length > 0 ? [ {_id: '', name: "Orders:" } ] : [],
+                                    orders.length > 0 ? [ {_id: '', name: "Orders:", heading: true, disabled: true } ] : [],
                                     orders,
-                                    customerCompanies.length > 0 ? [ {_id: '', name: "CustomerCompanies:" } ] : [],
+                                    customerCompanies.length > 0 ? [ {
+                                        _id: '', name: "CustomerCompanies:", heading: true, disabled: true
+                                    } ] : [],
                                     customerCompanies
                                 );
 
@@ -94,9 +91,7 @@ const GlobalSearch = React.createClass({
                                     options,
                                     complete: false
                                 };
-
                                 //console.log("data", data.options);
-
 
                                 callback(null, data);
                             }
@@ -129,7 +124,8 @@ const GlobalSearch = React.createClass({
                 autoload={false}
                 matchProp="label" // Typed input is only matched to the label, not to the id as well
                 filterOption = {function (option, filter) { return true; }}
-    />
+                //optionRenderer={this.renderOption}
+            />
         );
     }
 });
