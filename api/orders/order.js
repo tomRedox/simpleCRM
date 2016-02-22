@@ -76,7 +76,7 @@ const customerCompanyDenormalizer = {
                 return;
             }
 
-            let customerIds = [customerId];
+            let customerIds = [ customerId ];
 
             // if the customer Id changed we also need to update the order totals for
             // the old customer
@@ -110,12 +110,12 @@ const customerCompanyDenormalizer = {
                 CustomerCompanies.update(thisCustomerId, {
                     $set: {
                         // the result will be null if this customer now has no orders
-                        ordersTotalValue:  result ? result.ordersTotalValue : 0,
-                        ordersCount:result ? result.ordersCount : 0
+                        ordersTotalValue: result ? result.ordersTotalValue : 0,
+                        ordersCount: result ? result.ordersCount : 0
                         //email: "hi@hi.com" //+ new Date().toTimeString()
                     }
                 });
-            })
+            });
 
             //console.log("_updateCompanyOrderTotals Completed");
         }
@@ -132,24 +132,24 @@ const customerCompanyDenormalizer = {
     },
     
     beforeInsert(userId, doc) {
-        this._performCommonBeforeModifyActions(doc)
+        this._performCommonBeforeModifyActions(doc);
     },
 
     beforeUpdate(userId, doc, fieldNames, modifier, options) {
-        this._performCommonBeforeModifyActions(doc)
+        this._performCommonBeforeModifyActions(doc);
     },
 
     beforeUpsert(userId, selector, modifier, options) {
-        this._performCommonBeforeModifyActions(modifier.$set)
+        this._performCommonBeforeModifyActions(modifier.$set);
     },
 
     afterInsert(userId, doc) {
-        this._performCommonAfterModifyActions(doc)
+        this._performCommonAfterModifyActions(doc);
     },
 
     afterUpdate(userId, doc, fieldNames, modifier, options, previousDoc) {
         console.log("previousDoc: ", previousDoc);
-        this._performCommonAfterModifyActions(doc, previousDoc)
+        this._performCommonAfterModifyActions(doc, previousDoc);
     }   
 
 };

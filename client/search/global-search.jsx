@@ -1,5 +1,7 @@
 var React = require('react');
 import Select from 'react-select';
+import Products from '../../api/products/products';
+import Orders from '../../api/orders/order';
 
 
 const GlobalSearch = React.createClass({
@@ -39,24 +41,72 @@ const GlobalSearch = React.createClass({
     getResults(input, callback) {
         console.log("getResults input:", input);
 
-        Meteor.subscribe("CustomerCompanies.fullTextSearch", input);
-        //let customerHandle = CustomerCompanies.find({}, { sort: [ [ "score", "desc" ] ] });
+        let products = [];
+        let orders = [];
+        let customerCompanies = [];
 
-        var data = {
-            options: CustomerCompanies.find({}, { sort: [ [ "score", "desc" ] ] }).fetch(),
-            // this tells the select control whether this is the complete dataset of all possible options,
-            // which in turn tells the control whether to bother re-querying the datasource or instead
-            // just to use it's cached dataset.
-            complete: false
-        };
+        Meteor.call('Products.fullTextSearch.method', {
+            searchValue: input
+        }, (err, res) => {
+            if (err) {
+                sAlert("Could not retrieve Product search matches");
+                console.log('Products.fullTextSearch.method Error: ', err);
+            } else {
+                //console.log("Products res", res);
+                products = res;
 
-        console.log("data", data);
 
-        setTimeout(function () {
-            console.log("setTimeout", input);
-            callback(null, data);
-        }, 500);
+               Meteor.call('Orders.fullTextSearch.method', {
+                    searchValue: input
+                }, (err1, res1) => {
+                    if (err1) {
+                        sAlert("Could not retrieve Order search matches");
+                        console.log('Orders.fullTextSearch.method Error: ', err1);
+                    } else {
+                        //console.log("Orders res", res1);
+                        orders = res1;
 
+
+                        Meteor.call('CustomerCompanies.fullTextSearch.method', {
+                            searchValue: input
+                        }, (err2, res2) => {
+                            if (err2) {
+                                sAlert("Could not retrieve Customer search matches");
+                                console.log('CustomerCompanies.fullTextSearch.method Error: ', err2);
+                            } else {
+                                //console.log("CustomerCompanies res", res2);
+                                customerCompanies = res2;
+
+                                // Concatenate the whole lot into a single list
+                                let options = [].concat(
+                                    products.length > 0 ? [ {_id: '', name: "Products:" } ] : [],
+                                    products,
+                                    orders.length > 0 ? [ {_id: '', name: "Orders:" } ] : [],
+                                    orders,
+                                    customerCompanies.length > 0 ? [ {_id: '', name: "CustomerCompanies:" } ] : [],
+                                    customerCompanies
+                                );
+
+                                console.log("options: ", options);
+
+
+                                var data = {
+                                    options,
+                                    complete: false
+                                };
+
+                                //console.log("data", data.options);
+
+
+                                callback(null, data);
+                            }
+                        });
+
+                    }
+                });
+
+            }
+        });
     },
 
     render() {
@@ -78,7 +128,8 @@ const GlobalSearch = React.createClass({
                 minimumInput={1} // number of letters needed before a search starts
                 autoload={false}
                 matchProp="label" // Typed input is only matched to the label, not to the id as well
-            />
+                filterOption = {function (option, filter) { return true; }}
+    />
         );
     }
 });
