@@ -30,7 +30,6 @@ const OrdersListItem = React.createClass({
             <tr key={this.props.order._id}>
                 <td>{this.props.order.createdAt.toLocaleDateString()}</td>
                 <td>{this.props.order.customerName}</td>
-                <td>{this.props.order.notes}</td>
                 <td>{accounting.formatMoney(this.props.order.totalValue, '£')}</td>
                 <td>
                     <a className="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalMessageBox">Delete</a>

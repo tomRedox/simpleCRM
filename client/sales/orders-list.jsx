@@ -45,7 +45,6 @@ const OrdersList = React.createClass({
                 <tr>
                     <th>Order Date</th>
                     <th>Customer</th>
-                    <th>Notes</th>
                     <th>Total</th>
                     <th></th>
                     <th></th>

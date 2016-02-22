@@ -60,7 +60,7 @@ const OrderLineEdit = React.createClass({
                     id="deleteOrderLineButton"
                     onClick={this.deleteLine}
                     value="Delete line"
-                />
+                />;
         }
 
         return (

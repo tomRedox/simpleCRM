@@ -54,8 +54,8 @@ const OrderLinesList = React.createClass({
     },
 
     divStyle: {
-        'min-width': "70px",
-        'verticalAlign' : top
+        minWidth: "70px",
+        verticalAlign: top
     },
 
     render() {
@@ -65,11 +65,11 @@ const OrderLinesList = React.createClass({
                 <table id="cart" className="table  table-condensed" style={this.divStyle}>
                     <thead>
                     <tr>
-                        <th style={ {"min-width" : '200px'} }>Product</th>
+                        <th style={ {minWidth: '200px'} }>Product</th>
                         <th style={ this.divStyle }>Quantity</th>
-                        <th style={ {"min-width" : '90px'} }>Unit price</th>
-                        <th style={ {"min-width" : '90px'} }>Line total</th>
-                        <th style={ {"min-width" : '70px'} }></th>
+                        <th style={ {minWidth: '90px'} }>Unit price</th>
+                        <th style={ {minWidth: '90px'} }>Line total</th>
+                        <th style={ {minWidth: '70px'} }></th>
                     </tr>
                     </thead>
                     <tbody>
