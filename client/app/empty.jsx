@@ -1,21 +1,46 @@
-
-//var TextInput = require('./textInput');
 var React = require('react');
 
-// App component - represents the whole app
-Empty = React.createClass({
+
+const Empty = React.createClass({
+    propTypes: {
+        //order: React.PropTypes.object,
+        //onSave: React.PropTypes.func.isRequired
+    },
+
+    //getDefaultProps() {
+    //    return {
+    //        order: {}
+    //    };
+    //},
+
+    //getInitialState() {
+    //    //console.log("Empty.getInitialState(): props", this.props);
+    //
+    //    return {
+    //        isValid: false
+    //    };
+    //},
+
+    //mixins: [ ReactMeteorData ],
+
+    //getMeteorData() {
+    //    //console.log("Empty.getMeteorData");
+    //    return {
+    //
+    //    };
+    //},
+
 
     render() {
-        //console.log("Empty props: ", this.props);
+        //console.log("render()", this.props);
 
         return (
 
-
-<h1></h1>
+            <h1></h1>
 
 
         );
     }
 });
 
-module.exports = Empty;
+export default Empty;
