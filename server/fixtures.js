@@ -1,8 +1,19 @@
 //import { CustomerCompanies } from '../api/customers/customer-company.js';
 import Products from '../api/products/products';
+import Orders from '../api/orders/order';
+
 
 // if the database is empty on server start, create some sample data.
 Meteor.startup(() => {
+    console.log("fixtures Meteor.startup");
+
+    CustomerCompanies._ensureIndex({"name":"text", "email":"text", "postcode":"text"});
+    //In Meteor Mongo: Orders._dropIndexes();
+    Orders._ensureIndex({"customerName":"text", "postcode":"text", "orderLines.description":"text"});
+    //In Meteor Mongo: Orders.createIndex({customerName:"text", postcode:"text", "orderLines.description":"text"});
+    Products._ensureIndex({"name":"text"});
+
+
     if (CustomerCompanies.find().count() === 0) {
         const data = [
             {

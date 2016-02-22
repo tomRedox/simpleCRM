@@ -1,7 +1,6 @@
 
-//var TextInput = require('./textInput');
 var React = require('react');
-//import { Link } from 'react-router';
+import GlobalSearch from '../search/global-search.jsx';
 
 // this page is wrapped by the wrapper
 TopNav = React.createClass({
@@ -24,8 +23,7 @@ TopNav = React.createClass({
                 <nav className="collapse navbar-collapse" role="navigation">
                     <form className="navbar-form navbar-left">
                         <div className="input-group input-group-sm" style={{maxWidth: "360px"}}>
-                            <input type="text" className="form-control" placeholder="Search" name="srch-term"
-                                   id="srch-term"/>
+                             <GlobalSearch id="srch-term" />
                             <div className="input-group-btn">
                                 <button className="btn btn-default" type="submit"><i className="fa fa-search"></i>
                                 </button>
@@ -50,6 +48,12 @@ TopNav = React.createClass({
         );
     }
 });
+
+//<input type="text" className="form-control" placeholder="Search" name="srch-term"
+//       id="srch-term"/>
+
+
+
     //    <li>
     //        {{#if isInRole 'Administrator'}}
     //        <a href="#">Admin</a>
