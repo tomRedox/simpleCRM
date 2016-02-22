@@ -13,6 +13,7 @@ import CustomerEditPageWrapper from './customers/customer-edit-page-wrapper.jsx'
 import Dashboard from './dashboard/dashboard.jsx';
 import AppNotFound from './app/app-not-found.jsx';
 import OrderPageWrapper from './sales/order-page-wrapper.jsx';
+import ProductsListWrapper from './products/products-list-wrapper.jsx';
 
 
 //// define and export our Layout component
@@ -60,6 +61,17 @@ FlowRouter.route("/addCustomer", {
         //console.log("route ", this.name);
         mount(Layout, {
             content: (<CustomerEditPageWrapper />)
+        });
+    }
+});
+
+
+FlowRouter.route('/products/', {
+    name: 'productsList',
+    action() {
+        //console.log("route ", this.name);
+        mount(Layout, {
+            content: (<ProductsListWrapper />)
         });
     }
 });

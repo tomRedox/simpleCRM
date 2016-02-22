@@ -13,7 +13,7 @@ CustomerCompanies.methods.updateManualForm = new ValidatedMethod({
     name: 'CustomerCompanies.methods.updateManualForm',
 
     validate(args) {
-        console.log("validating2");
+        console.log("CustomerCompanies.methods.updateManualForm.validate(args) ", args);
 
         Schemas.CustomerCompaniesSchema.clean(args.data);
 
