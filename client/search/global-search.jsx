@@ -40,7 +40,13 @@ const GlobalSearch = React.createClass({
                 console.log('Products.fullTextSearch.method Error: ', err);
             } else {
                 //console.log("Products res", res);
-                products = res;
+                products = res.map(function (product) {
+                    return {
+                        _id: product._id,
+                        name: product.name,
+                        isProduct: true
+                    };
+                })
 
                 // Get the Orders
                 Meteor.call('Orders.fullTextSearch.method', {
@@ -51,13 +57,12 @@ const GlobalSearch = React.createClass({
                         console.log('Orders.fullTextSearch.method Error: ', err1);
                     } else {
                         //console.log("Orders res", res1);
-                        orders = res1;
-
                         orders = res1.map(function (order) {
                             return {
                                 _id: order._id,
                                 name: order.createdAt.toLocaleString() + " " +
-                                        order.customerName + " " + accounting.formatMoney(order.totalValue, "£")
+                                order.customerName + " " + accounting.formatMoney(order.totalValue, "£"),
+                                isOrder: true
                             };
                         })
 
@@ -70,7 +75,13 @@ const GlobalSearch = React.createClass({
                                 console.log('CustomerCompanies.fullTextSearch.method Error: ', err2);
                             } else {
                                 //console.log("CustomerCompanies res", res2);
-                                customerCompanies = res2;
+                                customerCompanies = res2.map(function (customer) {
+                                    return {
+                                        _id: customer._id,
+                                        name: customer.name,
+                                        isCustomer: true
+                                    };
+                                })
 
                                 // Concatenate the whole lot into a single list with some headings
                                 let options = [].concat(
@@ -79,7 +90,7 @@ const GlobalSearch = React.createClass({
                                     orders.length > 0 ? [ {_id: '', name: "Orders:", heading: true, disabled: true } ] : [],
                                     orders,
                                     customerCompanies.length > 0 ? [ {
-                                        _id: '', name: "CustomerCompanies:", heading: true, disabled: true
+                                        _id: '', name: "Customers:", heading: true, disabled: true
                                     } ] : [],
                                     customerCompanies
                                 );
@@ -104,6 +115,21 @@ const GlobalSearch = React.createClass({
         });
     },
 
+    renderOption(option) {
+        if (option.heading) {
+            return <span style={{ color: "black" }}>{option.name} </span>;
+        } else if (option.isCustomer) {
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-group"></i> {option.name} </span>;
+        } else if (option.isProduct) {
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-archive"></i> {option.name} </span>;
+        } else if (option.isOrder) {
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-file-text"></i> {option.name} </span>;
+        }
+
+        // unexpected option
+        return <span style={{ marginLeft: 5 }}><i className="fa fa-circle-o"></i> {option.name} </span>;
+    },
+
     render() {
         //console.log("render()", this.props);
 
@@ -124,7 +150,7 @@ const GlobalSearch = React.createClass({
                 autoload={false}
                 matchProp="label" // Typed input is only matched to the label, not to the id as well
                 filterOption = {function (option, filter) { return true; }}
-                //optionRenderer={this.renderOption}
+                optionRenderer={this.renderOption}
             />
         );
     }
