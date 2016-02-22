@@ -36,15 +36,8 @@ const GlobalSearch = React.createClass({
         //return this.setState({searchTerm: });
     },
 
-    //getResults() {
-    //    Meteor.subscribe("CustomerCompanies.fullTextSearch", this.state.searchTerm);
-    //    let customerHandle = CustomerCompanies.find({}, { sort: [ [ "score", "desc" ] ] });
-    //
-    //},
-
-    loadOptions(input, callback) {
-        console.log("OrderHeaderEdit.loadOptions() ", input);
-        console.log("this.state.searchTerm ", this.state.searchTerm);
+    getResults(input, callback) {
+        console.log("getResults input:", input);
 
         Meteor.subscribe("CustomerCompanies.fullTextSearch", input);
         //let customerHandle = CustomerCompanies.find({}, { sort: [ [ "score", "desc" ] ] });
@@ -63,6 +56,7 @@ const GlobalSearch = React.createClass({
             console.log("setTimeout", input);
             callback(null, data);
         }, 500);
+
     },
 
     render() {
@@ -70,10 +64,10 @@ const GlobalSearch = React.createClass({
 
         return (
 
-            <Select.Async  style={ {minWidth: '270px'} }
+            <Select.Async style={ {minWidth: '270px'} }
                 name="globalSearch"
                 //value={this.getValue()}
-                loadOptions={this.loadOptions}
+                loadOptions={_.debounce(this.getResults, 300)}
                 onChange={this.onChange}
                 valueKey="_id"
                 labelKey="name"
@@ -85,9 +79,6 @@ const GlobalSearch = React.createClass({
                 autoload={false}
                 matchProp="label" // Typed input is only matched to the label, not to the id as well
             />
-
-
-
         );
     }
 });
