@@ -46,7 +46,7 @@ const GlobalSearch = React.createClass({
                         name: product.name,
                         isProduct: true
                     };
-                })
+                });
 
                 // Get the Orders
                 Meteor.call('Orders.fullTextSearch.method', {
@@ -60,11 +60,10 @@ const GlobalSearch = React.createClass({
                         orders = res1.map(function (order) {
                             return {
                                 _id: order._id,
-                                name: order.createdAt.toLocaleString() + " " +
-                                order.customerName + " " + accounting.formatMoney(order.totalValue, "£"),
+                                name: order.createdAt.toLocaleDateString() + " - " + order.customerName,
                                 isOrder: true
                             };
-                        })
+                        });
 
                         // Get the CustomerCompanies
                         Meteor.call('CustomerCompanies.fullTextSearch.method', {
@@ -81,7 +80,7 @@ const GlobalSearch = React.createClass({
                                         name: customer.name,
                                         isCustomer: true
                                     };
-                                })
+                                });
 
                                 // Concatenate the whole lot into a single list with some headings
                                 let options = [].concat(
@@ -119,15 +118,15 @@ const GlobalSearch = React.createClass({
         if (option.heading) {
             return <span style={{ color: "black" }}>{option.name} </span>;
         } else if (option.isCustomer) {
-            return <span style={{ marginLeft: 5 }}><i className="fa fa-group"></i> {option.name} </span>;
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-group"/> {option.name} </span>;
         } else if (option.isProduct) {
-            return <span style={{ marginLeft: 5 }}><i className="fa fa-archive"></i> {option.name} </span>;
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-archive"/> {option.name} </span>;
         } else if (option.isOrder) {
-            return <span style={{ marginLeft: 5 }}><i className="fa fa-file-text"></i> {option.name} </span>;
+            return <span style={{ marginLeft: 5 }}><i className="fa fa-file-text"/> {option.name} </span>;
         }
 
         // unexpected option
-        return <span style={{ marginLeft: 5 }}><i className="fa fa-circle-o"></i> {option.name} </span>;
+        return <span style={{ marginLeft: 5 }}><i className="fa fa-circle-o"/> {option.name} </span>;
     },
 
     render() {
