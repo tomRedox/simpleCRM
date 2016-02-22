@@ -57,7 +57,8 @@ Meteor.methods({
                     // contains the document's search rank, a numerical value, with more
                     // relevant documents having a higher score.
                     fields: {
-                        score: {$meta: "textScore"}
+                        score: {$meta: "textScore"},
+                        name: 1
                     },
                     // This indicates that we wish the publication to be sorted by the
                     // `score` property specified in the projection fields above.
