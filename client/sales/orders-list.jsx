@@ -6,48 +6,38 @@ import ModalMessageBox from '../controls/modal-message-box.jsx';
 import Collapse from 'react-collapse';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
+
 const OrdersList = React.createClass({
     propTypes: {
         orders: React.PropTypes.array.isRequired,
-        recordsToShow: React.PropTypes.number.isRequired,
-        updateNumberRecordsToShow: React.PropTypes.func.isRequired
+        expanded: React.PropTypes.bool.isRequired,
+        toggleExpanded: React.PropTypes.func.isRequired
     },
 
-    getInitialState() {
-        console.log("OrdersList.getInitialState() ");
+    animationDuration: 500,
 
-        return {
-            expanded: false,
-            duration: 500,
-            ready: false,
-            isOpened: false, keepContent: false, paragraphs: 0
-        };
+    shouldComponentUpdate() {
+        // Don't re-render if there are no records, which there won't be
+        // after the first render (when the initial subscription happens
+        // and before the data is actually retrieved)
+        return (this.props.orders.length === 0);
     },
-
-
 
     renderOrderListItems() {
         //console.log("orders2", this.data.orders)
 
         // Get tasks from this.data.tasks
         return this.props.orders.map((order) => {
-
             return (
                   <OrdersListItem order={order} key={order._id}/>
-
             );
         });
-    },
-
-    shouldComponentUpdate() {
-        return (this.props.orders.length === 0);
     },
 
     renderOrderTable() {
         //console.log("orders2", this.data.orders)
         // Get tasks from this.data.tasks
         return (
-
             <table className="table table-responsive table-striped">
                 <tbody>
                 <tr>
@@ -57,76 +47,30 @@ const OrdersList = React.createClass({
                     <th></th>
                     <th></th>
                 </tr>
-
                     {this.renderOrderListItems()}
                 </tbody>
             </table>
         );
     },
 
-    renderTest() {
-        if (this.state.expanded) {
-            return (
-                <div>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                    <p>p</p>
-                </div>
-            );
-        }
-
-        return (
-            <div>
-                <p>p</p>
-                <p>p</p>
-                <p>p</p>
-                <p>p</p>
-                <p>p</p>
-            </div>
-        );
-    },
-
-
-    toggleState() {
-        console.log("toggleState(): this.state.expanded 1: ", this.state.expanded);
-
-        this.state.expanded = !this.state.expanded;
-
-        console.log("toggleState(): this.state.expanded 2: ", this.state.expanded);
-
-        let recordsToShow = 3;
-        if (this.state.expanded) {
-            recordsToShow = 6;
-        }
-
-        this.props.updateNumberRecordsToShow(recordsToShow);
-    },
-
-    renderDeviceToggle() {
-        //console.log("OrdersList.renderDeviceToggle() - this:", this);
-        //console.log("OrdersList.renderDeviceToggle() - state:", this.state);
+    renderShowMoreToggle() {
+        //console.log("OrdersList.renderShowMoreToggle() - this:", this);
+        //console.log("OrdersList.renderShowMoreToggle() - state:", this.state);
 
         var arrowAnimation = {
-            rotateX: this.state.expanded ? 180 : 0//,
+            rotateX: this.props.expanded ? 180 : 0//,
             //transformOriginY: [ '42%', '42%' ]
         };
 
         let getLabel = function () {
-            if (this.state.expanded) {
+            if (this.props.expanded) {
                 return " Show less";
             }
             return " Show more";
         }.bind(this);
 
-
         return (
-            <div className="device-toggle" onClick={this.toggleState}>
+            <div className="device-toggle" onClick={this.props.toggleExpanded}>
                 <div className="device-icon icon huge"></div>
                 {getLabel()}<span> </span>
                 <VelocityComponent duration={300} animation={arrowAnimation}>
@@ -139,10 +83,9 @@ const OrdersList = React.createClass({
     render() {
         console.log("OrdersList render");
         var arrowAnimation = {
-            rotateX: this.state.expanded ? 360 : 0//,
+            rotateX: this.props.expanded ? 360 : 0//,
             //transformOriginY: [ '42%', '42%' ]
         };
-
 
         return (
             <div>
@@ -160,13 +103,13 @@ const OrdersList = React.createClass({
                             isOpened={true}
                             keepCollapsedContent={false}>
                             <div style={{padding: 10}}>
-                                <VelocityComponent duration={this.state.duration} animation={arrowAnimation}>
+                                <VelocityComponent duration={this.animationDuration} animation={arrowAnimation}>
 
                                 {this.renderOrderTable()}
                                     </VelocityComponent>
                             </div>
                         </Collapse>
-                        {this.renderDeviceToggle()}
+                        {this.renderShowMoreToggle()}
                     </div>
                 </div>
             </div>
@@ -175,3 +118,33 @@ const OrdersList = React.createClass({
 });
 
 module.exports = OrdersList;
+
+
+
+//renderTest() {
+//    if (this.props.expanded) {
+//        return (
+//            <div>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//                <p>p</p>
+//            </div>
+//        );
+//    }
+//
+//    return (
+//        <div>
+//            <p>p</p>
+//            <p>p</p>
+//            <p>p</p>
+//            <p>p</p>
+//            <p>p</p>
+//        </div>
+//    );
+//},

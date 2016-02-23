@@ -2,21 +2,21 @@
  This class was added to allow the react animations to work correctly on the list.
  The issue was that render is called twice on the list, once with no data and then
  again when the data is present.  That was stopping the animations working, so
- broke the data retrieval out into a separate wrapper so the list will always have
- data to work with.
+ broke the data retrieval out into a separate wrapper so that then on the child
+ we can use shouldComponentUpdate to set whether the render should occur.
  */
 
 import React from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './orders-list.jsx';
-import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
-import Collapse from 'react-collapse';
+
 
 const OrdersListWrapper = React.createClass({
 
     getInitialState() {
         return {
+            expanded: false,
             recordsToShow: 3
         };
     },
@@ -48,9 +48,20 @@ const OrdersListWrapper = React.createClass({
     },
 
 
-    updateNumberRecordsToShow(recordsToShow) {
-        console.log("updateNumberRecordsToShow", recordsToShow)
+    toggleExpanded() {
+        console.log("toggleExpanded(): this.state.expanded 1: ", this.state.expanded);
+
+        this.state.expanded = !this.state.expanded;
+
+        console.log("toggleExpanded(): this.state.expanded 2: ", this.state.expanded);
+
+        let recordsToShow = 3;
+        if (this.state.expanded) {
+            recordsToShow = 6;
+        }
+
         this.setState({recordsToShow});
+        //this.props.updateNumberRecordsToShow(recordsToShow);
     },
 
     render() {
@@ -62,8 +73,8 @@ const OrdersListWrapper = React.createClass({
 
             <OrdersList
                 orders={this.data.orders ? this.data.orders : []}
-                updateNumberRecordsToShow={this.updateNumberRecordsToShow}
-                recordsToShow={this.state.recordsToShow}
+                expanded={this.state.expanded}
+                toggleExpanded={this.toggleExpanded}
             />
 
         );
@@ -71,25 +82,3 @@ const OrdersListWrapper = React.createClass({
 });
 
 module.exports = OrdersListWrapper;
-
-//{this.state.expanded ? undefined : <div><OrdersList recordsToShow={recordsToShow}/></div> }
-//{this.state.expanded ? <div><OrdersList recordsToShow={recordsToShow}/></div> : undefined }
-
-//{this.state.expanded ?
-//    <div><OrdersList recordsToShow={recordsToShow}/></div> :
-//    <div><OrdersList recordsToShow={recordsToShow}/></div>
-//}
-
-//<div><OrdersList recordsToShow={recordsToShow}/></div>
-
-//{this.state.expanded ? <div><OrdersList recordsToShow={recordsToShow}/></div>
-//    : <div><OrdersList recordsToShow={recordsToShow}/></div> }
-
-//<VelocityTransitionGroup component="div"
-//                         enter={{animation: 'slideDown', duration: this.state.duration, style: {height: ''}}}
-//                         leave={{animation: 'slideUp', duration: this.state.duration}}
-//>
-//    {this.state.expanded ? undefined : <div><OrdersList recordsToShow={recordsToShow}/></div> }
-//    {this.state.expanded ? <div><OrdersList recordsToShow={recordsToShow}/></div> : undefined }
-//</VelocityTransitionGroup>
-//{this.renderDeviceToggle()}
