@@ -14,7 +14,13 @@ const CustomersList = React.createClass({
         if (handle.ready()) {
             //const customers = CustomerCompanies.find().fetch();
             //console.log("customers", customers);
-            data.customers = CustomerCompanies.find().fetch();
+            data.customers = CustomerCompanies.find(
+                {},
+                {
+                    sort: {ordersTotalValue: -1},
+                    limit: 3
+                }
+            ).fetch();
         }
 
         return data;
@@ -67,10 +73,10 @@ const CustomersList = React.createClass({
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <div className="pull-right text-right">
-                        <p><a href="/addCustomer" className="pull-right">New Customer </a></p>
+                        <p><a href="/addCustomer" className="pull-right">New customer </a></p>
                         <p><a href="#"> View all</a></p>
                     </div>
-                    <h4>Top Customers</h4>
+                    <h4>Top customers</h4>
                 </div>
                 <div className="panel-body">
                     { this.data.customers ?

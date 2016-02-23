@@ -17,7 +17,13 @@ const OrdersList = React.createClass({
         var handle = Meteor.subscribe('Orders.topOrders');
         if (handle.ready()) {
             //console.log("orders", orders);
-            data.orders = Orders.find().fetch();
+            data.orders = Orders.find(
+                {},
+                {
+                    sort: {totalValue: -1},
+                    limit: 3
+                }
+            ).fetch();
         }
 
         return data;
@@ -63,10 +69,10 @@ const OrdersList = React.createClass({
                 <div className="panel panel-default">
                     <div className="panel-heading">
                         <div className="pull-right text-right">
-                            <p><a href="/addOrder" className="pull-right">New Order </a></p>
+                            <p><a href="/addOrder" className="pull-right">New order </a></p>
                             <p><a href="#"> View all</a></p>
                         </div>
-                        <h4>Top Orders</h4>
+                        <h4>Top orders</h4>
                     </div>
                     <div className="panel-body">
                         { this.data.orders ?

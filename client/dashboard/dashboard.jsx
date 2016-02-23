@@ -10,7 +10,7 @@ const Dashboard = React.createClass({
             <div>
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        <h3>Dashboard <i className="fa fa-dashboard"></i></h3>
+                        <h3><i className="fa fa-dashboard"/> simple crm dashboard </h3>
                     </div>
                 </div>
                 <OrdersList/>
