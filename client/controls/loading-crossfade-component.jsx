@@ -1,3 +1,6 @@
+// From: https://fabric.io/blog/introducing-the-velocityreact-library
+//       https://github.com/twitter-fabric/velocity-react
+//
 // Component for a VelocityTransitionGroup that crossfades between its children.
 //
 // To use this component, render with a single child that contains the "loading" version of your
