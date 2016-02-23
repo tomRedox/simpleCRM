@@ -1,9 +1,7 @@
-
 import Orders from './order.js';
 
 
 Orders.methods = {};
-
 
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.
@@ -36,7 +34,6 @@ Orders.methods.upsert = new ValidatedMethod({
         return Orders.upsert(args.orderId, {$set: args.data});
     }
 });
-
 
 Meteor.methods({
     'Orders.methods.remove'({ orderId }) {

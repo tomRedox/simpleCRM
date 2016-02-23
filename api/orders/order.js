@@ -13,10 +13,6 @@ Orders.deny({
     remove() { return true; }
 });
 
-// Define the expected Schema for data going into,
-// and coming out of the database
-//Orders.schema = Schemas.OrdersSchema
-
 // Bolt that schema onto the collection so that all mutator
 // calls are automatically checked against the schema.
 // Collection2 is what's allowing this to happen
@@ -55,8 +51,10 @@ const customerCompanyDenormalizer = {
     // the correct name for the selected customerId is always set.
     _updateCompanyNameOnOrder(order) {
 
-        // We only want to do this update on the server -it was already done on the client
+        // We only want to do this update on the server - it was already done on the client
         // And wouldn't work on the client as we are accessing the customer table directly
+        // and also because the client miniMongo data subset may not contain the customer
+        // at that point in time
         if (Meteor.isServer) {
             console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
                 order.customerId + " - " + order.customerName);

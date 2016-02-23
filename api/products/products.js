@@ -10,10 +10,6 @@ Products.allow({
     remove() { return true; }
 });
 
-// Define the expected Schema for data going into,
-// and coming out of the database
-//Products.schema = Schemas.ProductsSchema
-
 // Bolt that schema onto the collection so that all mutator
 // calls are automatically checked against the schema.
 // Collection2 is what's allowing this to happen

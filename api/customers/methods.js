@@ -1,9 +1,5 @@
 
-//import { CustomerCompanies } from './customer-company'
-
-
 CustomerCompanies.methods = {};
-
 
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.

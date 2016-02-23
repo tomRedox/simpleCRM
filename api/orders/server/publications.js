@@ -1,4 +1,3 @@
-
 import Orders from '../order';
 
 Meteor.publish('Orders.public', function () {
@@ -20,7 +19,6 @@ Meteor.publish('Order.get', function (id) {
     return Orders.find({_id: id});
 });
 
-
 Meteor.publish('Order.customerTotals', function (customerId) {
     //console.log("Order.customerTotals ");
 
@@ -34,7 +32,6 @@ Meteor.publish('Order.customerTotals', function (customerId) {
 
     return result;
 });
-
 
 Meteor.publish('Orders.fullTextSearch', function (searchValue) {
     // console.log("Orders.fullTextSearch - "
@@ -58,7 +55,6 @@ Meteor.publish('Orders.fullTextSearch', function (searchValue) {
         }
     );
 });
-
 
 Meteor.methods({
     'Orders.fullTextSearch.method'({ searchValue }) {
