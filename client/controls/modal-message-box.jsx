@@ -13,15 +13,15 @@ const ModalMessageBox = React.createClass({
     renderConfirmButton() {
 
         let confirmButtonClassName = "btn pull-right";
-        if(this.props.onConfirmAction) {
-            confirmButtonClassName = confirmButtonClassName + " btn-" + this.props.contextualClass;
+        if (this.props.onConfirmAction) {
+            confirmButtonClassName += " btn-" + this.props.contextualClass;
         } else {
-            confirmButtonClassName = confirmButtonClassName + " btn-primary";
+            confirmButtonClassName += " btn-primary";
         }
 
         // Only show the confirm button if we were passed a confirm action
-        if(this.props.onConfirmAction) {
-            console.log(confirmButtonClassName);
+        if (this.props.onConfirmAction) {
+            //console.log(confirmButtonClassName);
             return (
                 <button type="button" className={confirmButtonClassName}
                         data-dismiss="modal" onClick={this.props.onConfirmAction}>Confirm
@@ -31,18 +31,15 @@ const ModalMessageBox = React.createClass({
     },
 
     renderCloseButton() {
-        if(this.props.onConfirmAction) {
+        if (this.props.onConfirmAction) {
              return (
                  <button type="button" className="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
             );
-        } else {
-            return (
-                <button type="button" className="btn btn-primary pull-right" data-dismiss="modal">OK</button>
-            );
         }
+        return <button type="button" className="btn btn-primary pull-right" data-dismiss="modal">OK</button>;
     },
 
-    render(){
+    render() {
         console.log("ModalMessageBox.render()");
 
         return (
