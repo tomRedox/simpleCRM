@@ -28,7 +28,12 @@ const ProductsListWrapper = React.createClass({
         //console.log("Empty.getMeteorData");
         Meteor.subscribe( "Products.public" );
         return {
-            products: Products.find().fetch()
+            products: Products.find(
+                {},
+                {
+                    sort: {name: 1}
+                }
+            ).fetch()
         };
     },
 

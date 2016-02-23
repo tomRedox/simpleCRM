@@ -1,6 +1,8 @@
 var React = require('react');
 import accounting from 'accounting';
 
+// This click to edit grid comes from this example on Meteor Chef:
+// https://themeteorchef.com/snippets/click-to-edit-fields-in-react/
 
 const GridColumn = React.createClass({
     render() {
@@ -30,7 +32,7 @@ const ProductsList = React.createClass({
         };
     },
 
-    handleVinylUpdate( update ) {
+    handleItemUpdate(update) {
 
         const args = {
             productId: update._id,
@@ -41,31 +43,31 @@ const ProductsList = React.createClass({
             }
         };
 
-        Meteor.call( 'Products.methods.upsert', args, ( error, response ) => {
-            if ( error ) {
-                sAlert.error( error.reason );
+        Meteor.call('Products.methods.upsert', args, (error, response) => {
+            if (error) {
+                sAlert.error(error.reason);
             } else {
-                this.setState( { editing: null } );
-                sAlert.success( 'Record updated!' );
+                this.setState({editing: null});
+                sAlert.success('Product updated successfully');
             }
         });
     },
 
-    handleEditField( event ) {
-        if ( event.keyCode === 13 ) {
+    handleEditField(event) {
+        if (event.keyCode === 13) {
             let target = event.target;
             let update = {};
 
             update._id = this.state.editing;
             update[target.name] = target.value;
 
-            this.handleVinylUpdate( update );
+            this.handleItemUpdate(update);
         }
     },
     handleEditItem() {
         let itemId = this.state.editing;
 
-        this.handleVinylUpdate({
+        this.handleItemUpdate({
             _id: itemId,
             name: this.refs[`name_${ itemId }`].value,
             price: this.refs[`price_${ itemId }`].value,
@@ -73,12 +75,12 @@ const ProductsList = React.createClass({
         });
     },
 
-    toggleEditing( itemId ) {
-        this.setState( { editing: itemId } );
+    toggleEditing(itemId) {
+        this.setState({editing: itemId});
     },
 
-    renderItemOrEditField( item ) {
-        if ( this.state.editing === item._id ) {
+    renderItemOrEditField(item) {
+        if (this.state.editing === item._id) {
             return <li key={ `editing-${ item._id }` } className="list-group-item">
                 <GridRow>
                     <GridColumn className="col-xs-12 col-sm-6">
@@ -113,16 +115,27 @@ const ProductsList = React.createClass({
                         />
                     </GridColumn>
                     <GridColumn className="col-xs-12 col-sm-2">
-                        <a className="btn btn-success" onClick={ this.handleEditItem }>Update Item</a>
+                        <a className="btn btn-success btn-sm" onClick={ this.handleEditItem }>Update Item</a>
                     </GridColumn>
                 </GridRow>
             </li>;
         } else {
-            return <li
-                onClick={ this.toggleEditing.bind( null, item._id ) }
-                key={ item._id }
-                className="list-group-item">
-                { `${ item.name } (${ accounting.formatMoney(item.price, "£") })` }
+            return <li key={ item._id } className="list-group-item"
+                       onClick={ this.toggleEditing.bind( null, item._id ) }>
+                <GridRow>
+                    <GridColumn className="col-xs-12 col-sm-6">
+                        <span>{ item.name} </span>
+                    </GridColumn>
+                    <GridColumn className="col-xs-12 col-sm-2">
+                        <span>{ accounting.formatMoney(item.price, "£") } </span>
+                    </GridColumn>
+                    <GridColumn className="col-xs-12 col-sm-2">
+                        <span>{ item.createdAt.toLocaleDateString() } </span>
+                    </GridColumn>
+                    <GridColumn className="col-xs-12 col-sm-2">
+                        <a className="btn btn-default btn-sm">Edit Item</a>
+                    </GridColumn>
+                </GridRow>
             </li>;
         }
     },
@@ -130,12 +143,39 @@ const ProductsList = React.createClass({
     render() {
         //console.log("render()", this.props);
 
-        return <ul className="list-group">
-            {this.props.items.map( ( item ) => {
-                return this.renderItemOrEditField( item );
-            })}
-        </ul>;
+        return (
+            <div>
+                <h4><i className="fa fa-archive"/> Products</h4>
+                <ul className="list-group">
+                    <li className="list-group-item">
+                        <GridRow>
+                            <GridColumn className="col-xs-12 col-sm-6">
+                                <label>Name</label>
+                            </GridColumn>
+                            <GridColumn className="col-xs-12 col-sm-2">
+                                <label>Price</label>
+                            </GridColumn>
+                            <GridColumn className="col-xs-12 col-sm-2">
+                                <label>Created</label>
+                            </GridColumn>
+                            <GridColumn className="col-xs-12 col-sm-2">
+                            </GridColumn>
+                        </GridRow>
+                    </li>
+                    {this.props.items.map((item) => {
+                        return this.renderItemOrEditField(item);
+                    })}
+                </ul>
+            </div>
+        );
     }
 });
 
 export default ProductsList;
+
+//return <li
+//    onClick={ this.toggleEditing.bind( null, item._id ) }
+//    key={ item._id }
+//    className="list-group-item">
+//    { `${ item.name } (${ accounting.formatMoney(item.price, "£") })` }
+//</li>;
