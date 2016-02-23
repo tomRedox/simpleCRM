@@ -4,12 +4,12 @@ Meteor.publish('Orders.public', function () {
     return Orders.find();
 });
 
-Meteor.publish('Orders.topOrders', function () {
+Meteor.publish('Orders.topOrders', function (numberToReturn) {
     return Orders.find(
         {},
         {
             sort: {totalValue: -1},
-            limit: 3
+            limit: numberToReturn
         }
     );
 });
