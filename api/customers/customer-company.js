@@ -15,15 +15,11 @@ class customerCompanyCollection extends Mongo.Collection {}
 CustomerCompanies = new customerCompanyCollection("Companies");
 
 // Deny all client-side updates since we will be using methods to manage this collection
-//CustomerCompanies.deny({
-//    insert() { return true; },
-//    update() { return true; },
-//    remove() { return true; }
-//});
-
-// Define the expected Schema for data going into,
-// and coming out of the database
-//CustomerCompanies.schema = Schemas.CustomerCompaniesSchema
+CustomerCompanies.deny({
+    insert() { return true; },
+    update() { return true; },
+    remove() { return true; }
+});
 
 // Bolt that schema onto the collection so that all mutator
 // calls are automatically checked against the schema.
