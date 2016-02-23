@@ -50,21 +50,31 @@ Orders.after.update(function (userId, doc, fieldNames, modifier, options) {
 
 
 const customerCompanyDenormalizer = {
+
+    // Ensure that no matter what customerName we receive from the client,
+    // the correct name for the selected customerId is always set.
     _updateCompanyNameOnOrder(order) {
-        //console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
-        //    order.customerId + " - " + order.customerName);
 
-        // no action needed if the customerId is not set
-        if (!order.customerId || order.customerId === null) { return; }
+        // We only want to do this update on the server -it was already done on the client
+        // And wouldn't work on the client as we are accessing the customer table directly
+        if (Meteor.isServer) {
+            console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
+                order.customerId + " - " + order.customerName);
 
-        //const handle = Meteor.subscribe('CustomerCompany.get', order.customerId);
-        //const customer = CustomerCompanies.findOne({_id: order.customerId});
-        //
-        //if (!customer) {
-        //    throw new Meteor.Error("The customer could not be found in the database");
-        //}
-        //
-        //order.customerName = customer.name;
+            // no action needed if the customerId is not set
+            if (!order.customerId || order.customerId === null) {
+                return;
+            }
+
+            //const handle = Meteor.subscribe('CustomerCompany.get', order.customerId);
+            const customer = CustomerCompanies.findOne({_id: order.customerId});
+
+            if (!customer) {
+                throw new Meteor.Error("The customer could not be found in the database");
+            }
+
+            order.customerName = customer.name;
+        }
     },
 
     _updateCompanyOrderTotals(customerId, previousCustomerId) {
@@ -80,8 +90,7 @@ const customerCompanyDenormalizer = {
 
             // if the customer Id changed we also need to update the order totals for
             // the old customer
-            if (customerId !== previousCustomerId)
-            {
+            if (customerId !== previousCustomerId) {
                 customerIds.push(previousCustomerId);
             }
 
