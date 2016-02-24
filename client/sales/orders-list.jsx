@@ -29,7 +29,7 @@ const OrdersList = React.createClass({
         // Get tasks from this.data.tasks
         return this.props.orders.map((order) => {
             return (
-                  <OrdersListItem order={order} key={order._id}/>
+                <OrdersListItem order={order} key={order._id}/>
             );
         });
     },
@@ -47,7 +47,7 @@ const OrdersList = React.createClass({
                     <th></th>
                     <th></th>
                 </tr>
-                    {this.renderOrderListItems()}
+                {this.renderOrderListItems()}
                 </tbody>
             </table>
         );
@@ -73,7 +73,7 @@ const OrdersList = React.createClass({
             <div className="device-toggle" onClick={this.props.toggleExpanded}>
                 <div className="device-icon icon huge"></div>
                 {getLabel()}<span> </span>
-                <VelocityComponent duration={300} animation={arrowAnimation}>
+                <VelocityComponent duration={this.animationDuration * 1.5} animation={arrowAnimation}>
                     <i className="fa fa-arrow-down"/>
                 </VelocityComponent>
             </div>
@@ -82,7 +82,7 @@ const OrdersList = React.createClass({
 
     render() {
         console.log("OrdersList render");
-        var arrowAnimation = {
+        var transitionAnimation = {
             rotateX: this.props.expanded ? 360 : 0//,
             //transformOriginY: [ '42%', '42%' ]
         };
@@ -98,15 +98,13 @@ const OrdersList = React.createClass({
                         <h4>Top orders</h4>
                     </div>
                     <div className="panel-body">
-                        <Collapse
-
-                            isOpened={true}
-                            keepCollapsedContent={false}>
+                        <Collapse isOpened={true} keepCollapsedContent={false}>
                             <div style={{padding: 10}}>
-                                <VelocityComponent duration={this.animationDuration} animation={arrowAnimation}>
-
-                                {this.renderOrderTable()}
-                                    </VelocityComponent>
+                                <VelocityComponent duration={this.animationDuration}
+                                                   animation={transitionAnimation}
+                                >
+                                    {this.renderOrderTable()}
+                                </VelocityComponent>
                             </div>
                         </Collapse>
                         {this.renderShowMoreToggle()}

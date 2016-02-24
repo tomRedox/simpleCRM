@@ -12,12 +12,15 @@ import Orders from '../../api/orders/order';
 import OrdersList from './orders-list.jsx';
 
 
+const MINIMISED_RECORD_COUNT = 3;
+const EXPANDED_RECORD_COUNT = 9;
+
 const OrdersListWrapper = React.createClass({
 
     getInitialState() {
         return {
             expanded: false,
-            recordsToShow: 3
+            recordsToShow: MINIMISED_RECORD_COUNT
         };
     },
 
@@ -47,7 +50,6 @@ const OrdersListWrapper = React.createClass({
         return data;
     },
 
-
     toggleExpanded() {
         console.log("toggleExpanded(): this.state.expanded 1: ", this.state.expanded);
 
@@ -55,13 +57,12 @@ const OrdersListWrapper = React.createClass({
 
         console.log("toggleExpanded(): this.state.expanded 2: ", this.state.expanded);
 
-        let recordsToShow = 3;
+        let recordsToShow = MINIMISED_RECORD_COUNT;
         if (this.state.expanded) {
-            recordsToShow = 6;
+            recordsToShow = EXPANDED_RECORD_COUNT;
         }
 
         this.setState({recordsToShow});
-        //this.props.updateNumberRecordsToShow(recordsToShow);
     },
 
     render() {
@@ -69,8 +70,6 @@ const OrdersListWrapper = React.createClass({
 
         // Get tasks from this.data.tasks
         return (
-
-
             <OrdersList
                 orders={this.data.orders ? this.data.orders : []}
                 expanded={this.state.expanded}
