@@ -30,8 +30,6 @@ fortawesome:fontawesome
 juliancwirko:s-alert
 juliancwirko:s-alert-flip
 juliancwirko:s-alert-slide
-ian:accounts-ui-bootstrap-3
-accounts-password
 alanning:roles
 rajit:bootstrap3-datepicker
 react-meteor-data
@@ -39,3 +37,5 @@ kadira:flow-router
 underscore
 matb33:collection-hooks
 meteorhacks:aggregate
+accounts-password
+accounts-ui

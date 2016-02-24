@@ -40,6 +40,9 @@ TopNav = React.createClass({
                         <li>
                             <a href="#"><span className="badge">badge</span></a>
                         </li>
+                        <li>
+                             <AccountsUIWrapper />
+                        </li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                     </ul>

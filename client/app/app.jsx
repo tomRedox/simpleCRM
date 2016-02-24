@@ -15,10 +15,24 @@ Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
 //Meteor.subscribe("Products.public");
 
+//var checkScrollBars = function(){
+//    var b = $('body');
+//    var normalw = 0;
+//    var scrollw = 0;
+//    if(b.prop('scrollHeight')>b.height()){
+//        normalw = window.innerWidth;
+//        scrollw = normalw - b.width();
+//        $('#container').css({marginRight:'-'+scrollw+'px'});
+//    }
+//}
+//
+//checkScrollBars();
+
 // define and export our Layout component
 export const Layout = ({content}) => (
 
     <div id="app">
+
         <div className="wrapper">
             <div className="box">
                 <div className="row row-offcanvas row-offcanvas-left">
