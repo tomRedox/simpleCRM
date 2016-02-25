@@ -45,8 +45,8 @@ const ContentContainer = React.createClass({
                 <ReactCSSTransitionGroup
                     component="div"
                     transitionName="example"
-                    transitionEnterTimeout={2000}
-                    transitionLeaveTimeout={2000}
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}
                 >
                     {React.cloneElement(this.props.children, {
                         key: this.props.children.key

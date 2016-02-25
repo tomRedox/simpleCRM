@@ -1,3 +1,36 @@
+
+/*
+* Page Transitions
+*/
+
+.example-enter {
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    position: absolute;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+}
+
+.example-leave {
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+    position: absolute;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0;
+}
+
+
+
+
+
+
+
 /* custom template */
 html, body {
     height: 100%;
@@ -290,28 +323,6 @@ small.text-muted {
     }
 }
 
-
-/*
-* Page Transitions
-*/
-
-.example-enter {
-    opacity: 0.01;
-    transition: opacity .5s ease-in;
-}
-
-.example-enter.example-enter-active {
-    opacity: 1;
-}
-
-.example-leave {
-    opacity: 1;
-    transition: opacity .5s ease-in;
-}
-
-.example-leave.example-leave-active {
-    opacity: 0;
-}
 
 
 /*
