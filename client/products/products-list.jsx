@@ -23,7 +23,6 @@ const GridRow = React.createClass({
 const ProductsList = React.createClass({
     propTypes: {
         items: React.PropTypes.array.isRequired
-        //onSave: React.PropTypes.func.isRequired
     },
 
     getInitialState() {
@@ -144,7 +143,7 @@ const ProductsList = React.createClass({
         //console.log("render()", this.props);
 
         return (
-            <div>
+            <div key="productsList">
                 <h4><i className="fa fa-archive"/> Products</h4>
                 <ul className="list-group">
                     <li className="list-group-item">

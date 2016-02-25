@@ -6,6 +6,8 @@
 
 import React from 'react';
 import MessageEditor from '../controls/modal-message-box.jsx';
+import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 //var RouteHandler = require('react-router').RouteHandler;
 //var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
@@ -28,10 +30,54 @@ Meteor.subscribe("Orders.All");
 //
 //checkScrollBars();
 
+const ContentContainer = React.createClass({
+
+    componentWillUnmount() {
+        console.log("ContentContainer.componentWillUnmount");
+    },
+
+    render() {
+        console.log("ContentContainer.render()", this.props.children)
+
+
+        return (
+            <div key="contentContainer">
+                <ReactCSSTransitionGroup
+                    component="div"
+                    transitionName="example"
+                    transitionEnterTimeout={2000}
+                    transitionLeaveTimeout={2000}
+                >
+                    {React.cloneElement(this.props.children, {
+                        key: this.props.children.key
+                    })}
+                </ReactCSSTransitionGroup>
+            </div>
+        );
+    }
+
+});
+//<InnerContainer content={this.props.content}/>
+
+const InnerContainer = React.createClass({
+
+    render() {
+
+        return (
+            <div id="innerContainer">
+                {this.props.content}
+
+            </div>
+        );
+    }
+
+});
+
+
 // define and export our Layout component
 export const Layout = ({content}) => (
-
     <div id="app">
+        {console.log("Layout rendered")}
 
         <div className="wrapper">
             <div className="box">
@@ -51,8 +97,12 @@ export const Layout = ({content}) => (
                                     <main>
                                         <div id="popup"></div>
 
-                                        <div>{content}</div>
+                                        <div id="outerContent">
 
+                                            <ContentContainer key="content">{content}</ContentContainer>
+
+
+                                        </div>
                                     </main>
                                 </div>
                             </div>

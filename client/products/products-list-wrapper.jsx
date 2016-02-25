@@ -1,32 +1,15 @@
 var React = require('react');
 import Products from '../../api/products/products';
 import ProductsList from './products-list.jsx';
+import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
 const ProductsListWrapper = React.createClass({
-    propTypes: {
-        //order: React.PropTypes.object,
-        //onSave: React.PropTypes.func.isRequired
-    },
-
-    //getDefaultProps() {
-    //    return {
-    //        order: {}
-    //    };
-    //},
-
-    //getInitialState() {
-    //    //console.log("Empty.getInitialState(): props", this.props);
-    //
-    //    return {
-    //        isValid: false
-    //    };
-    //},
 
     mixins: [ ReactMeteorData ],
 
     getMeteorData() {
         //console.log("Empty.getMeteorData");
-        Meteor.subscribe( "Products.public" );
+        Meteor.subscribe("Products.public");
         return {
             products: Products.find(
                 {},
@@ -37,14 +20,26 @@ const ProductsListWrapper = React.createClass({
         };
     },
 
-
     render() {
         //console.log("render()", this.props);
 
         return (
-            <ProductsList items={ this.data.products } />
+            <div key="productsListWrapper">
+                <ProductsList items={ this.data.products }/>
+            </div>
         );
     }
 });
 
 export default ProductsListWrapper;
+
+
+//<VelocityTransitionGroup
+//    runOnMount={true}
+//    enter={{animation: "fadeIn"}}
+//    leave={{animation: "fadeOut"}}
+//    duration={500}
+//>
+//    <ProductsList items={ this.data.products } />
+//
+//</VelocityTransitionGroup>

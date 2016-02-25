@@ -22,8 +22,8 @@ Sidebar = React.createClass({
                     <li><a href="#"><i className="fa fa-file-text"/> Orders</a></li>
                     <li><a href="#"><i className="fa fa-group"/> Customers</a></li>
                     <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
-                    <li><a href="#"><i className="fa fa-search"/> Search</a></li>
-                    <li><a href="#"><i className="fa fa-line-chart"/> Reports</a></li>
+                    <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
+                    <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
                 </ul>
                 <ul className="list-unstyled hidden-xs" id="sidebar-footer">
                     <li>

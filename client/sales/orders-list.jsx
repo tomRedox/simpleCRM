@@ -81,7 +81,7 @@ const OrdersList = React.createClass({
     },
 
     render() {
-        console.log("OrdersList render");
+        //console.log("OrdersList render");
         var transitionAnimation = {
             rotateX: this.props.expanded ? 360 : 0//,
             //transformOriginY: [ '42%', '42%' ]

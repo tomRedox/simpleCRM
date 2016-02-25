@@ -294,9 +294,10 @@ small.text-muted {
 /*
 * Page Transitions
 */
+
 .example-enter {
     opacity: 0.01;
-    transition: opacity 0s ease-in;
+    transition: opacity .5s ease-in;
 }
 
 .example-enter.example-enter-active {
@@ -305,7 +306,7 @@ small.text-muted {
 
 .example-leave {
     opacity: 1;
-    transition: opacity 0s ease-in;
+    transition: opacity .5s ease-in;
 }
 
 .example-leave.example-leave-active {

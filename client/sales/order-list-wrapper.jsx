@@ -10,7 +10,7 @@ import React from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './orders-list.jsx';
-
+import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
 const MINIMISED_RECORD_COUNT = 3;
 const EXPANDED_RECORD_COUNT = 9;
@@ -20,7 +20,8 @@ const OrdersListWrapper = React.createClass({
     getInitialState() {
         return {
             expanded: false,
-            recordsToShow: MINIMISED_RECORD_COUNT
+            recordsToShow: MINIMISED_RECORD_COUNT,
+            showChild: false
         };
     },
 
@@ -29,7 +30,7 @@ const OrdersListWrapper = React.createClass({
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
-        console.log("getMeteorData()");
+        //console.log("getMeteorData()");
 
         var data = {};
 
@@ -51,11 +52,11 @@ const OrdersListWrapper = React.createClass({
     },
 
     toggleExpanded() {
-        console.log("toggleExpanded(): this.state.expanded 1: ", this.state.expanded);
+        //console.log("toggleExpanded(): this.state.expanded 1: ", this.state.expanded);
 
         this.state.expanded = !this.state.expanded;
 
-        console.log("toggleExpanded(): this.state.expanded 2: ", this.state.expanded);
+        //console.log("toggleExpanded(): this.state.expanded 2: ", this.state.expanded);
 
         let recordsToShow = MINIMISED_RECORD_COUNT;
         if (this.state.expanded) {
@@ -66,7 +67,7 @@ const OrdersListWrapper = React.createClass({
     },
 
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("OrdersListWrapper.render() ");
 
         // Get tasks from this.data.tasks
         return (
@@ -75,9 +76,29 @@ const OrdersListWrapper = React.createClass({
                 expanded={this.state.expanded}
                 toggleExpanded={this.toggleExpanded}
             />
-
         );
     }
 });
 
 module.exports = OrdersListWrapper;
+
+
+//return (
+//    <VelocityTransitionGroup
+//
+//        enter={{animation: "fadeIn"}}
+//        leave={{animation: "fadeOut"}}
+//        duration={1500}
+//    >
+//        { this.state.showChild ?
+//            <OrdersList
+//                orders={this.data.orders ? this.data.orders : []}
+//                expanded={this.state.expanded}
+//                toggleExpanded={this.toggleExpanded}
+//            /> :
+//            undefined
+//        }
+//
+//    </VelocityTransitionGroup>
+//
+//);

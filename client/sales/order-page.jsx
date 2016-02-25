@@ -14,7 +14,7 @@ const OrderPage = React.createClass({
 
     getInitialState() {
 
-        console.log("OrderPage.getInitialState(): props", this.props);
+        // console.log("OrderPage.getInitialState(): props", this.props);
 
         return {
             order: this.props.order,
@@ -165,7 +165,7 @@ const OrderPage = React.createClass({
     },
 
     render() {
-        console.log("OrderPage.render() props: ", this.props);
+        // console.log("OrderPage.render() props: ", this.props);
         this.setFormIsValid();
 
         return (
@@ -199,7 +199,6 @@ const OrderPage = React.createClass({
                             onClick={this.addNewOrderLine}
                             value="New line"
                         />
-
                     </div>
                 </form>
             </div>

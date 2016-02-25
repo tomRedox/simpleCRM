@@ -6,6 +6,7 @@
 * */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {mount} from 'react-mounter';
 import {Layout} from './app/app.jsx';
 //import CustomersList from './customers/customers-list.jsx';
@@ -14,7 +15,8 @@ import Dashboard from './dashboard/dashboard.jsx';
 import AppNotFound from './app/app-not-found.jsx';
 import OrderPageWrapper from './sales/order-page-wrapper.jsx';
 import ProductsListWrapper from './products/products-list-wrapper.jsx';
-
+import Test1 from './app/test1.jsx';
+import Test2 from './app/test2.jsx';
 
 //// define and export our Layout component
 //export const Layout1 = ({content}) => (
@@ -32,14 +34,28 @@ import ProductsListWrapper from './products/products-list-wrapper.jsx';
 //    </div>
 //);
 
+const EmptyThing = React.createClass( {
+    render() {
+        return (
+            <div>
+            <H1>Hi</H1>
+                </div>
+        );
+    }
+})
 
+
+function unloadComponent() {
+    console.log("unloadComponent");
+    //ReactDOM.render(<EmptyThing />, document.getElementById('outerContent'));
+}
 
 FlowRouter.route("/", {
     name: "Home",
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<Dashboard />)
+            content: (<Dashboard key="dashboard1"/>)
         });
     }
 });
@@ -50,7 +66,7 @@ FlowRouter.route('/customers/:_id', {
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<CustomerEditPageWrapper />)
+            content: (<MyContainer><CustomerEditPageWrapper /></MyContainer>)
         });
     }
 });
@@ -60,18 +76,22 @@ FlowRouter.route("/addCustomer", {
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<CustomerEditPageWrapper />)
+            content: (<CustomerEditPageWrapper/>)
         });
     }
 });
 
 
 FlowRouter.route('/products/', {
+
     name: 'productsList',
+
+    triggersEnter:  [unloadComponent],
+
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<ProductsListWrapper />)
+            content: (<ProductsListWrapper  key="productsList"/>)
         });
     }
 });
@@ -103,6 +123,27 @@ FlowRouter.route("/addOrder", {
         console.log("route ", this.name);
         mount(Layout, {
             content: (<OrderPageWrapper />)
+        });
+    }
+});
+
+
+FlowRouter.route("/test1", {
+    name: "test1",
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<Test1 key="test1"/>)
+        });
+    }
+});
+
+FlowRouter.route("/test2", {
+    name: "test2",
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<Test2 key="test2"/>)
         });
     }
 });

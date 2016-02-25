@@ -1,4 +1,3 @@
-
 //var TextInput = require('./textInput');
 
 var React = require('react');
@@ -7,6 +6,7 @@ import OrderPage from './order-page.jsx';
 import Orders from '../../api/orders/order';
 //import { createHistory, useBasename } from 'history'
 
+
 //const history = useBasename(createHistory)({
 //    basename: '/'
 //});
@@ -14,7 +14,17 @@ import Orders from '../../api/orders/order';
 // Top of the stack, represents the whole page
 const OrderPageWrapper = React.createClass({
     // This mixin makes the getMeteorData method work
-    mixins: [ ReactMeteorData ],
+    mixins: [ReactMeteorData],
+
+    getInitialState() {
+        return {
+            showChild: false
+        };
+    },
+
+    componentDidMount() {
+        this.setState({showChild: !this.state.showChild});
+    },
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
@@ -76,8 +86,11 @@ const OrderPageWrapper = React.createClass({
         });
     },
 
-    render() {
-        console.log("OrderPageWrapper render - order: ", this.data.order);
+    toggle() {
+        this.setState({showChild: !this.state.showChild});
+    },
+
+    renderContent() {
 
         if (!this.data.newOrder && (this.data.orderLoading)) {
             return ( <h3>Loading Order</h3> );
@@ -87,7 +100,25 @@ const OrderPageWrapper = React.createClass({
                 order={this.data.order}
                 onSave={this.saveOrder}
             />
+
         );
+    },
+
+    render() {
+        // console.log("OrderPageWrapper render - order: ", this.data.order);
+
+        if (!this.data.newOrder && (this.data.orderLoading)) {
+            return ( <h3>Loading Order</h3> );
+        }
+        return (
+            <div key="orderPageWrapper">
+                <OrderPage
+                    order={this.data.order}
+                    onSave={this.saveOrder}
+                />
+            </div>
+        );
+
     }
 });
 
