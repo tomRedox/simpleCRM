@@ -18,7 +18,7 @@ TopNav = React.createClass({
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a href="/" className="navbar-brand logo">b</a>
+                    <a href="/" className="navbar-brand logo">simple crm</a>
                 </div>
                 <nav className="collapse navbar-collapse" role="navigation">
                     <form className="navbar-form navbar-left">

@@ -30,6 +30,7 @@
     "react-motion": "^0.4.2",
     "react-mounter": "^1.0.0",
     "react-router": "^2.0.0-rc6",
+    "react-s-alert": "^1.0.2",
     "react-select": "^1.0.0-beta9",
     "react-transform-hmr": "^1.0.2",
     "string-humanize": "^1.0.0",

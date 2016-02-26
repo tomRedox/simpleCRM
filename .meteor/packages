@@ -27,9 +27,6 @@ reactive-var
 aldeed:autoform
 twbs:bootstrap
 fortawesome:fontawesome
-juliancwirko:s-alert
-juliancwirko:s-alert-flip
-juliancwirko:s-alert-slide
 alanning:roles
 rajit:bootstrap3-datepicker
 react-meteor-data
@@ -39,3 +36,6 @@ matb33:collection-hooks
 meteorhacks:aggregate
 accounts-password
 accounts-ui
+juliancwirko:s-alert
+juliancwirko:s-alert-flip
+juliancwirko:s-alert-slide

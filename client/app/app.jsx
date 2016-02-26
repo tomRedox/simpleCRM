@@ -86,8 +86,9 @@ export const Layout = ({content}) => (
                     <Sidebar/>
 
                     <div className="column col-sm-10 col-xs-11" id="main">
+            <TopNav/>
 
-                        <TopNav/>
+
 
                         <div className="padding">
                             <div className="full col-sm-9">
