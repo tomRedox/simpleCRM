@@ -5,12 +5,7 @@
 
 
 import React from 'react';
-import MessageEditor from '../controls/modal-message-box.jsx';
-import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-
-//var RouteHandler = require('react-router').RouteHandler;
-//var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 Meteor.subscribe("SalesRegions.All");
@@ -37,7 +32,7 @@ const ContentContainer = React.createClass({
     },
 
     render() {
-        console.log("ContentContainer.render()", this.props.children)
+        console.log("ContentContainer.render()", this.props.children);
 
 
         return (
@@ -57,21 +52,6 @@ const ContentContainer = React.createClass({
     }
 
 });
-//<InnerContainer content={this.props.content}/>
-
-const InnerContainer = React.createClass({
-
-    render() {
-
-        return (
-            <div id="innerContainer">
-                {this.props.content}
-
-            </div>
-        );
-    }
-
-});
 
 
 // define and export our Layout component
@@ -86,9 +66,8 @@ export const Layout = ({content}) => (
                     <Sidebar/>
 
                     <div className="column col-sm-10 col-xs-11" id="main">
-            <TopNav/>
 
-
+                        <TopNav/>
 
                         <div className="padding">
                             <div className="full col-sm-9">
@@ -101,7 +80,6 @@ export const Layout = ({content}) => (
                                         <div id="outerContent">
 
                                             <ContentContainer key="content">{content}</ContentContainer>
-
 
                                         </div>
                                     </main>
