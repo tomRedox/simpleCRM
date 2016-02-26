@@ -47,7 +47,7 @@ const OrdersListWrapper = React.createClass({
             ).fetch();
         }
 
-        data.customerLoading = handle ? !handle.ready() : {}
+        data.dataReady = handle;
         return data;
     },
 
@@ -67,7 +67,7 @@ const OrdersListWrapper = React.createClass({
     },
 
     render() {
-        //console.log("OrdersListWrapper.render() ");
+        console.log("OrdersListWrapper.render() ");
 
         // Get tasks from this.data.tasks
         return (
@@ -75,6 +75,7 @@ const OrdersListWrapper = React.createClass({
                 orders={this.data.orders ? this.data.orders : []}
                 expanded={this.state.expanded}
                 toggleExpanded={this.toggleExpanded}
+                parentGotData={this.data.dataReady}
             />
         );
     }

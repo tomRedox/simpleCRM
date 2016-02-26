@@ -11,16 +11,18 @@ const OrdersList = React.createClass({
     propTypes: {
         orders: React.PropTypes.array.isRequired,
         expanded: React.PropTypes.bool.isRequired,
-        toggleExpanded: React.PropTypes.func.isRequired
+        toggleExpanded: React.PropTypes.func.isRequired,
+        parentGotData: React.PropTypes.bool.isRequired
     },
 
     animationDuration: 500,
 
     shouldComponentUpdate() {
-        // Don't re-render if there are no records, which there won't be
+        console.log("shouldComponentUpdate", this.props.parentGotData);
+       // Don't re-render if there are no records, which there won't be
         // after the first render (when the initial subscription happens
         // and before the data is actually retrieved)
-        return (this.props.orders.length === 0);
+        return (this.props.parentGotData);
     },
 
     renderOrderListItems() {
@@ -81,7 +83,7 @@ const OrdersList = React.createClass({
     },
 
     render() {
-        //console.log("OrdersList render");
+        console.log("OrdersList render");
         var transitionAnimation = {
             rotateX: this.props.expanded ? 360 : 0//,
             //transformOriginY: [ '42%', '42%' ]
