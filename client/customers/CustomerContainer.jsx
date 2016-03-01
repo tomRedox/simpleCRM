@@ -6,15 +6,11 @@ import { customerChange, customerSave } from '../redux/action_creators.jsx';
 
 export const CustomerContainer = React.createClass({
 
-
     componentWillMount() {
         console.log("CustomerContainer.componentWillMount()", this.props);
 
         const customerId = FlowRouter.getParam('_id');
-
         this.sub = Meteor.subscribe('CustomerCompany.get', customerId, this.setCustomerInState);
-
-        this.props.selectCustomer(FlowRouter.getParam('_id'));
     },
 
     setCustomerInState() {
@@ -27,35 +23,15 @@ export const CustomerContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.props.customer)
-        if (this.sub.ready) {
-            return true;
-        }
-        return false;
+        //console.log("shouldComponentUpdate", this.sub.ready)
+        return (this.sub.ready);
     },
-
-    //
-    //triggerLoad() {
-    //    console.log("triggerLoad start");
-    //
-    //    console.log("triggerLoad end");
-    //},
-
-    //onChange() {
-    //    store.dispatch(Actions.customerChange(event));
-    //},
-    //
-    //onSave() {
-    //    store.dispatch(Actions.customerSave());
-    //},
 
     render() {
         console.log("CustomerContainer.render()", this.props);
         if (!this.sub.ready) {
             return (<h1>Loading</h1>);
         }
-
-
 
         //debugger // checkout this.props with debugger!
         return (
@@ -68,12 +44,6 @@ export const CustomerContainer = React.createClass({
             />);
     }
 });
-
-// choose what state we send to comp. above and it's children, in
-// this app we're sending everything at once, we're also splitting
-// it out into three properties to match previous state shape, you
-// could easily just return `state` for this small app
-
 
 CustomerContainer.propTypes = {
     customer: PropTypes.object,

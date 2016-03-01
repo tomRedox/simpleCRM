@@ -26,8 +26,7 @@ function merge(oldState, newState) {
 // never directly mutate the `state` param, use merge instead
 
 const userInterface = function userInterface(state = initialInterfaceState, action) {
-    //state = state || initialInterfaceState;
-    console.log("reducers.userInterface  action:", {state, action});
+    //console.log("reducers.userInterface  action:", {state, action});
 
     switch (action.type) {
         case 'SELECT_CUSTOMER':
@@ -49,13 +48,10 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 
             customer.isValid = (Object.keys(customer.errors).length === 0);
 
-            console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", customer);
+            //console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", customer);
 
-
-            // Swap in are newly edited data
-            return merge(state, {
-                customer
-            });
+            // merge in our newly edited data
+            return merge(state, { customer });
         default:
             return state;
     }
@@ -82,14 +78,8 @@ const customer = function customer(state = {}, action) {
             // keeps the entire cache for us. We'll just return the new minimongo state
             // We *could* also return another fetch if sorting wasn't so easy here
             let docs = _.clone(action.collection); // clone to prevent mutating action!!
-
-            //if (!state.customer) {
-            //    state.customer = docs[0];
-            //    console.log("Added customer to state ", state.customer);
-            //}
-
             //return docs[0]; //.sort((a,b) => b.score - a.score);
-            return state;
+            return docs;
         default:
             return state;
     }

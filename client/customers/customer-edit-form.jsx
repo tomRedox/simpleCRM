@@ -32,7 +32,7 @@ const CustomerEditForm = React.createClass({
             errors = this.props.errors;
         }
 
-        isValid = this.props.isValid;
+        let isValid = this.props.isValid;
         isValid = true;
 
         return (
