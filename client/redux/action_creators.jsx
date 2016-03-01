@@ -3,7 +3,6 @@
 // unneeded boilerplate  but it's **really** nice to have a file
 // with *all* possible ways to mutate the state of the app.
 
-import { validateItemAgainstSchema } from '../../lib/validation-helpers';
 
 Actions = {};
 
@@ -45,13 +44,12 @@ Actions.saveCustomer = function saveCustomer(customer) {
 
     //CustomerCompanies.update({_id: customer._Id}, {$set: {customer}});
 
-
-    // return { type: 'SAVE_CUSTOMER' };
+    //return { type: 'SAVE_CUSTOMER' };
 };
 
 
 Actions.editCustomer = function editCustomer(customerId, event) {
-    console.log("Actions.editCustomer() event:", event);
+    console.log("Actions.editCustomer() event.target:", event.target);
 
     return {
         type: 'EDIT_CUSTOMER',
@@ -61,11 +59,10 @@ Actions.editCustomer = function editCustomer(customerId, event) {
 };
 
 Actions.selectCustomer = function selectCustomer(customerId) {
-    let customer = CustomerCompanies.findOne(customerId);
-    console.log("Actions.selectCustomer: " + customerId.toString(), customer)
+    console.log("Actions.selectCustomer: " + customerId.toString())
     return {
         type: 'SELECT_CUSTOMER',
-        customer
+        customerId
     };
 };
 

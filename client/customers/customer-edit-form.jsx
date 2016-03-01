@@ -21,7 +21,7 @@ const CustomerEditForm = React.createClass({
 
     onChange(event) {
         console.log("CustomerEditForm.onChange() event:", event.target)
-        this.props.onChange(this.props.customer, event);
+        this.props.onChange(this.props.customer._id, event);
     },
 
     render() {

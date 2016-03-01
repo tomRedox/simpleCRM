@@ -7,13 +7,14 @@
 
 import Actions from './action_creators.jsx';
 import { combineReducers } from 'redux';
+import { validateItemAgainstSchema } from '../../lib/validation-helpers';
 
 
 let { incrementScore, selectPlayer, playersChanged } = Actions;
 Reducers = {};
 
 let initialInterfaceState = {
-    //customer: {}
+    customer: {}
 };
 
 // helper to *copy* old state and merge new data with it
@@ -26,33 +27,34 @@ function merge(oldState, newState) {
 
 const userInterface = function userInterface(state = initialInterfaceState, action) {
     //state = state || initialInterfaceState;
-    console.log("userInterface reducer");
+    console.log("reducers.userInterface  action:", {state, action});
 
     switch (action.type) {
         case 'SELECT_CUSTOMER':
+            console.log("userInterface SELECT_CUSTOMER, action:", action);
             // we happen to be replacing all the reducers state but with merge you
             // could just return the selectedId and it would retain selectedCustomerName
             return merge(state, {
-                customer: action.customer
+                customer: CustomerCompanies.findOne({_id: action.customerId})
             });
         case 'EDIT_CUSTOMER':
-            console.log("userInterface EDIT_CUSTOMER, customer:", customer);
+            console.log("userInterface EDIT_CUSTOMER, customer:", state.customer);
 
-            const updatedCustomer = _.clone(action.customer);
+            const customer = _.clone(state.customer);
 
             // update our customer state to reflect the new value in the UI
-            updatedCustomer[event.target.name] = event.target.value;
+            customer[action.event.target.name] = action.event.target.value;
 
-            updatedCustomer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
+            customer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
 
-            updatedCustomer.isValid = (Object.keys(customer.errors).length === 0);
+            customer.isValid = (Object.keys(customer.errors).length === 0);
 
-            console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", updatedCustomer);
+            console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", customer);
 
 
             // Swap in are newly edited data
             return merge(state, {
-                customer: updatedCustomer
+                customer
             });
         default:
             return state;
@@ -62,7 +64,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 // using the ES6 default params instead of the manual check like above
 
 const customer = function customer(state = {}, action) {
-    console.log("customer reducer");
+    console.log("reducers.customer", {state, action});
 
     switch (action.type) {
         case 'SAVE_CUSTOMER':
@@ -71,13 +73,23 @@ const customer = function customer(state = {}, action) {
             // flux-helper to fire a COLLECTION_CHANGED dispatch after the
             // increment update. Since we're doing that we'll just return the old
             // state to prevent the UI from re-rendering twice.
+
+            // The actual save to MM happened in the saveCustomer action creator
             return state;
         case 'CUSTOMERS_COLLECTION_CHANGED':
+            console.log("reducers.customer CUSTOMERS_COLLECTION_CHANGED", {state, action});
             // we don't have to merge the single doc that changes since minimongo
             // keeps the entire cache for us. We'll just return the new minimongo state
             // We *could* also return another fetch if sorting wasn't so easy here
             let docs = _.clone(action.collection); // clone to prevent mutating action!!
-            return docs[0]; //.sort((a,b) => b.score - a.score);
+
+            //if (!state.customer) {
+            //    state.customer = docs[0];
+            //    console.log("Added customer to state ", state.customer);
+            //}
+
+            //return docs[0]; //.sort((a,b) => b.score - a.score);
+            return state;
         default:
             return state;
     }

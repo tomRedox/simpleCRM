@@ -6,14 +6,20 @@ import { customerChange, customerSave } from '../redux/action_creators.jsx';
 
 export const CustomerContainer = React.createClass({
 
+
     componentWillMount() {
         console.log("CustomerContainer.componentWillMount()", this.props);
 
-        const customerId =  FlowRouter.getParam('_id');
+        const customerId = FlowRouter.getParam('_id');
 
-        this.sub = Meteor.subscribe('CustomerCompany.get', customerId);
+        this.sub = Meteor.subscribe('CustomerCompany.get', customerId, this.setCustomerInState);
 
-        this.props.selectCustomer(customerId);
+        this.props.selectCustomer(FlowRouter.getParam('_id'));
+    },
+
+    setCustomerInState() {
+        console.log("setCustomerInState");
+        this.props.selectCustomer(FlowRouter.getParam('_id'));
     },
 
     componentWillUnmount() {
@@ -22,8 +28,7 @@ export const CustomerContainer = React.createClass({
 
     shouldComponentUpdate() {
         console.log("shouldComponentUpdate", this.props.customer)
-        if (this.props.customer) {
-            console.log("shouldComponentUpdate true", this.props.customer)
+        if (this.sub.ready) {
             return true;
         }
         return false;
@@ -46,9 +51,11 @@ export const CustomerContainer = React.createClass({
 
     render() {
         console.log("CustomerContainer.render()", this.props);
-        if (Object.keys(this.props.customer).length === 0) {
+        if (!this.sub.ready) {
             return (<h1>Loading</h1>);
         }
+
+
 
         //debugger // checkout this.props with debugger!
         return (
@@ -69,7 +76,7 @@ export const CustomerContainer = React.createClass({
 
 
 CustomerContainer.propTypes = {
-    customer: PropTypes.object.isRequired,
+    customer: PropTypes.object,
     onSave: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     selectCustomer: PropTypes.func.isRequired,
@@ -77,9 +84,9 @@ CustomerContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    //console.log("CustomerContainer.mapStateToProps", state)
+    console.log("CustomerContainer.mapStateToProps", state)
     return {
-        customer: state.customer
+        customer: state.userInterface.customer
     };
 }
 
@@ -87,8 +94,8 @@ function mapDispatchToProps(dispatch) {
     //console.log("CustomerContainer.mapDispatchToProps", Actions.customerSave)
     return {
         onSave: Actions.saveCustomer,
-        onChange: Actions.editCustomer,
-        selectCustomer: Actions.selectCustomer
+        onChange: (customerId, event) => { dispatch(Actions.editCustomer(customerId, event)); },
+        selectCustomer: (customerId) => { dispatch(Actions.selectCustomer(customerId)); }
     };
 }
 
