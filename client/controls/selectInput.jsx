@@ -22,10 +22,8 @@ SelectInput = React.createClass({
     onChangeHandler(selectedOption) {
         //console.log("selectInput event ", event)
         this.props.onChange({
-            target: {
-                name: this.props.name,
-                value: selectedOption //1.0.0 [this.props.valueKey]
-            }
+            name: this.props.name,
+            value: selectedOption //1.0.0 this is the selected row object, not just the id
         });
     },
 
