@@ -79,7 +79,7 @@ FlowRouter.route("/addCustomer", {
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<CustomerEditPageWrapper/>)
+            content: (<ReduxContainer/>)
         });
     }
 });

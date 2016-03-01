@@ -66,4 +66,11 @@ Actions.selectCustomer = function selectCustomer(customerId) {
     };
 };
 
+Actions.selectNewCustomer = function selectNewCustomer() {
+    console.log("Actions.selectNewCustomer ")
+    return {
+        type: 'SELECT_NEW_CUSTOMER',
+    };
+};
+
 export default Actions;

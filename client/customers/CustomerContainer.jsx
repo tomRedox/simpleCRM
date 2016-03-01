@@ -10,7 +10,13 @@ export const CustomerContainer = React.createClass({
         console.log("CustomerContainer.componentWillMount()", this.props);
 
         const customerId = FlowRouter.getParam('_id');
-        this.sub = Meteor.subscribe('CustomerCompany.get', customerId, this.setCustomerInState);
+
+        if (customerId) {
+            this.sub = Meteor.subscribe('CustomerCompany.get', customerId, this.setCustomerInState);
+        } else {
+            this.props.selectNewCustomer();
+        }
+
     },
 
     setCustomerInState() {
@@ -19,17 +25,19 @@ export const CustomerContainer = React.createClass({
     },
 
     componentWillUnmount() {
-        this.sub.stop();
+        if (this.sub) {
+            this.sub.stop();
+        }
     },
 
     shouldComponentUpdate() {
         //console.log("shouldComponentUpdate", this.sub.ready)
-        return (this.sub.ready);
+        return (!this.sub || this.sub.ready);
     },
 
     render() {
         console.log("CustomerContainer.render()", this.props);
-        if (!this.sub.ready) {
+        if (this.sub && !this.sub.ready) {
             return (<h1>Loading</h1>);
         }
 
@@ -50,6 +58,7 @@ CustomerContainer.propTypes = {
     onSave: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     selectCustomer: PropTypes.func.isRequired,
+    selectNewCustomer: PropTypes.func.isRequired,
 
 };
 
@@ -65,7 +74,8 @@ function mapDispatchToProps(dispatch) {
     return {
         onSave: Actions.saveCustomer,
         onChange: (customerId, event) => { dispatch(Actions.editCustomer(customerId, event)); },
-        selectCustomer: (customerId) => { dispatch(Actions.selectCustomer(customerId)); }
+        selectCustomer: (customerId) => { dispatch(Actions.selectCustomer(customerId)); },
+        selectNewCustomer: () => { dispatch(Actions.selectNewCustomer()); }
     };
 }
 
