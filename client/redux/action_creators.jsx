@@ -48,13 +48,13 @@ Actions.saveCustomer = function saveCustomer(customer) {
 };
 
 
-Actions.editCustomer = function editCustomer(customerId, event) {
-    console.log("Actions.editCustomer() event.target:", event.target);
+Actions.editCustomer = function editCustomer(customerId, newValues) {
+    console.log("Actions.editCustomer() event.target:" + newValues);
 
     return {
         type: 'EDIT_CUSTOMER',
         customerId,
-        event
+        newValues
     };
 };
 

@@ -58,8 +58,12 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 
             const customer = _.clone(state.customerBeingEdited);
 
+            for(let newValue of action.newValues) {
+                customer[newValue.name] = newValue.value;
+            }
+
             // update our customer state to reflect the new value in the UI
-            customer[action.event.target.name] = action.event.target.value;
+            //customer[action.event.target.name] = action.event.target.value;
 
             customer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
 

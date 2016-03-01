@@ -8,7 +8,7 @@ const CustomerEditForm = React.createClass({
         customer: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
-        //salesRegionOptions: React.PropTypes.array.isRequired,
+        salesRegionOptions: React.PropTypes.array.isRequired,
         errors: React.PropTypes.object,
         isValid: React.PropTypes.bool
     },
@@ -20,8 +20,18 @@ const CustomerEditForm = React.createClass({
     },
 
     onChange(event) {
-        console.log("CustomerEditForm.onChange() event:", event.target)
-        this.props.onChange(this.props.customer._id, event);
+        console.log("CustomerEditForm.onChange() name: " + event.target.name + " value: ", event.target.value)
+        this.callOnChange(event.target.name, event.target.value);
+    },
+
+    onSelectChange(newValue) {
+        console.log("CustomerEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue)
+        this.callOnChange(newValue.name, newValue.value._id);
+    },
+
+    callOnChange(name, value) {
+        // create a single row array with the data in
+        this.props.onChange(this.props.customer._id, [ { name, value} ] );
     },
 
     render() {
@@ -69,6 +79,19 @@ const CustomerEditForm = React.createClass({
                             error={errors.nextContactDate}
                         />
 
+
+                        <SelectInput
+                            name="salesRegionId"
+                            label="Sales region"
+                            placeholder ="Sales region"
+                            value={this.props.customer.salesRegionId}
+                            onChange={this.onSelectChange}
+                            error={errors.salesRegionId}
+                            options={this.props.salesRegionOptions}
+                            valueKey="_id"
+                            labelKey="name"
+                        />
+
                         <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
 
                         <input
@@ -89,14 +112,3 @@ const CustomerEditForm = React.createClass({
 module.exports = CustomerEditForm;
 
 
-
-//<SelectInput
-//    name="salesRegionId"
-//    value={this.props.customer.salesRegionId}
-//    onChange={this.onChange}
-//    error={this.props.errors.salesRegionId}
-//    options={this.props.salesRegionOptions}
-//    valueKey="_id"
-//    labelKey="name"
-//
-///>

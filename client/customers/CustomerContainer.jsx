@@ -49,6 +49,7 @@ export const CustomerContainer = React.createClass({
                 onSave = {this.props.onSave}
                 errors = {this.props.customer.errors}
                 isValid = {this.props.customer.isValid}
+                salesRegionOptions={SalesRegions.find().fetch()}
             />);
     }
 });
