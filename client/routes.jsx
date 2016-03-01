@@ -17,6 +17,7 @@ import OrderPageWrapper from './sales/order-page-wrapper.jsx';
 import ProductsListWrapper from './products/products-list-wrapper.jsx';
 import Test1 from './app/test1.jsx';
 import Test2 from './app/test2.jsx';
+import ReduxContainer from './redux/ReduxContainer.jsx';
 
 //// define and export our Layout component
 //export const Layout1 = ({content}) => (
@@ -57,6 +58,8 @@ FlowRouter.route("/", {
         mount(Layout, {
             content: (<Dashboard key="dashboard1"/>)
         });
+
+        console.log("After Home route dashboard mount")
     }
 });
 
@@ -66,7 +69,7 @@ FlowRouter.route('/customers/:_id', {
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<MyContainer><CustomerEditPageWrapper /></MyContainer>)
+            content: (<ReduxContainer />)
         });
     }
 });

@@ -17,6 +17,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/find.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/users-compat.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/skinnygeek1010_flux-helpers/0.1.0/web.browser/packages/skinnygeek1010_flux-helpers.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ordered-dict/1.0.4/web.browser/ordered_dict.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_collection-utils/1.2.0/web.browser/packages/meteorhacks_collection-utils.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_aggregate/1.3.0/web.browser/packages/meteorhacks_aggregate.js" />
@@ -494,6 +495,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/find.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/users-compat.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/skinnygeek1010_flux-helpers/0.1.0/web.browser/packages/skinnygeek1010_flux-helpers.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ordered-dict/1.0.4/web.browser/ordered_dict.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_collection-utils/1.2.0/web.browser/packages/meteorhacks_collection-utils.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_aggregate/1.3.0/web.browser/packages/meteorhacks_aggregate.js" />

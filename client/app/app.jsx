@@ -26,14 +26,8 @@ Meteor.subscribe("Orders.All");
 //checkScrollBars();
 
 const ContentContainer = React.createClass({
-
-    componentWillUnmount() {
-        console.log("ContentContainer.componentWillUnmount");
-    },
-
     render() {
         console.log("ContentContainer.render()", this.props.children);
-
 
         return (
             <div key="contentContainer">

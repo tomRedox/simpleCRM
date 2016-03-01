@@ -115,6 +115,7 @@ routepolicy@1.0.7-modules.7
 service-configuration@1.0.6-modules.7
 session@1.1.2-modules.7
 sha@1.0.4
+skinnygeek1010:flux-helpers@0.1.0
 spacebars@1.0.8-modules.7
 spacebars-compiler@1.0.8-modules.7
 srp@1.0.5-modules.7

@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 
 AccountsUIWrapper = React.createClass({
     componentDidMount() {
-        console.log("AccountsUIWrapper.componentDidMount()");
+        //console.log("AccountsUIWrapper.componentDidMount()");
         // Use Meteor Blaze to render login buttons
 
-        console.log("Template.loginButtons", Template);
+        //console.log("Template.loginButtons", Template);
 
         this.view = Blaze.render(Template.loginButtons,
             ReactDOM.findDOMNode(this.refs.loginButtonsContainer));
