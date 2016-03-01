@@ -26,7 +26,7 @@ const CustomerEditForm = React.createClass({
 
     onSelectChange(newValue) {
         console.log("CustomerEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue)
-        this.callOnChange(newValue.name, newValue.value._id);
+        this.callOnChange(newValue.name, newValue.value[newValue.valueKey]);
     },
 
     callOnChange(name, value) {
