@@ -3,6 +3,8 @@
 // unneeded boilerplate  but it's **really** nice to have a file
 // with *all* possible ways to mutate the state of the app.
 
+import { validateItemAgainstSchema } from '../../lib/validation-helpers';
+
 
 Actions = {};
 
@@ -48,12 +50,26 @@ Actions.saveCustomer = function saveCustomer(customer) {
 };
 
 
-Actions.editCustomer = function editCustomer(customerId, newValues) {
+Actions.editCustomer = function editCustomer(customer, newValues) {
     console.log("Actions.editCustomer() event.target:" + newValues);
+
+    // don't mutate it
+    const updatedCustomer = _.clone(customer);
+
+    for(let newValue of newValues) {
+        updatedCustomer[newValue.name] = newValue.value;
+    }
+
+    // update our customer state to reflect the new value in the UI
+    //customer[action.event.target.name] = action.event.target.value;
+
+    updatedCustomer.errors = validateItemAgainstSchema(updatedCustomer, Schemas.CustomerCompaniesSchema);
+
+    updatedCustomer.isValid = (Object.keys(updatedCustomer.errors).length === 0);
 
     return {
         type: 'EDIT_CUSTOMER',
-        customerId,
+        updatedCustomer,
         newValues
     };
 };
@@ -68,8 +84,20 @@ Actions.selectCustomer = function selectCustomer(customerId) {
 
 Actions.selectNewCustomer = function selectNewCustomer() {
     console.log("Actions.selectNewCustomer ")
+
+    const newCustomer = {
+        name: "",
+        email: "",
+        postcode: "",
+        salesRegionId: "",
+        nextContactDate: new Date(),
+        createdAt: new Date()
+    };
+
+
     return {
         type: 'SELECT_NEW_CUSTOMER',
+        newCustomer
     };
 };
 

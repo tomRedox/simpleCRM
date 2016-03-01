@@ -7,7 +7,6 @@
 
 import Actions from './action_creators.jsx';
 import { combineReducers } from 'redux';
-import { validateItemAgainstSchema } from '../../lib/validation-helpers';
 
 
 let { incrementScore, selectPlayer, playersChanged } = Actions;
@@ -40,39 +39,14 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             console.log("userInterface SELECT_NEW_CUSTOMER, action:", action);
             // we happen to be replacing all the reducers state but with merge you
             // could just return the selectedId and it would retain selectedCustomerName
-
-            const newCustomer = {
-                name: "",
-                email: "",
-                postcode: "",
-                salesRegionId: "",
-                nextContactDate: new Date(),
-                createdAt: new Date()
-            };
-
             return merge(state, {
-                customerBeingEdited: newCustomer
+                customerBeingEdited: action.newCustomer
             });
         case 'EDIT_CUSTOMER':
             console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);
 
-            const customer = _.clone(state.customerBeingEdited);
-
-            for(let newValue of action.newValues) {
-                customer[newValue.name] = newValue.value;
-            }
-
-            // update our customer state to reflect the new value in the UI
-            //customer[action.event.target.name] = action.event.target.value;
-
-            customer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
-
-            customer.isValid = (Object.keys(customer.errors).length === 0);
-
-            //console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", customer);
-
             // merge in our newly edited data
-            return merge(state, { customerBeingEdited: customer });
+            return merge(state, { customerBeingEdited: action.updatedCustomer });
         default:
             return state;
     }

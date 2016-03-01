@@ -74,7 +74,7 @@ function mapDispatchToProps(dispatch) {
     //console.log("CustomerContainer.mapDispatchToProps", Actions.customerSave)
     return {
         onSave: Actions.saveCustomer,
-        onChange: (customerId, event) => { dispatch(Actions.editCustomer(customerId, event)); },
+        onChange: (customer, event) => { dispatch(Actions.editCustomer(customer, event)); },
         selectCustomer: (customerId) => { dispatch(Actions.selectCustomer(customerId)); },
         selectNewCustomer: () => { dispatch(Actions.selectNewCustomer()); }
     };

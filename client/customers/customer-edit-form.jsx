@@ -31,7 +31,7 @@ const CustomerEditForm = React.createClass({
 
     callOnChange(name, value) {
         // create a single row array with the data in
-        this.props.onChange(this.props.customer._id, [ { name, value} ] );
+        this.props.onChange(this.props.customer, [ { name, value} ] );
     },
 
     render() {

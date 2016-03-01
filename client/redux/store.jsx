@@ -1,11 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { devTools, persistState } from 'redux-devtools';
 
 //const { DevTools, DebugPanel, LogMonitor } = ReactReduxDevTools;
 import rootReducer from './reducers.jsx';
-const { logger } = 'redux-devtools-log-monitor';
 import DevTools from './DevTools.jsx';
-
+import thunkMiddleware from 'redux-thunk';
 
 // Redux has a single store. to reduce complexity it allows you to combine
 // several 'reducer' functions that share this single state object.
@@ -24,15 +23,13 @@ import DevTools from './DevTools.jsx';
 //      ]
 //    }
 
+const enhancer = compose(
+    // Middleware you want to use in development:
+    applyMiddleware(thunkMiddleware),
+    // Required! Enable Redux DevTools with the monitors you chose
+    DevTools.instrument()
+);
 
-const finalCreateStore =
-  applyMiddleware(/*logger*/)(
-    //devTools()(
-    //  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))(
-          createStore
-    //  )
-    //)
-  );
 
 // applyMiddleware takes createStore() and returns a new wrapped createStore
 // note, this is an optional step to use middleware (we're auto console.log dispatches)
@@ -42,18 +39,16 @@ const finalCreateStore =
 //store = finalCreateStore(rootReducer);
 
 
-
 function configureStore(initialState) {
-  console.log("configureStore rootReducer:", [ rootReducer, initialState ]);
-  const result = finalCreateStore(rootReducer , initialState);
-  console.log("result",result);
+    console.log("configureStore rootReducer:", [rootReducer, initialState]);
+    const result = createStore(rootReducer, initialState, enhancer);
+    console.log("result", result);
 
-  return result;
+    return result;
 }
 
 export function getStore() {
-
-  return store;
+    return store;
 }
 
 store = configureStore();

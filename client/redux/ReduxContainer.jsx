@@ -8,7 +8,6 @@ import Actions from '../redux/action_creators.jsx';
 export const ReduxContainer = React.createClass({
 
 
-
     render() {
         console.log("ReduxContainer.render()", this.props);
 
@@ -20,9 +19,11 @@ export const ReduxContainer = React.createClass({
                 <h1>"Hi</h1>
 
                 <Provider store={store}>
-                    <CustomerContainer store={store} />
+                    <div>
+                        <CustomerContainer store={store}/>
+                        <DevTools />
+                    </div>
                 </Provider>
-                {/* <DevTools store={store} monitor={LogMonitor}/> */}
 
             </div>
 
