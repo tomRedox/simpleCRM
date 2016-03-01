@@ -14,7 +14,7 @@ let { incrementScore, selectPlayer, playersChanged } = Actions;
 Reducers = {};
 
 let initialInterfaceState = {
-    customer: {}
+    customerBeingEdited: {}
 };
 
 // helper to *copy* old state and merge new data with it
@@ -34,12 +34,12 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             // we happen to be replacing all the reducers state but with merge you
             // could just return the selectedId and it would retain selectedCustomerName
             return merge(state, {
-                customer: CustomerCompanies.findOne({_id: action.customerId})
+                customerBeingEdited: CustomerCompanies.findOne({_id: action.customerId})
             });
         case 'EDIT_CUSTOMER':
-            console.log("userInterface EDIT_CUSTOMER, customer:", state.customer);
+            console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);
 
-            const customer = _.clone(state.customer);
+            const customer = _.clone(state.customerBeingEdited);
 
             // update our customer state to reflect the new value in the UI
             customer[action.event.target.name] = action.event.target.value;
@@ -51,7 +51,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             //console.log("userInterface EDIT_CUSTOMER() updatedCustomer:", customer);
 
             // merge in our newly edited data
-            return merge(state, { customer });
+            return merge(state, { customerBeingEdited: customer });
         default:
             return state;
     }

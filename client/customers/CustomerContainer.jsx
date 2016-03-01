@@ -56,7 +56,7 @@ CustomerContainer.propTypes = {
 function mapStateToProps(state) {
     console.log("CustomerContainer.mapStateToProps", state)
     return {
-        customer: state.userInterface.customer
+        customer: state.userInterface.customerBeingEdited
     };
 }
 
