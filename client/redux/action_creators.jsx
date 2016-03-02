@@ -3,7 +3,7 @@
 // unneeded boilerplate  but it's **really** nice to have a file
 // with *all* possible ways to mutate the state of the app.
 
-import { validateItemAgainstSchema } from '../../lib/validation-helpers';
+import { validateItemAndAddValidationResults } from '../../lib/validation-helpers';
 
 
 Actions = {};
@@ -21,10 +21,7 @@ Actions.customersCollectionChanged = function customersCollectionChanged(newDocs
 // doesn't return payload because our collection watcher
 // will send a CHANGED action and update the store
 Actions.saveCustomer = function saveCustomer(customer) {
-
     console.log("saveCustomer: ", customer);
-
-    //const custId = FlowRouter.getParam('_id');
 
     // call the method for upserting the data
     CustomerCompanies.methods.updateManualForm.call({
@@ -42,11 +39,6 @@ Actions.saveCustomer = function saveCustomer(customer) {
 
         }
     });
-
-
-    //CustomerCompanies.update({_id: customer._Id}, {$set: {customer}});
-
-    //return { type: 'SAVE_CUSTOMER' };
 };
 
 
@@ -62,13 +54,11 @@ Actions.editCustomer = function editCustomer(customer, newValues) {
     }
 
     // validate and set error messages
-    updatedCustomer.errors = validateItemAgainstSchema(updatedCustomer, Schemas.CustomerCompaniesSchema);
-    updatedCustomer.isValid = (Object.keys(updatedCustomer.errors).length === 0);
+    validateItemAndAddValidationResults(updatedCustomer, Schemas.CustomerCompaniesSchema);
 
     return {
         type: 'EDIT_CUSTOMER',
-        updatedCustomer,
-        newValues
+        updatedCustomer
     };
 };
 
@@ -76,8 +66,9 @@ Actions.selectCustomer = function selectCustomer(customerId) {
     console.log("Actions.selectCustomer: " + customerId.toString());
 
     const customer = CustomerCompanies.findOne({_id: customerId})
-    customer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
-    customer.isValid = (Object.keys(customer.errors).length === 0);
+
+    // perform initial validation and set error messages
+    validateItemAndAddValidationResults(customer, Schemas.CustomerCompaniesSchema);
 
     return {
         type: 'SELECT_CUSTOMER',
