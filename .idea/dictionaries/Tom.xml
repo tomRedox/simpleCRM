@@ -6,9 +6,11 @@
       <w>debounce</w>
       <w>dropdown</w>
       <w>glyphicon</w>
+      <w>minimongo</w>
       <w>mixins</w>
       <w>mongo</w>
       <w>navbar</w>
+      <w>redux</w>
       <w>upsert</w>
       <w>upserting</w>
     </words>

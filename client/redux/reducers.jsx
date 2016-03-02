@@ -8,8 +8,6 @@
 import Actions from './action_creators.jsx';
 import { combineReducers } from 'redux';
 
-
-let { incrementScore, selectPlayer, playersChanged } = Actions;
 Reducers = {};
 
 let initialInterfaceState = {
@@ -65,9 +63,9 @@ const customer = function customer(state = {}, action) {
             // we don't have to merge the single doc that changes since minimongo
             // keeps the entire cache for us. We'll just return the new minimongo state
             // We *could* also return another fetch if sorting wasn't so easy here
-            let docs = _.clone(action.collection); // clone to prevent mutating action!!
+            //let docs = _.clone(action.collection); // clone to prevent mutating action!!
             //return docs[0]; //.sort((a,b) => b.score - a.score);
-            return docs;
+            return _.clone(action.collection);
         default:
             return state;
     }
