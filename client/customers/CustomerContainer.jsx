@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import CustomerEditForm from './customer-edit-form.jsx';
+import CustomerEditForm from './CustomerEditForm.jsx';
 import Actions from '../redux/action_creators.jsx';
 import { customerChange, customerSave } from '../redux/action_creators.jsx';
 

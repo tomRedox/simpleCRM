@@ -6,6 +6,8 @@
 
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Provider } from 'react-redux';
+import DevTools from '../redux/DevTools.jsx';
 
 
 Meteor.subscribe("SalesRegions.All");
@@ -52,39 +54,46 @@ const ContentContainer = React.createClass({
 export const Layout = ({content}) => (
     <div id="app">
         {console.log("Layout rendered")}
+        <Provider store={store}>
+            <div>
+                <div className="wrapper">
+                    <div className="box">
+                        <div className="row row-offcanvas row-offcanvas-left">
 
-        <div className="wrapper">
-            <div className="box">
-                <div className="row row-offcanvas row-offcanvas-left">
+                            <Sidebar/>
 
-                    <Sidebar/>
+                            <div className="column col-sm-10 col-xs-11" id="main">
 
-                    <div className="column col-sm-10 col-xs-11" id="main">
+                                <TopNav/>
 
-                        <TopNav/>
+                                <div className="padding">
+                                    <div className="full col-sm-9">
 
-                        <div className="padding">
-                            <div className="full col-sm-9">
+                                        <div className="row">
 
-                                <div className="row">
+                                            <main>
+                                                <div id="popup"></div>
 
-                                    <main>
-                                        <div id="popup"></div>
+                                                <div id="outerContent">
 
-                                        <div id="outerContent">
+                                                    <ContentContainer key="content">
+                                                        {content}
+                                                    </ContentContainer>
 
-                                            <ContentContainer key="content">{content}</ContentContainer>
+                                                    <DevTools />
 
+                                                </div>
+                                            </main>
                                         </div>
-                                    </main>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </Provider>
     </div >
 
 );

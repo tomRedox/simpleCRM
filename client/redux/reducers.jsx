@@ -28,8 +28,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
     switch (action.type) {
         case 'SELECT_CUSTOMER':
             console.log("userInterface SELECT_CUSTOMER, action:", action);
-            // we happen to be replacing all the reducers state but with merge you
-            // could just return the selectedId and it would retain selectedCustomerName
+
             return merge(state, {
                 customerBeingEdited: action.customer
             });
@@ -55,8 +54,6 @@ const customer = function customer(state = {}, action) {
             // flux-helper to fire a COLLECTION_CHANGED dispatch after the
             // increment update. Since we're doing that we'll just return the old
             // state to prevent the UI from re-rendering twice.
-
-            // The actual save to MM happened in the saveCustomer action creator
             return state;
         case 'CUSTOMERS_COLLECTION_CHANGED':
             console.log("reducers.customer CUSTOMERS_COLLECTION_CHANGED", {state, action});
@@ -65,7 +62,8 @@ const customer = function customer(state = {}, action) {
             // We *could* also return another fetch if sorting wasn't so easy here
             //let docs = _.clone(action.collection); // clone to prevent mutating action!!
             //return docs[0]; //.sort((a,b) => b.score - a.score);
-            return _.clone(action.collection);
+            //return _.clone(action.collection);
+            return state;
         default:
             return state;
     }
