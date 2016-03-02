@@ -25,7 +25,7 @@ SelectInput = React.createClass({
             name: this.props.name,
             labelKey: this.props.labelKey,
             valueKey: this.props.valueKey,
-            value: selectedOption //1.0.0 this is the selected row object, not just the id
+            selectedOption //1.0.0 this is the selected row object, not just the id
         });
     },
 

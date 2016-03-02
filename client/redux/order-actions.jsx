@@ -61,6 +61,26 @@ OrderActions.editOrder = function editOrder(order, newValues) {
     };
 };
 
+OrderActions.editOrderLine = function editOrder(orderLine, newValues) {
+    console.log("OrderActions.editOrder() event.target:" + newValues);
+
+    // don't mutate it
+    const updatedOrderLine = _.clone(orderLine);
+
+    // loop each change and apply to our clone
+    for(let newValue of newValues) {
+        updatedOrderLine[newValue.name] = newValue.value;
+    }
+
+    // validate and set error messages
+    validateItemAndAddValidationResults(updatedOrderLine, Schemas.OrderSchema);
+
+    return {
+        type: 'EDIT_ORDER',
+        updatedOrderLine
+    };
+};
+
 OrderActions.selectOrder = function selectOrder(orderId) {
     console.log("OrderActions.selectOrder: " + orderId.toString());
 

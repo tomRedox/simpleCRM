@@ -27,18 +27,29 @@ const OrderHeaderEdit = React.createClass({
 
     onChange(event) {
         console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
-        this.callOnChange(event.target.name, event.target.value);
+        //this.callOnChange(event.target.name, event.target.value);
+        this.props.onChange(this.props.order, [ { name: event.target.name, value: event.target.value} ] );
     },
 
     onSelectChange(newValue) {
         console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
-        this.callOnChange(newValue.name, newValue.value[newValue.valueKey]);
+
+        //this.callOnChange(newValue.name, newValue.selectedOption[newValue.valueKey]);
+
+        this.props.onChange(this.props.order,
+            [
+                // need to pass both the id and the label values out for denormalization
+                { name: "customerId", value: newValue.selectedOption[newValue.valueKey]},
+                { name: "customerName", value: newValue.selectedOption[newValue.labelKey]}
+            ]
+        );
+
     },
 
-    callOnChange(name, value) {
-        // create a single row array with the data in
-        this.props.onChange(this.props.order, [ { name, value} ] );
-    },
+    //callOnChange(changes) {
+    //    // create a single row array with the data in
+    //    this.props.onChange(this.props.order, [ { name, value} ] );
+    //},
 
     render() {
         console.log("OrderHeaderEdit.render() - props: ", this.props);
@@ -61,7 +72,7 @@ const OrderHeaderEdit = React.createClass({
                         name="customerId"
                         label="Customer"
                         value={value}
-                        onChange={this.onChange}
+                        onChange={this.onSelectChange}
                         error={errors.customerId}
                         loadOptions={this.getCustomers}
                         valueKey="_id"
