@@ -17,6 +17,7 @@ import ProductsListWrapper from './products/products-list-wrapper.jsx';
 import Test1 from './app/test1.jsx';
 import Test2 from './app/test2.jsx';
 import CustomerContainer from './customers/CustomerContainer.jsx';
+import OrderContainer from './sales/OrderContainer.jsx';
 
 //// define and export our Layout component
 //export const Layout1 = ({content}) => (
@@ -114,7 +115,7 @@ FlowRouter.route('/orders/:_id', {
     action() {
         //console.log("route ", this.name);
         mount(Layout, {
-            content: (<OrderPageWrapper />)
+            content: (<OrderContainer store={store}/>)
         });
     }
 });
@@ -124,7 +125,7 @@ FlowRouter.route("/addOrder", {
     action() {
         console.log("route ", this.name);
         mount(Layout, {
-            content: (<OrderPageWrapper />)
+            content: (<OrderContainer store={store}/>)
         });
     }
 });

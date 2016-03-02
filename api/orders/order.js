@@ -1,7 +1,7 @@
 import { recalculateOrderTotals } from '../../lib/order-logic';
 
-
 class ordersCollection extends Mongo.Collection {}
+
 
 // Make it available to the rest of the app
 const Orders = new ordersCollection("Orders");
@@ -21,6 +21,17 @@ Orders.attachSchema(Schemas.OrderSchema);
 Orders.before.insert(function (userId, doc) {
     console.log("Orders.before.insert", doc);
     customerCompanyDenormalizer.beforeInsert(userId, doc);
+});
+
+//Redux
+Meteor.startup(function () { // work around files not being defined yet
+    console.log("Orders collection, add Redux tracking");
+    if (Meteor.isClient) { // work around not having actions in /both folder
+        // trigger action when this changes
+        trackCollection(Orders, (data) => {
+            store.dispatch(OrderActions.ordersCollectionChanged(data));
+        });
+    }
 });
 
 Orders.before.update(function (userId, doc, fieldNames, modifier, options) {

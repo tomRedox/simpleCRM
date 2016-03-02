@@ -8,17 +8,36 @@ const OrderHeaderEdit = React.createClass({
     propTypes: {
         order: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
-        onCustomerChange: React.PropTypes.func.isRequired,
         onSave: React.PropTypes.func.isRequired,
-        errors: React.PropTypes.object.isRequired,
-        errors: React.PropTypes.object.isRequired,
-        isValid: React.PropTypes.bool,
+        errors: React.PropTypes.object,
+        isValid: React.PropTypes.bool
     },
 
     getCustomers: function getCustomers(input) {
         console.log("OrderHeaderEdit.getCustomers()", input);
         const handle = Meteor.subscribe('CustomerCompanies.searchByName', input);
         return CustomerCompanies.find().fetch();
+    },
+
+    onSave(event) {
+        event.preventDefault();
+
+        this.props.onSave(this.props.order);
+    },
+
+    onChange(event) {
+        console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
+        this.callOnChange(event.target.name, event.target.value);
+    },
+
+    onSelectChange(newValue) {
+        console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
+        this.callOnChange(newValue.name, newValue.value[newValue.valueKey]);
+    },
+
+    callOnChange(name, value) {
+        // create a single row array with the data in
+        this.props.onChange(this.props.order, [ { name, value} ] );
     },
 
     render() {
@@ -29,6 +48,11 @@ const OrderHeaderEdit = React.createClass({
             name: this.props.order.customerName
         };
 
+        let errors = {};
+        if (this.props.errors) {
+            errors = this.props.errors;
+        }
+
         return (
 
             <div>
@@ -37,40 +61,40 @@ const OrderHeaderEdit = React.createClass({
                         name="customerId"
                         label="Customer"
                         value={value}
-                        onChange={this.props.onCustomerChange}
-                        error={this.props.errors.customerId}
+                        onChange={this.onChange}
+                        error={errors.customerId}
                         loadOptions={this.getCustomers}
                         valueKey="_id"
                         labelKey="name"
                         hideLabel={true}
                     />
 
-                    <TextInput name="notes" onChange={this.props.onChange} value={this.props.order.notes}
-                               error={this.props.errors.notes} hideLabel={true} textRows={5} />
+                    <TextInput name="notes" onChange={this.onChange} value={this.props.order.notes}
+                               error={errors.notes} hideLabel={true} textRows={5} />
 
                 </div>
 
                 <div className="col-md-6">
 
-                    <TextInput name="deliveryAddress1" onChange={this.props.onChange}
-                               value={this.props.order.deliveryAddress1} error={this.props.errors.deliveryAddress1}
+                    <TextInput name="deliveryAddress1" onChange={this.onChange}
+                               value={this.props.order.deliveryAddress1} error={errors.deliveryAddress1}
                                hideLabel={true}/>
 
-                    <TextInput name="deliveryAddress2" onChange={this.props.onChange}
+                    <TextInput name="deliveryAddress2" onChange={this.onChange}
                                value={this.props.order.deliveryAddress2}
-                               error={this.props.errors.deliveryAddress2} hideLabel={true}/>
+                               error={errors.deliveryAddress2} hideLabel={true}/>
 
-                    <TextInput name="town" onChange={this.props.onChange} value={this.props.order.town}
-                               error={this.props.errors.town} hideLabel={true}/>
+                    <TextInput name="town" onChange={this.onChange} value={this.props.order.town}
+                               error={errors.town} hideLabel={true}/>
 
-                    <TextInput name="county" onChange={this.props.onChange} value={this.props.order.county}
-                               error={this.props.errors.county} hideLabel={true}/>
+                    <TextInput name="county" onChange={this.onChange} value={this.props.order.county}
+                               error={errors.county} hideLabel={true}/>
 
-                    <TextInput name="postcode" onChange={this.props.onChange} value={this.props.order.postcode}
-                               error={this.props.errors.postcode} hideLabel={true}/>
+                    <TextInput name="postcode" onChange={this.onChange} value={this.props.order.postcode}
+                               error={errors.postcode} hideLabel={true}/>
 
-                    <DateInput name="deliveryDate" onChange={this.props.onChange} value={this.props.order.deliveryDate}
-                               error={this.props.errors.deliveryDate} hideLabel={true}/>
+                    <DateInput name="deliveryDate" onChange={this.onChange} value={this.props.order.deliveryDate}
+                               error={errors.deliveryDate} hideLabel={true}/>
                 </div>
 
                 <div className="form-group">
@@ -81,7 +105,7 @@ const OrderHeaderEdit = React.createClass({
                 <div className="form-group">
                     <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
 
-                    <input type="submit" value="Save" className="btn btn-primary" onClick={this.props.onSave}
+                    <input type="submit" value="Save" className="btn btn-primary" onClick={this.onSave}
                            disabled={!this.props.isValid}/>
                 </div>
             </div>

@@ -42,10 +42,36 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
     }
 };
 
+
+let initialOrderState = {
+    order: {}
+};
+
+const orderBeingEdited = function orderBeingEdited(state = initialOrderState, action) {
+    //console.log("reducers.userInterface  action:", {state, action});
+
+    switch (action.type) {
+        case 'SELECT_ORDER':
+            console.log("userInterface SELECT_ORDER, action:", action);
+
+            return merge(state, {
+                order: action.order
+            });
+        case 'EDIT_ORDER':
+            console.log("userInterface EDIT_ORDER, order:", state.order);
+
+            // merge in our newly edited data
+            return merge(state, { order: action.updatedOrder });
+        default:
+            return state;
+    }
+};
+
+
 // using the ES6 default params instead of the manual check like above
 
 const customer = function customer(state = {}, action) {
-    console.log("reducers.customer", {state, action});
+    //console.log("reducers.customer", {state, action});
 
     switch (action.type) {
         case 'SAVE_CUSTOMER':
@@ -69,9 +95,27 @@ const customer = function customer(state = {}, action) {
     }
 };
 
+
+const order = function order(state = {}, action) {
+    //console.log("reducers.order", {state, action});
+
+    switch (action.type) {
+        case 'SAVE_ORDER':
+             return state;
+        case 'ORDERS_COLLECTION_CHANGED':
+            console.log("reducers.order ORDERS_COLLECTION_CHANGED", {state, action});
+            return state;
+        default:
+            return state;
+    }
+};
+
+
 const rootReducer = combineReducers({
     userInterface,
-    customer
+    customer,
+    order,
+    orderBeingEdited
 });
 
 export default rootReducer;
