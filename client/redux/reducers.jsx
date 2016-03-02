@@ -33,14 +33,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             // we happen to be replacing all the reducers state but with merge you
             // could just return the selectedId and it would retain selectedCustomerName
             return merge(state, {
-                customerBeingEdited: CustomerCompanies.findOne({_id: action.customerId})
-            });
-        case 'SELECT_NEW_CUSTOMER':
-            console.log("userInterface SELECT_NEW_CUSTOMER, action:", action);
-            // we happen to be replacing all the reducers state but with merge you
-            // could just return the selectedId and it would retain selectedCustomerName
-            return merge(state, {
-                customerBeingEdited: action.newCustomer
+                customerBeingEdited: action.customer
             });
         case 'EDIT_CUSTOMER':
             console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);

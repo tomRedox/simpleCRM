@@ -56,15 +56,13 @@ Actions.editCustomer = function editCustomer(customer, newValues) {
     // don't mutate it
     const updatedCustomer = _.clone(customer);
 
+    // loop each change and apply to our clone
     for(let newValue of newValues) {
         updatedCustomer[newValue.name] = newValue.value;
     }
 
-    // update our customer state to reflect the new value in the UI
-    //customer[action.event.target.name] = action.event.target.value;
-
+    // validate and set error messages
     updatedCustomer.errors = validateItemAgainstSchema(updatedCustomer, Schemas.CustomerCompaniesSchema);
-
     updatedCustomer.isValid = (Object.keys(updatedCustomer.errors).length === 0);
 
     return {
@@ -75,10 +73,15 @@ Actions.editCustomer = function editCustomer(customer, newValues) {
 };
 
 Actions.selectCustomer = function selectCustomer(customerId) {
-    console.log("Actions.selectCustomer: " + customerId.toString())
+    console.log("Actions.selectCustomer: " + customerId.toString());
+
+    const customer = CustomerCompanies.findOne({_id: customerId})
+    customer.errors = validateItemAgainstSchema(customer, Schemas.CustomerCompaniesSchema);
+    customer.isValid = (Object.keys(customer.errors).length === 0);
+
     return {
         type: 'SELECT_CUSTOMER',
-        customerId
+        customer
     };
 };
 
@@ -94,9 +97,8 @@ Actions.selectNewCustomer = function selectNewCustomer() {
         createdAt: new Date()
     };
 
-
     return {
-        type: 'SELECT_NEW_CUSTOMER',
+        type: 'SELECT_CUSTOMER',
         newCustomer
     };
 };
