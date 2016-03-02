@@ -6,50 +6,64 @@
 import { validateItemAndAddValidationResults } from '../../lib/validation-helpers';
 
 
-Actions = {};
+//Redux
+Meteor.startup(function () { // work around files not being defined yet
+    //console.log("Meteor.startup(function ()");
+    if (Meteor.isClient) { // work around not having actions in /both folder
+        console.log("ActionCreators Meteor.startup isClient");
+        // trigger action when this changes
+        trackCollection(CustomerCompanies, customersCollectionChanged);
+    }
+});
+
 
 // used when a mongo customers collection changes
-Actions.customersCollectionChanged = function customersCollectionChanged(newDocs) {
+export function customersCollectionChanged(newDocs) {
     console.log("Actions.customersCollectionChanged ", newDocs);
-    return {
-        type: 'CUSTOMERS_COLLECTION_CHANGED',
-        collection: newDocs
-    };
+    return (dispatch, getState) => {
+        dispatch({
+            type: 'CUSTOMERS_COLLECTION_CHANGED',
+            collection: newDocs
+        });
+    }
 };
 
 
 // doesn't return payload because our collection watcher
 // will send a CHANGED action and update the store
-Actions.saveCustomer = function saveCustomer(customer) {
+export function saveCustomer(customer) {
     console.log("saveCustomer: ", customer);
+    return (dispatch, getState) => {
 
-    // call the method for upserting the data
-    CustomerCompanies.methods.updateManualForm.call({
-        customerId: customer._id,
-        data: customer
-    }, (err, res) => {
-        //console.log ("CustomerCompanies.methods.updateManualForm.call was called");
-        if (err) {
-            // TODO call FAILED action on error
-            sAlert.error(err.message);
-        } else {
-            sAlert.success("Save successful");
-            FlowRouter.go("/");
-            return {type: 'SAVE_CUSTOMER'};
+        // call the method for upserting the data
+        CustomerCompanies.methods.updateManualForm.call({
+            customerId: customer._id,
+            data: customer
+        }, (err, res) => {
+            //console.log ("CustomerCompanies.methods.updateManualForm.call was called");
+            if (err) {
+                // TODO call FAILED action on error
+                sAlert.error(err.message);
+            } else {
+                sAlert.success("Save successful");
+                FlowRouter.go("/");
+                dispatch({
+                    type: 'SAVE_CUSTOMER'
+                });
 
-        }
-    });
-};
+            }
+        });
+    }
+}
 
-
-Actions.editCustomer = function editCustomer(customer, newValues) {
-    console.log("Actions.editCustomer() event.target:" + newValues);
+function dispatchCustomerChange(customer, newValues) {
+    console.log("inner");
 
     // don't mutate it
     const updatedCustomer = _.clone(customer);
 
     // loop each change and apply to our clone
-    for(let newValue of newValues) {
+    for (let newValue of newValues) {
         updatedCustomer[newValue.name] = newValue.value;
     }
 
@@ -60,12 +74,20 @@ Actions.editCustomer = function editCustomer(customer, newValues) {
         type: 'EDIT_CUSTOMER',
         updatedCustomer
     };
-};
+}
 
-Actions.selectCustomer = function selectCustomer(customerId) {
-    console.log("Actions.selectCustomer: " + customerId.toString());
+export function editCustomer(customer, newValues) {
+    console.log("Actions.editCustomer() event.target:" + newValues);
+    return (dispatch, getState) => {
+        console.log("inner");
+        dispatch(dispatchCustomerChange(customer, newValues))
+    }
+}
 
+function loadCustomerToEdit(customerId) {
+    console.log("loadCustomerToEdit");
     const customer = CustomerCompanies.findOne({_id: customerId})
+    console.log("loadCustomerToEdit ", customer);
 
     // perform initial validation and set error messages
     validateItemAndAddValidationResults(customer, Schemas.CustomerCompaniesSchema);
@@ -73,25 +95,34 @@ Actions.selectCustomer = function selectCustomer(customerId) {
     return {
         type: 'SELECT_CUSTOMER',
         customer
-    };
+    } ;
+}
+
+export function selectCustomer(customerId) {
+    console.log("Actions.selectCustomer: " + customerId.toString());
+    return (dispatch, getState) => {
+        console.log("inner Actions.selectCustomer: " + customerId.toString());
+        dispatch(loadCustomerToEdit(customerId));
+    }
 };
 
-Actions.selectNewCustomer = function selectNewCustomer() {
+export function selectNewCustomer() {
     console.log("Actions.selectNewCustomer ")
+    return (dispatch, getState) => {
 
-    const newCustomer = {
-        name: "",
-        email: "",
-        postcode: "",
-        salesRegionId: "",
-        nextContactDate: new Date(),
-        createdAt: new Date()
-    };
+        const newCustomer = {
+            name: "",
+            email: "",
+            postcode: "",
+            salesRegionId: "",
+            nextContactDate: new Date(),
+            createdAt: new Date()
+        };
 
-    return {
-        type: 'SELECT_CUSTOMER',
-        newCustomer
-    };
+        dispatch({
+            type: 'SELECT_CUSTOMER',
+            newCustomer
+        });
+    }
 };
 
-export default Actions;

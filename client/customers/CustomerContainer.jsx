@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CustomerEditForm from './CustomerEditForm.jsx';
-import Actions from '../redux/action_creators.jsx';
-import { customerChange, customerSave } from '../redux/action_creators.jsx';
+import { editCustomer, selectCustomer, selectNewCustomer, saveCustomer } from '../redux/action_creators.jsx';
 
 
 export const CustomerContainer = React.createClass({
@@ -73,10 +72,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     //console.log("CustomerContainer.mapDispatchToProps", Actions.customerSave)
     return {
-        onSave: Actions.saveCustomer,
-        onChange: (customer, event) => { dispatch(Actions.editCustomer(customer, event)); },
-        selectCustomer: (customerId) => { dispatch(Actions.selectCustomer(customerId)); },
-        selectNewCustomer: () => { dispatch(Actions.selectNewCustomer()); }
+        onSave: saveCustomer,
+        onChange: editCustomer,
+        selectCustomer,
+        selectNewCustomer
     };
 }
 

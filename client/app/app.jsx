@@ -8,7 +8,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
 import DevTools from '../redux/DevTools.jsx';
-
+//import store from '../redux/store.jsx';
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");

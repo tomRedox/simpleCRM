@@ -105,18 +105,11 @@ const OrderPage = React.createClass({
         // update the calculated totals
         recalculateOrderTotals(this.state.order);
 
-        this.validateOrderLine(line);
-
-        return this.setState({order: this.state.order});
-    },
-
-    validateOrderLine(orderLine) {
-
         const errors = validateItemAgainstSchema(
             orderLine, Schemas.OrderLineSchema
         );
 
-        let errorSet = this.getErrorSetForOrderLine(orderLine);
+        let errorSet = this.state.lineErrorSets.find(x => x._id === orderLine._id);
 
         if (errorSet) {
             errorSet.errors = errors;
@@ -126,10 +119,8 @@ const OrderPage = React.createClass({
             errorSet.errors = errors;
             this.state.lineErrorSets.push(errorSet);
         }
-    },
 
-    getErrorSetForOrderLine(orderLine) {
-        return this.state.lineErrorSets.find(x => x._id === orderLine._id);
+        return this.setState({order: this.state.order});
     },
 
     addNewOrderLine(event) {

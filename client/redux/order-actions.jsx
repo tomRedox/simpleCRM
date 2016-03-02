@@ -3,7 +3,9 @@
 // unneeded boilerplate  but it's **really** nice to have a file
 // with *all* possible ways to mutate the state of the app.
 
-import { validateItemAndAddValidationResults } from '../../lib/validation-helpers';
+import { validateItemAndAddValidationResults, validateItemAgainstSchema } from '../../lib/validation-helpers';
+import { recalculateOrderTotals } from '../../lib/order-logic';
+
 import Orders from '../../api/orders/order';
 
 OrderActions = {};
@@ -61,25 +63,46 @@ OrderActions.editOrder = function editOrder(order, newValues) {
     };
 };
 
-OrderActions.editOrderLine = function editOrder(orderLine, newValues) {
-    console.log("OrderActions.editOrder() event.target:" + newValues);
+OrderActions.editOrderLine = function editOrder(orderLine, field, value) {
+    console.log("OrderActions.editOrder() event.value:" + value);
 
     // don't mutate it
     const updatedOrderLine = _.clone(orderLine);
 
-    // loop each change and apply to our clone
-    for(let newValue of newValues) {
-        updatedOrderLine[newValue.name] = newValue.value;
-    }
+    updatedOrderLine[field] = value;
 
     // validate and set error messages
-    validateItemAndAddValidationResults(updatedOrderLine, Schemas.OrderSchema);
+    validateOrderLine(updatedOrderLine);
 
     return {
         type: 'EDIT_ORDER',
         updatedOrderLine
     };
 };
+
+function validateOrderLine(orderLine) {
+
+    // update the calculated totals
+    recalculateOrderTotals(this.state.order);
+
+    const errors = validateItemAgainstSchema(
+        orderLine, Schemas.OrderLineSchema
+    );
+
+    let errorSet = this.state.lineErrorSets.find(x => x._id === orderLine._id);
+
+    if (errorSet) {
+        errorSet.errors = errors;
+    } else {
+        errorSet = {};
+        errorSet._id = orderLine._id;
+        errorSet.errors = errors;
+        this.state.lineErrorSets.push(errorSet);
+    }
+
+    return this.setState({order: this.state.order});
+};
+
 
 OrderActions.selectOrder = function selectOrder(orderId) {
     console.log("OrderActions.selectOrder: " + orderId.toString());
