@@ -1,8 +1,9 @@
 import React from 'react';
 import OrdersList from '../sales/orders-list.jsx';
-import OrdersListWrapper from '../sales/order-list-wrapper.jsx';
+import TopOrdersContainer from '../sales/TopOrdersContainer.jsx';
 import CustomersList from '../customers/customers-list.jsx';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
+import store from '../redux/store.jsx';
 
 
 const Content = React.createClass({
@@ -15,7 +16,7 @@ const Content = React.createClass({
                         <h3><i className="fa fa-dashboard"/> simple crm dashboard </h3>
                     </div>
                 </div>
-                < OrdersListWrapper />
+                < TopOrdersContainer store={store} />
                 < CustomersList />
             </div>
         );

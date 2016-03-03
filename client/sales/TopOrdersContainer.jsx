@@ -6,16 +6,17 @@
  we can use shouldComponentUpdate to set whether the render should occur.
  */
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './orders-list.jsx';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
+import { toggleExpanded } from '../redux/order-list-actions.jsx';
 
 const MINIMISED_RECORD_COUNT = 3;
 const EXPANDED_RECORD_COUNT = 9;
 
-const OrdersListWrapper = React.createClass({
+const TopOrdersContainer = React.createClass({
 
     getInitialState() {
         return {
@@ -34,7 +35,7 @@ const OrdersListWrapper = React.createClass({
 
         var data = {};
 
-        var handle = Meteor.subscribe('Orders.topOrders', this.state.recordsToShow);
+        var handle = Meteor.subscribe('Orders.topOrders', this.getRecordsToShow());
 
         if (handle.ready()) {
             //console.log("orders", orders);
@@ -42,7 +43,7 @@ const OrdersListWrapper = React.createClass({
                 {},
                 {
                     sort: {totalValue: -1},
-                    limit: this.state.recordsToShow
+                    limit: this.getRecordsToShow()
                 }
             ).fetch();
         }
@@ -51,19 +52,12 @@ const OrdersListWrapper = React.createClass({
         return data;
     },
 
-    toggleExpanded() {
-        //console.log("toggleExpanded(): this.state.expanded 1: ", this.state.expanded);
-
-        this.state.expanded = !this.state.expanded;
-
-        //console.log("toggleExpanded(): this.state.expanded 2: ", this.state.expanded);
-
+    getRecordsToShow() {
         let recordsToShow = MINIMISED_RECORD_COUNT;
-        if (this.state.expanded) {
+        if (this.props.expanded) {
             recordsToShow = EXPANDED_RECORD_COUNT;
         }
-
-        this.setState({recordsToShow});
+        return recordsToShow;
     },
 
     render() {
@@ -73,15 +67,32 @@ const OrdersListWrapper = React.createClass({
         return (
             <OrdersList
                 orders={this.data.orders ? this.data.orders : []}
-                expanded={this.state.expanded}
-                toggleExpanded={this.toggleExpanded}
+                expanded={this.props.expanded}
+                toggleExpanded={this.props.toggleExpanded}
                 parentGotData={this.data.dataReady}
             />
         );
     }
 });
 
-module.exports = OrdersListWrapper;
+
+TopOrdersContainer.propTypes = {
+    //orders: PropTypes.array.isRequired,
+    expanded: PropTypes.bool.isRequired
+};
+
+function mapStateToProps(state) {
+    console.log("TopOrdersContainer.mapStateToProps", state)
+    return {
+        expanded: state.userInterface.orderList.expanded
+    };
+}
+
+export default connect(mapStateToProps, {
+    toggleExpanded
+})(TopOrdersContainer);
+
+
 
 
 //return (
@@ -94,7 +105,7 @@ module.exports = OrdersListWrapper;
 //        { this.state.showChild ?
 //            <OrdersList
 //                orders={this.data.orders ? this.data.orders : []}
-//                expanded={this.state.expanded}
+//                expanded={this.props.expanded}
 //                toggleExpanded={this.toggleExpanded}
 //            /> :
 //            undefined

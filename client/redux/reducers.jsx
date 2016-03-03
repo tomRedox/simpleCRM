@@ -8,10 +8,18 @@
 
 import { combineReducers } from 'redux';
 
+
+const MINIMISED_RECORD_COUNT = 3;
+const EXPANDED_RECORD_COUNT = 9;
+
 Reducers = {};
 
 let initialInterfaceState = {
-    customerBeingEdited: {}
+    customerBeingEdited: {},
+    orderList: {
+        expanded: false,
+        recordsToShow: MINIMISED_RECORD_COUNT
+    }
 };
 
 // helper to *copy* old state and merge new data with it
@@ -37,6 +45,10 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 
             // merge in our newly edited data
             return merge(state, { customerBeingEdited: action.customer });
+        case 'TOGGLE_ORDER_LIST_EXPANDED':
+            const orderList = _.clone(state.orderList);
+            orderList.expanded = !orderList.expanded;
+            return merge(state, { orderList });
         default:
             return state;
     }
