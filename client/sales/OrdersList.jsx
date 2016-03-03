@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Orders from '../../api/orders/order';
-import OrdersListItem from './orders-list-item.jsx';
+import OrdersListItem from './OrdersListItem.jsx';
 import ModalMessageBox from '../controls/modal-message-box.jsx';
 import Collapse from 'react-collapse';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
@@ -117,7 +117,7 @@ const OrdersList = React.createClass({
     }
 });
 
-module.exports = OrdersList;
+export default OrdersList;
 
 
 

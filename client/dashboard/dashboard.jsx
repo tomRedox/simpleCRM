@@ -1,5 +1,5 @@
 import React from 'react';
-import OrdersList from '../sales/orders-list.jsx';
+import OrdersList from '../sales/OrdersList.jsx';
 import TopOrdersContainer from '../sales/TopOrdersContainer.jsx';
 import CustomersList from '../customers/customers-list.jsx';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';

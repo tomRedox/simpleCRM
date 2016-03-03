@@ -9,7 +9,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import Orders from '../../api/orders/order';
-import OrdersList from './orders-list.jsx';
+import OrdersList from './OrdersList.jsx';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 import { toggleExpanded } from '../redux/order-list-actions.jsx';
 
