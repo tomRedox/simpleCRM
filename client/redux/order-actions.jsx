@@ -182,7 +182,8 @@ function getEmptyOrderLine() {
         quantity: 0,
         unitPrice: 0,
         lineValue: 0,
-        createdAt: new Date()//,
+        createdAt: new Date(),
+        errors: {}
     };
 }
 
@@ -219,12 +220,13 @@ export function selectNewOrder() {
 
         const newOrder = {
             orderLines: [],
-            createdAt: new Date()
+            createdAt: new Date(),
+            errors: {}
         };
 
         dispatch ({
             type: 'SELECT_ORDER',
-            newOrder
+            order: newOrder
         });
     }
 }

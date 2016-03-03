@@ -30,7 +30,7 @@ export const CustomerContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.sub.ready)
+        console.log("shouldComponentUpdate", this.sub)
         return (!this.sub || this.sub.ready);
     },
 

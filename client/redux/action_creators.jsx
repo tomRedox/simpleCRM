@@ -116,12 +116,13 @@ export function selectNewCustomer() {
             postcode: "",
             salesRegionId: "",
             nextContactDate: new Date(),
-            createdAt: new Date()
+            createdAt: new Date(),
+            errors: {}
         };
 
         dispatch({
             type: 'SELECT_CUSTOMER',
-            newCustomer
+            customer: newCustomer
         });
     }
 };
