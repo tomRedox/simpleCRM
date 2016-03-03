@@ -8,17 +8,12 @@
 
 import { combineReducers } from 'redux';
 
-
-const MINIMISED_RECORD_COUNT = 3;
-const EXPANDED_RECORD_COUNT = 9;
-
 Reducers = {};
 
 let initialInterfaceState = {
     customerBeingEdited: {},
     orderList: {
-        expanded: false,
-        recordsToShow: MINIMISED_RECORD_COUNT
+        expanded: false
     }
 };
 
