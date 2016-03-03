@@ -69,16 +69,6 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    //console.log("CustomerContainer.mapDispatchToProps", Actions.customerSave)
-    return {
-        onSave: saveCustomer,
-        onChange: editCustomer,
-        selectCustomer,
-        selectNewCustomer
-    };
-}
-
 export default connect(mapStateToProps, {
     onSave: saveCustomer,
     onChange: editCustomer,
