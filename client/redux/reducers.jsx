@@ -52,13 +52,13 @@ const orderBeingEdited = function orderBeingEdited(state = initialOrderState, ac
 
     switch (action.type) {
         case 'SELECT_ORDER':
-            console.log("userInterface SELECT_ORDER, action:", action);
+            console.log("orderBeingEdited SELECT_ORDER, action:", action);
 
             return merge(state, {
                 order: action.order
             });
         case 'EDIT_ORDER':
-            console.log("userInterface EDIT_ORDER, order:", state.order);
+            console.log("orderBeingEdited EDIT_ORDER, order:", state.order);
 
             // merge in our newly edited data
             return merge(state, { order: action.updatedOrder });

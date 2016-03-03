@@ -52,7 +52,7 @@ export function saveOrder(order) {
             } else {
                 sAlert.success("Save successful");
                 FlowRouter.go("/");
-                return {type: 'SAVE_ORDER'};
+                dispatch ({type: 'SAVE_ORDER'});
             }
         });
     }
@@ -74,10 +74,11 @@ export function editOrder(order, newValues) {
         // validate and set error messages
         validateItemAndAddValidationResults(updatedOrder, Schemas.OrderSchema);
 
-        return {
+        console.log("inner OrderActions.editOrder() " );
+        dispatch ({
             type: 'EDIT_ORDER',
             updatedOrder
-        };
+        });
     }
 }
 
@@ -88,7 +89,7 @@ export function editOrderLine(orderLineId, field, value) {
         console.log("inner OrderActions.editOrder()");
 
         // get the order and line - don't mutate
-        const order = _.clone(getState().userInterface.BeingEdited);
+        const order = _.clone(getState().orderBeingEdited.order);
         const line = order.orderLines.find(x => x._id === orderLineId);
 
         line[field] = value;
@@ -98,10 +99,10 @@ export function editOrderLine(orderLineId, field, value) {
 
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
-        return {
+        dispatch ({
             type: 'EDIT_ORDER',
             order
-        };
+        });
     }
 }
 
@@ -112,7 +113,7 @@ export function editOrderLineProduct(orderLineId, newValue) {
         console.log("inner OrderActions.editOrderLineProduct()");
 
         // get the order and line - don't mutate
-        const order = _.clone(getState().userInterface.customerBeingEdited);
+        const order = _.clone(getState().orderBeingEdited.order);
         const line = order.orderLines.find(x => x._id === orderLineId);
 
         line.productId = newValue.selectedOption._id;
@@ -124,10 +125,10 @@ export function editOrderLineProduct(orderLineId, newValue) {
 
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
-        return {
+        dispatch ({
             type: 'EDIT_ORDER',
             order
-        };
+        });
     }
 }
 
@@ -138,14 +139,14 @@ export function addNewOrderLine(event) {
         event.preventDefault();
 
         // get the order and line - don't mutate
-        const order = _.clone(getState().userInterface.customerBeingEdited);
+        const order = _.clone(getState().orderBeingEdited.order);
 
         order.orderLines.push(this.getEmptyOrderLine());
 
-        return {
+        dispatch ({
             type: 'EDIT_ORDER',
             order
-        };
+        });
     }
 }
 
@@ -156,7 +157,7 @@ export function deleteOrderLine(id) {
         event.preventDefault();
 
         // get the order and line - don't mutate
-        const order = _.clone(getState().userInterface.customerBeingEdited);
+        const order = _.clone(getState().orderBeingEdited.order);
 
         const line = order.orderLines.find(x => x._id === id);
         const pos = order.orderLines.indexOf(line);
@@ -167,10 +168,10 @@ export function deleteOrderLine(id) {
         // update the calculated totals
         recalculateOrderTotals(order);
 
-        return {
+        dispatch ({
             type: 'EDIT_ORDER',
             order
-        };
+        });
     }
 }
 function getEmptyOrderLine() {
@@ -201,7 +202,7 @@ function loadOrderToEdit(orderId) {
     return {
         type: 'SELECT_ORDER',
         order
-    } ;
+    };
 }
 
 export function selectOrder(orderId) {
@@ -221,9 +222,9 @@ export function selectNewOrder() {
             createdAt: new Date()
         };
 
-        return {
+        dispatch ({
             type: 'SELECT_ORDER',
             newOrder
-        };
+        });
     }
 }
