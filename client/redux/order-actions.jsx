@@ -141,7 +141,7 @@ export function addNewOrderLine(event) {
         // get the order and line - don't mutate
         const order = _.clone(getState().orderBeingEdited.order);
 
-        order.orderLines.push(this.getEmptyOrderLine());
+        order.orderLines.push(getEmptyOrderLine());
 
         dispatch ({
             type: 'EDIT_ORDER',
