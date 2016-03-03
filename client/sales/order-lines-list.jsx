@@ -9,24 +9,23 @@ const OrderLinesList = React.createClass({
         order: React.PropTypes.object.isRequired,
         onChildChange: React.PropTypes.func.isRequired,
         onProductChange: React.PropTypes.func.isRequired,
-        deleteOrderLine: React.PropTypes.func,
-        lineErrorSets: React.PropTypes.array.isRequired
+        deleteOrderLine: React.PropTypes.func
     },
 
-    getErrorsForLine(orderLine) {
-
-        let errorSet;
-        let errors = {};
-
-        if (this.props.lineErrorSets) {
-            errorSet = this.props.lineErrorSets.find(x => x._id === orderLine._id);
-            if (errorSet && errorSet.errors) {
-                errors = errorSet.errors;
-            }
-        }
-        //console.log(errors);
-        return errors;
-    },
+    //getErrorsForLine(orderLine) {
+    //
+    //    let errorSet;
+    //    let errors = {};
+    //
+    //    if (this.props.lineErrorSets) {
+    //        errorSet = this.props.lineErrorSets.find(x => x._id === orderLine._id);
+    //        if (errorSet && errorSet.errors) {
+    //            errors = errorSet.errors;
+    //        }
+    //    }
+    //    //console.log(errors);
+    //    return errors;
+    //},
 
     renderOrderLines() {
         //console.log("customers2", this.data.customers)
@@ -45,7 +44,7 @@ const OrderLinesList = React.createClass({
                         onChange={this.props.onChildChange}
                         onProductChange={this.props.onProductChange}
                         deleteOrderLine={this.props.deleteOrderLine}
-                        errors={this.getErrorsForLine(orderLine)}
+                        errors={orderLine.errors}
                     />
 
                 </div>

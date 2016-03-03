@@ -5,7 +5,7 @@
 // into one single app state. We'll use two reducers, one for transient state
 // that the UI uses (selected id,name) and one for data (coming from Mongo)
 
-import Actions from './action_creators.jsx';
+
 import { combineReducers } from 'redux';
 
 Reducers = {};
@@ -48,7 +48,7 @@ let initialOrderState = {
 };
 
 const orderBeingEdited = function orderBeingEdited(state = initialOrderState, action) {
-    //console.log("reducers.userInterface  action:", {state, action});
+    console.log("reducers.userInterface  action:", {state, action});
 
     switch (action.type) {
         case 'SELECT_ORDER':
@@ -97,7 +97,7 @@ const customer = function customer(state = {}, action) {
 
 
 const order = function order(state = {}, action) {
-    //console.log("reducers.order", {state, action});
+    console.log("reducers.order", {state, action});
 
     switch (action.type) {
         case 'SAVE_ORDER':

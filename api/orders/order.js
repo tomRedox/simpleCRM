@@ -23,17 +23,6 @@ Orders.before.insert(function (userId, doc) {
     customerCompanyDenormalizer.beforeInsert(userId, doc);
 });
 
-//Redux
-Meteor.startup(function () { // work around files not being defined yet
-    console.log("Orders collection, add Redux tracking");
-    if (Meteor.isClient) { // work around not having actions in /both folder
-        // trigger action when this changes
-        trackCollection(Orders, (data) => {
-            store.dispatch(OrderActions.ordersCollectionChanged(data));
-        });
-    }
-});
-
 Orders.before.update(function (userId, doc, fieldNames, modifier, options) {
     console.log("Orders.before.update", doc);
     customerCompanyDenormalizer.beforeUpdate(userId, doc, fieldNames, modifier, options);

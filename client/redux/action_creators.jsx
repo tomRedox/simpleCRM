@@ -80,7 +80,7 @@ export function editCustomer(customer, newValues) {
     console.log("Actions.editCustomer() event.target:" + newValues);
     return (dispatch, getState) => {
         console.log("inner");
-        dispatch(dispatchCustomerChange(customer, newValues))
+        dispatch(dispatchCustomerChange(getState().userInterface.customerBeingEdited, newValues))
     }
 }
 

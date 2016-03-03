@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+
 import OrderHeaderEdit from './order-header-edit.jsx';
-import OrderActions from '../redux/order-actions.jsx';
-import { orderChange, orderSave } from '../redux/action_creators.jsx';
+import OrderLinesList from './order-lines-list.jsx';
+
+import { saveOrder, editOrder, selectOrder,
+    selectNewOrder, editOrderLine, editOrderLineProduct,
+    addNewOrderLine, deleteOrderLine,  } from '../redux/order-actions.jsx';
 
 
 export const OrderContainer = React.createClass({
@@ -31,7 +35,7 @@ export const OrderContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        //console.log("shouldComponentUpdate", this.sub.ready)
+        console.log("shouldComponentUpdate", this.sub)
         return (!this.sub || this.sub.ready);
     },
 
@@ -43,14 +47,40 @@ export const OrderContainer = React.createClass({
 
         //debugger // checkout this.props with debugger!
         return (
-            <OrderHeaderEdit
-                order = {this.props.order}
-                onChange = {this.props.onChange}
-                onSave = {this.props.onSave}
-                errors = {this.props.order.errors}
-                isValid = {this.props.order.isValid}
-                salesRegionOptions={SalesRegions.find().fetch()}
-            />);
+            <div className="panel panel-default">
+                <form className="order_page" onSubmit={this.props.onSave}>
+                    <div className="panel-body">
+
+                        <h3>Sales Order</h3>
+
+                        <OrderHeaderEdit
+                            order={this.props.order}
+                            onChange={this.props.onChange}
+                            onSave={this.props.onSave}
+                            errors={this.props.order.errors}
+                            isValid={this.props.order.isValid}
+                            salesRegionOptions={SalesRegions.find().fetch()}
+                        />
+
+
+                        <OrderLinesList
+                            order={this.props.order}
+                            onChildChange={this.props.editOrderLine}
+                            onProductChange={this.props.editOrderLineProduct}
+                            deleteOrderLine={this.props.deleteOrderLine}
+                        />
+
+                        <input
+                            type="button"
+                            className="btn btn-success"
+                            id="newOrderLineButton"
+                            onClick={this.props.addNewOrderLine}
+                            value="New line"
+                        />
+                    </div>
+                </form>
+            </div>
+        );
     }
 });
 
@@ -60,11 +90,14 @@ OrderContainer.propTypes = {
     onChange: PropTypes.func.isRequired,
     selectOrder: PropTypes.func.isRequired,
     selectNewOrder: PropTypes.func.isRequired,
-
+    editOrderLine: PropTypes.func.isRequired,
+    editOrderLineProduct: PropTypes.func.isRequired,
+    addNewOrderLine: PropTypes.func.isRequired,
+    deleteOrderLine: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-    console.log("OrderContainer.mapStateToProps", state)
+    console.log("OrderContainer.mapStateToProps", state);
     return {
         order: state.orderBeingEdited.order
     };
@@ -72,14 +105,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     //console.log("OrderContainer.mapDispatchToProps", OrderActions.orderSave)
-    return {
-        onSave: OrderActions.saveOrder,
-        onChange: (order, event) => { dispatch(OrderActions.editOrder(order, event)); },
-        selectOrder: (orderId) => { dispatch(OrderActions.selectOrder(orderId)); },
-        selectNewOrder: () => { dispatch(OrderActions.selectNewOrder()); }
-    };
+    return;
 }
 
-export default connect(
-    mapStateToProps, mapDispatchToProps
-)(OrderContainer);
+export default connect(mapStateToProps, {
+    onSave: saveOrder,
+    onChange: editOrder,
+    selectOrder,
+    selectNewOrder,
+    editOrderLine,
+    editOrderLineProduct,
+    addNewOrderLine,
+    deleteOrderLine
+
+})(OrderContainer);

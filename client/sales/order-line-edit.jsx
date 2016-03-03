@@ -50,6 +50,12 @@ const OrderLineEdit = React.createClass({
             name: this.props.orderLine.description
         };
 
+
+        let errors = {};
+        if (this.props.errors) {
+            errors = this.props.errors;
+        }
+
         // only show the delete button if we are passed in a delete method
         let deleteButton;
         if (this.props.deleteOrderLine) {
@@ -73,7 +79,7 @@ const OrderLineEdit = React.createClass({
                         label="Product"
                         value={value}
                         onChange={this.handleProductChange}
-                        error={this.props.errors.productId}
+                        error={errors.productId}
                         loadOptions={this.getProducts}
                         valueKey="_id"
                         labelKey="name"
@@ -86,7 +92,7 @@ const OrderLineEdit = React.createClass({
                         name="quantity"
                         onChange={this.handleChange}
                         value={this.props.orderLine.quantity}
-                        error={this.props.errors.quantity}
+                        error={errors.quantity}
                         hideLabel={true}
                     />
                 </td>
@@ -96,7 +102,7 @@ const OrderLineEdit = React.createClass({
                         name="unitPrice"
                         onChange={this.handleChange}
                         value={this.props.orderLine.unitPrice}
-                        error={this.props.errors.unitPrice}
+                        error={errors.unitPrice}
                         hideLabel={true}
                         isMoney={true}
                         decimalPlaces={2}
