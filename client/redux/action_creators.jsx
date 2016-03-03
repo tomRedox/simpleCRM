@@ -101,7 +101,7 @@ function loadCustomerToEdit(customerId) {
 export function selectCustomer(customerId) {
     console.log("Actions.selectCustomer: " + customerId.toString());
     return (dispatch, getState) => {
-        console.log("inner Actions.selectCustomer: " + customerId.toString());
+        console.log("INNER Actions.selectCustomer: " + customerId.toString());
         dispatch(loadCustomerToEdit(customerId));
     }
 };

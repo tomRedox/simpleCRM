@@ -18,6 +18,7 @@ import Test1 from './app/test1.jsx';
 import Test2 from './app/test2.jsx';
 import CustomerContainer from './customers/CustomerContainer.jsx';
 import OrderContainer from './sales/OrderContainer.jsx';
+import store from './redux/store.jsx';
 
 //// define and export our Layout component
 //export const Layout1 = ({content}) => (

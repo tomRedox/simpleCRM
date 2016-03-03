@@ -23,34 +23,42 @@ import thunk from 'redux-thunk';
 //      ]
 //    }
 
-const enhancer = compose(
-    // Middleware you want to use in development:
-    applyMiddleware(thunk),
-    // Required! Enable Redux DevTools with the monitors you chose
-    DevTools.instrument()
-);
+//const enhancer = compose(
+//    // Middleware you want to use in development:
+//    applyMiddleware(thunk),
+//    // Required! Enable Redux DevTools with the monitors you chose
+//    DevTools.instrument()
+//);
+//
+//
+//// applyMiddleware takes createStore() and returns a new wrapped createStore
+//// note, this is an optional step to use middleware (we're auto console.log dispatches)
+//// let createStoreWithMiddleware = applyMiddleware(logger)(createStore);
+//// store = createStoreWithMiddleware(rootReducer);
+////
+////store = finalCreateStore(rootReducer);
+//
+//
+//
+//function configureStore(initialState) {
+//  console.log("configureStore rootReducer:", [ rootReducer, initialState ]);
+//  const result = createStore(rootReducer , initialState, enhancer);
+//  console.log("result",result);
+//
+//  return result;
+//}
+//
+//export function getStore() {
+//
+//  return store;
+//}
+//
+//store = configureStore();
 
 
-// applyMiddleware takes createStore() and returns a new wrapped createStore
-// note, this is an optional step to use middleware (we're auto console.log dispatches)
-// let createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-// store = createStoreWithMiddleware(rootReducer);
-// 
-//store = finalCreateStore(rootReducer);
+//const middleware = [ thunk ]
+//
+//const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
+const store = createStore( rootReducer, applyMiddleware(thunk) );
 
-
-
-function configureStore(initialState) {
-  console.log("configureStore rootReducer:", [ rootReducer, initialState ]);
-  const result = createStore(rootReducer , initialState, enhancer);
-  console.log("result",result);
-
-  return result;
-}
-
-export function getStore() {
-
-  return store;
-}
-
-store = configureStore();
+export default store;

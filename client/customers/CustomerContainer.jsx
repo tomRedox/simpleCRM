@@ -79,6 +79,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(
-    mapStateToProps, mapDispatchToProps
-)(CustomerContainer);
+export default connect(mapStateToProps, {
+    onSave: saveCustomer,
+    onChange: editCustomer,
+    selectCustomer,
+    selectNewCustomer
+})(CustomerContainer);
