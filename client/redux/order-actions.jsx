@@ -86,7 +86,6 @@ export function editOrder(order, newValues) {
 export function editOrderLine(orderLineId, field, value) {
     console.log("OrderActions.editOrder() event.value:" + value);
     return (dispatch, getState) => {
-        console.log("inner OrderActions.editOrder()");
 
         // get the order and line - don't mutate
         const order = _.clone(getState().orderBeingEdited.order);
@@ -99,6 +98,7 @@ export function editOrderLine(orderLineId, field, value) {
 
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
+        console.log("inner OrderActions.editOrderLine()", order);
         dispatch ({
             type: 'EDIT_ORDER',
             order
@@ -110,7 +110,6 @@ export function editOrderLine(orderLineId, field, value) {
 export function editOrderLineProduct(orderLineId, newValue) {
     console.log("OrderActions.editOrderLineProduct() newValue:" + newValue);
     return (dispatch, getState) => {
-        console.log("inner OrderActions.editOrderLineProduct()");
 
         // get the order and line - don't mutate
         const order = _.clone(getState().orderBeingEdited.order);
@@ -125,6 +124,7 @@ export function editOrderLineProduct(orderLineId, newValue) {
 
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
+        console.log("inner OrderActions.editOrderLineProduct()", order);
         dispatch ({
             type: 'EDIT_ORDER',
             order
@@ -145,7 +145,7 @@ export function addNewOrderLine(event) {
 
         dispatch ({
             type: 'EDIT_ORDER',
-            order
+            order: order
         });
     }
 }

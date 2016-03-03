@@ -44,7 +44,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 
 
 let initialOrderState = {
-    order: {}
+    order: { status: "initial state"}
 };
 
 const orderBeingEdited = function orderBeingEdited(state = initialOrderState, action) {
@@ -58,10 +58,11 @@ const orderBeingEdited = function orderBeingEdited(state = initialOrderState, ac
                 order: action.order
             });
         case 'EDIT_ORDER':
-            console.log("orderBeingEdited EDIT_ORDER, order:", state.order);
+            console.log("orderBeingEdited EDIT_ORDER, updatedOrder:", action.order);
+            console.log("orderBeingEdited EDIT_ORDER, state:", state);
 
             // merge in our newly edited data
-            return merge(state, { order: action.updatedOrder });
+            return merge(state, { order: action.order });
         default:
             return state;
     }
