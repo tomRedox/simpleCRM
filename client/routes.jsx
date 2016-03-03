@@ -12,7 +12,6 @@ import {Layout} from './app/app.jsx';
 //import CustomersList from './customers/customers-list.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import AppNotFound from './app/app-not-found.jsx';
-import OrderPageWrapper from './sales/order-page-wrapper.jsx';
 import ProductsListWrapper from './products/products-list-wrapper.jsx';
 import Test1 from './app/test1.jsx';
 import Test2 from './app/test2.jsx';

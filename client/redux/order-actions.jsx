@@ -52,7 +52,9 @@ export function saveOrder(order) {
             } else {
                 sAlert.success("Save successful");
                 FlowRouter.go("/");
-                dispatch ({type: 'SAVE_ORDER'});
+                dispatch ({
+                    type: 'SAVE_ORDER'
+                });
             }
         });
     }

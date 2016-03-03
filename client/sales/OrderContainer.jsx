@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-import OrderHeaderEdit from './order-header-edit.jsx';
-import OrderLinesList from './order-lines-list.jsx';
+import OrderHeaderEdit from './OrderHeaderEdit.jsx';
+import OrderLinesList from './OrderLinesList.jsx';
 
 import { saveOrder, editOrder, selectOrder,
     selectNewOrder, editOrderLine, editOrderLineProduct,

@@ -1,5 +1,5 @@
 
-import OrderLineEdit from './order-line-edit.jsx';
+import OrderLineEdit from './OrderLineEdit.jsx';
 
 var React = require('react');
 
