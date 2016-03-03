@@ -36,7 +36,7 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);
 
             // merge in our newly edited data
-            return merge(state, { customerBeingEdited: action.updatedCustomer });
+            return merge(state, { customerBeingEdited: action.customer });
         default:
             return state;
     }
@@ -58,7 +58,7 @@ const orderBeingEdited = function orderBeingEdited(state = initialOrderState, ac
                 order: action.order
             });
         case 'EDIT_ORDER':
-            console.log("orderBeingEdited EDIT_ORDER, updatedOrder:", action.order);
+            console.log("orderBeingEdited EDIT_ORDER, order:", action.order);
             console.log("orderBeingEdited EDIT_ORDER, state:", state);
 
             // merge in our newly edited data

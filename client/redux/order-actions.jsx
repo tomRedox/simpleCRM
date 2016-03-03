@@ -64,20 +64,20 @@ export function editOrder(order, newValues) {
     return (dispatch, getState) => {
 
         // don't mutate it
-        const updatedOrder = _.clone(order);
+        const order = _.clone(getState().orderBeingEdited.order);
 
         // loop each change and apply to our clone
         for (let newValue of newValues) {
-            updatedOrder[newValue.name] = newValue.value;
+            order[newValue.name] = newValue.value;
         }
 
         // validate and set error messages
-        validateItemAndAddValidationResults(updatedOrder, Schemas.OrderSchema);
+        validateItemAndAddValidationResults(order, Schemas.OrderSchema);
 
         console.log("inner OrderActions.editOrder() " );
         dispatch ({
             type: 'EDIT_ORDER',
-            updatedOrder
+            order
         });
     }
 }
@@ -218,7 +218,7 @@ export function selectNewOrder() {
     console.log("OrderActions.selectNewOrder ")
     return (dispatch, getState) => {
 
-        const newOrder = {
+        const order = {
             orderLines: [],
             createdAt: new Date(),
             errors: {}
@@ -226,7 +226,7 @@ export function selectNewOrder() {
 
         dispatch ({
             type: 'SELECT_ORDER',
-            order: newOrder
+            order
         });
     }
 }

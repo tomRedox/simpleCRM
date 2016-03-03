@@ -59,28 +59,30 @@ export function saveCustomer(customer) {
 function dispatchCustomerChange(customer, newValues) {
     console.log("inner");
 
-    // don't mutate it
-    const updatedCustomer = _.clone(customer);
-
-    // loop each change and apply to our clone
-    for (let newValue of newValues) {
-        updatedCustomer[newValue.name] = newValue.value;
-    }
-
-    // validate and set error messages
-    validateItemAndAddValidationResults(updatedCustomer, Schemas.CustomerCompaniesSchema);
 
     return {
         type: 'EDIT_CUSTOMER',
-        updatedCustomer
+        customer
     };
 }
 
 export function editCustomer(customer, newValues) {
     console.log("Actions.editCustomer() event.target:" + newValues);
     return (dispatch, getState) => {
-        console.log("inner");
-        dispatch(dispatchCustomerChange(getState().userInterface.customerBeingEdited, newValues))
+        const customer = _.clone(getState().userInterface.customerBeingEdited);
+
+        // loop each change and apply to our clone
+        for (let newValue of newValues) {
+            customer[newValue.name] = newValue.value;
+        }
+
+        // validate and set error messages
+        validateItemAndAddValidationResults(customer, Schemas.CustomerCompaniesSchema);
+
+        dispatch({
+            type: 'EDIT_CUSTOMER',
+            customer
+        });
     }
 }
 
@@ -95,7 +97,7 @@ function loadCustomerToEdit(customerId) {
     return {
         type: 'SELECT_CUSTOMER',
         customer
-    } ;
+    };
 }
 
 export function selectCustomer(customerId) {
@@ -110,7 +112,7 @@ export function selectNewCustomer() {
     console.log("Actions.selectNewCustomer ")
     return (dispatch, getState) => {
 
-        const newCustomer = {
+        const customer = {
             name: "",
             email: "",
             postcode: "",
@@ -122,7 +124,7 @@ export function selectNewCustomer() {
 
         dispatch({
             type: 'SELECT_CUSTOMER',
-            customer: newCustomer
+            customer
         });
     }
 };
