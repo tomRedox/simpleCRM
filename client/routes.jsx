@@ -9,14 +9,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {mount} from 'react-mounter';
 import {Layout} from './app/app.jsx';
-//import CustomersList from './customers/customers-list.jsx';
+//import CustomersList from './customers/CustomersList.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import AppNotFound from './app/app-not-found.jsx';
 import ProductsListWrapper from './products/products-list-wrapper.jsx';
 import Test1 from './app/test1.jsx';
 import Test2 from './app/test2.jsx';
 import CustomerContainer from './customers/CustomerContainer.jsx';
+import AllCustomersContainer from './customers/AllCustomersContainer.jsx';
 import OrderContainer from './sales/OrderContainer.jsx';
+import AllOrdersContainer from './sales/AllOrdersContainer.jsx';
 import store from './redux/store.jsx';
 
 //// define and export our Layout component
@@ -84,6 +86,15 @@ FlowRouter.route("/addCustomer", {
     }
 });
 
+FlowRouter.route("/allCustomers", {
+    name: "allCustomers",
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<AllCustomersContainer store={store}/>)
+        });
+    }
+});
 
 FlowRouter.route('/products/', {
 
@@ -130,6 +141,16 @@ FlowRouter.route("/addOrder", {
     }
 });
 
+
+FlowRouter.route("/allOrders", {
+    name: "allOrders",
+    action() {
+        console.log("route ", this.name);
+        mount(Layout, {
+            content: (<AllOrdersContainer store={store}/>)
+        });
+    }
+});
 
 FlowRouter.route("/test1", {
     name: "test1",

@@ -1,7 +1,8 @@
 import React from 'react';
-import OrdersList from '../sales/OrdersList.jsx';
+
 import TopOrdersContainer from '../sales/TopOrdersContainer.jsx';
-import CustomersList from '../customers/customers-list.jsx';
+import TopCustomersContainer from '../customers/TopCustomersContainer.jsx';
+
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 import store from '../redux/store.jsx';
 
@@ -17,7 +18,7 @@ const Content = React.createClass({
                     </div>
                 </div>
                 < TopOrdersContainer store={store} />
-                < CustomersList />
+                < TopCustomersContainer store={store} />
             </div>
         );
     }

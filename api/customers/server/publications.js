@@ -5,12 +5,12 @@ Meteor.publish('CustomerCompanies.public', function () {
     return CustomerCompanies.find();
 });
 
-Meteor.publish('CustomerCompanies.topCustomerCompanies', function () {
+Meteor.publish('CustomerCompanies.topCustomerCompanies', function (numberToReturn) {
     return CustomerCompanies.find(
         {},
         {
             sort: {ordersTotalValue: -1},
-            limit: 3
+            limit: numberToReturn
         }
     );
 });

@@ -19,8 +19,8 @@ Sidebar = React.createClass({
 
                 <ul className="nav hidden-xs" id="lg-menu">
                     <li className="active"><a href="/"><i className="fa fa-tachometer"/> Dashboard</a></li>
-                    <li><a href="#"><i className="fa fa-file-text"/> Orders</a></li>
-                    <li><a href="#"><i className="fa fa-group"/> Customers</a></li>
+                    <li><a href="/allOrders"><i className="fa fa-file-text"/> Orders</a></li>
+                    <li><a href="/allCustomers"><i className="fa fa-group"/> Customers</a></li>
                     <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
                     <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
                     <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
@@ -34,8 +34,8 @@ Sidebar = React.createClass({
 
                 <ul className="nav visible-xs" id="xs-menu">
                     <li><a href="/" className="text-center"><i className="fa fa-tachometer"/></a></li>
-                    <li><a href="#" className="text-center"><i className="fa fa-file-text"/></a></li>
-                    <li><a href="#" className="text-center"><i className="fa fa-group"/></a></li>
+                    <li><a href="/allOrders" className="text-center"><i className="fa fa-file-text"/></a></li>
+                    <li><a href="/allCustomers" className="text-center"><i className="fa fa-group"/></a></li>
                     <li><a href="/products" className="text-center"><i className="fa fa-archive"/></a></li>
                     <li><a href="#" className="text-center"><i className="fa fa-search"/></a></li>
                     <li><a href="#" className="text-center"><i className="fa fa-line-chart"/></a></li>

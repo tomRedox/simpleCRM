@@ -14,6 +14,9 @@ let initialInterfaceState = {
     customerBeingEdited: {},
     orderList: {
         expanded: false
+    },
+    customerList: {
+        expanded: false
     }
 };
 
@@ -44,6 +47,10 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             const orderList = _.clone(state.orderList);
             orderList.expanded = !orderList.expanded;
             return merge(state, { orderList });
+        case 'TOGGLE_CUSTOMER_LIST_EXPANDED':
+            const customerList = _.clone(state.customerList);
+            customerList.expanded = !customerList.expanded;
+            return merge(state, { customerList });
         default:
             return state;
     }
