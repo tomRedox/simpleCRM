@@ -19,14 +19,6 @@ const EXPANDED_RECORD_COUNT = 9;
 
 const TopOrdersContainer = React.createClass({
 
-    getInitialState() {
-        return {
-            expanded: false,
-            recordsToShow: MINIMISED_RECORD_COUNT,
-            showChild: false
-        };
-    },
-
     // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
 
@@ -99,24 +91,3 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
     toggleExpanded
 })(TopOrdersContainer);
-
-
-//return (
-//    <VelocityTransitionGroup
-//
-//        enter={{animation: "fadeIn"}}
-//        leave={{animation: "fadeOut"}}
-//        duration={1500}
-//    >
-//        { this.state.showChild ?
-//            <OrdersList
-//                orders={this.data.orders ? this.data.orders : []}
-//                expanded={this.props.expanded}
-//                toggleExpanded={this.toggleExpanded}
-//            /> :
-//            undefined
-//        }
-//
-//    </VelocityTransitionGroup>
-//
-//);
