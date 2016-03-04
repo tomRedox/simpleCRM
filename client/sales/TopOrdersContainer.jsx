@@ -10,7 +10,8 @@ import React, { Component, PropTypes } from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';
-import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
+import CollapsiblePanel from '../controls/CollapsiblePanel.jsx';
+
 import { toggleExpanded } from '../redux/order-list-actions.jsx';
 
 const MINIMISED_RECORD_COUNT = 3;
@@ -27,7 +28,7 @@ const TopOrdersContainer = React.createClass({
     },
 
     // This mixin makes the getMeteorData method work
-    mixins: [ ReactMeteorData ],
+    mixins: [ReactMeteorData],
 
     // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
@@ -65,12 +66,19 @@ const TopOrdersContainer = React.createClass({
 
         // Get tasks from this.data.tasks
         return (
-            <OrdersList
-                orders={this.data.orders ? this.data.orders : []}
+            <CollapsiblePanel
                 expanded={this.props.expanded}
                 toggleExpanded={this.props.toggleExpanded}
                 parentGotData={this.data.dataReady}
-            />
+                panelTitle = "Top orders"
+                itemType = "order"
+                newItemLink ="/addOrder"
+                allItemsLink ="/"
+            >
+                <OrdersList
+                    orders={this.data.orders ? this.data.orders : []}
+                />
+            </CollapsiblePanel>
         );
     }
 });
@@ -91,8 +99,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
     toggleExpanded
 })(TopOrdersContainer);
-
-
 
 
 //return (
