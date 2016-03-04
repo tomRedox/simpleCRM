@@ -19,10 +19,8 @@ const EXPANDED_RECORD_COUNT = 9;
 
 const TopOrdersContainer = React.createClass({
 
-    // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
 
-    // Loads items from the Tasks collection and puts them on this.data.tasks
     getMeteorData() {
         //console.log("getMeteorData()");
 
@@ -56,7 +54,6 @@ const TopOrdersContainer = React.createClass({
     render() {
         console.log("OrdersListWrapper.render() ");
 
-        // Get tasks from this.data.tasks
         return (
             <CollapsiblePanel
                 expanded={this.props.expanded}
@@ -75,9 +72,7 @@ const TopOrdersContainer = React.createClass({
     }
 });
 
-
 TopOrdersContainer.propTypes = {
-    //orders: PropTypes.array.isRequired,
     expanded: PropTypes.bool.isRequired
 };
 
