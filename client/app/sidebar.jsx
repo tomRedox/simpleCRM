@@ -13,14 +13,16 @@ import { toggleLeftNavExpanded } from '../redux/ui-actions.jsx';
 const SidebarContainer = React.createClass({
 
     renderExpandedSideBar() {
+
+        const navStyle = {
+            marginTop: 64,
+            height: (window.innerHeight - 64)
+        };
+
         return (
 
             <div>
-                <LeftNav width={220} open={true} >
-                    <AppBar
-                        title="simple crm"
-                        onLeftIconButtonTouchTap={this.props.toggleLeftNavExpanded}
-                    />
+                <LeftNav width={220} open={true} style={navStyle} className="MY_LeftNav">
                     <MenuItem>Menu Item</MenuItem>
                     <MenuItem>Menu Item 2</MenuItem>
 
@@ -38,13 +40,16 @@ const SidebarContainer = React.createClass({
 
 
 renderMinimisedSideBar() {
-        return (
+
+    const navStyle = {
+        marginTop: 64,
+        height: (window.innerHeight - 64)
+    };
+
+    return (
             <div>
-                <LeftNav width={65} open={true} >
-                    <AppBar
-                        title=""
-                        onLeftIconButtonTouchTap={this.props.toggleLeftNavExpanded}
-                    />
+                <LeftNav width={65} style={navStyle} open={true} >
+
 
                  </LeftNav>
             </div>
@@ -58,7 +63,7 @@ renderMinimisedSideBar() {
         if (this.props.expanded) {
             return this.renderExpandedSideBar()
         } else {
-            return this.renderMinimisedSideBar()
+            return <div></div>
         }
     }
 });

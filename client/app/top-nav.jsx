@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react';
 
 import AppBar from 'material-ui/lib/app-bar';
@@ -13,11 +12,21 @@ const TopNavContainer = React.createClass({
     render() {
 
 
+        let divStyle = {
+            position: "fixed",
+            top:0,
+            width:"100%"
+        }
+
         return (
-            <AppBar
-                title="simple crm"
-                iconElementRight={<GlobalSearch id="srch-term" />}
-            />
+            <div class="header">
+                <AppBar
+                    title="simple crm"
+                    iconElementRight={<GlobalSearch id="srch-term" />}
+                    onLeftIconButtonTouchTap={this.props.toggleLeftNavExpanded}
+                    style={divStyle}
+                />
+            </div>
         );
     }
 });
@@ -80,15 +89,13 @@ export default connect(mapStateToProps, {
 //</div>
 
 
-
 //<input type="text" className="form-control" placeholder="Search" name="srch-term"
 //       id="srch-term"/>
 
 
-
-    //    <li>
-    //        {{#if isInRole 'Administrator'}}
-    //        <a href="#">Admin</a>
-    //        {{/if}}
-    //    </li>
-    //{{> loginButtons}} <!-- here -->
+//    <li>
+//        {{#if isInRole 'Administrator'}}
+//        <a href="#">Admin</a>
+//        {{/if}}
+//    </li>
+//{{> loginButtons}} <!-- here -->
