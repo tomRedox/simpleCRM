@@ -1,84 +1,61 @@
-
-
 import React, { Component, PropTypes } from 'react';
-
-import LeftNav from 'material-ui/lib/left-nav';
-import AppBar from 'material-ui/lib/app-bar';
-import RaisedButton from 'material-ui/lib/raised-button';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 
 import { toggleLeftNavExpanded } from '../redux/ui-actions.jsx';
 
 
 // App component - represents the whole app
-const SidebarContainer = React.createClass({
+const MainContentContainer = React.createClass({
+    updateDimensions: function () {
+        //this.setState({width: $(window).width(), height: $(window).height()});
 
-    renderExpandedSideBar() {
-        return (
-
-            <div>
-                <LeftNav width={220} open={true} >
-                    <AppBar
-                        title="simple crm"
-                        onLeftIconButtonTouchTap={this.props.toggleLeftNavExpanded}
-                    />
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
-
-                </LeftNav>
-            </div>
-        );
-    },
-
-//        <li className="active"><a href="/"><i className="fa fa-tachometer"/> Dashboard</a></li>
-//        <li><a href="/allOrders"><i className="fa fa-file-text"/> Orders</a></li>
-//        <li><a href="/allCustomers"><i className="fa fa-group"/> Customers</a></li>
-//        <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
-//        <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
-//        <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
-
-
-renderMinimisedSideBar() {
-        return (
-            <div>
-                <LeftNav width={65} open={true} >
-                    <AppBar
-                        title=""
-                        onLeftIconButtonTouchTap={this.props.toggleLeftNavExpanded}
-                    />
-
-                 </LeftNav>
-            </div>
-        );
-    },
-
-    render()
-    {
-        console.log("SidebarContainer.render() props: ", this.props);
-
-        if (this.props.expanded) {
-            return this.renderExpandedSideBar()
-        } else {
-            return this.renderMinimisedSideBar()
+        if ($(window).width() < 768 && this.props.leftNavExpanded) {
+            this.props.toggleLeftNavExpanded();
+        } else if ($(window).width() > 768 && !this.props.leftNavExpanded) {
+            this.props.toggleLeftNavExpanded();
         }
+    },
+    componentWillMount: function () {
+        this.updateDimensions();
+    },
+    componentDidMount: function () {
+        window.addEventListener("resize", this.updateDimensions);
+    },
+    componentWillUnmount: function () {
+        window.removeEventListener("resize", this.updateDimensions);
+    },
+
+    render() {
+
+        let divStyle = {
+            marginLeft: this.props.leftNavExpanded ? 270 : 100
+        }
+
+        return (
+            <div style={ divStyle }>
+
+                {this.props.children}
+            </div>
+        )
     }
 });
 
-SidebarContainer.propTypes = {
-    expanded: PropTypes.bool.isRequired
+MainContentContainer.propTypes = {
+    leftNavExpanded: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
-    //console.log("SidebarContainer.mapStateToProps", state)
+    //console.log("MainContentContainer.mapStateToProps", state)
     return {
-        expanded: state.userInterface.leftNavExpanded
+        leftNavExpanded: state.userInterface.leftNavExpanded
     };
 }
 
 export default connect(mapStateToProps, {
     toggleLeftNavExpanded
-})(SidebarContainer);
+})(MainContentContainer);
 
+
+// <span>{this.state.width} x {this.state.height}</span>
 
 //<div className="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
 //

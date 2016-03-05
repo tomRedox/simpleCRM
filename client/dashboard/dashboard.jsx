@@ -6,6 +6,8 @@ import TopCustomersContainer from '../customers/TopCustomersContainer.jsx';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 import store from '../redux/store.jsx';
 
+import RaisedButton from 'material-ui/lib/raised-button';
+
 
 const Content = React.createClass({
 
@@ -17,6 +19,7 @@ const Content = React.createClass({
                         <h3><i className="fa fa-dashboard"/> simple crm dashboard </h3>
                     </div>
                 </div>
+                <RaisedButton label="Default" />
                 < TopOrdersContainer store={store} />
                 < TopCustomersContainer store={store} />
             </div>
