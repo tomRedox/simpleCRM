@@ -27,28 +27,44 @@
 
 
 
+/*
+* Material-ui style from the docs site code in the material-ui repo
+*/
+
+/* custom font icons */
+@import "font-icons/style.css";
+
+a {
+    color: #ff4081;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 html {
-    height:100%;
-    width:100%;
-    margin:0;
-    padding:0;
+    font-family: 'Roboto', sans-serif;
 }
 body {
-    width:100%;
-    position:relative;
-    height:100%;
-    margin:0;
     padding:0;
+    font-size: 15px;
+    line-height: 24px;
 }
-header {
-    height:30px;
-    position:absolute;
-    top:0;
-    width:100%;
-    text-align:center;
-    color:white;
-    background-color:black;
+
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
+
+/*header {*/
+    /*height:30px;*/
+    /*position:absolute;*/
+    /*top:0;*/
+    /*width:100%;*/
+    /*text-align:center;*/
+    /*color:white;*/
+    /*background-color:black;*/
+/*}*/
 
 
 

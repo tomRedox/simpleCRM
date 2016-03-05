@@ -3,7 +3,6 @@ import React from 'react';
 import Collapse from 'react-collapse';
 import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
-
 const CollapsiblePanel = React.createClass({
     propTypes: {
         expanded: React.PropTypes.bool.isRequired,
@@ -61,6 +60,7 @@ const CollapsiblePanel = React.createClass({
         };
 
         return (
+
             <div>
                 <div className="panel panel-default">
                     <div className="panel-heading">

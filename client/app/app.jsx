@@ -15,6 +15,14 @@ import TopNavContainer from './top-nav.jsx';
 import SidebarContainer from './sidebar.jsx';
 import MainContentContainer from './MainContentContainer.jsx';
 
+import {Spacing} from 'material-ui/lib/styles';
+import {StyleResizable} from 'material-ui/lib/mixins';
+
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import {darkWhite, lightWhite, grey900} from 'material-ui/lib/styles/colors';
+
+
+
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
@@ -36,6 +44,24 @@ Meteor.subscribe("Orders.All");
 injectTapEventPlugin();
 
 const ContentContainer = React.createClass({
+
+    mixins: [
+        StyleResizable,
+    ],
+
+    getInitialState() {
+        return {
+            muiTheme: getMuiTheme()
+        };
+    },
+
+    componentWillMount() {
+        this.setState({
+            muiTheme: this.state.muiTheme,
+        });
+    },
+
+
     render() {
         console.log("ContentContainer.render()", this.props.children);
 
@@ -73,11 +99,14 @@ const ContentContainer = React.createClass({
 //    })}
 //</ReactCSSTransitionGroup>
 
+let appStyle = {
+   //color:"red"
+};
 
 //export default Layout;
 // define and export our Layout component
 export const Layout = ({content}) => (
-    <div id="app">
+    <div id="app" style={ appStyle }>
         {console.log("Layout rendered")}
         <Provider store={store}>
             <div>

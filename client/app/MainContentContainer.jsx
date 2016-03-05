@@ -1,10 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 
+import {ClearFix, Mixins, Styles} from 'material-ui';
+const {StyleResizable} = Mixins;
+const desktopGutter = Styles.Spacing.desktopGutter;
+
 import { toggleLeftNavExpanded } from '../redux/ui-actions.jsx';
 
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import {deepOrange500} from 'material-ui/lib/styles/colors';
+
+const muiTheme = getMuiTheme({
+    palette: {
+        accent1Color: deepOrange500,
+    },
+});
 
 // App component - represents the whole app
 const MainContentContainer = React.createClass({
+
+
+    mixins: [
+        StyleResizable,
+    ],
+
+
     updateDimensions: function () {
         //this.setState({width: $(window).width(), height: $(window).height()});
 
@@ -31,10 +51,12 @@ const MainContentContainer = React.createClass({
         }
 
         return (
+            <MuiThemeProvider muiTheme={muiTheme}>
             <div style={ divStyle }>
 
                 {this.props.children}
             </div>
+            </MuiThemeProvider>
         )
     }
 });
