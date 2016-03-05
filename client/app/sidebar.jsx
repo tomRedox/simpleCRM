@@ -1,13 +1,26 @@
-
 import React, { Component, PropTypes } from 'react';
 
 import LeftNav from 'material-ui/lib/left-nav';
 import AppBar from 'material-ui/lib/app-bar';
 import RaisedButton from 'material-ui/lib/raised-button';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance';
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
 
 import { toggleLeftNavExpanded } from '../redux/ui-actions.jsx';
 
+import ContentInbox from 'material-ui/lib/svg-icons/content/inbox';
+
+
+
+const SelectableList = SelectableContainerEnhance(List);
+
+function onRequestChangeList(e,index) {
+    //console.log("e",e);
+    //console.log("index",index);
+    FlowRouter.go(index);
+};
 
 // App component - represents the whole app
 const SidebarContainer = React.createClass({
@@ -23,9 +36,17 @@ const SidebarContainer = React.createClass({
 
             <div>
                 <LeftNav width={220} open={true} style={navStyle} className="MY_LeftNav">
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
+                    <SelectableList
+                        valueLink={{value: "", requestChange: onRequestChangeList }}
+                    >
+                        <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} value="/" />
+                        <ListItem primaryText="Orders" leftIcon={<ContentInbox />} value="/allOrders" />
+                        <ListItem primaryText="Customers" leftIcon={<ContentInbox />} value="/allCustomers" />
+                        <ListItem primaryText="Products" leftIcon={<ContentInbox />} value="/products" />
+                        <ListItem primaryText="Search" leftIcon={<ContentInbox />} value="/test1" />
+                        <ListItem primaryText="Reports" leftIcon={<ContentInbox />} value="/test2" />
 
+                    </SelectableList>
                 </LeftNav>
             </div>
         );
@@ -39,19 +60,19 @@ const SidebarContainer = React.createClass({
 //        <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
 
 
-renderMinimisedSideBar() {
+    renderMinimisedSideBar() {
 
-    const navStyle = {
-        marginTop: 64,
-        height: (window.innerHeight - 64)
-    };
+        const navStyle = {
+            marginTop: 64,
+            height: (window.innerHeight - 64)
+        };
 
-    return (
+        return (
             <div>
-                <LeftNav width={65} style={navStyle} open={true} >
+                <LeftNav width={65} style={navStyle} open={true}>
 
 
-                 </LeftNav>
+                </LeftNav>
             </div>
         );
     },

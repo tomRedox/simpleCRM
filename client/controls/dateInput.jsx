@@ -2,8 +2,9 @@
 var React = require('react');
 var humanize = require('string-humanize');
 
-import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
+
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 DateInput = React.createClass({
     // list out our required and optional properties for this class
@@ -29,24 +30,8 @@ DateInput = React.createClass({
         });
     },
 
-    renderLabel() {
-        if (!this.props.hideLabel) {
-            return (
-                <label htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
-            );
-        }
-    },
-
     render() {
        // console.log("props: ", this.props);
-
-        // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
-        // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
-        var wrapperClass = 'form-group';
-        if (this.props.error && this.props.error.length > 0) {
-            //console.log("has error ", this.props.error);
-            wrapperClass += " " + 'has-error';
-        }
 
         const format = "YYYY-MM-DD";
         const inputFormat = "DD/MM/YYYY";
@@ -57,30 +42,18 @@ DateInput = React.createClass({
         const humanizedName = humanize(this.props.name);
 
         return (
-            <div className={wrapperClass}>
-                {this.renderLabel()}
-                <div className="field">
-                    <DateTimeField
+                    <DatePicker
+                        hintText={humanizedName}
                         dateTime={convertedDate}
-                        format={format}
+                        //formatDate={format}
                         inputFormat={inputFormat}
                         onChange={this.onChangeHandler}
                         viewMode={mode}
+                        autoOk={true}
+                        errorText={this.props.error} // undocumented feature
                     />
-                    <div className="input">{this.props.error}</div>
-                </div>
-            </div>
-
         );
-
-        // test branch
     }
 });
 
 module.exports = DateInput;
-                           //name={this.props.name}
-                           //className="form-control"
-                           ////placeholder={this.props.placeholder}
-                           //ref={this.props.name}
-                           //id={this.props.name}
-                           ////defaultValue={this.props.defaultValue}

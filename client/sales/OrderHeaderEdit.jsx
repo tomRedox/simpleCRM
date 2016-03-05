@@ -3,6 +3,8 @@ import Autosuggest from 'react-autosuggest';
 import AsyncSelectInput from '../controls/asyncSelectInput.jsx';
 import accounting from 'accounting';
 
+import FlatButton from 'material-ui/lib/flat-button';
+
 
 const OrderHeaderEdit = React.createClass({
     propTypes: {
@@ -81,7 +83,7 @@ const OrderHeaderEdit = React.createClass({
                     />
 
                     <TextInput name="notes" onChange={this.onChange} value={this.props.order.notes}
-                               error={errors.notes} hideLabel={true} textRows={5} />
+                               error={errors.notes} hideLabel={true} textRows={2} /><br/>
 
                 </div>
 
@@ -89,23 +91,23 @@ const OrderHeaderEdit = React.createClass({
 
                     <TextInput name="deliveryAddress1" onChange={this.onChange}
                                value={this.props.order.deliveryAddress1} error={errors.deliveryAddress1}
-                               hideLabel={true}/>
+                               hideLabel={true}/><br/>
 
                     <TextInput name="deliveryAddress2" onChange={this.onChange}
                                value={this.props.order.deliveryAddress2}
-                               error={errors.deliveryAddress2} hideLabel={true}/>
+                               error={errors.deliveryAddress2} hideLabel={true}/><br/>
 
                     <TextInput name="town" onChange={this.onChange} value={this.props.order.town}
-                               error={errors.town} hideLabel={true}/>
+                               error={errors.town} hideLabel={true}/><br/>
 
                     <TextInput name="county" onChange={this.onChange} value={this.props.order.county}
-                               error={errors.county} hideLabel={true}/>
+                               error={errors.county} hideLabel={true}/><br/>
 
                     <TextInput name="postcode" onChange={this.onChange} value={this.props.order.postcode}
-                               error={errors.postcode} hideLabel={true}/>
+                               error={errors.postcode} hideLabel={true}/><br/>
 
                     <DateInput name="deliveryDate" onChange={this.onChange} value={this.props.order.deliveryDate}
-                               error={errors.deliveryDate} hideLabel={true}/>
+                               error={errors.deliveryDate} hideLabel={true}/><br/>
                 </div>
 
                 <div className="form-group">
@@ -114,10 +116,10 @@ const OrderHeaderEdit = React.createClass({
                 </div>
 
                 <div className="form-group">
-                    <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
+                    <FlatButton linkButton={true} href="/" label="Cancel" />
 
-                    <input type="submit" value="Save" className="btn btn-primary" onClick={this.onSave}
-                           disabled={!this.props.isValid}/>
+                    <FlatButton  type="submit" label="Save" onClick={this.onSave}
+                           disabled={!this.props.isValid} />
                 </div>
             </div>
         );

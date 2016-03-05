@@ -47,6 +47,7 @@ const MainContentContainer = React.createClass({
     render() {
 
         let divStyle = {
+            marginTop: 64,
             marginLeft: this.props.leftNavExpanded ? 270 : 100
         }
 

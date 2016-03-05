@@ -3,6 +3,7 @@
 var React = require('react');
 var humanize = require('string-humanize');
 
+import TextField from 'material-ui/lib/text-field';
 
 TextInput = React.createClass({
     // list out our required and optional properties for this class
@@ -15,74 +16,55 @@ TextInput = React.createClass({
         //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string,
         hideLabel: React.PropTypes.bool,
-        textRows: React.PropTypes.number
+        textRows: React.PropTypes.number,
+        showFloatingLabels: React.PropTypes.bool,
+        fullWidth: React.PropTypes.bool
     },
 
     getDefaultProps() {
         return {
-            hideLabel: false
+            hideLabel: false,
+            showFloatingLabels: false,
+            fullWidth: false
         };
     },
 
-    renderLabel() {
-        if (!this.props.hideLabel) {
-            return (
-                <label htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
-            );
-        }
-    },
 
-    renderTextArea() {
+    render() {
         const humanizedName = humanize(this.props.name);
 
         if (this.props.textRows) {
             return (
-                <textarea
-                       name={this.props.name}
-                       rows={this.props.textRows}
-                       className="form-control"
-                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
-                       ref={this.props.name}
-                       id={this.props.name}
-                       value={this.props.value}
-                       onChange={this.props.onChange} />
+                <TextField
+                    type="text"
+                    name={this.props.name}
+                    floatingLabelText={this.props.showFloatingLabels}
+                    hintText={this.props.placeholder ? this.props.placeholder : humanizedName}
+                    errorText={this.props.error}
+                    rows={this.props.textRows}
+                    ref={this.props.name}
+                    id={this.props.name}
+                    value={this.props.value}
+                    onChange={this.props.onChange}
+                    fullWidth={this.props.fullWidth}
+                />
             );
         } else {
             return (
-                <input type="text"
-                       name={this.props.name}
-                       className="form-control"
-                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
-                       ref={this.props.name}
-                       id={this.props.name}
-                       value={this.props.value}
-                       onChange={this.props.onChange} />
+                <TextField
+                    type="text"
+                    name={this.props.name}
+                    floatingLabelText={this.props.showFloatingLabels}
+                    hintText={this.props.placeholder ? this.props.placeholder : humanizedName}
+                    errorText={this.props.error}
+                    ref={this.props.name}
+                    id={this.props.name}
+                    value={this.props.value}
+                    onChange={this.props.onChange}
+                    fullWidth={this.props.fullWidth}
+                />
             );
         }
-    },
-
-    render() {
-        //console.log("props: ", this.props);
-
-        // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
-        // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
-        let wrapperClass = 'form-group';
-        if (this.props.error && this.props.error.length > 0) {
-            //console.log("has error ", this.props.error);
-            wrapperClass += " " + 'has-error';
-        }
-
-
-        return (
-            <div className={wrapperClass}>
-                {this.renderLabel()}
-                <div className="field">
-                    {this.renderTextArea()}
-                    <div className="input text-muted">{this.props.error}</div>
-                </div>
-            </div>
-
-        );
     }
 });
 
