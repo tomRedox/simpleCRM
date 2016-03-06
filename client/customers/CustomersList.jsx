@@ -37,15 +37,16 @@ const CustomersList = React.createClass({
 
         return (
             <Table className="table table-responsive table-striped">
-                <TableHeader>
+                <TableHeader displaySelectAll ={false}>
                     <TableRow>
                         <TableHeaderColumn>Customer name</TableHeaderColumn>
                         <TableHeaderColumn>Postcode</TableHeaderColumn>
                         <TableHeaderColumn>No. orders</TableHeaderColumn>
                         <TableHeaderColumn>Total spend</TableHeaderColumn>
+                        <TableHeaderColumn></TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody displayRowCheckbox={false}  >
                 {this.renderCustomerListItems()}
                 </TableBody>
             </Table >

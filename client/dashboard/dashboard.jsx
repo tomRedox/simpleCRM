@@ -19,7 +19,6 @@ const Content = React.createClass({
                         <h3><i className="fa fa-dashboard"/> simple crm dashboard </h3>
                     </div>
                 </div>
-                <RaisedButton label="Default" />
                 < TopOrdersContainer store={store} />
                 < TopCustomersContainer store={store} />
             </div>

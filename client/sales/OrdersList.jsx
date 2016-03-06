@@ -40,9 +40,9 @@ const OrdersList = React.createClass({
         //console.log("orders2", this.data.orders)
         // Get tasks from this.data.tasks
         return (
-            <Table selectable={false}>
-                <TableHeader enableSelectAll={false}>
-                    <TableRow>
+            <Table >
+                <TableHeader displaySelectAll ={false} >
+                    <TableRow  displayRowCheckbox={false} >
                         <TableHeaderColumn>Order Date</TableHeaderColumn>
                         <TableHeaderColumn>Customer</TableHeaderColumn>
                         <TableHeaderColumn>Total</TableHeaderColumn>
@@ -50,7 +50,7 @@ const OrdersList = React.createClass({
                         <TableHeaderColumn></TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody displayRowCheckbox={false}  >
                     {this.renderOrderListItems()}
                 </TableBody>
             </Table>
