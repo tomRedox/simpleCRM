@@ -1,6 +1,8 @@
 //var TextInput = require('./textInput');
 var React = require('react');
 
+import FlatButton from 'material-ui/lib/flat-button';
+
 // App component - represents the whole app
 const CustomerEditForm = React.createClass({
     // Declare our expectations for using this class (not mandatory, just good practice)
@@ -54,28 +56,28 @@ const CustomerEditForm = React.createClass({
                             onChange={this.onChange}
                             value={this.props.customer.name}
                             error={errors.name}
-                        />
+                        /><br/>
 
                         <TextInput
                             name="email"
                             onChange={this.onChange}
                             value={this.props.customer.email}
                             error={errors.email}
-                        />
+                        /><br/>
 
                         <TextInput
                             name="postcode"
                             onChange={this.onChange}
                             value={this.props.customer.postcode}
                             error={errors.postcode}
-                        />
+                        /><br/>
 
                         <DateInput
                             name="nextContactDate"
                             onChange={this.onChange}
                             value={this.props.customer.nextContactDate}
                             error={errors.nextContactDate}
-                        />
+                        /><br/>
 
                         <SelectInput
                             name="salesRegionId"
@@ -87,18 +89,21 @@ const CustomerEditForm = React.createClass({
                             options={this.props.salesRegionOptions}
                             valueKey="_id"
                             labelKey="name"
+                        /><br/>
+
+                        <FlatButton
+                            linkButton={true}
+                            href="/"
+                            label="Cancel"
                         />
 
-                        <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
-
-                        <input
+                        <FlatButton
                             type="submit"
-                            value="Save"
-                            className="btn btn-primary"
+                            label="Save"
                             onClick={this.onSave}
                             disabled={!this.props.isValid}
+                            primary={true}
                         />
-
                     </div>
                 </form>
             </div>
