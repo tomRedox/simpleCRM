@@ -466,6 +466,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_server.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_reconnect_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/url_server.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootswatch_paper/3.3.4_2/web.browser/packages/bootswatch_paper/bootswatch/paper/bootstrap.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_url_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/client_tests.js" />
@@ -473,6 +474,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/localstorage_token.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/client_main.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootswatch_paper/3.3.4_2/web.browser/packages/bootswatch_paper.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/server_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/server_main.js" />
       </sourceFilesUrls>
@@ -942,6 +944,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_server.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_reconnect_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/url_server.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootswatch_paper/3.3.4_2/web.browser/packages/bootswatch_paper/bootswatch/paper/bootstrap.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_url_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/client_tests.js" />
@@ -949,6 +952,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/accounts_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/localstorage_token.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/client_main.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootswatch_paper/3.3.4_2/web.browser/packages/bootswatch_paper.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/server_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.3-modules.7/web.browser/server_main.js" />
     </CLASSES>

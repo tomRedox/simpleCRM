@@ -20,6 +20,7 @@ blaze@2.1.4-modules.7
 blaze-html-templates@1.0.1
 blaze-tools@1.0.5-modules.7
 boilerplate-generator@1.0.5-modules.7
+bootswatch:paper@3.3.4_2
 caching-compiler@1.0.1-modules.7
 caching-html-compiler@1.0.3-modules.7
 callback-hook@1.0.5-modules.7
