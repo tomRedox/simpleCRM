@@ -41,7 +41,7 @@ const OrdersList = React.createClass({
         // Get tasks from this.data.tasks
         return (
             <Table >
-                <TableHeader displaySelectAll ={false} >
+                <TableHeader displaySelectAll ={false} adjustForCheckbox={false}>
                     <TableRow  displayRowCheckbox={false} >
                         <TableHeaderColumn>Order Date</TableHeaderColumn>
                         <TableHeaderColumn>Customer</TableHeaderColumn>

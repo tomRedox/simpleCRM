@@ -10,7 +10,7 @@ import { validateItemAndAddValidationResults } from '../../lib/validation-helper
 Meteor.startup(function () { // work around files not being defined yet
     //console.log("Meteor.startup(function ()");
     if (Meteor.isClient) { // work around not having actions in /both folder
-        console.log("ActionCreators Meteor.startup isClient");
+        //console.log("ActionCreators Meteor.startup isClient");
         // trigger action when this changes
         trackCollection(CustomerCompanies, customersCollectionChanged);
     }
@@ -19,7 +19,7 @@ Meteor.startup(function () { // work around files not being defined yet
 
 // used when a mongo customers collection changes
 export function customersCollectionChanged(newDocs) {
-    console.log("Actions.customersCollectionChanged ", newDocs);
+    //console.log("Actions.customersCollectionChanged ", newDocs);
     return (dispatch, getState) => {
         dispatch({
             type: 'CUSTOMERS_COLLECTION_CHANGED',
@@ -32,7 +32,7 @@ export function customersCollectionChanged(newDocs) {
 // doesn't return payload because our collection watcher
 // will send a CHANGED action and update the store
 export function saveCustomer(customer) {
-    console.log("saveCustomer: ", customer);
+    //console.log("saveCustomer: ", customer);
     return (dispatch, getState) => {
 
         // call the method for upserting the data
@@ -67,7 +67,7 @@ function dispatchCustomerChange(customer, newValues) {
 }
 
 export function editCustomer(customer, newValues) {
-    console.log("Actions.editCustomer() event.target:" + newValues);
+    //console.log("Actions.editCustomer() event.target:" + newValues);
     return (dispatch, getState) => {
         const customer = _.clone(getState().userInterface.customerBeingEdited);
 
@@ -87,9 +87,9 @@ export function editCustomer(customer, newValues) {
 }
 
 function loadCustomerToEdit(customerId) {
-    console.log("loadCustomerToEdit");
+    //console.log("loadCustomerToEdit");
     const customer = CustomerCompanies.findOne({_id: customerId})
-    console.log("loadCustomerToEdit ", customer);
+    //console.log("loadCustomerToEdit ", customer);
 
     // perform initial validation and set error messages
     validateItemAndAddValidationResults(customer, Schemas.CustomerCompaniesSchema);
@@ -101,7 +101,7 @@ function loadCustomerToEdit(customerId) {
 }
 
 export function selectCustomer(customerId) {
-    console.log("Actions.selectCustomer: " + customerId.toString());
+    //console.log("Actions.selectCustomer: " + customerId.toString());
     return (dispatch, getState) => {
         console.log("INNER Actions.selectCustomer: " + customerId.toString());
         dispatch(loadCustomerToEdit(customerId));
@@ -109,7 +109,7 @@ export function selectCustomer(customerId) {
 };
 
 export function selectNewCustomer() {
-    console.log("Actions.selectNewCustomer ")
+    //console.log("Actions.selectNewCustomer ")
     return (dispatch, getState) => {
 
         const customer = {

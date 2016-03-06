@@ -52,7 +52,7 @@ const AllOrdersContainer = React.createClass({
     //},
 
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("AllOrdersContainer.render() ");
 
         return (
             <PaginatedPanel

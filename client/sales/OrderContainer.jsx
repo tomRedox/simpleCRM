@@ -11,7 +11,7 @@ import { saveOrder, editOrder, selectOrder,
 export const OrderContainer = React.createClass({
 
     componentWillMount() {
-        console.log("OrderContainer.componentWillMount()", this.props);
+        //console.log("OrderContainer.componentWillMount()", this.props);
 
         const orderId = FlowRouter.getParam('_id');
 
@@ -24,7 +24,7 @@ export const OrderContainer = React.createClass({
     },
 
     setOrderInState() {
-        console.log("setOrderInState");
+        //console.log("setOrderInState");
         this.props.selectOrder(FlowRouter.getParam('_id'));
     },
 
@@ -35,12 +35,12 @@ export const OrderContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.sub)
+        //console.log("shouldComponentUpdate", this.sub)
         return (!this.sub || this.sub.ready);
     },
 
     render() {
-        console.log("OrderContainer.render()", this.props);
+        //console.log("OrderContainer.render()", this.props);
         if (this.sub && !this.sub.ready) {
             return (<h1>Loading</h1>);
         }

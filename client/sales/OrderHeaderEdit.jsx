@@ -28,13 +28,13 @@ const OrderHeaderEdit = React.createClass({
     },
 
     onChange(event) {
-        console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
+        //console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
         //this.callOnChange(event.target.name, event.target.value);
         this.props.onChange(this.props.order, [ { name: event.target.name, value: event.target.value} ] );
     },
 
     onSelectChange(newValue) {
-        console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
+        //console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
 
         //this.callOnChange(newValue.name, newValue.selectedOption[newValue.valueKey]);
 
@@ -54,7 +54,7 @@ const OrderHeaderEdit = React.createClass({
     //},
 
     render() {
-        console.log("OrderHeaderEdit.render() - props: ", this.props);
+        //console.log("OrderHeaderEdit.render() - props: ", this.props);
 
         const value = {
             _id: this.props.order.customerId ? this.props.order.customerId : '',

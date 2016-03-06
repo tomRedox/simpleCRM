@@ -29,13 +29,13 @@ const SidebarContainer = React.createClass({
 
         const navStyle = {
             marginTop: 64,
-            height: (window.innerHeight - 64)
+            height: "100%"
         };
 
         return (
 
             <div>
-                <LeftNav width={220} open={true} style={navStyle} className="MY_LeftNav">
+                <LeftNav width={200} open={true} style={navStyle} className="MY_LeftNav">
                     <SelectableList
                         valueLink={{value: "", requestChange: onRequestChangeList }}
                     >
@@ -64,7 +64,7 @@ const SidebarContainer = React.createClass({
 
         const navStyle = {
             marginTop: 64,
-            height: (window.innerHeight - 64)
+            height: "100%"
         };
 
         return (
@@ -79,7 +79,7 @@ const SidebarContainer = React.createClass({
 
     render()
     {
-        console.log("SidebarContainer.render() props: ", this.props);
+        //console.log("SidebarContainer.render() props: ", this.props);
 
         if (this.props.expanded) {
             return this.renderExpandedSideBar()

@@ -11,7 +11,7 @@ import store from './store.jsx';
 
 // Hook the collection
 Meteor.startup(function () { // work around files not being defined yet
-    console.log("Orders collection, add Redux tracking");
+    //console.log("Orders collection, add Redux tracking");
     if (Meteor.isClient) { // work around not having actions in /both folder
         // trigger action when this changes
         trackCollection(Orders, (data) => {
@@ -23,7 +23,7 @@ Meteor.startup(function () { // work around files not being defined yet
 
 // used when a mongo orders collection changes
 function ordersCollectionChanged(newDocs) {
-    console.log("OrderActions.ordersCollectionChanged ", newDocs);
+    //console.log("OrderActions.ordersCollectionChanged ", newDocs);
     return (dispatch, getState) => {
         console.log("inner OrderActions.ordersCollectionChanged ");
         return {
@@ -37,7 +37,7 @@ function ordersCollectionChanged(newDocs) {
 // doesn't return payload because our collection watcher
 // will send a CHANGED action and update the store
 export function saveOrder(order) {
-    console.log("saveOrder: ", order);
+    //console.log("saveOrder: ", order);
     return (dispatch, getState) => {
 
         // call the method for upserting the data
@@ -62,7 +62,7 @@ export function saveOrder(order) {
 
 
 export function editOrder(order, newValues) {
-    console.log("OrderActions.editOrder() event.target:" + newValues);
+    //console.log("OrderActions.editOrder() event.target:" + newValues);
     return (dispatch, getState) => {
 
         // don't mutate it
@@ -86,7 +86,7 @@ export function editOrder(order, newValues) {
 
 
 export function editOrderLine(orderLineId, field, value) {
-    console.log("OrderActions.editOrder() event.value:" + value);
+    //console.log("OrderActions.editOrder() event.value:" + value);
     return (dispatch, getState) => {
 
         // get the order and line - don't mutate
@@ -110,7 +110,7 @@ export function editOrderLine(orderLineId, field, value) {
 
 
 export function editOrderLineProduct(orderLineId, newValue) {
-    console.log("OrderActions.editOrderLineProduct() newValue:" + newValue);
+    //console.log("OrderActions.editOrderLineProduct() newValue:" + newValue);
     return (dispatch, getState) => {
 
         // get the order and line - don't mutate
@@ -137,7 +137,7 @@ export function editOrderLineProduct(orderLineId, newValue) {
 
 export function addNewOrderLine(event) {
     return (dispatch, getState) => {
-        console.log("inner addNewOrderLine");
+        //console.log("inner addNewOrderLine");
         event.preventDefault();
 
         // get the order and line - don't mutate
@@ -155,7 +155,7 @@ export function addNewOrderLine(event) {
 
 export function deleteOrderLine(id) {
     return (dispatch, getState) => {
-        console.log("inner deleteOrderLine");
+        //console.log("inner deleteOrderLine");
         event.preventDefault();
 
         // get the order and line - don't mutate
@@ -191,9 +191,9 @@ function getEmptyOrderLine() {
 
 
 function loadOrderToEdit(orderId) {
-    console.log("loadOrderToEdit");
+    //console.log("loadOrderToEdit");
     const order = Orders.findOne({_id: orderId})
-    console.log("loadOrderToEdit ", order);
+    //console.log("loadOrderToEdit ", order);
 
     // perform initial validation and set error messages
     validateItemAndAddValidationResults(order, Schemas.OrderSchema);
@@ -209,7 +209,7 @@ function loadOrderToEdit(orderId) {
 }
 
 export function selectOrder(orderId) {
-    console.log("OrderActions.selectOrder: " + orderId.toString());
+    //console.log("OrderActions.selectOrder: " + orderId.toString());
     return (dispatch, getState) => {
         console.log("INNER Actions.selectOrder: " + orderId.toString());
         dispatch(loadOrderToEdit(orderId));
@@ -217,7 +217,7 @@ export function selectOrder(orderId) {
 }
 
 export function selectNewOrder() {
-    console.log("OrderActions.selectNewOrder ")
+    //console.log("OrderActions.selectNewOrder ")
     return (dispatch, getState) => {
 
         const order = {

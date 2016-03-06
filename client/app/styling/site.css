@@ -1,3 +1,4 @@
+@import "font-icons/style.css";
 
 /*
 * React Page Transitions
@@ -32,7 +33,7 @@
 */
 
 /* custom font icons */
-@import "font-icons/style.css";
+
 
 a {
     color: #ff4081;

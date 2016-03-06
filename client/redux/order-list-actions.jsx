@@ -1,10 +1,10 @@
 
 
 export function toggleExpanded() {
-    console.log("order-list-actions.toggleExpanded() ");
+    //console.log("order-list-actions.toggleExpanded() ");
     return (dispatch, getState) => {
 
-        console.log("inner OrderActions.editOrder() " );
+        //console.log("inner OrderActions.editOrder() " );
         dispatch ({
             type: 'TOGGLE_ORDER_LIST_EXPANDED'
         });

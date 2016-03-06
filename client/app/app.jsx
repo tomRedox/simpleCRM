@@ -22,8 +22,6 @@ import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import {darkWhite, lightWhite, grey900} from 'material-ui/lib/styles/colors';
 
 
-
-
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
 
@@ -63,7 +61,7 @@ const ContentContainer = React.createClass({
 
 
     render() {
-        console.log("ContentContainer.render()", this.props.children);
+        //console.log("ContentContainer.render()", this.props.children);
 
         return (
             <div key="contentContainer">
@@ -100,7 +98,7 @@ const ContentContainer = React.createClass({
 //</ReactCSSTransitionGroup>
 
 let appStyle = {
-   //color:"red"
+    //color:"red"
 };
 
 //export default Layout;
@@ -112,43 +110,28 @@ export const Layout = ({content}) => (
             <div>
                 <div className="wrapper">
                     <TopNavContainer store={store}/>
-                    <div className="box">
-                        <div className="row row-offcanvas row-offcanvas-left">
 
-                            <MainContentContainer store={store}>
-                                <div>
-                                    <SidebarContainer store={store}/>
-
-                                    <div className="column col-sm-10 col-xs-11" id="main">
+                    <MainContentContainer store={store}>
+                        <div>
+                            <SidebarContainer store={store}/>
 
 
-                                        <div className="padding">
-                                            <div className="full col-sm-9">
+                            <main>
+                                <div id="popup"></div>
 
-                                                <div className="row">
+                                <div id="outerContent">
 
-                                                    <main>
-                                                        <div id="popup"></div>
+                                    <ContentContainer key="content">
+                                        {content}
+                                    </ContentContainer>
 
-                                                        <div id="outerContent">
+                                    {/*<DevTools />*/}
 
-                                                            <ContentContainer key="content">
-                                                                {content}
-                                                            </ContentContainer>
-
-                                                            {/*<DevTools />*/}
-
-                                                        </div>
-                                                    </main>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                 </div>
-                            </MainContentContainer>
+                            </main>
+
                         </div>
-                    </div>
+                    </MainContentContainer>
                 </div>
             </div>
         </Provider>

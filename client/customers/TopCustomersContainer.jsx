@@ -46,7 +46,7 @@ const TopCustomersContainer = React.createClass({
     },
 
     render() {
-        console.log("CustomersListWrapper.render() ");
+        //console.log("CustomersListWrapper.render() ");
 
         return (
             <CollapsiblePanel

@@ -52,7 +52,7 @@ const TopOrdersContainer = React.createClass({
     },
 
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("TopOrdersContainer.render() ");
 
         return (
             <CollapsiblePanel

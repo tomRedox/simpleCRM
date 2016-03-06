@@ -11,7 +11,6 @@ const TopNavContainer = React.createClass({
 
     render() {
 
-
         let divStyle = {
             position: "fixed",
             top:0,

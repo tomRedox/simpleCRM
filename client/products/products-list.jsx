@@ -80,62 +80,65 @@ const ProductsList = React.createClass({
 
     renderItemOrEditField(item) {
         if (this.state.editing === item._id) {
-            return <li key={ `editing-${ item._id }` } className="list-group-item">
-                <GridRow>
-                    <GridColumn className="col-xs-12 col-sm-6">
-                        <input
-                            onKeyDown={ this.handleEditField }
-                            type="text"
-                            className="form-control"
-                            ref={ `name_${ item._id }` }
-                            name="name"
-                            defaultValue={ item.name }
-                        />
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <input
-                            onKeyDown={ this.handleEditField }
-                            type="text"
-                            className="form-control"
-                            ref={ `price_${ item._id }` }
-                            name="price"
-                            defaultValue={ item.price }
-                        />
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <input
-                            onKeyDown={ this.handleEditField }
-                            type="text"
-                            className="form-control"
-                            ref={ `createdAt_${ item._id }` }
-                            name="createdAt"
-                            defaultValue={ item.createdAt }
-                            disabled={true}
-                        />
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <a className="btn btn-success btn-sm" onClick={ this.handleEditItem }>Update Item</a>
-                    </GridColumn>
-                </GridRow>
-            </li>;
+            return (
+                <li key={ `editing-${ item._id }` } className="list-group-item">
+                    <GridRow>
+                        <GridColumn className="col-xs-12 col-sm-6">
+                            <input
+                                onKeyDown={ this.handleEditField }
+                                type="text"
+                                className="form-control"
+                                ref={ `name_${ item._id }` }
+                                name="name"
+                                defaultValue={ item.name }
+                            />
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <input
+                                onKeyDown={ this.handleEditField }
+                                type="text"
+                                className="form-control"
+                                ref={ `price_${ item._id }` }
+                                name="price"
+                                defaultValue={ item.price }
+                            />
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <input
+                                onKeyDown={ this.handleEditField }
+                                type="text"
+                                className="form-control"
+                                ref={ `createdAt_${ item._id }` }
+                                name="createdAt"
+                                defaultValue={ item.createdAt }
+                                disabled={true}
+                            />
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <a className="btn btn-success btn-sm" onClick={ this.handleEditItem }>Update Item</a>
+                        </GridColumn>
+                    </GridRow>
+                </li>
+            );
         } else {
-            return <li key={ item._id } className="list-group-item"
-                       onClick={ this.toggleEditing.bind( null, item._id ) }>
-                <GridRow>
-                    <GridColumn className="col-xs-12 col-sm-6">
-                        <span>{ item.name} </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <span>{ accounting.formatMoney(item.price, "£") } </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <span>{ item.createdAt.toLocaleDateString() } </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
-                        <a className="btn btn-default btn-sm">Edit Item</a>
-                    </GridColumn>
-                </GridRow>
-            </li>;
+            return (
+                <li key={ item._id } className="list-group-item" onClick={ this.toggleEditing.bind( null, item._id ) }>
+                    <GridRow>
+                        <GridColumn className="col-xs-12 col-sm-6">
+                            <span>{ item.name} </span>
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <span>{ accounting.formatMoney(item.price, "£") } </span>
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <span>{ item.createdAt.toLocaleDateString() } </span>
+                        </GridColumn>
+                        <GridColumn className="col-xs-12 col-sm-2">
+                            <a className="btn btn-default btn-sm">Edit Item</a>
+                        </GridColumn>
+                    </GridRow>
+                </li>
+            );
         }
     },
 

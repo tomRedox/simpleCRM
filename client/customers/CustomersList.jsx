@@ -37,7 +37,7 @@ const CustomersList = React.createClass({
 
         return (
             <Table className="table table-responsive table-striped">
-                <TableHeader displaySelectAll ={false}>
+                <TableHeader displaySelectAll ={false} adjustForCheckbox={false}>
                     <TableRow>
                         <TableHeaderColumn>Customer name</TableHeaderColumn>
                         <TableHeaderColumn>Postcode</TableHeaderColumn>
