@@ -24,7 +24,7 @@ TextInput = React.createClass({
     getDefaultProps() {
         return {
             hideLabel: false,
-            showFloatingLabels: false,
+            showFloatingLabels: true,
             fullWidth: false
         };
     },
@@ -33,15 +33,15 @@ TextInput = React.createClass({
     render() {
         const humanizedName = humanize(this.props.name);
 
-        if (this.props.textRows) {
+        //if (this.props.textRows) {
             return (
                 <TextField
                     type="text"
                     name={this.props.name}
-                    floatingLabelText={this.props.showFloatingLabels}
+                    floatingLabelText={humanizedName}
                     hintText={this.props.placeholder ? this.props.placeholder : humanizedName}
                     errorText={this.props.error}
-                    rows={this.props.textRows}
+                    rows={this.props.textRows ? this.props.textRows : 1}
                     ref={this.props.name}
                     id={this.props.name}
                     value={this.props.value}
@@ -49,22 +49,22 @@ TextInput = React.createClass({
                     fullWidth={this.props.fullWidth}
                 />
             );
-        } else {
-            return (
-                <TextField
-                    type="text"
-                    name={this.props.name}
-                    floatingLabelText={this.props.showFloatingLabels}
-                    hintText={this.props.placeholder ? this.props.placeholder : humanizedName}
-                    errorText={this.props.error}
-                    ref={this.props.name}
-                    id={this.props.name}
-                    value={this.props.value}
-                    onChange={this.props.onChange}
-                    fullWidth={this.props.fullWidth}
-                />
-            );
-        }
+        //} else {
+        //    return (
+        //        <TextField
+        //            type="text"
+        //            name={this.props.name}
+        //            floatingLabelText={humanizedName}
+        //            hintText={this.props.placeholder ? this.props.placeholder : humanizedName}
+        //            errorText={this.props.error}
+        //            ref={this.props.name}
+        //            id={this.props.name}
+        //            value={this.props.value}
+        //            onChange={this.props.onChange}
+        //            fullWidth={this.props.fullWidth}
+        //        />
+        //    );
+        //}
     }
 });
 
