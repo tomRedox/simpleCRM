@@ -84,32 +84,27 @@ export const Layout = ({content}) => (
 
                 <TopNavContainer store={store}/>
 
-                <div className="row">
-                    <div className="col-sm-2">
 
-                        <SidebarContainer store={store}/>
-                    </div>
-                    <div className="col-sm-10">
+                <SidebarContainer store={store}/>
 
-                        <MainContentContainer store={store}>
+                <MainContentContainer store={store}>
 
 
-                            <main>
-                                <div id="popup"></div>
+                    <main>
+                        <div id="popup"></div>
 
-                                <div id="outerContent">
+                        <div id="outerContent" className="mainContent">
 
-                                    <ContentContainer key="content">
-                                        {content}
-                                    </ContentContainer>
+                            <ContentContainer key="content">
+                                {content}
+                            </ContentContainer>
 
-                                    {/*<DevTools />*/}
+                            {/*<DevTools />*/}
 
-                                </div>
-                            </main>
-                        </MainContentContainer>
-                    </div>
-                </div>
+                        </div>
+                    </main>
+                </MainContentContainer>
+
             </div>
         </Provider>
     </div >

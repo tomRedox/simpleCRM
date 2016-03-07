@@ -40,27 +40,23 @@ body {
     position: relative;
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding-top: 104px;
+    padding-right: 40px;
 }
 
-header {
-    height: 30px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
-    background-color: black;
+.mainContent {
+    padding-left: 220px;
+    /*background-color:greenyellow;*/
 }
 
 #sidebar {
-    top:60px;
+    top:65px;
     padding: 0px 0 0;
     margin-top: 0px;
-    width:130px;
+    width:180px;
     height:100%;
     position:fixed;
-    background-color:greenyellow;
+    /*background-color:greenyellow;*/
 }
 
 #sidebar-footer {
@@ -69,6 +65,38 @@ header {
     bottom: 5px;
     padding: 5px;
 }
+
+/* Sticky footer for sidebar */
+.problem {text-align:center}
+.enclose {position:fixed;bottom:0px;width:180px;}
+
+
+/* adjust the contents on smaller devices */
+@media (max-width: 768px) {
+
+    .mainContent {
+        padding-left: 40px;
+        /*background-color:greenyellow;*/
+    }
+}
+
+
+/*!**/
+/** off canvas sidebar*/
+/** --------------------------------------------------*/
+/**!*/
+/*@media screen and (max-width: 768px) {*/
+/*.row-offcanvas {*/
+/*position: relative;*/
+/*-webkit-transition: all 0.25s ease-out;*/
+/*-moz-transition: all 0.25s ease-out;*/
+/*transition: all 0.25s ease-out;*/
+/*}*/
+
+
+
+
+
 
 /*#sidebar, #sidebar a, #sidebar-footer a {*/
 /*color:#ffffff;*/

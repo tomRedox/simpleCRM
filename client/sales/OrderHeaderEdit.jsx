@@ -114,7 +114,7 @@ const OrderHeaderEdit = React.createClass({
                 </div>
 
                 <div className="form-group">
-                    <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
+                    <a className="" id="cancelButton" href="/">Cancel</a>
 
                     <input type="submit" value="Save" className="btn btn-primary" onClick={this.onSave}
                            disabled={!this.props.isValid}/>

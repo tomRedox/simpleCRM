@@ -32,7 +32,7 @@ const SidebarContainer = React.createClass({
                         <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
                         <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
                     </ul>
-                    <ul className="list-unstyled hidden-xs" id="sidebar-footer">
+                    <ul className="list-unstyled hidden-xs enclose problem" id="sidebar-footer">
                         <li>
                             <a href="http://www.redox-software.co.uk"><h3>simple crm</h3>
                                 <i className="fa fa-cloud"/> redox software ltd</a>

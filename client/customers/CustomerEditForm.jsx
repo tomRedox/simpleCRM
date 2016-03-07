@@ -89,8 +89,10 @@ const CustomerEditForm = React.createClass({
                             labelKey="name"
                         />
 
-                        <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
+                        <a className="" id="cancelButton" href="/">Cancel</a>
+                        <a className="" id="cancelButton" href="/">Save</a>
 
+                        {/*
                         <input
                             type="submit"
                             value="Save"
@@ -98,6 +100,7 @@ const CustomerEditForm = React.createClass({
                             onClick={this.onSave}
                             disabled={!this.props.isValid}
                         />
+                        */}
 
                     </div>
                 </form>

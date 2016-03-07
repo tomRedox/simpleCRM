@@ -14,7 +14,7 @@ const TopNavContainer = React.createClass({
 
 
         return (
-            <div className="nav navbar navbar navbar-inverse">
+            <div className="nav navbar navbar navbar-inverse navbar-fixed-top">
                 <div className="navbar-header">
                     <button className="navbar-toggle" type="button" data-toggle="collapse"
                             data-target=".navbar-collapse">
@@ -51,7 +51,9 @@ const TopNavContainer = React.createClass({
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                     </ul>
+
                 </nav>
+
             </div>
         );
     }
