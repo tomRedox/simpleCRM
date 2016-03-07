@@ -4,6 +4,7 @@ import accounting from 'accounting';
 
 import ModalMessageBox from '../controls/modal-message-box.jsx';
 
+
 const OrdersListItem = React.createClass({
     propTypes: {
         order: React.PropTypes.object

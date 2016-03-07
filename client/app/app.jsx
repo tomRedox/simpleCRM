@@ -9,10 +9,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
 import DevTools from '../redux/DevTools.jsx';
 import store from '../redux/store.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import TopNavContainer from './top-nav.jsx';
+import SidebarContainer from './sidebar.jsx';
+import MainContentContainer from './MainContentContainer.jsx';
+
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
-//Meteor.subscribe("Products.public");
+
 
 //var checkScrollBars = function(){
 //    var b = $('body');
@@ -26,6 +32,8 @@ Meteor.subscribe("Orders.All");
 //}
 //
 //checkScrollBars();
+
+injectTapEventPlugin();
 
 const ContentContainer = React.createClass({
     render() {
@@ -50,53 +58,6 @@ const ContentContainer = React.createClass({
 });
 
 
-// define and export our Layout component
-export const Layout = ({content}) => (
-    <div id="app">
-        {console.log("Layout rendered")}
-        <Provider store={store}>
-            <div>
-                <div className="wrapper">
-                    <div className="box">
-                        <div className="row row-offcanvas row-offcanvas-left">
-
-                            <Sidebar/>
-
-                            <div className="column col-sm-10 col-xs-11" id="main">
-
-                                <TopNav/>
-
-                                <div className="padding">
-                                    <div className="full col-sm-9">
-
-                                        <div className="row">
-
-                                            <main>
-                                                <div id="popup"></div>
-
-                                                <div id="outerContent">
-
-                                                    <ContentContainer key="content">
-                                                        {content}
-                                                    </ContentContainer>
-
-                                                    {/*<DevTools />*/}
-
-                                                </div>
-                                            </main>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Provider>
-    </div >
-
-);
 //<TopNav/>
 //<hr /><div id="popup-target"></div>
 //<div>{content}</div>
@@ -114,3 +75,43 @@ export const Layout = ({content}) => (
 
 
 //export default Layout;
+// define and export our Layout component
+export const Layout = ({content}) => (
+    <div id="app">
+        {console.log("Layout rendered")}
+        <Provider store={store}>
+            <div>
+
+                <TopNavContainer store={store}/>
+
+                <div className="row">
+                    <div className="col-sm-2">
+
+                        <SidebarContainer store={store}/>
+                    </div>
+                    <div className="col-sm-10">
+
+                        <MainContentContainer store={store}>
+
+
+                            <main>
+                                <div id="popup"></div>
+
+                                <div id="outerContent">
+
+                                    <ContentContainer key="content">
+                                        {content}
+                                    </ContentContainer>
+
+                                    {/*<DevTools />*/}
+
+                                </div>
+                            </main>
+                        </MainContentContainer>
+                    </div>
+                </div>
+            </div>
+        </Provider>
+    </div >
+
+);

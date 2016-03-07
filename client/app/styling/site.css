@@ -1,4 +1,3 @@
-
 /*
 * React Page Transitions
 */
@@ -25,207 +24,259 @@
     opacity: 0;
 }
 
-
+/*
+* Cherry picking the bits I want
+*/
 
 html {
-    height:100%;
-    width:100%;
-    margin:0;
-    padding:0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 body {
-    width:100%;
-    position:relative;
-    height:100%;
-    margin:0;
-    padding:0;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 header {
-    height:30px;
-    position:absolute;
-    top:0;
-    width:100%;
-    text-align:center;
-    color:white;
-    background-color:black;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: black;
 }
 
+#sidebar {
+    top:60px;
+    padding: 0px 0 0;
+    margin-top: 0px;
+    width:130px;
+    height:100%;
+    position:fixed;
+    background-color:greenyellow;
+}
+
+#sidebar-footer {
+    /*background-color:#444;*/
+    /*position: absolute;*/
+    bottom: 5px;
+    padding: 5px;
+}
+
+/*#sidebar, #sidebar a, #sidebar-footer a {*/
+/*color:#ffffff;*/
+/*background-color:transparent;*/
+/*text-shadow:0 0 2px #000000;*/
+/*padding-left:5px;*/
+/*}*/
+/*#sidebar .nav li>a:hover {*/
+/*background-color:#393939;*/
+/*}*/
+
+/*!*.logo {*!*/
+/*!*display:block;*!*/
+/*!*padding:3px;*!*/
+/*!*background-color:#fff;*!*/
+/*!*color:#3B5999;*!*/
+/*!*height:28px;*!*/
+/*!*width:28px;*!*/
+/*!*margin:9px;*!*/
+/*!*margin-right:2px;*!*/
+/*!*margin-left:15px;*!*/
+/*!*font-size:20px;*!*/
+/*!*font-weight:700;*!*/
+/*!*text-align:center;*!*/
+/*!*text-decoration:none;*!*/
+/*!*text-shadow:0 0 1px;*!*/
+/*!*border-radius:2px;*!*/
+/*!*}*!*/
 
 
 
-/*!*!* custom template *!*!*/
+
+
+
+/*!*!* Faceboot custom template *!*!*/
+
 /*html, body {*/
-    /*height: 100%;*/
-    /*!*font-family:verdana,arial,sans-serif;*!*/
-    /*color:#555555;*/
+/*height: 100%;*/
+/*!*font-family:verdana,arial,sans-serif;*!*/
+/*color:#555555;*/
 /*}*/
 
 /*!*.nav {*!*/
-    /*!*!*font-family:Arial,sans-serif;*!*!*/
-    /*!*!*font-size:13px;*!*!*/
+/*!*!*font-family:Arial,sans-serif;*!*!*/
+/*!*!*font-size:13px;*!*!*/
 /*!*}*!*/
 
 /*!*a {*!*/
-    /*!*color:#222222;*!*/
+/*!*color:#222222;*!*/
 /*!*}*!*/
 
 /*!*a:hover {*!*/
-    /*!*text-decoration:none;*!*/
+/*!*text-decoration:none;*!*/
 /*!*}*!*/
 
 /*!*hr {*!*/
-    /*!*border-color:#dedede;*!*/
+/*!*border-color:#dedede;*!*/
 /*!*}*!*/
 
 /*.wrapper, .row {*/
-    /*height: 100%;*/
-    /*margin-left:0;*/
-    /*margin-right:0;*/
+/*height: 100%;*/
+/*margin-left:0;*/
+/*margin-right:0;*/
 /*}*/
 
 /*.wrapper:before, .wrapper:after,*/
 /*.column:before, .column:after {*/
-    /*content: "";*/
-    /*display: table;*/
+/*content: "";*/
+/*display: table;*/
 /*}*/
 
 /*.wrapper:after,*/
 /*.column:after {*/
-    /*clear: both;*/
+/*clear: both;*/
 /*}*/
 
 /*.column {*/
-    /*height: 100%;*/
-    /*overflow: auto;*/
-    /**zoom:1;*/
+/*height: 100%;*/
+/*overflow: auto;*/
+/**zoom:1;*/
 /*}*/
 
 /*.column .padding {*/
-    /*padding: 20px;*/
+/*padding: 20px;*/
 /*}*/
 
 /*.full{*/
-    /*padding-top:66px;*/
-    /*width: 50%;*/
-    /*overflow: auto;*/
+/*padding-top:66px;*/
+/*width: 50%;*/
+/*overflow: auto;*/
 /*}*/
 
 /*.box {*/
-    /*bottom: 0; !* increase for footer use *!*/
-    /*left: 0;*/
-    /*position: absolute;*/
-    /*right: 0;*/
-    /*top: 0;*/
-    /*background-color:#444444;*/
-    /*!**/
-      /*background-image:url('/assets/example/bg_suburb.jpg');*/
+/*bottom: 0; !* increase for footer use *!*/
+/*left: 0;*/
+/*position: absolute;*/
+/*right: 0;*/
+/*top: 0;*/
+/*background-color:#444444;*/
+/*!**/
+/*background-image:url('/assets/example/bg_suburb.jpg');*/
 
-    /**!*/
-    /*background-size:cover;*/
-    /*background-attachment:fixed;*/
+/**!*/
+/*background-size:cover;*/
+/*background-attachment:fixed;*/
 
 /*}*/
 
 /*!*.divider {*!*/
-    /*!*margin-top:32px;*!*/
+/*!*margin-top:32px;*!*/
 /*!*}*!*/
 
 /*.navbar-blue {*/
-    /*border-width:0;*/
-    /*background-color:#3B5999;*/
-    /*color:#ffffff;*/
-    /*!*font-family:arial,sans-serif;*!*/
-    /*top:0;*/
-    /*position:fixed;*/
-    /*width:inherit;*/
+/*border-width:0;*/
+/*background-color:#3B5999;*/
+/*color:#ffffff;*/
+/*!*font-family:arial,sans-serif;*!*/
+/*top:0;*/
+/*position:fixed;*/
+/*width:inherit;*/
 /*}*/
 
 /*!*.navbar-blue li > a,.navbar-toggle  {*!*/
-    /*!*color:#efefef;*!*/
+/*!*color:#efefef;*!*/
 /*!*}*!*/
 
 /*!*.navbar-blue .dropdown-menu li a {color:#2A4888;}*!*/
 /*!*.navbar-blue .dropdown-menu li > a {padding-left:30px;}*!*/
 
 /*!*.navbar-blue li>a:hover, .navbar-blue li>a:focus, .navbar-blue .open, .navbar-blue .open>a, .navbar-blue .open>a:hover, .navbar-blue .open>a:focus {*!*/
-    /*!*background-color:#2A4888;*!*/
-    /*!*color:#fff;*!*/
+/*!*background-color:#2A4888;*!*/
+/*!*color:#fff;*!*/
 /*!*}*!*/
 
 /*#main {*/
-    /*background-color:#e9eaed;*/
-    /*padding-left:0;*/
-    /*padding-right:0;*/
+/*background-color:#e9eaed;*/
+/*padding-left:0;*/
+/*padding-right:0;*/
 /*}*/
 /*!*#main .img-circle {*!*/
-    /*!*margin-top:18px;*!*/
-    /*!*height:70px;*!*/
-    /*!*width:70px;*!*/
+/*!*margin-top:18px;*!*/
+/*!*height:70px;*!*/
+/*!*width:70px;*!*/
 /*!*}*!*/
 
 /*#sidebar {*/
-    /*padding:0;*/
-    /*padding-top:15px;*/
+/*padding:0;*/
+/*padding-top:15px;*/
 /*}*/
 
 /*#sidebar, #sidebar a, #sidebar-footer a {*/
-    /*color:#ffffff;*/
-    /*background-color:transparent;*/
-    /*text-shadow:0 0 2px #000000;*/
-    /*padding-left:5px;*/
+/*color:#ffffff;*/
+/*background-color:transparent;*/
+/*text-shadow:0 0 2px #000000;*/
+/*padding-left:5px;*/
 /*}*/
 /*#sidebar .nav li>a:hover {*/
-    /*background-color:#393939;*/
+/*background-color:#393939;*/
 /*}*/
 
 /*!*.logo {*!*/
-    /*!*display:block;*!*/
-    /*!*padding:3px;*!*/
-    /*!*background-color:#fff;*!*/
-    /*!*color:#3B5999;*!*/
-    /*!*height:28px;*!*/
-    /*!*width:28px;*!*/
-    /*!*margin:9px;*!*/
-    /*!*margin-right:2px;*!*/
-    /*!*margin-left:15px;*!*/
-    /*!*font-size:20px;*!*/
-    /*!*font-weight:700;*!*/
-    /*!*text-align:center;*!*/
-    /*!*text-decoration:none;*!*/
-    /*!*text-shadow:0 0 1px;*!*/
-    /*!*border-radius:2px;*!*/
+/*!*display:block;*!*/
+/*!*padding:3px;*!*/
+/*!*background-color:#fff;*!*/
+/*!*color:#3B5999;*!*/
+/*!*height:28px;*!*/
+/*!*width:28px;*!*/
+/*!*margin:9px;*!*/
+/*!*margin-right:2px;*!*/
+/*!*margin-left:15px;*!*/
+/*!*font-size:20px;*!*/
+/*!*font-weight:700;*!*/
+/*!*text-align:center;*!*/
+/*!*text-decoration:none;*!*/
+/*!*text-shadow:0 0 1px;*!*/
+/*!*border-radius:2px;*!*/
 /*!*}*!*/
 /*#sidebar-footer {*/
-    /*!*background-color:#444;*!*/
-    /*position:absolute;*/
-    /*bottom:5px;*/
-    /*padding:5px;*/
+/*!*background-color:#444;*!*/
+/*position:absolute;*/
+/*bottom:5px;*/
+/*padding:5px;*/
 /*}*/
 /*!*#footer {*!*/
-    /*!*margin-bottom:20px;*!*/
+/*!*margin-bottom:20px;*!*/
 /*!*}*!*/
 
 /*!*!* bootstrap overrides *!*!*/
 
 /*!*h1,h2,h3 {*!*/
-    /*!*font-weight:800;*!*/
+/*!*font-weight:800;*!*/
 /*!*}*!*/
 
 /*!*.navbar-toggle, .close {*!*/
-    /*!*outline:0;*!*/
+/*!*outline:0;*!*/
 /*!*}*!*/
 
 /*!*.navbar-toggle .icon-bar {*!*/
-    /*!*background-color: #fff;*!*/
+/*!*background-color: #fff;*!*/
 /*!*}*!*/
 
 /*!*.btn-primary,.label-primary,.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus  {*!*/
-    /*!*background-color:#3B5999;*!*/
-    /*!*color:#fffffe;*!*/
+/*!*background-color:#3B5999;*!*/
+/*!*color:#fffffe;*!*/
 /*!*}*!*/
 /*!*.btn-default {*!*/
-    /*!*color:#666666;*!*/
-    /*!*text-shadow:0 0 1px rgba(0,0,0,.3);*!*/
+/*!*color:#666666;*!*/
+/*!*text-shadow:0 0 1px rgba(0,0,0,.3);*!*/
 /*!*}*!*/
 /*!*.form-control {*!*/
 
@@ -233,124 +284,116 @@ header {
 
 /*!*.panel textarea, .well textarea, textarea.form-control*!*/
 /*!*{*!*/
-    /*!*resize: none;*!*/
+/*!*resize: none;*!*/
 /*!*}*!*/
 
 /*!*.badge{*!*/
-    /*!*color:#3B5999;*!*/
-    /*!*background-color:#fff;*!*/
+/*!*color:#3B5999;*!*/
+/*!*background-color:#fff;*!*/
 /*!*}*!*/
 /*!*.badge:hover, .badge-inverse{*!*/
-    /*!*background-color:#3B5999;*!*/
-    /*!*color:#fff;*!*/
+/*!*background-color:#3B5999;*!*/
+/*!*color:#fff;*!*/
 /*!*}*!*/
 
 /*!*.jumbotron {*!*/
-    /*!*background-color:transparent;*!*/
+/*!*background-color:transparent;*!*/
 /*!*}*!*/
 /*!*.label-default {*!*/
-    /*!*background-color:#dddddd;*!*/
+/*!*background-color:#dddddd;*!*/
 /*!*}*!*/
 /*!*.page-header {*!*/
-    /*!*margin-top: 55px;*!*/
-    /*!*padding-top: 9px;*!*/
-    /*!*border-top:1px solid #eeeeee;*!*/
-    /*!*font-weight:700;*!*/
-    /*!*text-transform:uppercase;*!*/
-    /*!*letter-spacing:2px;*!*/
+/*!*margin-top: 55px;*!*/
+/*!*padding-top: 9px;*!*/
+/*!*border-top:1px solid #eeeeee;*!*/
+/*!*font-weight:700;*!*/
+/*!*text-transform:uppercase;*!*/
+/*!*letter-spacing:2px;*!*/
 /*!*}*!*/
 
 /*!*.panel-default .panel-heading {*!*/
-    /*!*background-color:#f9fafb;*!*/
-    /*!*color:#555555;*!*/
+/*!*background-color:#f9fafb;*!*/
+/*!*color:#555555;*!*/
 /*!*}*!*/
 
 /*.col-sm-9.full {*/
-    /*width: 100%;*/
+/*width: 100%;*/
 /*}*/
 
 /*!*!*.modal-header, .modal-footer {*!*!*/
-    /*!*!*background-color:#f2f2f2;*!*!*/
-    /*!*!*font-weight:800;*!*!*/
-    /*!*!*font-size:12px;*!*!*/
+/*!*!*background-color:#f2f2f2;*!*!*/
+/*!*!*font-weight:800;*!*!*/
+/*!*!*font-size:12px;*!*!*/
 /*!*!*}*!*!*/
 
 /*!*!*.modal-footer i, .well i {*!*!*/
-    /*!*!*font-size:20px;*!*!*/
-    /*!*!*color:#c0c0c0;*!*!*/
+/*!*!*font-size:20px;*!*!*/
+/*!*!*color:#c0c0c0;*!*!*/
 /*!*!*}*!*!*/
 
 /*!*!*.modal-body {*!*!*/
-    /*!*!*padding:0;*!*!*/
+/*!*!*padding:0;*!*!*/
 /*!*!*}*!*!*/
 
 /*!*!*.modal-body textarea.form-control*!*!*/
 /*!*!*{*!*!*/
-    /*!*!*resize: none;*!*!*/
-    /*!*!*border:0;*!*!*/
-    /*!*!*box-shadow:0 0 0;*!*!*/
+/*!*!*resize: none;*!*!*/
+/*!*!*border:0;*!*!*/
+/*!*!*box-shadow:0 0 0;*!*!*/
 /*!*!*}*!*!*/
 
 /*!*small.text-muted {*!*/
-    /*!*font-family:courier,courier-new,monospace;*!*/
+/*!*font-family:courier,courier-new,monospace;*!*/
 /*!*}*!*/
 
 /*!* adjust the contents on smaller devices *!*/
 /*@media (max-width: 768px) {*/
 
-    /*.column .padding {*/
-        /*padding: 7px;*/
-    /*}*/
-
-    /*.full{*/
-        /*padding-top:20px;*/
-    /*}*/
-
-    /*.navbar-blue {*/
-        /*background-color:#3B5999;*/
-        /*top:0;*/
-        /*width:100%;*/
-        /*position:relative;*/
-    /*}*/
-
+/*.column .padding {*/
+/*padding: 7px;*/
 /*}*/
 
+/*.full{*/
+/*padding-top:20px;*/
+/*}*/
+
+/*.navbar-blue {*/
+/*background-color:#3B5999;*/
+/*top:0;*/
+/*width:100%;*/
+/*position:relative;*/
+/*}*/
+
+/*}*/
 
 /*!**/
- /** off canvas sidebar*/
- /** --------------------------------------------------*/
- /**!*/
+/** off canvas sidebar*/
+/** --------------------------------------------------*/
+/**!*/
 /*@media screen and (max-width: 768px) {*/
-    /*.row-offcanvas {*/
-        /*position: relative;*/
-        /*-webkit-transition: all 0.25s ease-out;*/
-        /*-moz-transition: all 0.25s ease-out;*/
-        /*transition: all 0.25s ease-out;*/
-    /*}*/
-
-    /*.row-offcanvas-left.active {*/
-        /*left: 33%;*/
-    /*}*/
-
-    /*.row-offcanvas-left.active .sidebar-offcanvas {*/
-        /*left: -33%;*/
-        /*position: absolute;*/
-        /*top: 0;*/
-        /*width: 33%;*/
-        /*margin-left: 5px;*/
-    /*}*/
-
-    /*#sidebar, #sidebar a, #sidebar-footer a {*/
-        /*padding-left:3px;*/
-    /*}*/
+/*.row-offcanvas {*/
+/*position: relative;*/
+/*-webkit-transition: all 0.25s ease-out;*/
+/*-moz-transition: all 0.25s ease-out;*/
+/*transition: all 0.25s ease-out;*/
 /*}*/
 
+/*.row-offcanvas-left.active {*/
+/*left: 33%;*/
+/*}*/
 
+/*.row-offcanvas-left.active .sidebar-offcanvas {*/
+/*left: -33%;*/
+/*position: absolute;*/
+/*top: 0;*/
+/*width: 33%;*/
+/*margin-left: 5px;*/
+/*}*/
 
-
-
-
-
+/*#sidebar, #sidebar a, #sidebar-footer a {*/
+/*padding-left:3px;*/
+/*}*/
+/*}*/
 
 /*
 * react-autocomplete
@@ -408,27 +451,27 @@ header {
     background-color: #ddd;
 }
 
-
 /*
 * Order lines table
 * http://bootsnipp.com/snippets/featured/responsive-shopping-cart
 */
-.table#cart>tbody>tr>td, .table>tfoot>tr>td{
+.table#cart > tbody > tr > td, .table > tfoot > tr > td {
     vertical-align: middle;
 }
 
-.table#cart>thead>tr>th{
+.table#cart > thead > tr > th {
     vertical-align: middle;
 }
 
 table#cart tbody td {
     vertical-align: middle;
 }
-table#cart tbody td .form-control{
+
+table#cart tbody td .form-control {
     text-align: right;
 }
 
-table#cart tbody td .numeric{
+table#cart tbody td .numeric {
     text-align: right;
 }
 
@@ -436,39 +479,53 @@ table#cart tbody td .numeric{
 @media screen and (max-width: 600px) {
 
     /* these are the form control fields (qty, unit price etc.)*/
-    table#cart tbody td .form-control, table#cart tbody td .sub-total{
-        width:25%;
+    table#cart tbody td .form-control, table#cart tbody td .sub-total {
+        width: 25%;
         display: inline !important;
         text-align: right;
     }
 
-    .actions .btn{
-        width:36%;
-        margin:1.5em 0;
+    .actions .btn {
+        width: 36%;
+        margin: 1.5em 0;
     }
 
-    .actions .btn-info{
-        float:left;
+    .actions .btn-info {
+        float: left;
     }
 
-    #deleteOrderLineButton{
-        float:left;
+    #deleteOrderLineButton {
+        float: left;
     }
 
-    table#cart thead { display: none; }
-    table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+    table#cart thead {
+        display: none;
+    }
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+
     /*table#cart tbody tr td:first-child { background: #333; color: #fff; }*/
-
     /*
         This is giving us the row labels for the number fields on each row
         It does this by parroting back the text we set in the data-th attribute in the jsx
     */
     table#cart tbody td:before {
-        content: attr(data-th); font-weight: bold;
-        display: inline-block; width: 8rem;
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
     }
 
-    table#cart tfoot td{display:block; }
-    table#cart tfoot td .btn{display:block;}
+    table#cart tfoot td {
+        display: block;
+    }
+
+    table#cart tfoot td .btn {
+        display: block;
+    }
 
 }
