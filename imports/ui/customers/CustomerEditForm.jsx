@@ -4,7 +4,6 @@ import TextInput from '../components/TextInput.jsx';
 import DateInput from '../components/DateInput.jsx';
 import SelectInput from '../components/SelectInput.jsx';
 
-
 // App component - represents the whole app
 const CustomerEditForm = React.createClass({
     // Declare our expectations for using this class (not mandatory, just good practice)
