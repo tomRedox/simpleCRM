@@ -1,0 +1,79 @@
+
+/*
+* Order lines table
+* http://bootsnipp.com/snippets/featured/responsive-shopping-cart
+*/
+.table#cart > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+.table#cart > thead > tr > th {
+    vertical-align: middle;
+}
+
+table#cart tbody td {
+    vertical-align: middle;
+}
+
+table#cart tbody td .form-control {
+    text-align: right;
+}
+
+table#cart tbody td .numeric {
+    text-align: right;
+}
+
+/* This is the behaviour for when the the table is less than the max-width wide.*/
+@media screen and (max-width: 600px) {
+
+    /* these are the form control fields (qty, unit price etc.)*/
+    table#cart tbody td .form-control, table#cart tbody td .sub-total {
+        width: 25%;
+        display: inline !important;
+        text-align: right;
+    }
+
+    .actions .btn {
+        width: 36%;
+        margin: 1.5em 0;
+    }
+
+    .actions .btn-info {
+        float: left;
+    }
+
+    #deleteOrderLineButton {
+        float: left;
+    }
+
+    table#cart thead {
+        display: none;
+    }
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+
+    /*table#cart tbody tr td:first-child { background: #333; color: #fff; }*/
+    /*
+        This is giving us the row labels for the number fields on each row
+        It does this by parroting back the text we set in the data-th attribute in the jsx
+    */
+    table#cart tbody td:before {
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+
+    table#cart tfoot td {
+        display: block;
+    }
+
+    table#cart tfoot td .btn {
+        display: block;
+    }
+
+}
