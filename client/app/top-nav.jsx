@@ -15,7 +15,12 @@ const TopNavContainer = React.createClass({
 
         return (
             <div className="nav navbar navbar navbar-inverse navbar-fixed-top">
+
+
+                {/* These bits are always shown, even when nav bar is collapsed */}
                 <div className="navbar-header">
+
+                    {/* This is the hamburger button */}
                     <button className="navbar-toggle" type="button" data-toggle="collapse"
                             data-target=".navbar-collapse">
                         <span className="sr-only">Toggle</span>
@@ -23,9 +28,16 @@ const TopNavContainer = React.createClass({
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
+
+                    {/* This the simple crm text */}
                     <a href="/" className="navbar-brand logo">simple crm</a>
+
                 </div>
+
+                {/*  Collect the nav links, forms, and other content for toggling when collapsed */}
                 <nav className="collapse navbar-collapse" role="navigation">
+
+                    {/* The search menu - in a form to allow enter button to work I guess */}
                     <form className="navbar-form navbar-left">
                         <div className="input-group input-group-sm" style={{maxWidth: "360px"}}>
                              <GlobalSearch id="srch-term" />
@@ -35,21 +47,25 @@ const TopNavContainer = React.createClass({
                             </div>
                         </div>
                     </form>
+
+                    {/*  The buttons */}
                     <ul className="nav navbar-nav">
                         <li>
                             <a href="/"><i className="fa fa-home"></i> Home</a>
                         </li>
                         <li>
-                            <a href="/addCustomer" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Post </a>
+                            <a href="/addCustomer" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Add Customer </a>
                         </li>
                         <li>
                             <a href="#"><span className="badge">badge</span></a>
                         </li>
+                    </ul>
+
+                    {/*  The right justified content in the menu */}
+                    <ul className="nav navbar-nav navbar-right">
                         <li>
                              <AccountsUIWrapper />
                         </li>
-                    </ul>
-                    <ul className="nav navbar-nav navbar-right">
                     </ul>
 
                 </nav>
