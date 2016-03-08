@@ -7,6 +7,7 @@ import { validateItemAndAddValidationResults, validateItemAgainstSchema } from '
 import { recalculateOrderTotals } from '../../../lib/order-logic';
 
 import Orders from '../../api/orders/order';
+import { upsert, remove } from '../../api/orders/methods';
 import store from './store.jsx';
 
 // Hook the collection
@@ -41,7 +42,7 @@ export function saveOrder(order) {
     return (dispatch, getState) => {
 
         // call the method for upserting the data
-        Orders.methods.upsert.call({
+        upsert.call({
             orderId: order._id,
             data: order
         }, (err, res) => {

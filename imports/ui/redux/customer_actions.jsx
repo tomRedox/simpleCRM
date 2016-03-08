@@ -5,6 +5,7 @@
 
 import { validateItemAndAddValidationResults } from '../../../lib/validation-helpers';
 import CustomerCompanies from '../../api/customers/customer-company';
+import { upsert, remove } from '../../api/customers/methods';
 
 
 //Redux
@@ -37,14 +38,14 @@ export function saveCustomer(customer) {
     return (dispatch, getState) => {
 
         // call the method for upserting the data
-        CustomerCompanies.methods.updateManualForm.call({
+        upsert.call({
             customerId: customer._id,
             data: customer
         }, (err, res) => {
-            //console.log ("CustomerCompanies.methods.updateManualForm.call was called");
+            console.log ("CustomerCompanies.methods.updateManualForm.call was called");
             if (err) {
                 // TODO call FAILED action on error
-                sAlert.error(err.message);
+                console.log("error saving customer", err.message);
             } else {
                 sAlert.success("Save successful");
                 FlowRouter.go("/");

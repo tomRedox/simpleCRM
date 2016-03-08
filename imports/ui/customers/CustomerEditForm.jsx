@@ -35,7 +35,7 @@ const CustomerEditForm = React.createClass({
 
     callOnChange(name, value) {
         // create a single row array with the data in
-        this.props.onChange(this.props.customer, [ { name, value} ] );
+        this.props.onChange(this.props.customer, [{name, value}]);
     },
 
     render() {
@@ -84,7 +84,7 @@ const CustomerEditForm = React.createClass({
                         <SelectInput
                             name="salesRegionId"
                             label="Sales region"
-                            placeholder ="Sales region"
+                            placeholder="Sales region"
                             value={this.props.customer.salesRegionId}
                             onChange={this.onSelectChange}
                             error={errors.salesRegionId}
@@ -93,18 +93,17 @@ const CustomerEditForm = React.createClass({
                             labelKey="name"
                         />
 
-                        <a className="" id="cancelButton" href="/">Cancel</a>
-                        <a className="" id="cancelButton" href="/">Save</a>
+                        <div className="form-group">
+                            <a className="btn btn-warning" id="cancelButton" href="/">Cancel</a>
 
-                        {/*
-                        <input
-                            type="submit"
-                            value="Save"
-                            className="btn btn-primary"
-                            onClick={this.onSave}
-                            disabled={!this.props.isValid}
-                        />
-                        */}
+                            <input
+                                type="submit"
+                                value="Save"
+                                className="btn btn-primary"
+                                onClick={this.onSave}
+                                disabled={!this.props.isValid}
+                            />
+                        </div>
 
                     </div>
                 </form>

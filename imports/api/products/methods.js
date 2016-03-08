@@ -1,19 +1,16 @@
-
 import Products from './products.js';
-
 
 Products.methods = {};
 
-
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.
-Products.methods.upsert = new ValidatedMethod({
+export const upsert = new ValidatedMethod({
 
     // register the name
-    name: 'Products.methods.upsert',
+    name: 'Products.upsert',
 
     validate(args) {
-        console.log("Products.methods.upsert.validate(args) ", args);
+        console.log("Products.upsert.validate(args) ", args);
 
         Schemas.ProductSchema.clean(args.data);
 
@@ -23,24 +20,30 @@ Products.methods.upsert = new ValidatedMethod({
         console.log("validation succeeded");
     },
 
-
     // the actual database updating part
     // validate has already been run at this point
     run(args) {
-        //console.log("run");
-        //console.log("args", args);
-        //console.log("lines", args.data.productLines);
-        //console.log("lines[0]", args.data.productLines[0]);
-        //console.log("product", JSON.stringify(args.data));
-
         return Products.upsert(args.productId, {$set: args.data});
     }
 });
 
+export const remove = new ValidatedMethod({
 
-Meteor.methods({
-    'Products.methods.remove'({ productId }) {
+    name: 'products.remove',
+
+    validate: new SimpleSchema({
+        productId: { type: String }
+    }).validator(),
+
+    run({ productId }) {
         console.log("Products.methods.remove", productId);
-        Products.remove( { _id: productId } );
+        const product = Products.findOne(productId);
+
+        //if (!product.editableBy(this.userId)) {
+        //    throw new Meteor.Error('products.remove.accessDenied',
+        //        'Cannot remove products in a private list that is not yours');
+        //}
+
+        Products.remove(productId);
     }
 });

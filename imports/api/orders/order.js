@@ -1,4 +1,5 @@
 import { recalculateOrderTotals } from '../../../lib/order-logic';
+import CustomerCompanies from '../customers/customer-company';
 
 class ordersCollection extends Mongo.Collection {}
 
