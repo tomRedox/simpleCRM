@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 
 import CustomerCompanies from '../../api/customers/customer-company';
 import CustomersList from './CustomersList.jsx';
-import CollapsiblePanel from '../components/CollapsiblePanel.jsx';
+import CollapsiblePanel from '../components/CollapsiblePanel1.jsx';
 
 import { toggleExpanded } from '../redux/customer-list-actions.jsx';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';//
 
 import TopOrdersContainer from '../sales/TopOrdersContainer.jsx';
 import TopCustomersContainer from '../customers/TopCustomersContainer.jsx';

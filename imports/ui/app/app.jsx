@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import DevTools from '../redux/DevTools.jsx';
 import store from '../redux/store.jsx';
 //import injectTapEventPlugin from 'react-tap-event-plugin';
-import GlobalSearch from '../search/global-search.jsx';
+import GlobalSearch from '../search/GlobalSearch.jsx';
 
 
 Meteor.subscribe("SalesRegions.All");

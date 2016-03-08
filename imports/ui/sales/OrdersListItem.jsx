@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import accounting from 'accounting';
 
-import ModalMessageBox from '../components/ModalMessageBox.jsx';
+import ModalMessageBox from '../components/ModalMessageBox1.jsx';
 
 
 const OrdersListItem = React.createClass({

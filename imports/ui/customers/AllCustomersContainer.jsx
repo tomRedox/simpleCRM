@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import CustomerCompanies from '../../api/customers/customer-company';
 
 import CustomersList from './CustomersList.jsx';
-import PaginatedPanel from '../components/PaginatedPanel.jsx';
+import PaginatedPanel from '../components/PaginatedPanel1.jsx';
 
 //import { toggleExpanded } from '../redux/customer-list-actions.jsx';
 

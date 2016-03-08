@@ -1,8 +1,8 @@
 var React = require('react');
 
-import TextInput from '../components/TextInput.jsx';
-import DateInput from '../components/DateInput.jsx';
-import SelectInput from '../components/SelectInput.jsx';
+import TextInput from '../components/TextInput1.jsx';
+import DateInput from '../components/DateInput1.jsx';
+import SelectInput from '../components/SelectInput1.jsx';
 
 
 // App component - represents the whole app
