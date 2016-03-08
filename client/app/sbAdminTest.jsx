@@ -8,7 +8,7 @@ export default class SbAdminTest extends React.Component {
                 <div id="wrapper">
 
                     {/* Navigation */}
-                    <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
                         <div className="navbar-header">
                             <button type="button" className="navbar-toggle" data-toggle="collapse"
                                     data-target=".navbar-collapse">
@@ -18,10 +18,9 @@ export default class SbAdminTest extends React.Component {
                                 <span className="icon-bar"></span>
                             </button>
                             <a className="navbar-brand" href="index.html">SB Admin v2.0</a>
-                        </div>
-                        {/* /.navbar-header */}
 
-                        <ul className="nav navbar-top-links navbar-right">
+                        {/* The three drop down buttons on the RHS */}
+                        <ul className="nav navbar-top-links navbar-right navbar-nav">
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i className="fa fa-envelope fa-fw"></i> <i className="fa fa-caret-down"></i>
@@ -56,6 +55,11 @@ export default class SbAdminTest extends React.Component {
                         </ul>
                         {/* /.navbar-top-links */}
 
+                        </div>
+                        {/* /.navbar-header */}
+
+
+                        {/* This is the sidebar.  It's inside the top nav somehow */}
                         <div className="navbar-default sidebar" role="navigation">
                             <div className="sidebar-nav navbar-collapse">
                                 <ul className="nav" id="side-menu">
