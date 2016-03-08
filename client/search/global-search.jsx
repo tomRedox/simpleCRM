@@ -134,7 +134,7 @@ const GlobalSearch = React.createClass({
 
         return (
 
-            <Select.Async style={ {minWidth: '270px'} }
+            <Select.Async
                 name="globalSearch"
                 //value={this.getValue()}
                 loadOptions={_.debounce(this.getResults, 300)}

@@ -20,33 +20,6 @@ import AllCustomersContainer from './customers/AllCustomersContainer.jsx';
 import OrderContainer from './sales/OrderContainer.jsx';
 import AllOrdersContainer from './sales/AllOrdersContainer.jsx';
 import store from './redux/store.jsx';
-import { Layout2 } from './app/sbAdminTest.jsx'
-
-//// define and export our Layout component
-//export const Layout1 = ({content}) => (
-//    <div>
-//        <h1>My App</h1>
-//        <hr />
-//        <div>{content}</div>
-//    </div>
-//);
-//
-//// define and export our Welcome component
-//export const Welcome = ({name}) => (
-//    <div>
-//        Hello, {name}.
-//    </div>
-//);
-
-const EmptyThing = React.createClass( {
-    render() {
-        return (
-            <div>
-            <H1>Hi</H1>
-                </div>
-        );
-    }
-})
 
 
 function unloadComponent() {
@@ -183,6 +156,9 @@ FlowRouter.route("/sb", {
         });
     }
 });
+
+
+
 
 //
 //import React from 'react';

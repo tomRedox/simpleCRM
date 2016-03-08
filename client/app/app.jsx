@@ -1,19 +1,11 @@
-//Theme from here:
-//Site: http://www.bootstrapzero.com/bootstrap-template/facebook
-//Code: http://www.bootply.com/96266
-//Demo: http://www.bootply.com/render/96266#
-
-
 import React from 'react';
+
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
 import DevTools from '../redux/DevTools.jsx';
 import store from '../redux/store.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-import TopNavContainer from './top-nav.jsx';
-import SidebarContainer from './sidebar.jsx';
-import MainContentContainer from './MainContentContainer.jsx';
+//import injectTapEventPlugin from 'react-tap-event-plugin';
+import GlobalSearch from '../search/global-search.jsx';
 
 
 Meteor.subscribe("SalesRegions.All");
@@ -33,7 +25,7 @@ Meteor.subscribe("Orders.All");
 //
 //checkScrollBars();
 
-injectTapEventPlugin();
+//injectTapEventPlugin();
 
 const ContentContainer = React.createClass({
     render() {
@@ -58,42 +50,74 @@ const ContentContainer = React.createClass({
 });
 
 
-//<TopNav/>
-//<hr /><div id="popup-target"></div>
-//<div>{content}</div>
-
-//<ReactCSSTransitionGroup
-//    component="div"
-//    transitionName="example"
-//    transitionEnterTimeout={500}
-//    transitionLeaveTimeout={500}
-//>
-//    {React.cloneElement(this.props.children, {
-//        key: this.props.location.pathname
-//    })}
-//</ReactCSSTransitionGroup>
-
-
-//export default Layout;
-// define and export our Layout component
 export const Layout = ({content}) => (
-    <div id="app">
-        {console.log("Layout rendered")}
-        <Provider store={store}>
-            <div>
+    <div>
 
-                <TopNavContainer store={store}/>
+        <div id="wrapper">
+
+            {/* Navigation */}
+            <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="/">simple crm</a>
+
+                    {/* The add buttons */}
+                    <ul className="nav navbar-top-links navbar-right navbar-nav">
+
+                        <li>
+                            <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
+                        </li>
+                        <li>
+                            <a href="/addCustomer" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Add
+                                Customer </a>
+                        </li>
+
+                    </ul>
+                    {/* /.navbar-top-links */}
+
+                </div>
+                {/* /.navbar-header */}
 
 
-                <SidebarContainer store={store}/>
+                {/* This is the sidebar.  It's inside the top nav somehow */}
+                <div className="navbar-default sidebar" role="navigation">
+                    <div className="sidebar-nav navbar-collapse">
+                        <ul className="nav" id="side-menu">
 
-                <MainContentContainer store={store}>
+                            <li className="sidebar-search">
+                                <GlobalSearch />
+                            </li>
+
+                            <li className="active"><a href="/"><i className="fa fa-tachometer"/> Dashboard</a></li>
+                            <li><a href="/allOrders"><i className="fa fa-file-text"/> Orders</a></li>
+                            <li><a href="/allCustomers"><i className="fa fa-group"/> Customers</a></li>
+                            <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
+                            <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
+                            <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
+
+                        </ul>
+                    </div>
+                    {/* /.sidebar-collapse */}
+                </div>
+                {/* /.navbar-static-side */}
+            </nav>
+        </div>
 
 
-                    <main>
-                        <div id="popup"></div>
+        <div id="page-wrapper">
 
-                        <div id="outerContent" className="mainContent">
+            <Provider store={store}>
+                <div>
+
+
+                        <div>
+                            <div id="popup"></div>
 
                             <ContentContainer key="content">
                                 {content}
@@ -102,11 +126,12 @@ export const Layout = ({content}) => (
                             {/*<DevTools />*/}
 
                         </div>
-                    </main>
-                </MainContentContainer>
 
-            </div>
-        </Provider>
-    </div >
+                </div>
+            </Provider>
+
+        </div>
+        {/* /#page-wrapper */}
+    </div>
 
 );

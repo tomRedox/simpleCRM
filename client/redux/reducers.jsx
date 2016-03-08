@@ -5,7 +5,6 @@
 // into one single app state. We'll use two reducers, one for transient state
 // that the UI uses (selected id,name) and one for data (coming from Mongo)
 
-
 import { combineReducers } from 'redux';
 
 Reducers = {};
@@ -17,8 +16,7 @@ let initialInterfaceState = {
     },
     customerList: {
         expanded: false
-    },
-    leftNavExpanded: true
+    }
 };
 
 // helper to *copy* old state and merge new data with it
@@ -52,10 +50,6 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
             const customerList = _.clone(state.customerList);
             customerList.expanded = !customerList.expanded;
             return merge(state, { customerList });
-        case 'TOGGLE_LEFT_NAV_EXPANDED':
-            //state.leftNavExpanded = !state.leftNavExpanded;
-            console.log("state.leftNavExpanded: ", state.leftNavExpanded)
-            return merge(state, { leftNavExpanded: !state.leftNavExpanded });
         default:
             return state;
     }
