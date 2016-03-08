@@ -169,7 +169,6 @@ export const Layout2 = ({content}) => (
             </Provider>
 
 
-            {/* /.row */}
         </div>
         {/* /#page-wrapper */}
     </div>
