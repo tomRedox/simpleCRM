@@ -20,7 +20,8 @@ import AllCustomersContainer from './customers/AllCustomersContainer.jsx';
 import OrderContainer from './sales/OrderContainer.jsx';
 import AllOrdersContainer from './sales/AllOrdersContainer.jsx';
 import store from './redux/store.jsx';
-import SbAdminTest from './app/sbAdminTest.jsx'
+import { Layout2 } from './app/sbAdminTest.jsx'
+
 //// define and export our Layout component
 //export const Layout1 = ({content}) => (
 //    <div>
@@ -177,8 +178,8 @@ FlowRouter.route("/sb", {
     name: "sb",
     action() {
         console.log("route ", this.name);
-        mount(SbAdminTest, {
-            content: (<div></div>)
+        mount(Layout2, {
+            content: (<Dashboard key="dashboard1"/>)
         });
     }
 });
