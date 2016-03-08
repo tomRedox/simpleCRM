@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';
-import CollapsiblePanel from '../components/CollapsiblePanel1.jsx';
+import CollapsiblePanel from '../components/CollapsiblePanel.jsx';
 
 import { toggleExpanded } from '../redux/order-list-actions.jsx';
 

@@ -3,9 +3,9 @@ import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import accounting from 'accounting';
 
-import AsyncSelectInput from '../components/AsyncSelectInput1.jsx';
-import TextInput from '../components/TextInput1.jsx';
-import DateInput from '../components/DateInput1.jsx';
+import AsyncSelectInput from '../components/AsyncSelectInput.jsx';
+import TextInput from '../components/TextInput.jsx';
+import DateInput from '../components/DateInput.jsx';
 
 
 const OrderHeaderEdit = React.createClass({

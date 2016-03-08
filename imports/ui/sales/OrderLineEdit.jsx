@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AsyncSelectInput from '../components/AsyncSelectInput1.jsx';
-import NumberInput from '../components/NumberInput1.jsx';
+import AsyncSelectInput from '../components/AsyncSelectInput.jsx';
+import NumberInput from '../components/NumberInput.jsx';
 
 import Products from '../../api/products/products';
 

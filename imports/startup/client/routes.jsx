@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import {mount} from 'react-mounter';
 import {Layout} from './../../ui/app/app.jsx';
 //import CustomersList from './customers/CustomersList.jsx';
-import Dashboard from '../../ui/dashboard/Dashboard1.jsx';
+import Dashboard from '../../ui/dashboard/Dashboard.jsx';
 import AppNotFound from './../../ui/app/app-not-found.jsx';
 import ProductsListWrapper from './../../ui/products/products-list-wrapper.jsx';
 import Test1 from './../../ui/app/test1.jsx';
@@ -172,7 +172,7 @@ FlowRouter.route("/sb", {
 //
 //
 //import Layout from './app/app.jsx';
-//import Dashboard from './dashboard/Dashboard1.jsx';
+//import Dashboard from './dashboard/Dashboard.jsx';
 //import AppNotFound from './app/app-not-found.jsx';
 //import CustomerEditPageWrapper from  './customers/customer-edit-page-wrapper.jsx'
 //

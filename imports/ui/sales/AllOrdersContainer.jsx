@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';
-import PaginatedPanel from '../components/PaginatedPanel1.jsx';
+import PaginatedPanel from '../components/PaginatedPanel.jsx';
 
 //import { toggleExpanded } from '../redux/order-list-actions.jsx';
 
