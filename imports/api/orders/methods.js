@@ -1,17 +1,16 @@
 import Orders from './order.js';
 
 
-Orders.methods = {};
 
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.
-Orders.methods.upsert = new ValidatedMethod({
+export const upsert = new ValidatedMethod({
 
     // register the name
-    name: 'Orders.methods.upsert',
+    name: 'orders.upsert',
 
     validate(args) {
-        console.log("Orders.methods.upsert.validate(args) ");
+        console.log("orders.upsert.validate(args) ");
 
         Schemas.OrderSchema.clean(args.data);
 
@@ -29,15 +28,29 @@ Orders.methods.upsert = new ValidatedMethod({
         //console.log("args", args);
         //console.log("lines", args.data.orderLines);
         //console.log("lines[0]", args.data.orderLines[0]);
-        //console.log("order", JSON.stringify(args.data));
+        console.log("order", JSON.stringify(args.data));
 
         return Orders.upsert(args.orderId, {$set: args.data});
     }
 });
 
-Meteor.methods({
-    'Orders.methods.remove'({ orderId }) {
+export const remove = new ValidatedMethod({
+
+    name: 'orders.remove',
+
+    validate: new SimpleSchema({
+        orderId: { type: String }
+    }).validator(),
+
+    run({ orderId }) {
         console.log("Orders.methods.remove", orderId);
-        Orders.remove( { _id: orderId } );
-    }
+        const order = Orders.findOne(orderId);
+
+        //if (!order.editableBy(this.userId)) {
+        //    throw new Meteor.Error('orders.remove.accessDenied',
+        //        'Cannot remove orders in a private list that is not yours');
+        //}
+
+        Orders.remove(orderId);
+    },
 });
