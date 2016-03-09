@@ -2,7 +2,7 @@
 
 Demo here: http://tomssimplecrm.meteor.com/
 
-I come from a .Net background and Simple CRM is a project I built in order to teach myself JavaScript, Meteor, React etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
+I come from a .Net background and Simple CRM is a project I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
 I hope that after I incorporate feedback from more experienced developers Simple CRM can become the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
