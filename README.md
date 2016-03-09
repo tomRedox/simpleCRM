@@ -2,7 +2,7 @@
 
 Demo here: http://tomssimplecrm.meteor.com/
 
-I come from a .Net background and Simple CRM is a project I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
+I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
 I hope that, after I incorporate feedback from more experienced developers, Simple CRM can become a valuable resource to the community that provides the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
@@ -61,7 +61,7 @@ The design consists of:
 - Material design-esque theme from Bootswatch
 - Parts of the SB Admin 2 Bootstrap theme
 
-I have also experimented with the excellent Material-UI React component library and I may adopt that at some point
+I have also experimented with the excellent [Material-UI React component library](http://www.material-ui.com/#/) and I may adopt that at some point.  There is a separate branch for that work 
 
 ## Todo
 Still to add to the project are:
@@ -99,4 +99,4 @@ These are some of the many resources that have really helped me:
 - [Official React documentation](https://facebook.github.io/react/docs/getting-started.html)
 - [Official Redux documentation](http://redux.js.org/docs) 
 - [Dan Abromov's EggHeads Redux video series](https://egghead.io/series/getting-started-with-redux)
-- Stack Overflow
+- [Stack Overflow](http://stackoverflow.com/)
