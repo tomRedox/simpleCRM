@@ -19,6 +19,7 @@ Namely:
 - CRUD
 - Relationships and relational integrity
 - Data denormalization
+- Async auto-complete
 
 In time it will also include
 
