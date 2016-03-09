@@ -6,7 +6,7 @@ I come from a .Net background and Simple CRM is a project I built in order to te
 
 I hope that after I incorporate feedback from more experienced developers Simple CRM can become the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
-# What does the app do? 
+## What does the app do? 
 
 The code tries to provide examples of all of the common stuff you need to write for line of business and data-centric apps.  Namely:
 
