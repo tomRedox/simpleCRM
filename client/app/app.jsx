@@ -3,7 +3,6 @@
 //Code: http://www.bootply.com/96266
 //Demo: http://www.bootply.com/render/96266#
 
-
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
