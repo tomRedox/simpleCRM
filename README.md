@@ -72,6 +72,7 @@ Still to add to the project are:
 - [ ] IsDirty checking to warn before navigation when changes have been made
 - [ ] Unit tests
 - [ ] End-to-end/integration test
+- [ ] Add [Airbnb's linting](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
 - [ ] Security - only return and write data for logged in users
 - [ ] Security - add Admin role, only Admin to be able edit the Products list
 - [ ] Charts

@@ -1,12 +1,23 @@
 import Products from '../products';
 
+const ProductListFields = {
+    name: 1,
+    price: 1,
+    createdAt: 1
+};
+
 Meteor.publish('Products.public', function () {
 
     //if (!this.userId) {
     //    return this.ready();
     //}
 
-    return Products.find();
+    return Products.find(
+        {},
+        {
+            fields: ProductListFields
+        }
+    );
 });
 
 Meteor.publish('Product.get', function (_id) {
@@ -16,7 +27,14 @@ Meteor.publish('Product.get', function (_id) {
     //    return this.ready();
     //}
 
-    return Products.find({_id});
+    return Products.find(
+        {
+            _id
+        },
+        {
+            fields: ProductListFields
+        }
+    );
 });
 
 Meteor.publish('Products.searchByName', function (searchTerm) {
@@ -25,36 +43,15 @@ Meteor.publish('Products.searchByName', function (searchTerm) {
 
 
     // the 'i' makes the search case insensitive
-    return Products.find({name: new RegExp(searchTerm, 'i')});
-});
-
-Meteor.publish('Products.fullTextSearch', function (searchValue) {
-    // console.log("Products.fullTextSearch - "
-    //     + searchTerm + " - ", Products.find({name: new RegExp(searchTerm)}).fetch());
-
-    const results = Products.find(
-        { $text: {$search: searchValue} },
+    return Products.find(
         {
-            // `fields` is where we can add MongoDB projections. Here we're causing
-            // each document published to include a property named `score`, which
-            // contains the document's search rank, a numerical value, with more
-            // relevant documents having a higher score.
-            fields: {
-                score: { $meta: "textScore" }
-            },
-            // This indicates that we wish the publication to be sorted by the
-            // `score` property specified in the projection fields above.
-            sort: {
-                score: { $meta: "textScore" }
-            }
+            name: new RegExp(searchTerm, 'i')
+        },
+        {
+            fields: ProductListFields
         }
     );
-
-    //console.log('Products.fullTextSearch results ', results);
-
-    return results;
 });
-
 
 Meteor.methods({
     'Products.fullTextSearch.method'({ searchValue }) {
@@ -78,8 +75,6 @@ Meteor.methods({
                     }
                 }
             );
-
-
             //console.log('Products.fullTextSearch results ', results.fetch());
 
             return results.fetch();

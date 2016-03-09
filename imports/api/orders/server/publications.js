@@ -1,7 +1,41 @@
 import Orders from '../order';
 
+const OrderPublicFields = {
+    customerId: 1,
+    customerName: 1,
+    deliveryDate: 1,
+    notes: 1,
+    deliveryAddress1: 1,
+    deliveryAddress2: 1,
+    deliveryAddress3: 1,
+    county: 1,
+    postcode: 1,
+    totalValue: 1,
+    createdAt: 1,
+    orderLines: [{
+        _id: 1,
+        productId: 1,
+        description: 1,
+        quantity: 1,
+        unitPrice: 1,
+        lineValue: 1,
+        createdAt: 1
+    }]
+}
+
+const OrdersListFields = {
+    createdAt: 1,
+    customerName: 1,
+    totalValue: 1
+}
+
 Meteor.publish('Orders.public', function () {
-    return Orders.find();
+    return Orders.find(
+        {},
+        {
+            fields: OrdersListFields
+        }
+    );
 });
 
 Meteor.publish('Orders.topOrders', function (numberToReturn) {
@@ -9,14 +43,22 @@ Meteor.publish('Orders.topOrders', function (numberToReturn) {
         {},
         {
             sort: {totalValue: -1},
-            limit: numberToReturn
+            limit: numberToReturn,
+            fields: OrdersListFields
         }
     );
 });
 
 Meteor.publish('Order.get', function (id) {
     //console.log("Order.get ", Orders.find({_id: id}).fetch());
-    return Orders.find({_id: id});
+    return Orders.find(
+        {
+            _id: id
+        },
+        {
+            fields: OrderPublicFields
+        }
+    );
 });
 
 Meteor.publish('Order.customerTotals', function (customerId) {
