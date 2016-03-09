@@ -36,7 +36,7 @@ export const OrderContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.sub)
+        console.log("shouldComponentUpdate", this.sub);
         return (!this.sub || this.sub.ready);
     },
 
@@ -46,13 +46,15 @@ export const OrderContainer = React.createClass({
             return (<h1>Loading</h1>);
         }
 
+        const pageHeader = (FlowRouter.getParam('_id')) ? "Sales Order" : "New Sales Order";
+
         //debugger // checkout this.props with debugger!
         return (
             <div className="panel panel-default">
                 <form className="order_page" onSubmit={this.props.onSave}>
                     <div className="panel-body">
 
-                        <h3>Sales Order</h3>
+                        <h3>{pageHeader}</h3>
 
                         <OrderHeaderEdit
                             order={this.props.order}

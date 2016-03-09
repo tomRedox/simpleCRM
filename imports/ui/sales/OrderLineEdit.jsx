@@ -2,6 +2,8 @@ import React from 'react';
 
 import AsyncSelectInput from '../components/AsyncSelectInput.jsx';
 import NumberInput from '../components/NumberInput.jsx';
+import GridRow from '../components/grid/GridRow.jsx'
+import GridColumn from '../components/grid/GridColumn.jsx'
 
 import Products from '../../api/products/products';
 
@@ -67,18 +69,18 @@ const OrderLineEdit = React.createClass({
             deleteButton =
                 <input
                     type="button"
-                    className="btn btn-warning"
+                    className="btn btn-default"
                     id="deleteOrderLineButton"
                     onClick={this.deleteLine}
-                    value="Delete line"
+                    value="Delete"
                 />;
         }
 
         return (
 
-            <tr key={this.props.orderLine._id}>
+            <GridRow key={this.props.orderLine._id}>
 
-                <td data-th="Product" className="row col-sm-10 numeric">
+                <GridColumn className="col-xs-12 col-sm-5">
                     <AsyncSelectInput
                         name="productId"
                         label="Product"
@@ -91,8 +93,8 @@ const OrderLineEdit = React.createClass({
                         hideLabel={true}
                     />
 
-                </td>
-                <td data-th="Quantity" className="numeric">
+                </GridColumn>
+                <GridColumn className="col-xs-12 col-sm-2">
                     <NumberInput
                         name="quantity"
                         onChange={this.handleChange}
@@ -100,9 +102,9 @@ const OrderLineEdit = React.createClass({
                         error={errors.quantity}
                         hideLabel={true}
                     />
-                </td>
+                </GridColumn>
 
-                <td data-th="Unit Price" className="numeric">
+                <GridColumn className="col-xs-12 col-sm-2">
                     <NumberInput
                         name="unitPrice"
                         onChange={this.handleChange}
@@ -112,18 +114,18 @@ const OrderLineEdit = React.createClass({
                         isMoney={true}
                         decimalPlaces={2}
                     />
-                </td>
+                </GridColumn>
 
-                <td data-th="Sub Total" className="form-group numeric">
+                <GridColumn className="col-xs-12 col-sm-2">
                     <p className="sub-total numeric">
                         {accounting.formatMoney(this.props.orderLine.unitPrice * this.props.orderLine.quantity, '£')}
                     </p>
-                </td>
+                </GridColumn>
 
-                <td className="actions" data-th="">
+                <GridColumn className="col-xs-12 col-sm-1">
                     {deleteButton}
-                </td>
-            </tr>
+                </GridColumn>
+            </GridRow>
 
         );
     }

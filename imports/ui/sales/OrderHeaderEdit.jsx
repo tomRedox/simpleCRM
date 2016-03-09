@@ -81,21 +81,21 @@ const OrderHeaderEdit = React.createClass({
                         loadOptions={this.getCustomers}
                         valueKey="_id"
                         labelKey="name"
-                        hideLabel={true}
+                        hideLabel={false}
                     />
 
                     <TextInput name="notes" onChange={this.onChange} value={this.props.order.notes}
-                               error={errors.notes} hideLabel={true} textRows={5} />
+                               error={errors.notes} hideLabel={false} textRows={3} />
 
                 </div>
 
                 <div className="col-md-6">
 
-                    <TextInput name="deliveryAddress1" onChange={this.onChange}
+                    <TextInput name="deliveryAddress1" label="Delivery Address" placeHolder="Address 1" onChange={this.onChange}
                                value={this.props.order.deliveryAddress1} error={errors.deliveryAddress1}
-                               hideLabel={true}/>
+                               hideLabel={false}/>
 
-                    <TextInput name="deliveryAddress2" onChange={this.onChange}
+                    <TextInput name="deliveryAddress2" placeHolder="Address 2" onChange={this.onChange}
                                value={this.props.order.deliveryAddress2}
                                error={errors.deliveryAddress2} hideLabel={true}/>
 
@@ -109,7 +109,7 @@ const OrderHeaderEdit = React.createClass({
                                error={errors.postcode} hideLabel={true}/>
 
                     <DateInput name="deliveryDate" onChange={this.onChange} value={this.props.order.deliveryDate}
-                               error={errors.deliveryDate} hideLabel={true}/>
+                               error={errors.deliveryDate} hideLabel={false}/>
                 </div>
 
                 <div className="form-group">
@@ -118,7 +118,7 @@ const OrderHeaderEdit = React.createClass({
                 </div>
 
                 <div className="form-group">
-                    <a className="" id="cancelButton" href="/">Cancel</a>
+                    <a className="btn btn-default" id="cancelButton" href="/">Cancel</a>
 
                     <input type="submit" value="Save" className="btn btn-primary" onClick={this.onSave}
                            disabled={!this.props.isValid}/>
