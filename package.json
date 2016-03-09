@@ -25,6 +25,7 @@
     "react": "^0.14.7",
     "react-addons-css-transition-group": "^0.14.7",
     "react-autosuggest": "^3.5.0",
+    "react-bootstrap-datetimepicker": "0.0.22",
     "react-collapse": "^2.0.0",
     "react-dom": "^0.14.7",
     "react-height": "^2.0.4",
