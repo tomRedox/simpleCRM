@@ -1,6 +1,5 @@
 import Products from './products.js';
-
-Products.methods = {};
+//import Schemas from '../../../lib/collection-schema';
 
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.

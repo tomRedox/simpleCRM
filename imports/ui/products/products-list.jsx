@@ -6,6 +6,7 @@ import GridColumn from '../components/grid/GridColumn.jsx'
 import GridHeaderColumn from '../components/grid/GridHeaderColumn.jsx'
 import GridHeaderRow from '../components/grid/GridHeaderRow.jsx'
 
+import { upsert, remove } from '../../api/products/methods';
 
 // This click to edit grid comes from this example on Meteor Chef:
 // https://themeteorchef.com/snippets/click-to-edit-fields-in-react/
@@ -31,8 +32,11 @@ const ProductsList = React.createClass({
             }
         };
 
-        Meteor.call('Products.methods.upsert', args, (error, response) => {
+        upsert.call(
+            args
+        , (error, response) => {
             if (error) {
+                console.log(error.reason);
                 sAlert.error(error.reason);
             } else {
                 this.setState({editing: null});
