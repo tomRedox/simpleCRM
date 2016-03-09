@@ -1,25 +1,14 @@
-var React = require('react');
+import React from 'react';
 import accounting from 'accounting';
+
+import GridRow from '../components/grid/GridRow.jsx'
+import GridColumn from '../components/grid/GridColumn.jsx'
+import GridHeaderColumn from '../components/grid/GridHeaderColumn.jsx'
+import GridHeaderRow from '../components/grid/GridHeaderRow.jsx'
+
 
 // This click to edit grid comes from this example on Meteor Chef:
 // https://themeteorchef.com/snippets/click-to-edit-fields-in-react/
-
-const GridColumn = React.createClass({
-    render() {
-        return <div className={ this.props.className }>
-            { this.props.children }
-        </div>;
-    }
-});
-
-const GridRow = React.createClass({
-    render() {
-        return <div className="row">
-            { this.props.children }
-        </div>;
-    }
-});
-
 const ProductsList = React.createClass({
     propTypes: {
         items: React.PropTypes.array.isRequired
@@ -121,20 +110,20 @@ const ProductsList = React.createClass({
         } else {
             return <li key={ item._id } className="list-group-item"
                        onClick={ this.toggleEditing.bind( null, item._id ) }>
-                <GridRow>
-                    <GridColumn className="col-xs-12 col-sm-6">
+                <GridHeaderRow>
+                    <GridHeaderColumn className="col-xs-12 col-sm-6">
                         <span>{ item.name} </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
+                    </GridHeaderColumn>
+                    <GridHeaderColumn className="col-xs-12 col-sm-2">
                         <span>{ accounting.formatMoney(item.price, "£") } </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
+                    </GridHeaderColumn>
+                    <GridHeaderColumn className="col-xs-12 col-sm-2">
                         <span>{ item.createdAt.toLocaleDateString() } </span>
-                    </GridColumn>
-                    <GridColumn className="col-xs-12 col-sm-2">
+                    </GridHeaderColumn>
+                    <GridHeaderColumn className="col-xs-12 col-sm-2">
                         <a className="btn btn-default btn-sm">Edit Item</a>
-                    </GridColumn>
-                </GridRow>
+                    </GridHeaderColumn>
+                </GridHeaderRow>
             </li>;
         }
     },
