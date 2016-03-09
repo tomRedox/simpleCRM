@@ -3,13 +3,6 @@ class salesRegionsCollection extends Mongo.Collection {}
 // Make it available to the rest of the app
 const SalesRegions = new salesRegionsCollection("SalesRegions");
 
-// Deny all client-side updates since we will be using methods to manage this collection
-SalesRegions.allow({
-    insert() { return true; },
-    update() { return true; },
-    remove() { return true; }
-});
-
 // Define the expected Schema for data going into,
 // and coming out of the database
 //SalesRegions.schema = Schemas.SalesRegionsSchema
