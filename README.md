@@ -53,6 +53,8 @@ The view layer is built in React, with each component in its own file.  I've tri
 
 I've used Redux for managing the application state. However, I do not put the stored data in the state, I leave MiniMongo out of Redux altogether.  I do copy data into the state while it's being edited however, I do this to make the record being edited non-reactive during the edit (I don't want the data the user sees to change while they are editing it) and in order to allow real-time data validation.
 
+There is also a ["no-redux" branch](https://github.com/tomRedox/simpleCRM/tree/no-redux) that features the older working version of the system before I switched over to Redux.  That may be interesting to those wishing to see what an app looks like with and without Redux.  I won't be maintaining the no-redux branch, it's just for info.
+
 ## UI Design
 At the moment I've done the basics to get things up and running, but little in the way of design work has gone into the project so far.
 
