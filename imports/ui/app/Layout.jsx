@@ -6,6 +6,7 @@ import DevTools from '../redux/DevTools.jsx';
 import store from '../redux/store.jsx';
 //import injectTapEventPlugin from 'react-tap-event-plugin';
 import GlobalSearch from '../search/GlobalSearch.jsx';
+import AccountsButton from '../security/accounts-button.jsx';
 
 
 Meteor.subscribe("SalesRegions.All");
@@ -57,6 +58,7 @@ export const Layout = ({content}) => (
 
             {/* Navigation */}
             <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                {/* Nav Header */}
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse"
                             data-target=".navbar-collapse">
@@ -67,8 +69,10 @@ export const Layout = ({content}) => (
                     </button>
                     <a className="navbar-brand" href="/">simple crm</a>
 
-                    {/* The add buttons */}
-                    <ul className="nav navbar-top-links navbar-right navbar-nav">
+                </div>
+
+                  {/* Left Side Nav - The Add Buttons */}
+                    <ul className="nav navbar-nav">
 
                         <li>
                             <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
@@ -79,9 +83,11 @@ export const Layout = ({content}) => (
                         </li>
 
                     </ul>
-                    {/* /.navbar-top-links */}
 
-                </div>
+                {/* Left Side Nav - Account buttons */}
+                  <ul className="nav navbar-nav navbar-right">
+                    <AccountsButton />
+                  </ul>
                 {/* /.navbar-header */}
 
 
