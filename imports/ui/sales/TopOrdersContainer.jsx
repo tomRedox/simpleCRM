@@ -7,6 +7,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';

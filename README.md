@@ -2,7 +2,7 @@
 
 Demo here: http://tomssimplecrm.meteor.com/
 
-I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
+I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Redux, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
 I hope that, after I incorporate feedback from more experienced developers, Simple CRM can become a valuable resource to the community that provides the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
@@ -94,6 +94,8 @@ These are some of the many resources that have really helped me:
 - [Meteor Guide](http://guide.meteor.com/)
 - [Meteor Guide 1.3 (draft)](http://guide.meteor.com/v1.3/structure.html)
 - [Meteor Forums](https://forums.meteor.com/)
+- [Rob Conery's Building a Realtime Web Application with Meteor.js Pluralsight course](https://app.pluralsight.com/library/courses/meteorjs-web-application/table-of-contents)
+- [Cory House's Building Applications with React and Flux Pluralsight course](https://app.pluralsight.com/library/courses/react-flux-building-applications/table-of-contents)
 - [SpaceDojo](http://spacedojo.com/) and the [SpaceDojo community](https://www.patreon.com/meteorclub?ty=c)
 - [Abhi Aiyer's How we Redux series](https://medium.com/modern-user-interfaces/how-we-redux-part-1-introduction-18a24c3b7efe#.4xzqhtyea)
 - [AdamBrodzinski's meteor-flux-helpers](https://github.com/AdamBrodzinski/meteor-flux-helpers/blob/master/flux-helpers.js)

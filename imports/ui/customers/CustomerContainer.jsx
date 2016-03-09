@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 import CustomerEditForm from './CustomerEditForm.jsx';
 import { editCustomer, selectCustomer, selectNewCustomer, saveCustomer } from '../redux/customer_actions.jsx';
 import CustomerCompanies from '../../api/customers/customer-company';
