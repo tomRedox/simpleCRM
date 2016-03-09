@@ -4,7 +4,7 @@ Demo here: http://tomssimplecrm.meteor.com/
 
 I come from a .Net background and Simple CRM is a project I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
-I hope that after I incorporate feedback from more experienced developers Simple CRM can become the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
+I hope that, after I incorporate feedback from more experienced developers, Simple CRM can become a valuable resource to the community that provides the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
 ## What does the app do? 
 
@@ -87,9 +87,12 @@ These are some of the many resources that have really helped me:
 - [Meteor Guide](http://guide.meteor.com/)
 - [Meteor Guide 1.3 (draft)](http://guide.meteor.com/v1.3/structure.html)
 - [Meteor Forums](https://forums.meteor.com/)
+- [SpaceDojo](http://spacedojo.com/) and the [SpaceDojo community](https://www.patreon.com/meteorclub?ty=c)
+- [Abhi Aiyer's How we Redux series](https://medium.com/modern-user-interfaces/how-we-redux-part-1-introduction-18a24c3b7efe#.4xzqhtyea)
+- [AdamBrodzinski's meteor-flux-helpers](https://github.com/AdamBrodzinski/meteor-flux-helpers/blob/master/flux-helpers.js)
+- [Meteor Chef](https://themeteorchef.com/)
+- [Meteor Chef - Click to edit fields in react](https://themeteorchef.com/snippets/click-to-edit-fields-in-react/)
 - [Official React documentation](https://facebook.github.io/react/docs/getting-started.html)
 - [Official Redux documentation](http://redux.js.org/docs) 
 - [Dan Abromov's EggHeads Redux video series](https://egghead.io/series/getting-started-with-redux)
-- [AdamBrodzinski's meteor-flux-helpers](https://github.com/AdamBrodzinski/meteor-flux-helpers/blob/master/flux-helpers.js)
-- [Abhi Aiyer's How we Redux series](https://medium.com/modern-user-interfaces/how-we-redux-part-1-introduction-18a24c3b7efe#.4xzqhtyea)
 - Stack Overflow
