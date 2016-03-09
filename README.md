@@ -8,7 +8,9 @@ I hope that, after I incorporate feedback from more experienced developers, Simp
   
 ## What does the app do? 
 
-The code tries to provide examples of all of the common stuff you need to write for line of business and data-centric apps.  Namely:
+The code tries to provide examples of all of the common stuff you need to write for line of business and data-centric apps.  
+
+Namely:
 
 - Data entry forms
 - Business logic
@@ -36,7 +38,9 @@ This version of Simple CRM uses the following stack/technologies:
 - Redux for the application state 
 
 ## Meteor
-The app is running on Meteor 1.3 Beta 8 and will not work with Meteor 1.2.  I've tried to adopt the standards laid down in the Meteor guide, especially:
+The app is running on Meteor 1.3 Beta 8 and will not work with Meteor 1.2.  
+
+I've tried to adopt the standards laid down in the Meteor guide, especially:
 
 - Application structure that uses main.js entry points and puts the rest of the code in imports directories (ES2015)
 - Container pattern
