@@ -66,7 +66,7 @@
 
     "init-declarations": 0,
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
-    "linebreak-style": [2, "windows"],
+    "linebreak-style": 0,
     "lines-around-comment": 0,
     "max-depth": 0,
     "max-len": [2, 130, 4],
