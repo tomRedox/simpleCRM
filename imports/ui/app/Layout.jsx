@@ -36,79 +36,79 @@ const ContentContainer = React.createClass({
 
 
 export const Layout = ({content}) => (
-    <div>
+    <Provider store={store}>
+        <div>
 
-        <div id="wrapper">
+            <div id="wrapper">
 
-            {/* Navigation */}
-            <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-collapse">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="/">simple crm</a>
+                {/* Navigation */}
+                <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                    <div className="navbar-header">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                        <a className="navbar-brand" href="/">simple crm</a>
 
-                    {/* The add buttons */}
-                    <ul className="nav navbar-top-links navbar-right navbar-nav">
+                        {/* The add buttons */}
+                        <ul className="nav navbar-top-links navbar-right navbar-nav">
 
-                        <li>
-                            <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
-                        </li>
-                        <li>
-                            <a href="/addCustomer" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Add
-                                Customer </a>
-                        </li>
-
-                    </ul>
-                    {/* /.navbar-top-links */}
-
-                </div>
-                {/* /.navbar-header */}
-
-                {/* This is the sidebar.  It's inside the top nav somehow */}
-                <div className="navbar-default sidebar" role="navigation">
-                    <div className="sidebar-nav navbar-collapse">
-                        <ul className="nav" id="side-menu">
-
-                            <li className="sidebar-search">
-                                <GlobalSearch />
+                            <li>
+                                <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
+                            </li>
+                            <li>
+                                <a href="/addCustomer" role="button" data-toggle="modal"><i
+                                    className="fa fa-plus"></i> Add
+                                    Customer </a>
                             </li>
 
-                            <li className="active"><a href="/"><i className="fa fa-tachometer"/> Dashboard</a></li>
-                            <li><a href="/allOrders"><i className="fa fa-file-text"/> Orders</a></li>
-                            <li><a href="/allCustomers"><i className="fa fa-group"/> Customers</a></li>
-                            <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
-                            <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
-                            <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
-
                         </ul>
+                        {/* /.navbar-top-links */}
+
                     </div>
-                    {/* /.sidebar-collapse */}
-                </div>
-                {/* /.navbar-static-side */}
-            </nav>
+                    {/* /.navbar-header */}
+
+                    {/* This is the sidebar.  It's inside the top nav somehow */}
+                    <div className="navbar-default sidebar" role="navigation">
+                        <div className="sidebar-nav navbar-collapse">
+                            <ul className="nav" id="side-menu">
+
+                                <li className="sidebar-search">
+                                    <GlobalSearch />
+                                </li>
+
+                                <li className="active"><a href="/"><i className="fa fa-tachometer"/> Dashboard</a>
+                                </li>
+                                <li><a href="/allOrders"><i className="fa fa-file-text"/> Orders</a></li>
+                                <li><a href="/allCustomers"><i className="fa fa-group"/> Customers</a></li>
+                                <li><a href="/products"><i className="fa fa-archive"/> Products</a></li>
+                                <li><a href="/test1"><i className="fa fa-search"/> Search</a></li>
+                                <li><a href="/test2"><i className="fa fa-line-chart"/> Reports</a></li>
+
+                            </ul>
+                        </div>
+                        {/* /.sidebar-collapse */}
+                    </div>
+                    {/* /.navbar-static-side */}
+                </nav>
+            </div>
+
+            <div id="page-wrapper">
+
+                <div id="popup"></div>
+
+                <ContentContainer key="content">
+                    {content}
+                </ContentContainer>
+
+
+            </div>
+            {/* /#page-wrapper */}
+
+            <DevTools />
         </div>
-
-        <div id="page-wrapper">
-
-            <Provider store={store}>
-                <div>
-                    <div id="popup"></div>
-
-                    <ContentContainer key="content">
-                        {content}
-                    </ContentContainer>
-
-                    {/*<DevTools />*/}
-                </div>
-            </Provider>
-
-        </div>
-        {/* /#page-wrapper */}
-    </div>
-
+    </Provider>
 );

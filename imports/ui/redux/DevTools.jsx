@@ -11,8 +11,12 @@ const DevTools = createDevTools(
     // Monitors are individually adjustable with props.
     // Consult their repositories to learn about those props.
     // Here, we put LogMonitor inside a DockMonitor.
-    <DockMonitor toggleVisibilityKey='ctrl-q'
-                 changePositionKey='ctrl-i'>
+    // Docs: https://github.com/gaearon/redux-devtools-dock-monitor
+    <DockMonitor
+        toggleVisibilityKey='ctrl-q'
+        changePositionKey='ctrl-i'
+        defaultIsVisible={false}
+    >
         <LogMonitor theme='tomorrow' />
     </DockMonitor>
 );
