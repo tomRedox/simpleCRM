@@ -177,6 +177,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.5-modules.7/web.browser/srp.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/formTypes/normal.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_blueprint/2.1.0/web.browser/client/main.css" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/msavin_debugonly/1000.0.0/web.browser/debugOnly.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/formTypes/insert.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_blueprint/2.1.0/web.browser/client/inspector.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.5-modules.7/web.browser/biginteger.js" />
@@ -655,6 +656,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.5-modules.7/web.browser/srp.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/formTypes/normal.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_blueprint/2.1.0/web.browser/client/main.css" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/msavin_debugonly/1000.0.0/web.browser/debugOnly.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_autoform/5.8.1/web.browser/formTypes/insert.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteortoys_blueprint/2.1.0/web.browser/client/inspector.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.5-modules.7/web.browser/biginteger.js" />

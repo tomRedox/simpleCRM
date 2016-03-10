@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
+import debugOnly from 'meteor/msavin:debugonly';
 
 import DevTools from '../redux/DevTools.jsx';
 import GlobalSearch from '../search/GlobalSearch.jsx';
@@ -34,6 +35,11 @@ const ContentContainer = React.createClass({
 
 });
 
+function renderDevTools() {
+    if (debugOnly) {
+        return <DevTools /> ;
+    }
+}
 
 export const Layout = ({content}) => (
     <Provider store={store}>
@@ -108,7 +114,7 @@ export const Layout = ({content}) => (
             </div>
             {/* /#page-wrapper */}
 
-            <DevTools />
+            { renderDevTools() }
         </div>
     </Provider>
 );
