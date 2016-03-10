@@ -1,9 +1,9 @@
 import React from 'react';//
+import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
 import TopOrdersContainer from '../sales/TopOrdersContainer.jsx';
 import TopCustomersContainer from '../customers/TopCustomersContainer.jsx';
 
-import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 import store from '../redux/store.jsx';
 
 
@@ -41,19 +41,3 @@ const Dashboard = React.createClass({
 });
 
 export default Dashboard;
-
-//return (
-//    <Content />
-//);
-
-//return (
-//    <VelocityTransitionGroup
-//        runOnMount={true}
-//        enter={{animation: "fadeIn"}}
-//        leave={{animation: "fadeOut"}}
-//        duration={500}
-//    >
-//        <Content />
-//    </VelocityTransitionGroup>
-//);
-//}

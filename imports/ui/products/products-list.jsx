@@ -164,10 +164,3 @@ const ProductsList = React.createClass({
 });
 
 export default ProductsList;
-
-//return <li
-//    onClick={ this.toggleEditing.bind( null, item._id ) }
-//    key={ item._id }
-//    className="list-group-item">
-//    { `${ item.name } (${ accounting.formatMoney(item.price, "£") })` }
-//</li>;

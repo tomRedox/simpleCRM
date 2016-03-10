@@ -76,7 +76,7 @@ Meteor.publish('Order.customerTotals', function (customerId) {
 });
 
 Meteor.publish('Orders.fullTextSearch', function (searchValue) {
-    // console.log("Orders.fullTextSearch - "
+    //console.log("Orders.fullTextSearch - "
     //     + searchTerm + " - ", Orders.find({name: new RegExp(searchTerm)}).fetch());
 
     return Orders.find(

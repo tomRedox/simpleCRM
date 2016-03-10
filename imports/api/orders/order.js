@@ -13,28 +13,28 @@ const Orders = new ordersCollection("Orders");
 Orders.attachSchema(Schemas.OrderSchema);
 
 Orders.before.insert(function (userId, doc) {
-    console.log("Orders.before.insert", doc);
+    //console.log("Orders.before.insert", doc);
     customerCompanyDenormalizer.beforeInsert(userId, doc);
 });
 
 Orders.before.update(function (userId, doc, fieldNames, modifier, options) {
-    console.log("Orders.before.update", doc);
+    //.log("Orders.before.update", doc);
     customerCompanyDenormalizer.beforeUpdate(userId, doc, fieldNames, modifier, options);
 });
 
 Orders.before.upsert(function (userId, selector, modifier, options) {
-    console.log("Orders.before.upsert", modifier.$set);
+    //console.log("Orders.before.upsert", modifier.$set);
     customerCompanyDenormalizer.beforeUpsert(userId, selector, modifier, options);
 });
 
 
 Orders.after.insert(function (userId, doc) {
-    console.log("Orders.after.insert", doc);
+    //console.log("Orders.after.insert", doc);
     customerCompanyDenormalizer.afterInsert(userId, doc);
 });
 
 Orders.after.update(function (userId, doc, fieldNames, modifier, options) {
-    console.log("Orders.after.update", doc);
+    //console.log("Orders.after.update", doc);
     customerCompanyDenormalizer.afterUpdate(userId, doc, fieldNames, modifier, options, this.previous);
 });
 
@@ -50,8 +50,8 @@ const customerCompanyDenormalizer = {
         // and also because the client miniMongo data subset may not contain the customer
         // at that point in time
         if (Meteor.isServer) {
-            console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
-                order.customerId + " - " + order.customerName);
+            //console.log("customerCompanyDenormalizer._updateCompanyNameOnOrder() ",
+            //    order.customerId + " - " + order.customerName);
 
             // no action needed if the customerId is not set
             if (!order.customerId || order.customerId === null) {
@@ -106,8 +106,6 @@ const customerCompanyDenormalizer = {
                 let result = Orders.aggregate(pipeline, {customerId: thisCustomerId})[0];
 
                 //console.log("result: ", result);
-                //console.log("result: ", result ? result.ordersTotalValue : "no ordersTotalValue");
-                //console.log("result: ", result ? result.ordersCount : "no ordersCount");
                 CustomerCompanies.update(thisCustomerId, {
                     $set: {
                         // the result will be null if this customer now has no orders
@@ -149,7 +147,7 @@ const customerCompanyDenormalizer = {
     },
 
     afterUpdate(userId, doc, fieldNames, modifier, options, previousDoc) {
-        console.log("previousDoc: ", previousDoc);
+        //console.log("previousDoc: ", previousDoc);
         this._performCommonAfterModifyActions(doc, previousDoc);
     }   
 

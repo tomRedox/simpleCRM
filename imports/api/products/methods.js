@@ -1,5 +1,6 @@
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
 import Products from './products.js';
-//import Schemas from '../../../lib/collection-schema';
 
 // Manual form specific update method that knows how to unpack the single
 // object we get from autoform.
@@ -9,14 +10,14 @@ export const upsert = new ValidatedMethod({
     name: 'Products.upsert',
 
     validate(args) {
-        console.log("Products.upsert.validate(args) ", args);
+        //console.log("Products.upsert.validate(args) ", args);
 
         Schemas.ProductSchema.clean(args.data);
 
         var schemaContext = Schemas.ProductSchema.namedContext("ProductForm");
         schemaContext.validate(args.data);
 
-        console.log("validation succeeded");
+        //console.log("validation succeeded");
     },
 
     // the actual database updating part
@@ -35,13 +36,10 @@ export const remove = new ValidatedMethod({
     }).validator(),
 
     run({ productId }) {
-        console.log("Products.methods.remove", productId);
+        //console.log("Products.methods.remove", productId);
         const product = Products.findOne(productId);
 
-        //if (!product.editableBy(this.userId)) {
-        //    throw new Meteor.Error('products.remove.accessDenied',
-        //        'Cannot remove products in a private list that is not yours');
-        //}
+        // TODO: Security
 
         Products.remove(productId);
     }

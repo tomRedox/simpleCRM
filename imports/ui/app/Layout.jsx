@@ -1,35 +1,20 @@
 import React from 'react';
-
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
+
 import DevTools from '../redux/DevTools.jsx';
-import store from '../redux/store.jsx';
-//import injectTapEventPlugin from 'react-tap-event-plugin';
 import GlobalSearch from '../search/GlobalSearch.jsx';
+
+import store from '../redux/store.jsx';
 
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
 
 
-//var checkScrollBars = function(){
-//    var b = $('body');
-//    var normalw = 0;
-//    var scrollw = 0;
-//    if(b.prop('scrollHeight')>b.height()){
-//        normalw = window.innerWidth;
-//        scrollw = normalw - b.width();
-//        $('#container').css({marginRight:'-'+scrollw+'px'});
-//    }
-//}
-//
-//checkScrollBars();
-
-//injectTapEventPlugin();
-
 const ContentContainer = React.createClass({
     render() {
-        console.log("ContentContainer.render()", this.props.children);
+        //console.log("ContentContainer.render()", this.props.children);
 
         return (
             <div key="contentContainer">
@@ -84,7 +69,6 @@ export const Layout = ({content}) => (
                 </div>
                 {/* /.navbar-header */}
 
-
                 {/* This is the sidebar.  It's inside the top nav somehow */}
                 <div className="navbar-default sidebar" role="navigation">
                     <div className="sidebar-nav navbar-collapse">
@@ -109,24 +93,17 @@ export const Layout = ({content}) => (
             </nav>
         </div>
 
-
         <div id="page-wrapper">
 
             <Provider store={store}>
                 <div>
+                    <div id="popup"></div>
 
+                    <ContentContainer key="content">
+                        {content}
+                    </ContentContainer>
 
-                        <div>
-                            <div id="popup"></div>
-
-                            <ContentContainer key="content">
-                                {content}
-                            </ContentContainer>
-
-                            {/*<DevTools />*/}
-
-                        </div>
-
+                    {/*<DevTools />*/}
                 </div>
             </Provider>
 

@@ -6,7 +6,7 @@ import SalesRegions from '../../api/sales-regions/sales-region';
 
 // if the database is empty on server start, create some sample data.
 Meteor.startup(() => {
-    console.log("fixtures Meteor.startup");
+    //console.log("fixtures Meteor.startup");
 
     CustomerCompanies._ensureIndex({"name":"text", "email":"text", "postcode":"text"});
     //In Meteor Mongo: Orders._dropIndexes();

@@ -1,4 +1,5 @@
 import CustomerCompanies from './customer-company';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 CustomerCompanies.methods = {};
 
@@ -10,22 +11,21 @@ export const upsert = new ValidatedMethod({
     name: 'CustomerCompanies.upsert',
 
     validate(args) {
-        console.log("CustomerCompanies.upsert.validate(args) ", args);
+        //console.log("CustomerCompanies.upsert.validate(args) ", args);
 
         Schemas.CustomerCompaniesSchema.clean(args.data);
 
         var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
         schemaContext.validate(args.data);
 
-        console.log("validation succeeded");
+        //console.log("validation succeeded");
     },
 
 
     // the actual database updating part
     // validate has already been run at this point
     run(args) {
-        console.log("run");
-        console.log("args", args);
+        //console.log("run: args", args);
         return CustomerCompanies.upsert(args.customerId, {$set: args.data});
     }
 });
@@ -39,13 +39,10 @@ export const remove = new ValidatedMethod({
     }).validator(),
 
     run({ customerId }) {
-        console.log("CustomerCompanies.methods.remove", customerId);
+        //console.log("CustomerCompanies.methods.remove", customerId);
         const order = CustomerCompanies.findOne(customerId);
 
-        //if (!order.editableBy(this.userId)) {
-        //    throw new Meteor.Error('orders.remove.accessDenied',
-        //        'Cannot remove orders in a private list that is not yours');
-        //}
+        // TODO: Add UserId check here
 
         CustomerCompanies.remove(customerId);
     },

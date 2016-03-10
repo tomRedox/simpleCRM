@@ -1,13 +1,7 @@
 import React from 'react';
 
-//import Collapse from 'react-collapse';
-//import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
-
-
 const PaginatedPanel = React.createClass({
     propTypes: {
-        //expanded: React.PropTypes.bool.isRequired,
-        //toggleExpanded: React.PropTypes.func.isRequired,
         parentGotData: React.PropTypes.bool.isRequired,
         panelTitle: React.PropTypes.string,
         itemType: React.PropTypes.string,
@@ -16,7 +10,8 @@ const PaginatedPanel = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("PaginatedPanel.shouldComponentUpdate() ", this.props.parentGotData);
+        //console.log("PaginatedPanel.shouldComponentUpdate() ", this.props.parentGotData);
+
         // Don't re-render if there are no records, which there won't be
         // after the first render (when the initial subscription happens
         // and before the data is actually retrieved)
@@ -24,7 +19,7 @@ const PaginatedPanel = React.createClass({
     },
 
     render() {
-        console.log("PaginatedPanel render");
+        //console.log("PaginatedPanel render");
 
         return (
             <div>

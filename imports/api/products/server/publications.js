@@ -8,6 +8,7 @@ const ProductListFields = {
 
 Meteor.publish('Products.public', function () {
 
+    // TODO: Security
     //if (!this.userId) {
     //    return this.ready();
     //}
@@ -23,6 +24,7 @@ Meteor.publish('Products.public', function () {
 Meteor.publish('Product.get', function (_id) {
     //console.log("publication match ", Products.find({_id: custId}).fetch());
 
+    // TODO: Security
     //if (!this.userId) {
     //    return this.ready();
     //}

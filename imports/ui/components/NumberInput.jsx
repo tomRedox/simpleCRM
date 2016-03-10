@@ -1,5 +1,3 @@
-//"use strict";
-//
 import React from 'react';
 import humanize from 'string-humanize';
 import accounting from 'accounting';
@@ -12,13 +10,11 @@ NumberInput = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.number,
-        //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string,
         hideLabel: React.PropTypes.bool,
         isMoney: React.PropTypes.bool,
         decimalPlaces:  React.PropTypes.number
     },
-
 
     getDefaultProps() {
         return {
@@ -37,12 +33,7 @@ NumberInput = React.createClass({
     },
 
     onChange(event) {
-        // get rid of any money formatting
-        //if(this.props.isMoney) {
-        //    event.target.value = accounting.unformat(event.target.value);
-        //}
-
-        // don't trigger on change if they have typed "11." or "11,"
+         // don't trigger on change if they have typed "11." or "11,"
         let lastChar =  event.target.value.toString().charAt(event.target.value.toString().length-1);
         if (isNaN(parseFloat(lastChar))) { return ;}
 
@@ -54,12 +45,6 @@ NumberInput = React.createClass({
     },
 
     getValue() {
-        //if(this.props.isMoney) {
-        //    return accounting.formatNumber(this.props.value, 2)
-        //} else {
-        //    return this.props.value;
-        //}
-
 
         // Check if the user entered a number
         if (isNaN(parseFloat(this.props.value)))
@@ -79,7 +64,7 @@ NumberInput = React.createClass({
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
         let wrapperClass = 'form-group';
         if (this.props.error && this.props.error.length > 0) {
-            console.log("has error ", this.props.error);
+            //console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
         }
 

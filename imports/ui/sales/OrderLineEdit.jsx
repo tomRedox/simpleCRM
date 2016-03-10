@@ -1,4 +1,5 @@
 import React from 'react';
+import accounting from 'accounting';
 
 import AsyncSelectInput from '../components/AsyncSelectInput.jsx';
 import NumberInput from '../components/NumberInput.jsx';
@@ -6,8 +7,6 @@ import GridRow from '../components/grid/GridRow.jsx'
 import GridColumn from '../components/grid/GridColumn.jsx'
 
 import Products from '../../api/products/products';
-
-import accounting from 'accounting';
 
 
 const OrderLineEdit = React.createClass({
@@ -44,7 +43,7 @@ const OrderLineEdit = React.createClass({
     },
 
     getProducts: function getProducts(input) {
-        console.log("OrderHeaderEdit.getProducts()", input);
+        //console.log("OrderHeaderEdit.getProducts()", input);
         const handle = Meteor.subscribe('Products.searchByName', input);
         return Products.find().fetch();
     },

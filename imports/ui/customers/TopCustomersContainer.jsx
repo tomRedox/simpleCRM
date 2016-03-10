@@ -47,7 +47,7 @@ const TopCustomersContainer = React.createClass({
     },
 
     render() {
-        console.log("CustomersListWrapper.render() ");
+        //console.log("CustomersListWrapper.render() ");
 
         return (
             <CollapsiblePanel
@@ -72,7 +72,7 @@ TopCustomersContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log("TopCustomersContainer.mapStateToProps", state)
+    //console.log("TopCustomersContainer.mapStateToProps", state)
     return {
         expanded: state.userInterface.customerList.expanded
     };

@@ -53,7 +53,7 @@ const TopOrdersContainer = React.createClass({
     },
 
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("OrdersListWrapper.render() ");
 
         return (
             <CollapsiblePanel
@@ -78,7 +78,8 @@ TopOrdersContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log("TopOrdersContainer.mapStateToProps", state)
+    //console.log("TopOrdersContainer.mapStateToProps", state)
+
     return {
         expanded: state.userInterface.orderList.expanded
     };

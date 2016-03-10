@@ -1,5 +1,3 @@
-//"use strict";
-//
 import React from 'react';
 import humanize from 'string-humanize';
 
@@ -71,7 +69,6 @@ TextInput = React.createClass({
             //console.log("has error ", this.props.error);
             wrapperClass += " " + 'has-error';
         }
-
 
         return (
             <div className={wrapperClass}>

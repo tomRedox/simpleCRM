@@ -13,7 +13,7 @@ import { saveOrder, editOrder, selectOrder,
 export const OrderContainer = React.createClass({
 
     componentWillMount() {
-        console.log("OrderContainer.componentWillMount()", this.props);
+        //console.log("OrderContainer.componentWillMount()", this.props);
 
         const orderId = FlowRouter.getParam('_id');
 
@@ -26,7 +26,7 @@ export const OrderContainer = React.createClass({
     },
 
     setOrderInState() {
-        console.log("setOrderInState");
+        //console.log("setOrderInState");
         this.props.selectOrder(FlowRouter.getParam('_id'));
     },
 
@@ -37,19 +37,18 @@ export const OrderContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.sub);
+        //console.log("shouldComponentUpdate", this.sub);
         return (!this.sub || this.sub.ready);
     },
 
     render() {
-        console.log("OrderContainer.render()", this.props);
+        //console.log("OrderContainer.render()", this.props);
         if (this.sub && !this.sub.ready) {
             return (<h1>Loading</h1>);
         }
 
         const pageHeader = (FlowRouter.getParam('_id')) ? "Sales Order" : "New Sales Order";
 
-        //debugger // checkout this.props with debugger!
         return (
             <div className="panel panel-default">
                 <form className="order_page" onSubmit={this.props.onSave}>
@@ -101,7 +100,7 @@ OrderContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log("OrderContainer.mapStateToProps", state);
+    //console.log("OrderContainer.mapStateToProps", state);
     return {
         order: state.orderBeingEdited.order
     };

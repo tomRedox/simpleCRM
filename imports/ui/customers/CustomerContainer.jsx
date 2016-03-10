@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import CustomerEditForm from './CustomerEditForm.jsx';
+
 import { editCustomer, selectCustomer, selectNewCustomer, saveCustomer } from '../redux/customer_actions.jsx';
 import CustomerCompanies from '../../api/customers/customer-company';
 import SalesRegions from '../../api/sales-regions/sales-region';
@@ -9,7 +10,7 @@ import SalesRegions from '../../api/sales-regions/sales-region';
 export const CustomerContainer = React.createClass({
 
     componentWillMount() {
-        console.log("CustomerContainer.componentWillMount()", this.props);
+        //console.log("CustomerContainer.componentWillMount()", this.props);
 
         const customerId = FlowRouter.getParam('_id');
 
@@ -22,7 +23,6 @@ export const CustomerContainer = React.createClass({
     },
 
     setCustomerInState() {
-        console.log("setCustomerInState");
         this.props.selectCustomer(FlowRouter.getParam('_id'));
     },
 
@@ -33,12 +33,13 @@ export const CustomerContainer = React.createClass({
     },
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.sub);
+        //console.log("shouldComponentUpdate", this.sub);
         return (!this.sub || this.sub.ready);
     },
 
     render() {
-        console.log("CustomerContainer.render()", this.props);
+        //console.log("CustomerContainer.render()", this.props);
+
         if (this.sub && !this.sub.ready) {
             return (<h1>Loading</h1>);
         }
@@ -66,7 +67,6 @@ CustomerContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log("CustomerContainer.mapStateToProps", state)
     return {
         customer: state.userInterface.customerBeingEdited
     };

@@ -1,7 +1,8 @@
 var React = require('react');
+import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
+
 import Products from '../../api/products/products';
 import ProductsList from './products-list.jsx';
-import { VelocityComponent, velocityHelpers, VelocityTransitionGroup } from 'velocity-react';
 
 const ProductsListWrapper = React.createClass({
 
@@ -22,7 +23,6 @@ const ProductsListWrapper = React.createClass({
 
     render() {
         //console.log("render()", this.props);
-
         return (
             <div key="productsListWrapper">
                 <ProductsList items={ this.data.products }/>
@@ -32,14 +32,3 @@ const ProductsListWrapper = React.createClass({
 });
 
 export default ProductsListWrapper;
-
-
-//<VelocityTransitionGroup
-//    runOnMount={true}
-//    enter={{animation: "fadeIn"}}
-//    leave={{animation: "fadeOut"}}
-//    duration={500}
-//>
-//    <ProductsList items={ this.data.products } />
-//
-//</VelocityTransitionGroup>

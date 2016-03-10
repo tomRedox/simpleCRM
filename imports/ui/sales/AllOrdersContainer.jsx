@@ -5,10 +5,6 @@ import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';
 import PaginatedPanel from '../components/PaginatedPanel.jsx';
 
-//import { toggleExpanded } from '../redux/order-list-actions.jsx';
-
-//const MINIMISED_RECORD_COUNT = 3;
-//const EXPANDED_RECORD_COUNT = 9;
 
 const AllOrdersContainer = React.createClass({
 
@@ -36,21 +32,11 @@ const AllOrdersContainer = React.createClass({
         return data;
     },
 
-    //getRecordsToShow() {
-    //    let recordsToShow = MINIMISED_RECORD_COUNT;
-    //    if (this.props.expanded) {
-    //        recordsToShow = EXPANDED_RECORD_COUNT;
-    //    }
-    //    return recordsToShow;
-    //},
-
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("OrdersListWrapper.render() ");
 
         return (
             <PaginatedPanel
-                //expanded={this.props.expanded}
-                //toggleExpanded={this.props.toggleExpanded}
                 parentGotData={this.data.dataReady}
                 panelTitle = "All orders"
                 itemType = "order"
@@ -65,17 +51,11 @@ const AllOrdersContainer = React.createClass({
     }
 });
 
-AllOrdersContainer.propTypes = {
-    //expanded: PropTypes.bool.isRequired
-};
+AllOrdersContainer.propTypes = {};
 
 function mapStateToProps(state) {
-    console.log("TopOrdersContainer.mapStateToProps", state)
-    return {
-        //expanded: state.userInterface.orderList.expanded
-    };
+    //console.log("TopOrdersContainer.mapStateToProps", state)
+    return {};
 }
 
-export default connect(mapStateToProps, {
-    //toggleExpanded
-})(AllOrdersContainer);
+export default connect(mapStateToProps, {})(AllOrdersContainer);

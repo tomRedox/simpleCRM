@@ -32,13 +32,13 @@ const userInterface = function userInterface(state = initialInterfaceState, acti
 
     switch (action.type) {
         case 'SELECT_CUSTOMER':
-            console.log("userInterface SELECT_CUSTOMER, action:", action);
+            //console.log("userInterface SELECT_CUSTOMER, action:", action);
 
             return merge(state, {
                 customerBeingEdited: action.customer
             });
         case 'EDIT_CUSTOMER':
-            console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);
+            //console.log("userInterface EDIT_CUSTOMER, customer:", state.customerBeingEdited);
 
             // merge in our newly edited data
             return merge(state, { customerBeingEdited: action.customer });
@@ -61,18 +61,17 @@ let initialOrderState = {
 };
 
 const orderBeingEdited = function orderBeingEdited(state = initialOrderState, action) {
-    console.log("reducers.userInterface  action:", {state, action});
+    //console.log("reducers.userInterface  action:", {state, action});
 
     switch (action.type) {
         case 'SELECT_ORDER':
-            console.log("orderBeingEdited SELECT_ORDER, action:", action);
+            //console.log("orderBeingEdited SELECT_ORDER, action:", action);
 
             return merge(state, {
                 order: action.order
             });
         case 'EDIT_ORDER':
-            console.log("orderBeingEdited EDIT_ORDER, order:", action.order);
-            console.log("orderBeingEdited EDIT_ORDER, state:", state);
+            //console.log("orderBeingEdited EDIT_ORDER, order:", action.order);
 
             // merge in our newly edited data
             return merge(state, { order: action.order });
@@ -96,7 +95,8 @@ const customer = function customer(state = {}, action) {
             // state to prevent the UI from re-rendering twice.
             return state;
         case 'CUSTOMERS_COLLECTION_CHANGED':
-            console.log("reducers.customer CUSTOMERS_COLLECTION_CHANGED", {state, action});
+            //console.log("reducers.customer CUSTOMERS_COLLECTION_CHANGED", {state, action});
+
             // we don't have to merge the single doc that changes since minimongo
             // keeps the entire cache for us. We'll just return the new minimongo state
             // We *could* also return another fetch if sorting wasn't so easy here
@@ -111,13 +111,13 @@ const customer = function customer(state = {}, action) {
 
 
 const order = function order(state = {}, action) {
-    console.log("reducers.order", {state, action});
+    //console.log("reducers.order", {state, action});
 
     switch (action.type) {
         case 'SAVE_ORDER':
              return state;
         case 'ORDERS_COLLECTION_CHANGED':
-            console.log("reducers.order ORDERS_COLLECTION_CHANGED", {state, action});
+            //console.log("reducers.order ORDERS_COLLECTION_CHANGED", {state, action});
             return state;
         default:
             return state;
