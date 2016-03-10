@@ -4,18 +4,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 Login = React.createClass({
+    onSubmit(event) {
+      event.preventDefault();
+      let emailAddress = React.findDOMNode(this.refs.emailAddress).value.trim();
+      let password = React.findDOMNode(this.refs.password).value.trim();
+      debugger;
+
+      Meteor.loginWithPassword( emailAddress, password, ( error ) => {
+        if ( error ) {
+          console.log(error);
+        } else {
+          FlowRouter.go( 'Home' );
+        }
+      });
+    },
     render() {
       return (
         <div>
     <h4>Login</h4>
-      <form>
+      <form onSubmit={this.onSubmit}>
         <div className="form-group">
           <label for="emailAddress">Email Address</label>
-          <input type="email" name="emailAddress" className="form-control" placeholder="Email Address" />
+          <input type="email" ref="emailAddress" className="form-control" placeholder="Email Address" />
         </div>
         <div className="form-group">
-          <label for="password"><span className="pull-left">Password</span> <a className="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a></label>
-          <input type="password" name="password" className="form-control" placeholder="Password" />
+          <label for="password">
+            <span className="pull-left">Password</span>
+            <a className="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a>
+          </label>
+          <input type="password" ref="password" className="form-control" placeholder="Password" />
         </div>
         <div className="form-group">
           <input type="submit" className="btn btn-success" value="Login" />

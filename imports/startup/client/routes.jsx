@@ -28,7 +28,7 @@ import store from './../../ui/redux/store.jsx';
 // Redirect unauthed users to login page
 const authenticatedRedirect = () => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
-    FlowRouter.go( 'login' );
+    FlowRouter.go( 'Login' );
   }
 };
 
