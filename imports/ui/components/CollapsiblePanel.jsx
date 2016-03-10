@@ -19,17 +19,15 @@ const CollapsiblePanel = React.createClass({
     animationDuration: 500,
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", this.props.parentGotData);
-       // Don't re-render if there are no records, which there won't be
+        //console.log("shouldComponentUpdate", this.props.parentGotData);
+
+        // Don't re-render if there are no records, which there won't be
         // after the first render (when the initial subscription happens
         // and before the data is actually retrieved)
         return (this.props.parentGotData);
     },
 
     renderShowMoreToggle() {
-        //console.log("OrdersList.renderShowMoreToggle() - this:", this);
-        //console.log("OrdersList.renderShowMoreToggle() - state:", this.state);
-
         var arrowAnimation = {
             rotateX: this.props.expanded ? 180 : 0//,
             //transformOriginY: [ '42%', '42%' ]
@@ -54,7 +52,8 @@ const CollapsiblePanel = React.createClass({
     },
 
     render() {
-        console.log("OrdersList render");
+        //console.log("OrdersList render");
+
         var transitionAnimation = {
             rotateX: this.props.expanded ? 360 : 0//,
             //transformOriginY: [ '42%', '42%' ]
@@ -89,33 +88,3 @@ const CollapsiblePanel = React.createClass({
 });
 
 export default CollapsiblePanel;
-
-
-
-//renderTest() {
-//    if (this.props.expanded) {
-//        return (
-//            <div>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//            </div>
-//        );
-//    }
-//
-//    return (
-//        <div>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//        </div>
-//    );
-//},

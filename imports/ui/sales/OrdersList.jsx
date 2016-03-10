@@ -20,6 +20,7 @@ const OrdersList = React.createClass({
 
     render() {
         //console.log("orders2", this.data.orders)
+
         // Get tasks from this.data.tasks
         return (
             <table className="table table-responsive table-striped">
@@ -40,33 +41,3 @@ const OrdersList = React.createClass({
  });
 
 export default OrdersList;
-
-
-
-//renderTest() {
-//    if (this.props.expanded) {
-//        return (
-//            <div>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//                <p>p</p>
-//            </div>
-//        );
-//    }
-//
-//    return (
-//        <div>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//            <p>p</p>
-//        </div>
-//    );
-//},

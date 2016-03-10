@@ -1,8 +1,8 @@
 ## What is Simple CRM?
 
-Demo here: http://tomssimplecrm.meteor.com/
+Demo here: http://redoxsimplecrm.meteor.com/
 
-I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
+I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Redux, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
 I hope that, after I incorporate feedback from more experienced developers, Simple CRM can become a valuable resource to the community that provides the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
@@ -19,6 +19,7 @@ Namely:
 - CRUD
 - Relationships and relational integrity
 - Data denormalization
+- Async auto-complete
 
 In time it will also include
 
@@ -71,6 +72,7 @@ Still to add to the project are:
 - [ ] IsDirty checking to warn before navigation when changes have been made
 - [ ] Unit tests
 - [ ] End-to-end/integration test
+- [ ] Add [Airbnb's linting](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
 - [ ] Security - only return and write data for logged in users
 - [ ] Security - add Admin role, only Admin to be able edit the Products list
 - [ ] Charts
@@ -91,14 +93,26 @@ I am hugely grateful to the Meteor community and the members of the SpaceDojo/Me
 These are some of the many resources that have really helped me:
 
 - [Meteor Guide](http://guide.meteor.com/)
-- [Meteor Guide 1.3 (draft)](http://guide.meteor.com/v1.3/structure.html)
+- [Meteor Guide 1.3 (draft)](http://guide.meteor.com/v1.3)
 - [Meteor Forums](https://forums.meteor.com/)
+- [Rob Conery's Building a Realtime Web Application with Meteor.js Pluralsight course](https://app.pluralsight.com/library/courses/meteorjs-web-application/table-of-contents)
+- [Cory House's Building Applications with React and Flux Pluralsight course](https://app.pluralsight.com/library/courses/react-flux-building-applications/table-of-contents)
 - [SpaceDojo](http://spacedojo.com/) and the [SpaceDojo community](https://www.patreon.com/meteorclub?ty=c)
-- [Abhi Aiyer's How we Redux series](https://medium.com/modern-user-interfaces/how-we-redux-part-1-introduction-18a24c3b7efe#.4xzqhtyea)
+- [Abhi Aiyer's How we Redux series - Part 1](https://medium.com/modern-user-interfaces/how-we-redux-part-1-introduction-18a24c3b7efe#.4xzqhtyea)
+- [Abhi Aiyer's How we Redux series - Part 2](https://medium.com/modern-user-interfaces/how-we-redux-part-2-setup-c6aa726fa79e#.kpun54ox5)
+- [Abhi Aiyer's How we Redux series - Part 3](https://medium.com/modern-user-interfaces/how-we-redux-part-3-domain-890964824fec#.ujuwer38a)
+- [Abhi Aiyer's How we Redux series - Part 4](https://medium.com/modern-user-interfaces/how-we-redux-part-4-reducers-and-stores-f4a0ebcdc22a#.frb4di9zz)
+- [Abhi Aiyer's How we Redux series - Part 5](https://medium.com/modern-user-interfaces/how-we-redux-part-5-components-bddd737022e1#.1w2j8scwd)
+- [How we Redux example app repo](https://github.com/abhiaiyer91/How-We-Redux-Todos)
 - [AdamBrodzinski's meteor-flux-helpers](https://github.com/AdamBrodzinski/meteor-flux-helpers/blob/master/flux-helpers.js)
+- [Discussion of meteor-flux-helpers](https://forums.meteor.com/t/flux-helpers-package/7814/5)
+- [Redux version of meteor-flux-helpers example app](https://github.com/AdamBrodzinski/meteor-flux-leaderboard/tree/redux)
+- [Redux approach in Meteor discussion](https://forums.meteor.com/t/redux-approach-on-meteor/8441/17)
 - [Meteor Chef](https://themeteorchef.com/)
 - [Meteor Chef - Click to edit fields in react](https://themeteorchef.com/snippets/click-to-edit-fields-in-react/)
 - [Official React documentation](https://facebook.github.io/react/docs/getting-started.html)
 - [Official Redux documentation](http://redux.js.org/docs) 
 - [Dan Abromov's EggHeads Redux video series](https://egghead.io/series/getting-started-with-redux)
 - [Stack Overflow](http://stackoverflow.com/)
+
+

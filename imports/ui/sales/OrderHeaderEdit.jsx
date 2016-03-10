@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Autosuggest from 'react-autosuggest';
 import accounting from 'accounting';
 
@@ -18,7 +17,7 @@ const OrderHeaderEdit = React.createClass({
     },
 
     getCustomers: function getCustomers(input) {
-        console.log("OrderHeaderEdit.getCustomers()", input);
+        //console.log("OrderHeaderEdit.getCustomers()", input);
         const handle = Meteor.subscribe('CustomerCompanies.searchByName', input);
         return CustomerCompanies.find().fetch();
     },
@@ -30,15 +29,14 @@ const OrderHeaderEdit = React.createClass({
     },
 
     onChange(event) {
-        console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
+        //console.log("OrderEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
+
         //this.callOnChange(event.target.name, event.target.value);
         this.props.onChange(this.props.order, [ { name: event.target.name, value: event.target.value} ] );
     },
 
     onSelectChange(newValue) {
-        console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
-
-        //this.callOnChange(newValue.name, newValue.selectedOption[newValue.valueKey]);
+        //console.log("OrderEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
 
         this.props.onChange(this.props.order,
             [
@@ -50,13 +48,8 @@ const OrderHeaderEdit = React.createClass({
 
     },
 
-    //callOnChange(changes) {
-    //    // create a single row array with the data in
-    //    this.props.onChange(this.props.order, [ { name, value} ] );
-    //},
-
     render() {
-        console.log("OrderHeaderEdit.render() - props: ", this.props);
+        //console.log("OrderHeaderEdit.render() - props: ", this.props);
 
         const value = {
             _id: this.props.order.customerId ? this.props.order.customerId : '',

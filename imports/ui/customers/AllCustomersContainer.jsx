@@ -1,15 +1,12 @@
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import CustomerCompanies from '../../api/customers/customer-company';
 
 import CustomersList from './CustomersList.jsx';
 import PaginatedPanel from '../components/PaginatedPanel.jsx';
 
-//import { toggleExpanded } from '../redux/customer-list-actions.jsx';
-
-//const MINIMISED_RECORD_COUNT = 3;
-//const EXPANDED_RECORD_COUNT = 9;
 
 const AllCustomersContainer = React.createClass({
 
@@ -37,21 +34,11 @@ const AllCustomersContainer = React.createClass({
         return data;
     },
 
-    //getRecordsToShow() {
-    //    let recordsToShow = MINIMISED_RECORD_COUNT;
-    //    if (this.props.expanded) {
-    //        recordsToShow = EXPANDED_RECORD_COUNT;
-    //    }
-    //    return recordsToShow;
-    //},
-
     render() {
-        console.log("CustomersListWrapper.render() ");
+        //console.log("CustomersListWrapper.render() ");
 
         return (
             <PaginatedPanel
-                //expanded={this.props.expanded}
-                //toggleExpanded={this.props.toggleExpanded}
                 parentGotData={this.data.dataReady}
                 panelTitle = "All customers"
                 itemType = "customer"
@@ -67,16 +54,16 @@ const AllCustomersContainer = React.createClass({
 });
 
 AllCustomersContainer.propTypes = {
-    //expanded: PropTypes.bool.isRequired
+    // add prop types here
 };
 
 function mapStateToProps(state) {
-    console.log("TopCustomersContainer.mapStateToProps", state)
+    //console.log("TopCustomersContainer.mapStateToProps", state)
     return {
-        //expanded: state.userInterface.customerList.expanded
+        // add bindings here
     };
 }
 
 export default connect(mapStateToProps, {
-    //toggleExpanded
+    // add function bindings here
 })(AllCustomersContainer);

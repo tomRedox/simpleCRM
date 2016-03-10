@@ -3,7 +3,6 @@ import Select from 'react-select';
 var humanize = require('string-humanize');
 
 const AsyncSelectInput = React.createClass({
-    // list out our required and optional properties for this class
     propTypes: {
         name: React.PropTypes.string.isRequired,
         label: React.PropTypes.string,
@@ -31,7 +30,7 @@ const AsyncSelectInput = React.createClass({
     },
 
     loadOptions(input, callback) {
-        console.log("OrderHeaderEdit.loadOptions() ", input);
+        //console.log("OrderHeaderEdit.loadOptions() ", input);
 
         var data = {
             options: this.props.loadOptions(input),
@@ -42,16 +41,14 @@ const AsyncSelectInput = React.createClass({
         };
 
         setTimeout(function () {
-            console.log("setTimeout", input);
+            //console.log("setTimeout", input);
             callback(null, data);
         }, 500);
     },
 
     // The value needs to be an object with two properties called the same as the valueKey and the labelKey
     getValue() {
-        //console.log("AsyncSelectInput.getValue(): this.props.value = ",
-        //    this.props.valueKey + " - " + this.props.labelKey);
-        //console.log("AsyncSelectInput.getValue(): this.props.value = ",
+         //console.log("AsyncSelectInput.getValue(): this.props.value = ",
         //    this.props.value[this.props.valueKey] + " - " + this.props.value[this.props.labelKey]);
 
         return {
@@ -112,7 +109,6 @@ const AsyncSelectInput = React.createClass({
 export default AsyncSelectInput;
 
 //getOptions(input, callback) {
-//    console.log("getOptions", input);
 //    input = input.toLowerCase();
 //
 //    var data = {

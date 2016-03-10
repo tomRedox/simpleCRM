@@ -1,8 +1,9 @@
 var React = require('react');
 import Select from 'react-select';
+import accounting from 'accounting';
+
 import Products from '../../api/products/products';
 import Orders from '../../api/orders/order';
-import accounting from 'accounting';
 
 const GlobalSearch = React.createClass({
 
@@ -23,7 +24,7 @@ const GlobalSearch = React.createClass({
     },
 
     getResults(input, callback) {
-        console.log("getResults input:", input);
+        //console.log("getResults input:", input);
 
         let products = [];
         let orders = [];
@@ -94,7 +95,7 @@ const GlobalSearch = React.createClass({
                                     customerCompanies
                                 );
 
-                                console.log("options: ", options);
+                                //console.log("options: ", options);
 
 
                                 var data = {

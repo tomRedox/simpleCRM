@@ -12,7 +12,6 @@ const CustomersList = React.createClass({
         return this.props.customers.map((customer) => {
 
             return (
-
                 <tr key={customer._id}>
                     <td>{customer.name}</td>
                     <td>{customer.postcode}</td>
@@ -20,7 +19,6 @@ const CustomersList = React.createClass({
                     <td>{accounting.formatMoney(customer.ordersTotalValue, "£")}</td>
                     <td><a className="btn btn-default btn-sm" href={"/customers/" + customer._id}>Edit</a></td>
                 </tr>
-
             );
         });
     },

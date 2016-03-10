@@ -1,12 +1,11 @@
-var React = require('react');
+import React from 'react';
 
 import TextInput from '../components/TextInput.jsx';
 import DateInput from '../components/DateInput.jsx';
 import SelectInput from '../components/SelectInput.jsx';
 
-// App component - represents the whole app
+
 const CustomerEditForm = React.createClass({
-    // Declare our expectations for using this class (not mandatory, just good practice)
     propTypes: {
         customer: React.PropTypes.object.isRequired,
         onChange: React.PropTypes.func.isRequired,
@@ -23,12 +22,10 @@ const CustomerEditForm = React.createClass({
     },
 
     onChange(event) {
-        console.log("CustomerEditForm.onChange() name: " + event.target.name + " value: ", event.target.value);
         this.callOnChange(event.target.name, event.target.value);
     },
 
     onSelectChange(newValue) {
-        console.log("CustomerEditForm.onSelectChange() name: " + newValue.name + " value: ", newValue);
         this.callOnChange(newValue.name, newValue.selectedOption[newValue.valueKey]);
     },
 
@@ -38,7 +35,7 @@ const CustomerEditForm = React.createClass({
     },
 
     render() {
-        console.log("CustomerEditComponent.render() props: ", this.props);
+        //console.log("CustomerEditComponent.render() props: ", this.props);
 
         let errors = {};
         if (this.props.errors) {

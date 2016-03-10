@@ -40,7 +40,7 @@ const ModalMessageBox = React.createClass({
     },
 
     render() {
-        console.log("ModalMessageBox.render()");
+        //console.log("ModalMessageBox.render()");
 
         return (
             <div>

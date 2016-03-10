@@ -7,6 +7,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Orders from '../../api/orders/order';
 import OrdersList from './OrdersList.jsx';
@@ -52,7 +53,7 @@ const TopOrdersContainer = React.createClass({
     },
 
     render() {
-        console.log("OrdersListWrapper.render() ");
+        //console.log("OrdersListWrapper.render() ");
 
         return (
             <CollapsiblePanel
@@ -77,7 +78,8 @@ TopOrdersContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log("TopOrdersContainer.mapStateToProps", state)
+    //console.log("TopOrdersContainer.mapStateToProps", state)
+
     return {
         expanded: state.userInterface.orderList.expanded
     };

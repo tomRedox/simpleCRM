@@ -1,4 +1,3 @@
-
 import React from 'react';
 import humanize from 'string-humanize';
 import Select from 'react-select';
@@ -9,7 +8,6 @@ SelectInput = React.createClass({
         name: React.PropTypes.string.isRequired,
         label: React.PropTypes.string.isRequired,
         value: React.PropTypes.string,
-        //defaultOption: React.PropTypes.string.isRequired,
         options: React.PropTypes.array.isRequired,
         onChange: React.PropTypes.func.isRequired,
         valueKey: React.PropTypes.string.isRequired,

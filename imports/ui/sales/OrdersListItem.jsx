@@ -11,7 +11,8 @@ const OrdersListItem = React.createClass({
     },
 
     deleteOrder() {
-        console.log("Deleting order ", this.props.order._id);
+        //console.log("Deleting order ", this.props.order._id);
+
         Meteor.call('Orders.methods.remove', {
             orderId: this.props.order._id
         }, (err, res) => {
@@ -24,11 +25,10 @@ const OrdersListItem = React.createClass({
     },
 
     render() {
-        //Modal.setAppElement('#app');
-
-        return (
+         return (
             //console.log("orders2", this.data.orders)
-            <tr key={this.props.order._id}>
+
+             <tr key={this.props.order._id}>
                 <td>{this.props.order.createdAt.toLocaleDateString()}</td>
                 <td>{this.props.order.customerName}</td>
                 <td>{accounting.formatMoney(this.props.order.totalValue, '£')}</td>
@@ -46,7 +46,5 @@ const OrdersListItem = React.createClass({
         );
     }
 });
-
-//data-toggle="modal" href="#primary"
 
 export default OrdersListItem;

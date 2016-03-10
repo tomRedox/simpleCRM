@@ -13,7 +13,6 @@ DateInput = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.instanceOf(Date),
-        //defaultValue: React.PropTypes.string,
         error: React.PropTypes.string,
         hideLabel: React.PropTypes.bool
     },
@@ -38,7 +37,7 @@ DateInput = React.createClass({
     },
 
     render() {
-       // console.log("props: ", this.props);
+       //console.log("props: ", this.props);
 
         // This is for bootstrap, we want to wrap our label and textbox in a 'form-group'
         // class, and also to add 'has-error' (which gives us a red outline) if the data is in error
@@ -72,15 +71,7 @@ DateInput = React.createClass({
             </div>
 
         );
-
-        // test branch
     }
 });
 
 export default DateInput;
-                           //name={this.props.name}
-                           //className="form-control"
-                           ////placeholder={this.props.placeholder}
-                           //ref={this.props.name}
-                           //id={this.props.name}
-                           ////defaultValue={this.props.defaultValue}
