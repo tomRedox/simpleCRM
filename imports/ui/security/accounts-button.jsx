@@ -11,7 +11,7 @@ AccountsButton = React.createClass({
     };
   },
     render() {
-      if (this.data.currentUser){
+      if (this.data.currentUser) {
          return (
           <li className="dropdown">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
@@ -19,16 +19,17 @@ AccountsButton = React.createClass({
               <span className="caret"></span>
             </a>
             <ul className="dropdown-menu" role="menu">
-              <li className="logout"><a href="#">Logout</a></li>
+              <li><a href="/register">Register New User</a></li>
+              <li><a href="#">Logout</a></li>
             </ul>
           </li>
-        )
+        );
       } else {
         return (
           <li>
             <a href="#" className="dropdown-toggle" data-toggle="dropdown">Login</a>
           </li>
-        )
+        );
       }
     }
 });
