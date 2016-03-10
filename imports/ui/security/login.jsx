@@ -9,16 +9,16 @@ Login = React.createClass({
         <div>
     <h4>Login</h4>
       <form>
-        <div class="form-group">
+        <div className="form-group">
           <label for="emailAddress">Email Address</label>
-          <input type="email" name="emailAddress" class="form-control" placeholder="Email Address" />
+          <input type="email" name="emailAddress" className="form-control" placeholder="Email Address" />
         </div>
-        <div class="form-group">
-          <label for="password"><span class="pull-left">Password</span> <a class="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a></label>
-          <input type="password" name="password" class="form-control" placeholder="Password" />
+        <div className="form-group">
+          <label for="password"><span className="pull-left">Password</span> <a className="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a></label>
+          <input type="password" name="password" className="form-control" placeholder="Password" />
         </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-success" value="Login" />
+        <div className="form-group">
+          <input type="submit" className="btn btn-success" value="Login" />
         </div>
       </form>
       </div>

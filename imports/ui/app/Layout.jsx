@@ -8,6 +8,8 @@ import GlobalSearch from '../search/GlobalSearch.jsx';
 
 import store from '../redux/store.jsx';
 
+import AccountsButton from '../security/accounts-button.jsx';
+
 
 Meteor.subscribe("SalesRegions.All");
 Meteor.subscribe("Orders.All");
@@ -47,35 +49,39 @@ export const Layout = ({content}) => (
 
             <div id="wrapper">
 
-                {/* Navigation */}
-                <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <a className="navbar-brand" href="/">simple crm</a>
+            {/* Navigation */}
+            <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                {/* Nav Header */}
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="/">simple crm</a>
 
-                        {/* The add buttons */}
-                        <ul className="nav navbar-top-links navbar-right navbar-nav">
+                </div>
 
-                            <li>
-                                <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
-                            </li>
-                            <li>
-                                <a href="/addCustomer" role="button" data-toggle="modal"><i
-                                    className="fa fa-plus"></i> Add
-                                    Customer </a>
-                            </li>
+                  {/* Left Side Nav - The Add Buttons */}
+                    <ul className="nav navbar-nav">
 
-                        </ul>
-                        {/* /.navbar-top-links */}
+                        <li>
+                            <a href="/addOrder"><i className="fa fa-home"></i> Add Order</a>
+                        </li>
+                        <li>
+                            <a href="/addCustomer" role="button" data-toggle="modal"><i className="fa fa-plus"></i> Add
+                                Customer </a>
+                        </li>
 
-                    </div>
-                    {/* /.navbar-header */}
+                    </ul>
+
+                {/* Left Side Nav - Account buttons */}
+                  <ul className="nav navbar-nav navbar-right">
+                    <AccountsButton />
+                  </ul>
+                {/* /.navbar-header */}
 
                     {/* This is the sidebar.  It's inside the top nav somehow */}
                     <div className="navbar-default sidebar" role="navigation">

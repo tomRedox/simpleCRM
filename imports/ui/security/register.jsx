@@ -8,17 +8,17 @@ Register = React.createClass({
       return (
         <div>
             <h4>Register a new user</h4>
-            <form id="signup" class="signup">
-              <div class="form-group">
+            <form id="signup" className="signup">
+              <div className="form-group">
                 <label for="emailAddress">Email Address</label>
-                <input type="email" name="emailAddress" class="form-control" placeholder="Email Address" />
+                <input type="email" name="emailAddress" className="form-control" placeholder="Email Address" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" />
+                <input type="password" name="password" className="form-control" placeholder="Password" />
               </div>
-              <div class="form-group">
-                <input type="submit" class="btn btn-success" value="Register" />
+              <div className="form-group">
+                <input type="submit" className="btn btn-success" value="Register" />
               </div>
             </form>
         </div>
