@@ -6,9 +6,8 @@ import ReactDOM from 'react-dom';
 Login = React.createClass({
     onSubmit(event) {
       event.preventDefault();
-      let emailAddress = React.findDOMNode(this.refs.emailAddress).value.trim();
-      let password = React.findDOMNode(this.refs.password).value.trim();
-      debugger;
+      let emailAddress = ReactDOM.findDOMNode(this.refs.emailAddress).value.trim();
+      let password = ReactDOM.findDOMNode(this.refs.password).value.trim();
 
       Meteor.loginWithPassword( emailAddress, password, ( error ) => {
         if ( error ) {

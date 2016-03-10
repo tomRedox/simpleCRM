@@ -10,6 +10,11 @@ AccountsButton = React.createClass({
       currentUser: Meteor.user()
     };
   },
+  logout(event) {
+    Meteor.logout(() => {
+      FlowRouter.go('Login');
+    });
+  },
     render() {
       if (this.data.currentUser) {
          return (
@@ -20,7 +25,7 @@ AccountsButton = React.createClass({
             </a>
             <ul className="dropdown-menu" role="menu">
               <li><a href="/register">Register New User</a></li>
-              <li><a href="#">Logout</a></li>
+              <li><a onClick={this.logout} >Logout</a></li>
             </ul>
           </li>
         );
