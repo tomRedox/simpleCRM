@@ -1,5 +1,7 @@
 ## What is Simple CRM?
 
+![Simple CRM Dashboard Screenshot]https://cloud.githubusercontent.com/assets/11335350/13715307/cc17022a-e7cb-11e5-9c2a-cef194e1fc8a.png)
+
 Demo here: http://redoxsimplecrm.meteor.com/
 
 I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Redux, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
