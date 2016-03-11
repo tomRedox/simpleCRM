@@ -12,7 +12,7 @@ export const upsert = new ValidatedMethod({
     validate(args) {
         //console.log("orders.upsert.validate(args) ");
 
-        Schemas.OrderSchema.clean(args.data);
+        Schemas.OrderSchema.clean(args.data, { removeEmptyStrings: false });
 
         var schemaContext = Schemas.OrderSchema.namedContext("OrderForm");
         schemaContext.validate(args.data);

@@ -13,7 +13,7 @@ export const upsert = new ValidatedMethod({
     validate(args) {
         //console.log("CustomerCompanies.upsert.validate(args) ", args);
 
-        Schemas.CustomerCompaniesSchema.clean(args.data);
+        Schemas.CustomerCompaniesSchema.clean(args.data, { removeEmptyStrings: false });
 
         var schemaContext = Schemas.CustomerCompaniesSchema.namedContext("customerEditReactForm");
         schemaContext.validate(args.data);

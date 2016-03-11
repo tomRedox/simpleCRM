@@ -12,7 +12,7 @@ export const upsert = new ValidatedMethod({
     validate(args) {
         //console.log("Products.upsert.validate(args) ", args);
 
-        Schemas.ProductSchema.clean(args.data);
+        Schemas.ProductSchema.clean(args.data, { removeEmptyStrings: false });
 
         var schemaContext = Schemas.ProductSchema.namedContext("ProductForm");
         schemaContext.validate(args.data);
