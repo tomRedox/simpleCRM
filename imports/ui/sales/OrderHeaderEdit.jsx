@@ -6,6 +6,7 @@ import AsyncSelectInput from '../components/AsyncSelectInput.jsx';
 import TextInput from '../components/TextInput.jsx';
 import DateInput from '../components/DateInput.jsx';
 
+import CustomerCompanies from '../../api/customers/customer-company';
 
 const OrderHeaderEdit = React.createClass({
     propTypes: {
