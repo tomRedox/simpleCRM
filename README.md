@@ -1,14 +1,14 @@
 ## What is Simple CRM?
 
-![Simple CRM Dashboard Screenshot]https://cloud.githubusercontent.com/assets/11335350/13715307/cc17022a-e7cb-11e5-9c2a-cef194e1fc8a.png)
-
 Demo here: http://redoxsimplecrm.meteor.com/
 
 I come from a .Net background and Simple CRM is a SPA website I built in order to teach myself JavaScript, Meteor, React, Redux, Git etc.  I've been working on it fairly full time for around 6 weeks, but beware that I only started learning JavaScript about three months ago.
 
 I hope that, after I incorporate feedback from more experienced developers, Simple CRM can become a valuable resource to the community that provides the next step in learning after the Todo app examples.  That was a resource that I was desperately looking for but never found when I was learning.
   
-## What does the app do? 
+## What does the app do?
+ 
+![Simple CRM Dashboard Screenshot](https://cloud.githubusercontent.com/assets/11335350/13715429/7f160b28-e7cc-11e5-862b-41ac82f730eb.png)
 
 The code tries to provide examples of all of the common stuff you need to write for line of business and data-centric apps.  
 
