@@ -8,7 +8,6 @@ const CollapsiblePanel = React.createClass({
     propTypes: {
         expanded: React.PropTypes.bool.isRequired,
         toggleExpanded: React.PropTypes.func.isRequired,
-        parentGotData: React.PropTypes.bool.isRequired,
         panelTitle: React.PropTypes.string,
         itemType: React.PropTypes.string,
         newItemLink: React.PropTypes.string,
@@ -17,15 +16,6 @@ const CollapsiblePanel = React.createClass({
     },
 
     animationDuration: 500,
-
-    shouldComponentUpdate() {
-        //console.log("shouldComponentUpdate", this.props.parentGotData);
-
-        // Don't re-render if there are no records, which there won't be
-        // after the first render (when the initial subscription happens
-        // and before the data is actually retrieved)
-        return (this.props.parentGotData);
-    },
 
     renderShowMoreToggle() {
         var arrowAnimation = {

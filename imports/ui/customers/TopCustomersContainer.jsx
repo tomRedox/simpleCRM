@@ -33,8 +33,6 @@ const TopCustomersContainer = React.createClass({
                 }
             ).fetch();
         }
-
-        data.dataReady = handle;
         return data;
     },
 
@@ -53,7 +51,6 @@ const TopCustomersContainer = React.createClass({
             <CollapsiblePanel
                 expanded={this.props.expanded}
                 toggleExpanded={this.props.toggleExpanded}
-                parentGotData={this.data.dataReady}
                 panelTitle = "Top customers"
                 itemType = "customer"
                 newItemLink ="/addCustomer"
