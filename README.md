@@ -107,6 +107,7 @@ These are some of the many resources that have really helped me:
 - [Abhi Aiyer's How we Redux series - Part 5](https://medium.com/modern-user-interfaces/how-we-redux-part-5-components-bddd737022e1#.1w2j8scwd)
 - [How we Redux example app repo](https://github.com/abhiaiyer91/How-We-Redux-Todos)
 - [AdamBrodzinski's meteor-flux-helpers](https://github.com/AdamBrodzinski/meteor-flux-helpers/blob/master/flux-helpers.js)
+- [ffxSam's ffx-meteor-react-boilerplate - great thunk examples](https://github.com/ffxsam/ffx-meteor-react-boilerplate/blob/example/client/actions/colors.js)
 - [Discussion of meteor-flux-helpers](https://forums.meteor.com/t/flux-helpers-package/7814/5)
 - [Redux version of meteor-flux-helpers example app](https://github.com/AdamBrodzinski/meteor-flux-leaderboard/tree/redux)
 - [Redux approach in Meteor discussion](https://forums.meteor.com/t/redux-approach-on-meteor/8441/17)
