@@ -2,7 +2,7 @@ import React from 'react';
 import humanize from 'string-humanize';
 
 
-TextInput = React.createClass({
+const TextInput = React.createClass({
     // list out our required and optional properties for this class
     propTypes: {
         name: React.PropTypes.string.isRequired,
@@ -25,7 +25,8 @@ TextInput = React.createClass({
     renderLabel() {
         if (!this.props.hideLabel) {
             return (
-                <label htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
+                <label
+                    htmlFor={this.props.name}>{this.props.label ? this.props.label : humanize(this.props.name)}</label>
             );
         }
     },
@@ -36,25 +37,27 @@ TextInput = React.createClass({
         if (this.props.textRows) {
             return (
                 <textarea
-                       name={this.props.name}
-                       rows={this.props.textRows}
-                       className="form-control"
-                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
-                       ref={this.props.name}
-                       id={this.props.name}
-                       value={this.props.value}
-                       onChange={this.props.onChange} />
+                    name={this.props.name}
+                    rows={this.props.textRows}
+                    className="form-control"
+                    placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
+                    ref={this.props.name}
+                    id={this.props.name}
+                    value={this.props.value}
+                    onChange={this.props.onChange}/>
             );
         } else {
             return (
-                <input type="text"
-                       name={this.props.name}
-                       className="form-control"
-                       placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
-                       ref={this.props.name}
-                       id={this.props.name}
-                       value={this.props.value}
-                       onChange={this.props.onChange} />
+                <input
+                    type="text"
+                    name={this.props.name}
+                    className="form-control"
+                    placeholder={this.props.placeholder ? this.props.placeholder : humanizedName}
+                    ref={this.props.name}
+                    id={this.props.name}
+                    value={this.props.value}
+                    onChange={this.props.onChange}
+                />
             );
         }
     },
