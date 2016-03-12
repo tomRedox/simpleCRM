@@ -39,3 +39,5 @@ bootswatch:paper
 msavin:debugonly
 standard-minifier-css
 standard-minifier-js
+practicalmeteor:chai
+avital:mocha
