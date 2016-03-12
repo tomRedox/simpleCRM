@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint  . || true",
+    "lint": "eslint . || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
