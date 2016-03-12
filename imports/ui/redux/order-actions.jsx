@@ -63,6 +63,13 @@ export function saveOrder(order) {
     }
 }
 
+export const EDIT_ORDER = 'EDIT_ORDER';
+function sendOrderChanges(order) {
+    return {
+        type: EDIT_ORDER,
+        order
+    }
+}
 
 export function editOrder(order, newValues) {
     //console.log("OrderActions.editOrder() event.target:" + newValues);
@@ -81,10 +88,7 @@ export function editOrder(order, newValues) {
         validateItemAndAddValidationResults(order, Schemas.OrderSchema);
 
         //console.log("inner OrderActions.editOrder() " );
-        dispatch ({
-            type: 'EDIT_ORDER',
-            order
-        });
+        dispatch (sendOrderChanges(order));
     }
 }
 
@@ -106,10 +110,7 @@ export function editOrderLine(orderLineId, field, value) {
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
         //console.log("inner OrderActions.editOrderLine()", order);
-        dispatch ({
-            type: 'EDIT_ORDER',
-            order
-        });
+        dispatch (sendOrderChanges(order));
     }
 }
 
@@ -133,10 +134,7 @@ export function editOrderLineProduct(orderLineId, newValue) {
         validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
 
         //console.log("inner OrderActions.editOrderLineProduct()", order);
-        dispatch ({
-            type: 'EDIT_ORDER',
-            order
-        });
+        dispatch (sendOrderChanges(order));
     }
 }
 
@@ -152,10 +150,7 @@ export function addNewOrderLine(event) {
 
         order.orderLines.push(getEmptyOrderLine());
 
-        dispatch ({
-            type: 'EDIT_ORDER',
-            order: order
-        });
+        dispatch (sendOrderChanges(order));
     }
 }
 
@@ -177,10 +172,7 @@ export function deleteOrderLine(id) {
         // update the calculated totals
         recalculateOrderTotals(order);
 
-        dispatch ({
-            type: 'EDIT_ORDER',
-            order
-        });
+        dispatch (sendOrderChanges(order));
     }
 }
 function getEmptyOrderLine() {
