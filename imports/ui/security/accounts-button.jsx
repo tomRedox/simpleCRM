@@ -1,10 +1,10 @@
 // This component is for a basic account button dropdown - with access to account options and logging out.
 
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 
 AccountsButton = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ ReactMeteorData ],
   getMeteorData() {
     return {
       currentUser: Meteor.user()
