@@ -19,11 +19,47 @@ import CustomerContainer from './../../ui/customers/CustomerContainer.jsx';
 import AllCustomersContainer from './../../ui/customers/AllCustomersContainer.jsx';
 import OrderContainer from './../../ui/sales/OrderContainer.jsx';
 import AllOrdersContainer from './../../ui/sales/AllOrdersContainer.jsx';
+import Login from './../../ui/security/login.jsx';
+import Register from './../../ui/security/register.jsx';
 
 import store from './../../ui/redux/store.jsx';
 
 
-FlowRouter.route("/", {
+// Redirect unauthed users to login page
+const authenticatedRedirect = () => {
+  if (!Meteor.loggingIn() && !Meteor.userId()) {
+    FlowRouter.go( 'Login' );
+  }
+};
+
+// Set group using previous re-direct
+const authenticatedRoutes = FlowRouter.group({
+  name: 'authenticated',
+  triggersEnter: [ authenticatedRedirect ]
+});
+
+// Public Login page
+FlowRouter.route("/login", {
+    name: "Login",
+    action() {
+        //console.log("route ", this.name);
+        mount(Login);
+    }
+});
+
+authenticatedRoutes.route("/register", {
+    name: "Register",
+    action() {
+        //console.log("route ", this.name);
+        mount(Layout, {
+            content: (<Register />)
+        });
+
+    }
+});
+
+
+authenticatedRoutes.route("/", {
     name: "Home",
     action() {
         //console.log("route ", this.name);
@@ -33,7 +69,7 @@ FlowRouter.route("/", {
     }
 });
 
-FlowRouter.route('/customers/:_id', {
+authenticatedRoutes.route('/customers/:_id', {
     name: 'CustomerCompany.edit',
     action() {
         //console.log("route ", this.name);
@@ -43,7 +79,7 @@ FlowRouter.route('/customers/:_id', {
     }
 });
 
-FlowRouter.route("/addCustomer", {
+authenticatedRoutes.route("/addCustomer", {
     name: "addCustomer",
     action() {
         //console.log("route ", this.name);
@@ -53,7 +89,7 @@ FlowRouter.route("/addCustomer", {
     }
 });
 
-FlowRouter.route("/allCustomers", {
+authenticatedRoutes.route("/allCustomers", {
     name: "allCustomers",
     action() {
         //console.log("route ", this.name);
@@ -63,7 +99,7 @@ FlowRouter.route("/allCustomers", {
     }
 });
 
-FlowRouter.route('/products/', {
+authenticatedRoutes.route('/products/', {
     name: 'productsList',
     action() {
         //console.log("route ", this.name);
@@ -83,7 +119,7 @@ FlowRouter.notFound = {
     }
 };
 
-FlowRouter.route('/orders/:_id', {
+authenticatedRoutes.route('/orders/:_id', {
     name: 'Order.edit',
     action() {
         //console.log("route ", this.name);
@@ -93,7 +129,7 @@ FlowRouter.route('/orders/:_id', {
     }
 });
 
-FlowRouter.route("/addOrder", {
+authenticatedRoutes.route("/addOrder", {
     name: "addOrder",
     action() {
         //console.log("route ", this.name);
@@ -103,7 +139,7 @@ FlowRouter.route("/addOrder", {
     }
 });
 
-FlowRouter.route("/allOrders", {
+authenticatedRoutes.route("/allOrders", {
     name: "allOrders",
     action() {
         //console.log("route ", this.name);
@@ -113,7 +149,7 @@ FlowRouter.route("/allOrders", {
     }
 });
 
-FlowRouter.route("/test1", {
+authenticatedRoutes.route("/test1", {
     name: "test1",
     action() {
         //console.log("route ", this.name);
@@ -123,7 +159,7 @@ FlowRouter.route("/test1", {
     }
 });
 
-FlowRouter.route("/test2", {
+authenticatedRoutes.route("/test2", {
     name: "test2",
     action() {
         //console.log("route ", this.name);
@@ -133,7 +169,7 @@ FlowRouter.route("/test2", {
     }
 });
 
-FlowRouter.route("/sb", {
+authenticatedRoutes.route("/sb", {
     name: "sb",
     action() {
         //console.log("route ", this.name);

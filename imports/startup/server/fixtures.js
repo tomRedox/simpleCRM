@@ -8,6 +8,16 @@ import SalesRegions from '../../api/sales-regions/sales-region';
 Meteor.startup(() => {
     //console.log("fixtures Meteor.startup");
 
+    // Add default admin account
+    if (Meteor.users.find().count() === 0) {
+        Accounts.createUser({
+            username: 'default@admin',
+            email: 'default@admin.com',
+            password: 'default@admin'
+        });
+    }
+
+
     CustomerCompanies._ensureIndex({"name":"text", "email":"text", "postcode":"text"});
     //In Meteor Mongo: Orders._dropIndexes();
     Orders._ensureIndex({"customerName":"text", "postcode":"text", "orderLines.description":"text"});
