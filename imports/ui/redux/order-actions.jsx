@@ -188,31 +188,24 @@ function getEmptyOrderLine() {
     };
 }
 
-
-function loadOrderToEdit(orderId) {
-    const order = Orders.findOne({_id: orderId})
-
-    //console.log("loadOrderToEdit ", order);
-
-    // perform initial validation and set error messages
-    validateItemAndAddValidationResults(order, Schemas.OrderSchema);
-
-    order.orderLines.forEach(line => {
-        validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
-    });
-
-    return {
-        type: 'SELECT_ORDER',
-        order
-    };
-}
-
 export function selectOrder(orderId) {
     //console.log("OrderActions.selectOrder: " + orderId.toString());
     return (dispatch, getState) => {
         //console.log("INNER Actions.selectOrder: " + orderId.toString());
 
-        dispatch(loadOrderToEdit(orderId));
+        const order = Orders.findOne({_id: orderId});
+
+        // perform initial validation and set error messages
+        validateItemAndAddValidationResults(order, Schemas.OrderSchema);
+
+        order.orderLines.forEach(line => {
+            validateItemAndAddValidationResults(line, Schemas.OrderLineSchema);
+        });
+
+        dispatch ({
+            type: 'SELECT_ORDER',
+            order
+        });
     }
 }
 
