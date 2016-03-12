@@ -33,7 +33,7 @@
     "react-mounter": "^1.0.0",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0-rc6",
-    "react-s-alert": "^1.0.2",
+    "react-s-alert": "^1.0.3",
     "react-select": "^1.0.0-beta9",
     "react-transform-hmr": "^1.0.2",
     "redux": "^3.3.1",

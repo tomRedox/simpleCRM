@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Provider } from 'react-redux';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/flip.css';
 //import debugOnly from 'meteor/msavin:debugonly';  // not working on web deploy yet by the looks of things
 
 import DevTools from '../redux/DevTools.jsx';
@@ -116,7 +118,7 @@ export const Layout = ({content}) => (
                     {content}
                 </ContentContainer>
 
-
+                <Alert stack={{limit: 3}} />
             </div>
             {/* /#page-wrapper */}
 
