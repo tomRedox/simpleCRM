@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import accounting from 'accounting';
+import Alert from 'react-s-alert';
 
 import ModalMessageBox from '../components/ModalMessageBox.jsx';
 
@@ -17,9 +18,9 @@ const OrdersListItem = React.createClass({
             orderId: this.props.order._id
         }, (err, res) => {
             if (err) {
-                sAlert.error(err);
+                Alert.error(err);
             } else {
-                sAlert.success("Order deleted successfully");
+                Alert.success("Order deleted successfully");
             }
         });
     },

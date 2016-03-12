@@ -24,7 +24,6 @@ arillo:flow-router-helpers
 aldeed:collection2
 reactive-dict
 reactive-var
-aldeed:autoform
 fortawesome:fontawesome
 alanning:roles
 rajit:bootstrap3-datepicker
@@ -35,10 +34,8 @@ matb33:collection-hooks
 meteorhacks:aggregate
 accounts-password
 accounts-ui
-juliancwirko:s-alert
-juliancwirko:s-alert-flip
-juliancwirko:s-alert-slide
 skinnygeek1010:flux-helpers
 less
 bootswatch:paper
 msavin:debugonly
+juliancwirko:s-alert-flip

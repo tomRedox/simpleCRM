@@ -1,4 +1,5 @@
 import { trackCollection } from 'meteor/skinnygeek1010:flux-helpers';
+import Alert from 'react-s-alert';
 
 import { validateItemAndAddValidationResults, validateItemAgainstSchema } from '../../../lib/validation-helpers';
 import { recalculateOrderTotals } from '../../../lib/order-logic';
@@ -51,9 +52,9 @@ export function saveOrder(order) {
             //console.log ("Orders.methods.updateManualForm.call was called");
             if (err) {
                 // TODO call FAILED action on error
-                sAlert.error(err.message);
+                Alert.error(err.message);
             } else {
-                sAlert.success("Save successful");
+                Alert.success("Save successful");
                 FlowRouter.go("/");
                 dispatch ({
                     type: 'SAVE_ORDER'

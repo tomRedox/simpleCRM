@@ -1,6 +1,7 @@
 var React = require('react');
 import Select from 'react-select';
 import accounting from 'accounting';
+import Alert from 'react-s-alert';
 
 import Products from '../../api/products/products';
 import Orders from '../../api/orders/order';
@@ -37,7 +38,7 @@ const GlobalSearch = React.createClass({
             searchValue: input
         }, (err, res) => {
             if (err) {
-                sAlert("Could not retrieve Product search matches");
+                Alert("Could not retrieve Product search matches");
                 console.log('Products.fullTextSearch.method Error: ', err);
             } else {
                 //console.log("Products res", res);
@@ -54,7 +55,7 @@ const GlobalSearch = React.createClass({
                     searchValue: input
                 }, (err1, res1) => {
                     if (err1) {
-                        sAlert("Could not retrieve Order search matches");
+                        Alert("Could not retrieve Order search matches");
                         console.log('Orders.fullTextSearch.method Error: ', err1);
                     } else {
                         //console.log("Orders res", res1);
@@ -71,7 +72,7 @@ const GlobalSearch = React.createClass({
                             searchValue: input
                         }, (err2, res2) => {
                             if (err2) {
-                                sAlert("Could not retrieve Customer search matches");
+                                Alert("Could not retrieve Customer search matches");
                                 console.log('CustomerCompanies.fullTextSearch.method Error: ', err2);
                             } else {
                                 //console.log("CustomerCompanies res", res2);

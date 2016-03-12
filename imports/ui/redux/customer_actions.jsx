@@ -4,6 +4,7 @@
 // with *all* possible ways to mutate the state of the app.
 
 import { trackCollection } from 'meteor/skinnygeek1010:flux-helpers';
+import Alert from 'react-s-alert';
 
 import { validateItemAndAddValidationResults } from '../../../lib/validation-helpers';
 import CustomerCompanies from '../../api/customers/customer-company';
@@ -47,9 +48,10 @@ export function saveCustomer(customer) {
             if (err) {
                 // TODO call FAILED action on error
                 console.log("error saving customer", err.message);
+                Alert.error("error saving customer " + err.message);
             } else {
-                sAlert.success("Save successful");
                 FlowRouter.go("/");
+                Alert.success("Save successful");
                 dispatch({
                     type: 'SAVE_CUSTOMER'
                 });

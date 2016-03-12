@@ -1,5 +1,6 @@
 import React from 'react';
 import accounting from 'accounting';
+import Alert from 'react-s-alert';
 
 import GridRow from '../components/grid/GridRow.jsx'
 import GridColumn from '../components/grid/GridColumn.jsx'
@@ -37,10 +38,10 @@ const ProductsList = React.createClass({
         , (error, response) => {
             if (error) {
                 console.log(error.reason);
-                sAlert.error(error.reason);
+                Alert.error(error.reason);
             } else {
                 this.setState({editing: null});
-                sAlert.success('Product updated successfully');
+                Alert.success('Product updated successfully');
             }
         });
     },
