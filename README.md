@@ -68,6 +68,12 @@ The design consists of:
 
 I have also experimented with the excellent [Material-UI React component library](http://www.material-ui.com/#/) and I may adopt that at some point.  There is a separate branch for that work 
 
+## Security
+
+The app now has security based on Meteor's in-built security API.  The login credentials are:
+email: default@admin.com 
+password: default@admin
+
 ## Testing
 There are a couple of unit tests for the business logic in the lib folder.  The testing has been built using the instructions in the [draft Testing chapter of the Meteor Guide](https://github.com/meteor/guide/blob/testing-modules-content/content/testing.md). 
 
