@@ -68,14 +68,23 @@ The design consists of:
 
 I have also experimented with the excellent [Material-UI React component library](http://www.material-ui.com/#/) and I may adopt that at some point.  There is a separate branch for that work 
 
+## Testing
+There are a couple of unit tests for the business logic in the lib folder.  The testing has been built using the instructions in the [draft Testing chapter of the Meteor Guide](https://github.com/meteor/guide/blob/testing-modules-content/content/testing.md). 
+
+To run the tests open up a second command window and type: 
+`meteor test --driver-package avital:mocha --port 3100`
+This starts the test runner which will automatically rerun the tests as required.
+
+You can then view the test results at [http://localhost:3100/](http://localhost:3100/).
+
 ## Todo
 Still to add to the project are:
 
 - [ ] IsDirty checking to warn before navigation when changes have been made
-- [ ] Unit tests
+- [x] Unit tests
 - [ ] End-to-end/integration test
 - [ ] Add [Airbnb's linting](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
-- [ ] Security - only return and write data for logged in users
+- [x] Security - only return and write data for logged in users
 - [ ] Security - add Admin role, only Admin to be able edit the Products list
 - [ ] Charts
 - [ ] Paper reporting
@@ -85,7 +94,7 @@ Still to add to the project are:
 - [ ] Customer search page - allow search on address, name and postcode
 - [ ] Pagination on All Customers and All Orders pages
 - [ ] Sorting options on lists
-- [ ] [BUG] blanking a field results in the change not being recorded - assume this is a simple schema CLEAN issue?
+- [x] [BUG] blanking a field results in the change not being recorded - assume this is a simple schema CLEAN issue?
 - [ ] [BUG] stop cursor jumping when you update the unit price
 
 
