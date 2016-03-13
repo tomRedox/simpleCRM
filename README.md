@@ -71,7 +71,7 @@ I have also experimented with the excellent [Material-UI React component library
 ## Security
 
 The app now has security based on Meteor's in-built security API.  The login credentials are:
-email: default@admin.com 
+email: default@admin.com
 password: default@admin
 
 ## Testing
