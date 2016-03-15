@@ -135,4 +135,7 @@ These are some of the many resources that have really helped me:
 
 
 ## About Redox Software Ltd
-We write bespoke line of business software for small and medium size businesses.  Read all about us at [http://www.redox-software.co.uk/](http://www.redox-software.co.uk/).
+We write bespoke line of business software for small and medium size businesses.  
+
+Read all about us at [http://www.redox-software.co.uk/](http://www.redox-software.co.uk/).
+
