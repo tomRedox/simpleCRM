@@ -1,22 +1,6 @@
-class salesRegionsCollection extends Mongo.Collection {}
+import { createCollection } from '../lib/collection-helpers.js';
 
 // Make it available to the rest of the app
-const SalesRegions = new salesRegionsCollection("SalesRegions");
-
-// Deny all client-side updates since we will be using methods to manage this collection
-SalesRegions.deny({
-    insert() { return true; },
-    update() { return true; },
-    remove() { return true; }
-});
-
-// Define the expected Schema for data going into,
-// and coming out of the database
-//SalesRegions.schema = Schemas.SalesRegionsSchema
-
-// Bolt that schema onto the collection so that all mutator
-// calls are automatically checked against the schema.
-// Collection2 is what's allowing this to happen
-SalesRegions.attachSchema(Schemas.SalesRegionSchema);
+const SalesRegions = new createCollection("SalesRegions", Schemas.SalesRegionSchema);
 
 export default SalesRegions;

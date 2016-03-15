@@ -1,23 +1,10 @@
 import { recalculateOrderTotals } from '../../../lib/order-logic';
 import CustomerCompanies from '../customers/customer-company';
-
-class ordersCollection extends Mongo.Collection {}
+import { createCollection } from '../lib/collection-helpers.js';
 
 
 // Make it available to the rest of the app
-const Orders = new ordersCollection("Orders");
-
-// Deny all client-side updates since we will be using methods to manage this collection
-Orders.deny({
-    insert() { return true; },
-    update() { return true; },
-    remove() { return true; }
-});
-
-// Bolt that schema onto the collection so that all mutator
-// calls are automatically checked against the schema.
-// Collection2 is what's allowing this to happen
-Orders.attachSchema(Schemas.OrderSchema);
+const Orders = createCollection("Orders", Schemas.OrderSchema);
 
 Orders.before.insert(function (userId, doc) {
     //console.log("Orders.before.insert", doc);
