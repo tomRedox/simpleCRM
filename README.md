@@ -31,6 +31,11 @@ In time it will also include
 - Excel export
 - Testing
 
+## Er... Where's the code?
+
+If you haven't seen Meteor 1.3's recommended application structure yet you may be wondering where the actual code is.
+
+The UI Is here <a href="https://github.com/tomRedox/simpleCRM/tree/master/imports/ui" target="_blank">https://github.com/tomRedox/simpleCRM/tree/master/imports/ui</a> and the API is here <a href="https://github.com/tomRedox/simpleCRM/tree/master/imports/api" target="_blank">https://github.com/tomRedox/simpleCRM/tree/master/imports/api</a> 
 
 ## Technology
 This version of Simple CRM uses the following stack/technologies:
