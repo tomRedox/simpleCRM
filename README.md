@@ -53,6 +53,8 @@ The instructions below assume you've already installed Meteor on your machine.
 3. Install the version of Meteor used by this project:  `meteor update --release 1.3-beta.12`  (you can have multiple versions of Meteor installed on a machine, so this shouldn't upset any other projects.  Meteor stores which version to user for a particular project in the .meteor/release file)
 4. Install the npm modules used by the project:  `npm install`
 
+Then run the project with `meteor`.  The login credentials are: email: default@admin.com password: default@admin.
+
 ## Meteor
 The app is running on Meteor 1.3 Beta 12 and will not work with Meteor 1.2.  
 
