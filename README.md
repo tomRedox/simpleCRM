@@ -45,8 +45,16 @@ This version of Simple CRM uses the following stack/technologies:
 - React for the view layer
 - Redux for the application state 
 
+## Installation
+The instructions below assume you've already installed Meteor on your machine.  
+
+1. Clone this repository to your machine:  `git clone https://github.com/tomRedox/simpleCRM.git`
+2. Change to the project's directory:  `cd simpleCRM`
+3. Install the version of Meteor used by this project:  `meteor update --release 1.3-beta.12`  (you can have multiple versions of Meteor installed on a machine, so this shouldn't upset any other projects.  Meteor stores which version to user for a particular project in the .meteor/release file)
+4. Install the npm modules used by the project:  `npm install`
+
 ## Meteor
-The app is running on Meteor 1.3 Beta 8 and will not work with Meteor 1.2.  
+The app is running on Meteor 1.3 Beta 12 and will not work with Meteor 1.2.  
 
 I've tried to adopt the standards laid down in the Meteor guide, especially:
 
