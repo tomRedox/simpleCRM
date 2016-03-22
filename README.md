@@ -143,6 +143,7 @@ These are some of the many resources that have really helped me:
 - [The official guidance from the draft Meteor Guide for Meteor 1.3](http://guide.meteor.com/v1.3/react.html)
 - [The official React example app, main React branch](https://github.com/meteor/todos/tree/react)
 - [The official React example app, React with Tests branch](https://github.com/meteor/todos/tree/react-testing) 
+- [Discussion of the Container pattern and how to stop React components rendering before the data is available](https://thoughts.spacedojo.com/meteor-1-3-and-react-composition-with-reactive-data-b0bb3282fea#.a5yqn4j83)
 
 ### Redux in Meteor - the path to enlightenment
 If you don't know Redux yet, then learn:
