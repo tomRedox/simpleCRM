@@ -99,13 +99,19 @@ This starts the test runner which will automatically rerun the tests as required
 You can then view the test results at [http://localhost:3100/](http://localhost:3100/).
 
 ## Todo
-Still to add to the project are:
+I need to feed the changes from our production dev back into this project, namely:
+- [ ] ES6 syntax
+- [ ] Functional stateless components
+- [ ] Meteor 1.3 final
+- [ ] Updates to the testing frameworks
+
+Other broad areas still to be looked at in the project are:
 
 - [ ] IsDirty checking to warn before navigation when changes have been made
 - [x] Unit tests
 - [ ] End-to-end/integration test
 - [ ] Add [Airbnb's linting](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
-- [x] Security - only return and write data for logged in users
+- [ ] Security - only return and write data for logged in users
 - [ ] Security - add Admin role, only Admin to be able edit the Products list
 - [ ] Charts
 - [ ] Paper reporting
@@ -115,9 +121,6 @@ Still to add to the project are:
 - [ ] Customer search page - allow search on address, name and postcode
 - [ ] Pagination on All Customers and All Orders pages
 - [ ] Sorting options on lists
-- [x] [BUG] blanking a field results in the change not being recorded - assume this is a simple schema CLEAN issue?
-- [ ] [BUG] stop cursor jumping when you update the unit price
-
 
 ## Learning resources used in this solution
 I am hugely grateful to the Meteor community and the members of the SpaceDojo/Meteor Club Slack channel for all their help getting up to speed on everything.
