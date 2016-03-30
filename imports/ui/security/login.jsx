@@ -3,12 +3,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const forgotStyle = {
-  color: 'black',
-  size: 24,
-  textDecoration: 'none' ,
-};
-
 Login = React.createClass({
   onSubmit(event) {
     event.preventDefault();
@@ -47,7 +41,7 @@ Login = React.createClass({
                       </label>
                     </div>
                     <div className="col-xs-12 col-sm-6">
-                      <a style={forgotStyle} className="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a>
+                      <a id="forgot-password" className="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a>
                     </div>
                   </div>
                   <div>
